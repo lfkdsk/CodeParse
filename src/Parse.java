@@ -4,11 +4,11 @@ import java.io.IOException;
  * Created by liufengkai on 16/3/14.
  */
 public class Parse {
-    static int lookhead;
+    static int lookahead;
 
     public Parse() {
         try {
-            lookhead = System.in.read();
+            lookahead = System.in.read();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -20,11 +20,11 @@ public class Parse {
     void expr() {
         term();
         while (true) {
-            if (lookhead == '+') {
+            if (lookahead == '+') {
                 match('+');
                 term();
                 System.out.print('+');
-            } else if (lookhead == '-') {
+            } else if (lookahead == '-') {
                 match('-');
                 term();
                 System.out.print('-');
@@ -37,17 +37,17 @@ public class Parse {
      * 判断是不是数位
      */
     void term() {
-        if (Character.isDigit((char) lookhead)) {
-            System.out.write((char) lookhead);
-            match(lookhead);
+        if (Character.isDigit((char) lookahead)) {
+            System.out.write((char) lookahead);
+            match(lookahead);
         } else
             throw new Error("syntax error");
     }
 
     void match(int t) {
-        if (lookhead == t) {
+        if (lookahead == t) {
             try {
-                lookhead = System.in.read();
+                lookahead = System.in.read();
             } catch (IOException e) {
                 e.printStackTrace();
             }
