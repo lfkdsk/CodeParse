@@ -6,8 +6,8 @@ import lexer.Token;
  * Created by liufengkai on 16/3/17.
  */
 public class Not extends Logical {
-    public Not(Token op, Expr expr1, Expr expr2) {
-        super(op, expr1, expr2);
+    public Not(Token op, Expr expr2) {
+        super(op, expr2, expr2);
     }
 
     @Override

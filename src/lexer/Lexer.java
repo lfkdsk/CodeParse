@@ -4,6 +4,8 @@ import symbols.Type;
 
 import java.io.IOException;
 import java.util.Hashtable;
+import java.util.Iterator;
+import java.util.Map;
 
 /**
  * Created by liufengkai on 16/3/16.
@@ -134,4 +136,13 @@ public class Lexer {
         return token;
     }
 
+    public void printAll() {
+        Iterator iter = words.entrySet().iterator();
+        while (iter.hasNext()) {
+            Map.Entry entry = (Map.Entry) iter.next();
+            Object key = entry.getKey();
+            Object val = entry.getValue();
+            System.out.println("key " + key.toString() + " value" + val.toString());
+        }
+    }
 }
