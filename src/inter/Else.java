@@ -18,16 +18,16 @@ public class Else extends Stmt {
 
     @Override
     public void gen(int th, int nx) {
-        int label_1 = newlabel();
-        int label_2 = newlabel();
+        int label_1 = newLabel();
+        int label_2 = newLabel();
 
         expr.jumping(0, label_2);
 
-        emitlabel(label_1);
+        emitLabel(label_1);
         stmt1.gen(label_1, nx);
         emit("goto L" + nx);
 
-        emitlabel(label_2);
+        emitLabel(label_2);
         stmt2.gen(label_2, nx);
     }
 }

@@ -19,14 +19,26 @@ public class Node {
 
     static int labels = 0;
 
-    public int newlabel() {
+    /**
+     * 新建行
+     * @return 当前行号
+     */
+    public int newLabel() {
         return ++labels;
     }
 
-    public void emitlabel(int t) {
+    /**
+     * 打印label
+     * @param t
+     */
+    public void emitLabel(int t) {
         System.out.print("L" + t + ":");
     }
 
+    /**
+     * 打印代码段
+     * @param s
+     */
     public void emit(String s) {
         System.out.println("\t" + s);
     }

@@ -18,10 +18,10 @@ public class If extends Stmt {
     @Override
     public void gen(int th, int nx) {
         // stmt 标号
-        int label = newlabel();
+        int label = newLabel();
         // jump
         expr.jumping(0, nx);
-        emitlabel(label);
+        emitLabel(label);
         stmt.gen(label, nx);
     }
 }

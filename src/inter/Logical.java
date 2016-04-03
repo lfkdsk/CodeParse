@@ -34,15 +34,15 @@ public class Logical extends Expr {
 
     @Override
     public Expr gen() {
-        int f = newlabel();
-        int a = newlabel();
+        int f = newLabel();
+        int a = newLabel();
         Temp temp = new Temp(type);
         this.jumping(0, f);
         emit(temp.toString() + " = true");
         emit("goto L" + a);
-        emitlabel(f);
+        emitLabel(f);
         emit(temp.toString() + " = false");
-        emitlabel(a);
+        emitLabel(a);
         return temp;
     }
 

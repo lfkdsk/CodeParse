@@ -35,11 +35,11 @@ public class Parser {
 
     public void program() {
         Stmt s = block();
-        int begin = s.newlabel();
-        int after = s.newlabel();
-        s.emitlabel(begin);
+        int begin = s.newLabel();
+        int after = s.newLabel();
+        s.emitLabel(begin);
         s.gen(begin, after);
-        s.emitlabel(after);
+        s.emitLabel(after);
     }
 
     // block -> {decls stmt}

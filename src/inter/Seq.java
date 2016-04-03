@@ -17,9 +17,9 @@ public class Seq extends Stmt {
         if (stmt1 == Stmt.Null) stmt2.gen(th, nx);
         else if (stmt2 == Stmt.Null) stmt1.gen(th, nx);
         else {
-            int label = newlabel();
+            int label = newLabel();
             stmt1.gen(th, label);
-            emitlabel(label);
+            emitLabel(label);
             stmt2.gen(label, nx);
         }
     }
