@@ -3,6 +3,7 @@ package inter;
 import symbols.Type;
 
 /**
+ * ELSE
  * Created by liufengkai on 16/3/17.
  */
 public class Else extends Stmt {
@@ -18,10 +19,10 @@ public class Else extends Stmt {
 
     @Override
     public void gen(int th, int nx) {
-        int label_1 = newLabel();
-        int label_2 = newLabel();
+        int label_1 = newLabel(); // stmt1
+        int label_2 = newLabel(); // stmt2
 
-        expr.jumping(0, label_2);
+        expr.jumping(0, label_2); // 为真时1
 
         emitLabel(label_1);
         stmt1.gen(label_1, nx);

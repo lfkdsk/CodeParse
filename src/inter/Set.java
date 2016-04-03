@@ -3,11 +3,14 @@ package inter;
 import symbols.Type;
 
 /**
- * 赋值
+ * Set赋值
+ * id = expr;
  * Created by liufengkai on 16/3/17.
  */
 public class Set extends Stmt {
+    // 标示
     public ID id;
+    // 表达式
     public Expr expr;
 
     public Set(ID id, Expr expr) {

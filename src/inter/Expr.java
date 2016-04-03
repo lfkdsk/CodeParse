@@ -46,6 +46,13 @@ public class Expr extends Node {
     }
 
     // 跳转
+
+    /**
+     *
+     * @param tests
+     * @param t
+     * @param f
+     */
     public void emitjumps(String tests, int t, int f) {
         if (t != 0 && f != 0) {
             emit("if " + tests + " goto L" + t);

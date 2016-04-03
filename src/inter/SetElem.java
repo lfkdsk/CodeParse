@@ -5,9 +5,11 @@ import symbols.Type;
 
 /**
  * 数组元素赋值
+ *
  * Created by liufengkai on 16/3/17.
  */
 public class SetElem extends Stmt {
+    // array 标示符
     public ID array;
     public Expr index;
     public Expr expr;

@@ -33,11 +33,17 @@ public class Logical extends Expr {
             return null;
     }
 
+    /**
+     * 跳转代码返回bool值
+     * @return
+     */
     @Override
     public Expr gen() {
         int f = newLabel();
         int a = newLabel();
+        // temp
         Temp temp = new Temp(type);
+        // 生成跳转代码
         this.jumping(0, f);
         emit(temp.toString() + " = true");
         emit("goto L" + a);

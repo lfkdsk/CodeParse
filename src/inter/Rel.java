@@ -25,9 +25,10 @@ public class Rel extends Logical {
 
     @Override
     public void jumping(int t, int f) {
+        // 先生成两个表达式
         Expr temp1 = expr1.reduce();
         Expr temp2 = expr2.reduce();
-
+        // 合成
         String test = temp1.toString() + " " + op.toString() + " " + temp2.toString();
         emitjumps(test, t, f);
     }
