@@ -4,7 +4,7 @@ import lexer.Token;
 import symbols.Type;
 
 /**
- *
+ *  标识符
  * Created by liufengkai on 16/3/16.
  */
 public class ID extends Expr {

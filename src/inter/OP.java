@@ -5,6 +5,8 @@ import symbols.Type;
 
 /**
  * 运算符
+ * // 属于reduce()的一种实现 就生成临时变量并返回
+ * 子类有Arith(算术运算符),Unary单目运算符,Access数组指向运算
  * Created by liufengkai on 16/3/16.
  */
 public class OP extends Expr {

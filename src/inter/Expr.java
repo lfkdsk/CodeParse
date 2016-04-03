@@ -4,7 +4,7 @@ import lexer.Token;
 import symbols.Type;
 
 /**
- * 表达式
+ * 表达式抽象
  * Created by liufengkai on 16/3/16.
  */
 public class Expr extends Node {
@@ -19,14 +19,27 @@ public class Expr extends Node {
         this.type = type;
     }
 
+    /**
+     * 返回表达式的右值
+     * @return
+     */
     public Expr gen() {
         return this;
     }
 
+    /**
+     * 把表达式归约为一个地址
+     * @return
+     */
     public Expr reduce() {
         return this;
     }
 
+    /**
+     * 布尔表达式生成跳转指令
+     * @param t
+     * @param f
+     */
     public void jumping(int t, int f) {
         emitjumps(toString(), t, f);
     }
