@@ -7,6 +7,16 @@ import java.util.Hashtable;
 
 /**
  * Env把词法单元映射ID
+ * 一个代码块内的符号表
+ * {
+ *      // env2
+ *      int v;
+ *     {
+ *     // env1
+ *         int v;
+ *     }
+ * }
+ * Token --> ID
  * Created by liufengkai on 16/3/16.
  */
 public class Env {

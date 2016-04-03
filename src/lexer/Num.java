@@ -1,7 +1,7 @@
 package lexer;
 
 /**
- * 数字标示
+ * 数字标识
  * Created by liufengkai on 16/3/16.
  */
 public class Num extends Token {

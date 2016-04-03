@@ -1,6 +1,7 @@
 package lexer;
 
 /**
+ * 词素:保留字\表示符\复合词素
  * Created by liufengkai on 16/3/16.
  */
 public class Word extends Token {

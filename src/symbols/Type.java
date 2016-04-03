@@ -4,9 +4,12 @@ import lexer.Tag;
 import lexer.Word;
 
 /**
+ * 处理保留的数据类型{char,int,float,bool}
+ * tag = Tag.BASIC
  * Created by liufengkai on 16/3/16.
  */
 public class Type extends Word {
+    // 存储分配大小
     public int width = 0;
 
     public Type(String s, int tag, int width) {

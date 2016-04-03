@@ -4,15 +4,16 @@ import symbols.Type;
 
 import java.io.IOException;
 import java.util.Hashtable;
-import java.util.Iterator;
-import java.util.Map;
 
 /**
+ * 词法分析器
+ * String --> Token
  * Created by liufengkai on 16/3/16.
  */
 public class Lexer {
+    // 行号
     public static int line = 1;
-    // 预读
+    // 预读一个字符
     char peek = ' ';
 
     Hashtable<String, Word> words = new Hashtable<>();
@@ -45,7 +46,7 @@ public class Lexer {
         }
     }
 
-    // 识别复合单元
+    // 识别复合单元,预读取下一个内容
     boolean readch(char c) {
         readch();
         if (peek != c)
@@ -55,6 +56,11 @@ public class Lexer {
         return true;
     }
 
+    /**
+     * 词素的扫描
+     *
+     * @return
+     */
     public Token scan() {
         // 跳过空白行/字符/制表符
         for (; ; readch()) {
@@ -66,6 +72,7 @@ public class Lexer {
         }
 
         // 在这里处理了预读的下一个字符,判断而不能组合出二元符
+        // 这里在试图识别双目运算符
         switch (peek) {
             case '&':
                 if (readch('&')) return Word.and;
@@ -136,13 +143,13 @@ public class Lexer {
         return token;
     }
 
-    public void printAll() {
-        Iterator iter = words.entrySet().iterator();
-        while (iter.hasNext()) {
-            Map.Entry entry = (Map.Entry) iter.next();
-            Object key = entry.getKey();
-            Object val = entry.getValue();
-            System.out.println("key " + key.toString() + " value" + val.toString());
-        }
-    }
+//    public void printAll() {
+//        Iterator iter = words.entrySet().iterator();
+//        while (iter.hasNext()) {
+//            Map.Entry entry = (Map.Entry) iter.next();
+//            Object key = entry.getKey();
+//            Object val = entry.getValue();
+//            System.out.println("key " + key.toString() + " value" + val.toString());
+//        }
+//    }
 }

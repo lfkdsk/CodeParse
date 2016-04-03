@@ -1,6 +1,7 @@
 package lexer;
 
 /**
+ * 词法元素
  * Created by liufengkai on 16/3/16.
  */
 public class Token {

@@ -12,7 +12,7 @@ public class Main {
 
         Parser parser = new Parser(lexer);
 
-        lexer.printAll();
+//        lexer.printAll();
 
         parser.program();
         System.out.print('\n');
