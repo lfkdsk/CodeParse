@@ -36,7 +36,7 @@ public class Node {
     }
 
     /**
-     * 打印代码段
+     * 生成标号
      * @param s
      */
     public void emit(String s) {

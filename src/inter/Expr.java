@@ -37,8 +37,9 @@ public class Expr extends Node {
 
     /**
      * 布尔表达式生成跳转指令
-     * @param t
-     * @param f
+     * @param t true 出口
+     * @param f false 出口
+     *          特殊标号0表示到达下一指令
      */
     public void jumping(int t, int f) {
         emitjumps(toString(), t, f);
@@ -52,7 +53,7 @@ public class Expr extends Node {
         } else if (t != 0)
             emit("if " + tests + " goto L" + t);
         else if (f != 0)
-            emit("iffalse " + tests + "goto L" + f);
+            emit("iffalse " + tests + " goto L" + f);
         else ;
     }
 

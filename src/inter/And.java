@@ -3,6 +3,7 @@ package inter;
 import lexer.Token;
 
 /**
+ * Add
  * Created by liufengkai on 16/3/17.
  */
 public class And extends Logical {
@@ -12,6 +13,7 @@ public class And extends Logical {
 
     @Override
     public void jumping(int t, int f) {
+        // and 运算和B2关系较大
         int label = f != 0 ? f : newLabel();
         expr1.jumping(0, label);
         expr2.jumping(t, f);

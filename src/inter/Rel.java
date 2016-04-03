@@ -5,7 +5,7 @@ import symbols.Array;
 import symbols.Type;
 
 /**
- * 处理双目运算符
+ * 双目运算符
  * Created by liufengkai on 16/3/17.
  */
 public class Rel extends Logical {

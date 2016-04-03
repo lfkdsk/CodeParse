@@ -14,6 +14,7 @@ public class Logical extends Expr {
         super(op, null);
         this.expr1 = expr1;
         this.expr2 = expr2;
+        // 确认bool型
         this.type = check(expr1.type, expr2.type);
         if (type == null) error("type error");
     }

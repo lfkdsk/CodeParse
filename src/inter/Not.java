@@ -3,6 +3,7 @@ package inter;
 import lexer.Token;
 
 /**
+ * Not
  * Created by liufengkai on 16/3/17.
  */
 public class Not extends Logical {
