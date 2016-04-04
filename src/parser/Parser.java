@@ -40,6 +40,10 @@ public class Parser {
         else error("syntax error");
     }
 
+    /**
+     * run
+     * @throws IOException
+     */
     public void program() throws IOException {
         // 读取块
         Stmt s = block();
@@ -53,16 +57,27 @@ public class Parser {
     // block -> {decls stmt}
     Stmt block() throws IOException {
         match('{');
+        // 字符表的树
         Env saveEnv = top;
         top = new Env(saveEnv);
+
         decls();
+
+        // 生成语句序列
         Stmt s = stmts();
+        // 匹配结尾再见
         match('}');
+        // 恢复外层符号表
         top = saveEnv;
         return s;
     }
 
     // D -> type ID
+
+    /**
+     * 匹配初始化 ID
+     * @throws IOException
+     */
     void decls() throws IOException {
         while (look.tag == Tag.BASIC) {
             Type p = type();
@@ -75,7 +90,11 @@ public class Parser {
         }
     }
 
-
+    /**
+     * 实例化一个BASIC类型/数组类型
+     * @return
+     * @throws IOException
+     */
     Type type() throws IOException {
         Type p = (Type) look;
         match(Tag.BASIC);
@@ -83,6 +102,12 @@ public class Parser {
         else return dims(p);
     }
 
+    /**
+     * 实例化数组对象
+     * @param p
+     * @return
+     * @throws IOException
+     */
     Type dims(Type p) throws IOException {
         match('[');
         Token token = look;
@@ -96,9 +121,15 @@ public class Parser {
     Stmt stmts() throws IOException {
         if (look.tag == '}')
             return Stmt.Null;
+        // 进行不断的递归语句序列
         else return new Seq(stmt(), stmts());
     }
 
+    /**
+     * 匹配非终结表达式
+     * @return
+     * @throws IOException
+     */
     Stmt stmt() throws IOException {
         Expr x;
         Stmt s1, s2;
@@ -180,6 +211,11 @@ public class Parser {
         return stmt;
     }
 
+    /**
+     * or
+     * @return
+     * @throws IOException
+     */
     Expr bool() throws IOException {
         Expr x = join();
         while (look.tag == Tag.OR) {
@@ -190,6 +226,11 @@ public class Parser {
         return x;
     }
 
+    /**
+     * and
+     * @return
+     * @throws IOException
+     */
     Expr join() throws IOException {
         Expr x = equality();
         while (look.tag == Tag.AND) {
@@ -200,6 +241,11 @@ public class Parser {
         return x;
     }
 
+    /**
+     * 双目 条件
+     * @return
+     * @throws IOException
+     */
     Expr equality() throws IOException {
         Expr x = rel();
         while (look.tag == Tag.EQ || look.tag == Tag.NE) {
@@ -210,6 +256,11 @@ public class Parser {
         return x;
     }
 
+    /**
+     * 条件
+     * @return
+     * @throws IOException
+     */
     Expr rel() throws IOException {
         Expr x = expr();
         switch (look.tag) {
@@ -225,6 +276,11 @@ public class Parser {
         }
     }
 
+    /**
+     * + / -
+     * @return
+     * @throws IOException
+     */
     Expr expr() throws IOException {
         Expr x = term();
         while (look.tag == '+' || look.tag == '-') {
@@ -235,6 +291,11 @@ public class Parser {
         return x;
     }
 
+    /**
+     * 单目 * / /
+     * @return
+     * @throws IOException
+     */
     Expr term() throws IOException {
         Expr x = unary();
         while (look.tag == '*' || look.tag == '/') {
@@ -245,6 +306,11 @@ public class Parser {
         return x;
     }
 
+    /**
+     * 单目 - / !
+     * @return
+     * @throws IOException
+     */
     Expr unary() throws IOException {
         if (look.tag == '-') {
             move();
@@ -256,6 +322,11 @@ public class Parser {
         } else return factor();
     }
 
+    /**
+     * 类型匹配
+     * @return
+     * @throws IOException
+     */
     Expr factor() throws IOException {
         Expr x = null;
         switch (look.tag) {
@@ -284,7 +355,6 @@ public class Parser {
                 error("syntax error");
                 return x;
             case Tag.ID:
-                String s = look.toString();
                 ID id = top.get(look);
                 if (id == null) error(look.toString() + " undeclared");
                 move();
@@ -293,16 +363,24 @@ public class Parser {
         }
     }
 
+    /**
+     * 匹配数组对象
+     * @param id
+     * @return
+     * @throws IOException
+     */
+    // I --> [E] | [E] I
     Access offset(ID id) throws IOException {
         Expr i, w, t1, t2, loc;
         Type type = id.type;
         match('[');
-        i = bool();
+        i = bool();         // I -> [E]
         match(']');
         type = ((Array) type).of;
         w = new Constant(type.width);
         t1 = new Arith(new Token('*'), i, w);
         loc = t1;
+        // 生成多维下标
         while (look.tag == '[') {
             match('[');
             i = bool();
