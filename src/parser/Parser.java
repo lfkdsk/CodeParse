@@ -6,21 +6,28 @@ import symbols.Array;
 import symbols.Env;
 import symbols.Type;
 
+import java.io.IOException;
+
 /**
+ * 语法分析器
  * Created by liufengkai on 16/3/17.
  */
 public class Parser {
+    // 词法分析器
     private Lexer lexer;
+    // 词法分析起阅读
     private Token look;
+    // 顶层符号表
     Env top = null;
+    // 变量声明的存储位置
     int used = 0;
 
-    public Parser(Lexer lexer) {
+    public Parser(Lexer lexer) throws IOException {
         this.lexer = lexer;
         move();
     }
 
-    void move() {
+    void move() throws IOException {
         look = lexer.scan();
     }
 
@@ -28,12 +35,13 @@ public class Parser {
         throw new Error("near line " + Lexer.line + ": " + s);
     }
 
-    void match(int t) {
+    void match(int t) throws IOException {
         if (look.tag == t) move();
         else error("syntax error");
     }
 
-    public void program() {
+    public void program() throws IOException {
+        // 读取块
         Stmt s = block();
         int begin = s.newLabel();
         int after = s.newLabel();
@@ -43,10 +51,10 @@ public class Parser {
     }
 
     // block -> {decls stmt}
-    Stmt block() {
+    Stmt block() throws IOException {
         match('{');
         Env saveEnv = top;
-        top = new Env(top);
+        top = new Env(saveEnv);
         decls();
         Stmt s = stmts();
         match('}');
@@ -55,7 +63,7 @@ public class Parser {
     }
 
     // D -> type ID
-    void decls() {
+    void decls() throws IOException {
         while (look.tag == Tag.BASIC) {
             Type p = type();
             Token token = look;
@@ -68,14 +76,14 @@ public class Parser {
     }
 
 
-    Type type() {
+    Type type() throws IOException {
         Type p = (Type) look;
         match(Tag.BASIC);
         if (look.tag != '[') return p;
         else return dims(p);
     }
 
-    Type dims(Type p) {
+    Type dims(Type p) throws IOException {
         match('[');
         Token token = look;
         match(Tag.NUM);
@@ -85,15 +93,15 @@ public class Parser {
         return new Array(((Num) token).value, p);
     }
 
-    Stmt stmts() {
+    Stmt stmts() throws IOException {
         if (look.tag == '}')
             return Stmt.Null;
         else return new Seq(stmt(), stmts());
     }
 
-    Stmt stmt() {
+    Stmt stmt() throws IOException {
         Expr x;
-        Stmt s, s1, s2;
+        Stmt s1, s2;
         Stmt savedStmt; // break 保存外层语句
         switch (look.tag) {
             case ';':
@@ -129,6 +137,7 @@ public class Parser {
                 Stmt.Enclosing = donode;
                 match(Tag.DO);
                 s1 = stmt();
+                match(Tag.WHILE);
                 match('(');
                 x = bool();
                 match(')');
@@ -147,7 +156,13 @@ public class Parser {
         }
     }
 
-    Stmt assign() {
+    /**
+     * 赋值语句
+     *
+     * @return
+     * @throws IOException
+     */
+    Stmt assign() throws IOException {
         Stmt stmt;
         Token token = look;
         match(Tag.ID);
@@ -165,7 +180,7 @@ public class Parser {
         return stmt;
     }
 
-    Expr bool() {
+    Expr bool() throws IOException {
         Expr x = join();
         while (look.tag == Tag.OR) {
             Token tok = look;
@@ -175,7 +190,7 @@ public class Parser {
         return x;
     }
 
-    Expr join() {
+    Expr join() throws IOException {
         Expr x = equality();
         while (look.tag == Tag.AND) {
             Token tok = look;
@@ -185,7 +200,7 @@ public class Parser {
         return x;
     }
 
-    Expr equality() {
+    Expr equality() throws IOException {
         Expr x = rel();
         while (look.tag == Tag.EQ || look.tag == Tag.NE) {
             Token tok = look;
@@ -195,8 +210,8 @@ public class Parser {
         return x;
     }
 
-    Expr rel() {
-        Expr x = term();
+    Expr rel() throws IOException {
+        Expr x = expr();
         switch (look.tag) {
             case '<':
             case Tag.LE:
@@ -210,7 +225,7 @@ public class Parser {
         }
     }
 
-    Expr expr() {
+    Expr expr() throws IOException {
         Expr x = term();
         while (look.tag == '+' || look.tag == '-') {
             Token tok = look;
@@ -220,7 +235,7 @@ public class Parser {
         return x;
     }
 
-    Expr term() {
+    Expr term() throws IOException {
         Expr x = unary();
         while (look.tag == '*' || look.tag == '/') {
             Token tok = look;
@@ -230,7 +245,7 @@ public class Parser {
         return x;
     }
 
-    Expr unary() {
+    Expr unary() throws IOException {
         if (look.tag == '-') {
             move();
             return new Unary(Word.minus, unary());
@@ -241,7 +256,7 @@ public class Parser {
         } else return factor();
     }
 
-    Expr factor() {
+    Expr factor() throws IOException {
         Expr x = null;
         switch (look.tag) {
             case '(':
@@ -278,7 +293,7 @@ public class Parser {
         }
     }
 
-    Access offset(ID id) {
+    Access offset(ID id) throws IOException {
         Expr i, w, t1, t2, loc;
         Type type = id.type;
         match('[');

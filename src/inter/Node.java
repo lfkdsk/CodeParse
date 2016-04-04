@@ -21,7 +21,7 @@ public class Node {
 
     /**
      * 新建行
-     * @return 当前行号
+     * @return 当前行号rtry
      */
     public int newLabel() {
         return ++labels;

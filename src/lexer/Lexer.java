@@ -38,16 +38,16 @@ public class Lexer {
     }
 
     // 预读下一个字符到peek中
-    void readch() {
-        try {
+    void readch() throws IOException {
+//        try {
             peek = (char) System.in.read();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
 
     // 识别复合单元,预读取下一个内容
-    boolean readch(char c) {
+    boolean readch(char c) throws IOException{
         readch();
         if (peek != c)
             return false;
@@ -61,7 +61,7 @@ public class Lexer {
      *
      * @return
      */
-    public Token scan() {
+    public Token scan() throws IOException {
         // 跳过空白行/字符/制表符
         for (; ; readch()) {
             if (peek == ' ' || peek == '\t')
