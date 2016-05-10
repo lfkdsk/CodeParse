@@ -29,6 +29,7 @@ public class Parser {
 
     void move() throws IOException {
         look = lexer.scan();
+        System.out.println("(" + look.tag + ")");
     }
 
     void error(String s) {
@@ -42,6 +43,7 @@ public class Parser {
 
     /**
      * run
+     *
      * @throws IOException
      */
     public void program() throws IOException {
@@ -76,6 +78,7 @@ public class Parser {
 
     /**
      * 匹配初始化 ID
+     *
      * @throws IOException
      */
     void decls() throws IOException {
@@ -92,6 +95,7 @@ public class Parser {
 
     /**
      * 实例化一个BASIC类型/数组类型
+     *
      * @return
      * @throws IOException
      */
@@ -104,6 +108,7 @@ public class Parser {
 
     /**
      * 实例化数组对象
+     *
      * @param p
      * @return
      * @throws IOException
@@ -121,12 +126,13 @@ public class Parser {
     Stmt stmts() throws IOException {
         if (look.tag == '}')
             return Stmt.Null;
-        // 进行不断的递归语句序列
+            // 进行不断的递归语句序列
         else return new Seq(stmt(), stmts());
     }
 
     /**
      * 匹配非终结表达式
+     *
      * @return
      * @throws IOException
      */
@@ -176,6 +182,7 @@ public class Parser {
                 donode.init(s1, x);
                 Stmt.Enclosing = savedStmt;
                 return donode;
+
             case Tag.BREAK:
                 match(Tag.BREAK);
                 match(';');
@@ -213,6 +220,7 @@ public class Parser {
 
     /**
      * or
+     *
      * @return
      * @throws IOException
      */
@@ -228,6 +236,7 @@ public class Parser {
 
     /**
      * and
+     *
      * @return
      * @throws IOException
      */
@@ -243,6 +252,7 @@ public class Parser {
 
     /**
      * 双目 条件
+     *
      * @return
      * @throws IOException
      */
@@ -258,6 +268,7 @@ public class Parser {
 
     /**
      * 条件
+     *
      * @return
      * @throws IOException
      */
@@ -278,6 +289,7 @@ public class Parser {
 
     /**
      * + / -
+     *
      * @return
      * @throws IOException
      */
@@ -293,6 +305,7 @@ public class Parser {
 
     /**
      * 单目 * / /
+     *
      * @return
      * @throws IOException
      */
@@ -308,6 +321,7 @@ public class Parser {
 
     /**
      * 单目 - / !
+     *
      * @return
      * @throws IOException
      */
@@ -324,6 +338,7 @@ public class Parser {
 
     /**
      * 类型匹配
+     *
      * @return
      * @throws IOException
      */
@@ -365,6 +380,7 @@ public class Parser {
 
     /**
      * 匹配数组对象
+     *
      * @param id
      * @return
      * @throws IOException

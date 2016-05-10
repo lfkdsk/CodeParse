@@ -6,7 +6,6 @@ import parser.Parser;
 import java.io.IOException;
 
 /**
- *
  * Created by liufengkai on 16/3/20.
  */
 public class Main {
