@@ -2,6 +2,9 @@
 
 写给自己看的编译笔记。
 
-先进行一些书上demo的练习，在自己写。
+先进行一些书上demo的练习，再自己写。
 
-现在里面只有小龙书front-demo。
+里面有：  
+* 龙书的front-demo
+* lex+yacc 计算器/C 计算器
+* First、Follow集算法
