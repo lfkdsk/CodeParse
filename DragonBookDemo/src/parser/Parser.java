@@ -15,7 +15,7 @@ import java.io.IOException;
 public class Parser {
     // 词法分析器
     private Lexer lexer;
-    // 词法分析起阅读
+    // 词法分析阅读
     private Token look;
     // 顶层符号表
     Env top = null;
