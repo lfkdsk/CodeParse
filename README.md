@@ -2,6 +2,10 @@
 
 自己写的和编译相关的Demo，为了继续深入学习的一些准备。
 
+* front 龙书的前端的demo
+* keycode 学习理论之前的瞎写的解释器
+* OtherDemo 一些相关的算法
+* CreateNewLanguageDemo 这本书写的练习demo
 
 
 ## License
