@@ -29,7 +29,7 @@ public class Parser {
 
     void move() throws IOException {
         look = lexer.scan();
-        System.out.println("(" + look.tag + ")");
+//        System.out.println("(" + look.tag + ")");
     }
 
     void error(String s) {

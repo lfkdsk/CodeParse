@@ -1,7 +1,21 @@
 # CodeParse
 
-写给自己看的编译笔记。
+自己写的和编译相关的Demo，为了继续深入学习的一些准备。
 
-先进行一些书上demo的练习，在自己写。
 
-现在里面只有小龙书front-demo。
+
+## License
+
+    Copyright 2015 [刘丰恺](http://www.cnblogs.com/lfk-dsk/)
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
