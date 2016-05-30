@@ -734,46 +734,48 @@ YY_RULE_SETUP
 #line 11 "ex_calc.l"
 {
           yylval.dval = atof(yytext);
+          printf("number : %s \n", yytext);
           return NUMBER;
     }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 16 "ex_calc.l"
+#line 17 "ex_calc.l"
 ;
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 18 "ex_calc.l"
+#line 19 "ex_calc.l"
 {
-          yylval.symp = addNode(yytext);
+          yylval.name = addNode(yytext);
+          printLink();
           return NAME;
       }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 23 "ex_calc.l"
+#line 25 "ex_calc.l"
 {
           return 0;
       }
 	YY_BREAK
 case 5:
 /* rule 5 can match eol */
-#line 28 "ex_calc.l"
+#line 30 "ex_calc.l"
 case 6:
 /* rule 6 can match eol */
 YY_RULE_SETUP
-#line 29 "ex_calc.l"
+#line 31 "ex_calc.l"
 {
             return yytext[0];
       }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 33 "ex_calc.l"
+#line 35 "ex_calc.l"
 ECHO;
 	YY_BREAK
-#line 777 "lex.yy.c"
+#line 779 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1770,7 +1772,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 33 "ex_calc.l"
+#line 35 "ex_calc.l"
 
 
 

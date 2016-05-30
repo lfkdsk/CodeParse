@@ -54,10 +54,10 @@
 
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 typedef union YYSTYPE
-#line 7 "ex_calc.y"
+#line 8 "ex_calc.y"
 {
     double dval;
-    struct symtable *symp;
+    struct symtable *name;
 }
 /* Line 1529 of yacc.c.  */
 #line 64 "y.tab.h"

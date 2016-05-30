@@ -84,6 +84,7 @@
 
 
 #include "link_list.h"
+int yydebug=1;
 
 
 
@@ -107,13 +108,13 @@
 
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 typedef union YYSTYPE
-#line 7 "ex_calc.y"
+#line 8 "ex_calc.y"
 {
     double dval;
-    struct symtable *symp;
+    struct symtable *name;
 }
 /* Line 193 of yacc.c.  */
-#line 117 "y.tab.c"
+#line 118 "y.tab.c"
 	YYSTYPE;
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
 # define YYSTYPE_IS_DECLARED 1
@@ -126,7 +127,7 @@ typedef union YYSTYPE
 
 
 /* Line 216 of yacc.c.  */
-#line 130 "y.tab.c"
+#line 131 "y.tab.c"
 
 #ifdef short
 # undef short
@@ -413,8 +414,8 @@ static const yytype_int8 yyrhs[] =
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    22,    22,    23,    26,    30,    33,    34,    35,    36,
-      43,    44,    45,    48
+       0,    23,    23,    24,    27,    28,    31,    32,    33,    34,
+      41,    42,    43,    44
 };
 #endif
 
@@ -1327,35 +1328,32 @@ yyreduce:
   switch (yyn)
     {
         case 4:
-#line 26 "ex_calc.y"
-    {
-          (yyvsp[(1) - (3)].symp)->value = (yyvsp[(3) - (3)].dval);
-          printf("%s fuck",(yyvsp[(1) - (3)].symp)->name);
-        }
+#line 27 "ex_calc.y"
+    { (yyvsp[(1) - (3)].name)->value = (yyvsp[(3) - (3)].dval); }
     break;
 
   case 5:
-#line 30 "ex_calc.y"
+#line 28 "ex_calc.y"
     { printf("= %g \n", (yyvsp[(1) - (1)].dval)); }
     break;
 
   case 6:
-#line 33 "ex_calc.y"
+#line 31 "ex_calc.y"
     { (yyval.dval) = (yyvsp[(1) - (3)].dval) + (yyvsp[(3) - (3)].dval); }
     break;
 
   case 7:
-#line 34 "ex_calc.y"
+#line 32 "ex_calc.y"
     { (yyval.dval) = (yyvsp[(1) - (3)].dval) - (yyvsp[(3) - (3)].dval); }
     break;
 
   case 8:
-#line 35 "ex_calc.y"
+#line 33 "ex_calc.y"
     { (yyval.dval) = (yyvsp[(1) - (3)].dval) * (yyvsp[(3) - (3)].dval); }
     break;
 
   case 9:
-#line 36 "ex_calc.y"
+#line 34 "ex_calc.y"
     {
               if((yyvsp[(3) - (3)].dval) == 0.0){
                   yyerror("devide by zero");
@@ -1366,30 +1364,23 @@ yyreduce:
     break;
 
   case 10:
-#line 43 "ex_calc.y"
+#line 41 "ex_calc.y"
     { (yyval.dval) = -(yyvsp[(2) - (2)].dval); }
     break;
 
   case 11:
-#line 44 "ex_calc.y"
+#line 42 "ex_calc.y"
     { (yyval.dval) = (yyvsp[(2) - (3)].dval); }
     break;
 
-  case 12:
-#line 45 "ex_calc.y"
-    { (yyval.dval) = (yyvsp[(1) - (1)].dval);
-                      printf("%f fuck \n",(yyvsp[(1) - (1)].dval));
-                   }
-    break;
-
   case 13:
-#line 48 "ex_calc.y"
-    { (yyval.dval) = (yyvsp[(1) - (1)].symp)->value; }
+#line 44 "ex_calc.y"
+    { (yyval.dval) = (yyvsp[(1) - (1)].name)->value; }
     break;
 
 
 /* Line 1267 of yacc.c.  */
-#line 1393 "y.tab.c"
+#line 1384 "y.tab.c"
       default: break;
     }
   YY_SYMBOL_PRINT ("-> $$ =", yyr1[yyn], &yyval, &yyloc);
@@ -1603,6 +1594,6 @@ yyreturn:
 }
 
 
-#line 51 "ex_calc.y"
+#line 47 "ex_calc.y"
 
 

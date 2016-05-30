@@ -15,8 +15,9 @@ struct symtable* addNode(char *symbol){
     }
 
     struct symtable *sp = head;
-
-    while (sp->next != 0) {
+    
+    /* 第1.2次不会进去 */
+    while (sp != 0) {
         if (sp->name && !strcmp(sp->name, symbol)) {
           /*  找到一样的了 */
             return sp;
@@ -29,19 +30,25 @@ struct symtable* addNode(char *symbol){
 
         sp = sp->next;
     }
+    
+    sp = head;
+    
+    while (sp->next != 0) {
+        sp = sp->next;
+    }
 
-    struct symtable *tail = sp->next;
+    struct symtable *tail;
     tail = (struct symtable*)malloc(sizeof(struct symtable));
     tail->name = strdup(symbol);
     tail->next = 0;
+    sp->next = tail;
     return tail;
 }
 
 void printLink(){
   struct symtable* sp = head;
-  printf("%s\n", sp->name);
-  while (sp->next != 0) {
-      printf("%s\n", sp->name);
+  while (sp != 0) {
+      printf("name : %s index : %p value : %f \n", sp->name, sp, sp->value);
       sp = sp->next;
   }
 }

@@ -1,0 +1,334 @@
+Grammar
+
+    0 $accept: stament_list $end
+
+    1 stament_list: stament '\n'
+    2             | stament_list stament '\n'
+
+    3 stament: NAME '=' expression
+    4        | expression
+
+    5 expression: expression '+' expression
+    6           | expression '-' expression
+    7           | expression '*' expression
+    8           | expression '/' expression
+    9           | '-' expression
+   10           | '(' expression ')'
+   11           | NUMBER
+   12           | NAME
+
+
+Terminals, with rules where they appear
+
+$end (0) 0
+'\n' (10) 1 2
+'(' (40) 10
+')' (41) 10
+'*' (42) 7
+'+' (43) 5
+'-' (45) 6 9
+'/' (47) 8
+'=' (61) 3
+error (256)
+NAME (258) 3 12
+NUMBER (259) 11
+UMINUS (260)
+
+
+Nonterminals, with rules where they appear
+
+$accept (14)
+    on left: 0
+stament_list (15)
+    on left: 1 2, on right: 0 2
+stament (16)
+    on left: 3 4, on right: 1 2
+expression (17)
+    on left: 5 6 7 8 9 10 11 12, on right: 3 4 5 6 7 8 9 10
+
+
+state 0
+
+    0 $accept: . stament_list $end
+
+    NAME    shift, and go to state 1
+    NUMBER  shift, and go to state 2
+    '-'     shift, and go to state 3
+    '('     shift, and go to state 4
+
+    stament_list  go to state 5
+    stament       go to state 6
+    expression    go to state 7
+
+
+state 1
+
+    3 stament: NAME . '=' expression
+   12 expression: NAME .
+
+    '='  shift, and go to state 8
+
+    $default  reduce using rule 12 (expression)
+
+
+state 2
+
+   11 expression: NUMBER .
+
+    $default  reduce using rule 11 (expression)
+
+
+state 3
+
+    9 expression: '-' . expression
+
+    NAME    shift, and go to state 9
+    NUMBER  shift, and go to state 2
+    '-'     shift, and go to state 3
+    '('     shift, and go to state 4
+
+    expression  go to state 10
+
+
+state 4
+
+   10 expression: '(' . expression ')'
+
+    NAME    shift, and go to state 9
+    NUMBER  shift, and go to state 2
+    '-'     shift, and go to state 3
+    '('     shift, and go to state 4
+
+    expression  go to state 11
+
+
+state 5
+
+    0 $accept: stament_list . $end
+    2 stament_list: stament_list . stament '\n'
+
+    $end    shift, and go to state 12
+    NAME    shift, and go to state 1
+    NUMBER  shift, and go to state 2
+    '-'     shift, and go to state 3
+    '('     shift, and go to state 4
+
+    stament     go to state 13
+    expression  go to state 7
+
+
+state 6
+
+    1 stament_list: stament . '\n'
+
+    '\n'  shift, and go to state 14
+
+
+state 7
+
+    4 stament: expression .
+    5 expression: expression . '+' expression
+    6           | expression . '-' expression
+    7           | expression . '*' expression
+    8           | expression . '/' expression
+
+    '-'  shift, and go to state 15
+    '+'  shift, and go to state 16
+    '*'  shift, and go to state 17
+    '/'  shift, and go to state 18
+
+    $default  reduce using rule 4 (stament)
+
+
+state 8
+
+    3 stament: NAME '=' . expression
+
+    NAME    shift, and go to state 9
+    NUMBER  shift, and go to state 2
+    '-'     shift, and go to state 3
+    '('     shift, and go to state 4
+
+    expression  go to state 19
+
+
+state 9
+
+   12 expression: NAME .
+
+    $default  reduce using rule 12 (expression)
+
+
+state 10
+
+    5 expression: expression . '+' expression
+    6           | expression . '-' expression
+    7           | expression . '*' expression
+    8           | expression . '/' expression
+    9           | '-' expression .
+
+    $default  reduce using rule 9 (expression)
+
+
+state 11
+
+    5 expression: expression . '+' expression
+    6           | expression . '-' expression
+    7           | expression . '*' expression
+    8           | expression . '/' expression
+   10           | '(' expression . ')'
+
+    '-'  shift, and go to state 15
+    '+'  shift, and go to state 16
+    '*'  shift, and go to state 17
+    '/'  shift, and go to state 18
+    ')'  shift, and go to state 20
+
+
+state 12
+
+    0 $accept: stament_list $end .
+
+    $default  accept
+
+
+state 13
+
+    2 stament_list: stament_list stament . '\n'
+
+    '\n'  shift, and go to state 21
+
+
+state 14
+
+    1 stament_list: stament '\n' .
+
+    $default  reduce using rule 1 (stament_list)
+
+
+state 15
+
+    6 expression: expression '-' . expression
+
+    NAME    shift, and go to state 9
+    NUMBER  shift, and go to state 2
+    '-'     shift, and go to state 3
+    '('     shift, and go to state 4
+
+    expression  go to state 22
+
+
+state 16
+
+    5 expression: expression '+' . expression
+
+    NAME    shift, and go to state 9
+    NUMBER  shift, and go to state 2
+    '-'     shift, and go to state 3
+    '('     shift, and go to state 4
+
+    expression  go to state 23
+
+
+state 17
+
+    7 expression: expression '*' . expression
+
+    NAME    shift, and go to state 9
+    NUMBER  shift, and go to state 2
+    '-'     shift, and go to state 3
+    '('     shift, and go to state 4
+
+    expression  go to state 24
+
+
+state 18
+
+    8 expression: expression '/' . expression
+
+    NAME    shift, and go to state 9
+    NUMBER  shift, and go to state 2
+    '-'     shift, and go to state 3
+    '('     shift, and go to state 4
+
+    expression  go to state 25
+
+
+state 19
+
+    3 stament: NAME '=' expression .
+    5 expression: expression . '+' expression
+    6           | expression . '-' expression
+    7           | expression . '*' expression
+    8           | expression . '/' expression
+
+    '-'  shift, and go to state 15
+    '+'  shift, and go to state 16
+    '*'  shift, and go to state 17
+    '/'  shift, and go to state 18
+
+    $default  reduce using rule 3 (stament)
+
+
+state 20
+
+   10 expression: '(' expression ')' .
+
+    $default  reduce using rule 10 (expression)
+
+
+state 21
+
+    2 stament_list: stament_list stament '\n' .
+
+    $default  reduce using rule 2 (stament_list)
+
+
+state 22
+
+    5 expression: expression . '+' expression
+    6           | expression . '-' expression
+    6           | expression '-' expression .
+    7           | expression . '*' expression
+    8           | expression . '/' expression
+
+    '*'  shift, and go to state 17
+    '/'  shift, and go to state 18
+
+    $default  reduce using rule 6 (expression)
+
+
+state 23
+
+    5 expression: expression . '+' expression
+    5           | expression '+' expression .
+    6           | expression . '-' expression
+    7           | expression . '*' expression
+    8           | expression . '/' expression
+
+    '*'  shift, and go to state 17
+    '/'  shift, and go to state 18
+
+    $default  reduce using rule 5 (expression)
+
+
+state 24
+
+    5 expression: expression . '+' expression
+    6           | expression . '-' expression
+    7           | expression . '*' expression
+    7           | expression '*' expression .
+    8           | expression . '/' expression
+
+    $default  reduce using rule 7 (expression)
+
+
+state 25
+
+    5 expression: expression . '+' expression
+    6           | expression . '-' expression
+    7           | expression . '*' expression
+    8           | expression . '/' expression
+    8           | expression '/' expression .
+
+    $default  reduce using rule 8 (expression)

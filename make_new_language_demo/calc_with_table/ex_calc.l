@@ -10,13 +10,15 @@
 
 ([0-9]+|([0-9]*\.[0-9]+)([eE][-+]?[0-9]+)?) {
           yylval.dval = atof(yytext);
+          printf("number : %s \n", yytext);
           return NUMBER;
     }
 
 [ \t] ;
 
 [A-Za-z][A-Za-z0-9]* {
-          yylval.symp = addNode(yytext);
+          yylval.name = addNode(yytext);
+          printLink();
           return NAME;
       }
 

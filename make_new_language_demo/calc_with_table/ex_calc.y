@@ -1,15 +1,16 @@
 %{
 
 #include "link_list.h"
+int yydebug=1;
 
 %}
 
 %union{
     double dval;
-    struct symtable *symp;
+    struct symtable *name;
 }
 
-%token <symp> NAME
+%token <name> NAME
 %token <dval> NUMBER
 %left '-' '+'
 %left '*' '/'
@@ -23,10 +24,7 @@ stament_list: stament '\n'
             | stament_list stament '\n'
             ;
 
-stament: NAME '=' expression {
-          $1->value = $3;
-          printf("%s fuck",$1->name);
-        }
+stament: NAME '=' expression { $1->value = $3; }
        | expression { printf("= %g \n", $1); }
        ;
 
@@ -42,9 +40,7 @@ expression: expression '+' expression { $$ = $1 + $3; }
           }
           | '-' expression %prec UMINUS { $$ = -$2; }
           | '(' expression ')' { $$ = $2; }
-          | NUMBER { $$ = $1;
-                      printf("%f fuck \n",$1);
-                   }
+          | NUMBER
           | NAME   { $$ = $1->value; }
           ;
 
