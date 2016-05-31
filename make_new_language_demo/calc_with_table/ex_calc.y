@@ -2,6 +2,7 @@
 
 #include "link_list.h"
 int yydebug=1;
+#include <math.h>
 
 %}
 
@@ -42,6 +43,26 @@ expression: expression '+' expression { $$ = $1 + $3; }
           | '(' expression ')' { $$ = $2; }
           | NUMBER
           | NAME   { $$ = $1->value; }
+          | NAME '(' expression ')' {
+              if ($1->funcptr)
+              {
+                $$ = ($1->funcptr)($3);
+              }else{
+                printf("%s is not a function \n", $1->name);
+                $$ = 0.0;
+              }
+          }
           ;
 
 %%
+
+int main(){
+
+    extern double sqrt(), exp(), log();
+
+    addFunction("sqrt", sqrt);
+    addFunction("exp",exp);
+    addFunction("log",log);
+
+    yyparse();
+}

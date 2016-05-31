@@ -54,7 +54,7 @@
 
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 typedef union YYSTYPE
-#line 8 "ex_calc.y"
+#line 9 "ex_calc.y"
 {
     double dval;
     struct symtable *name;

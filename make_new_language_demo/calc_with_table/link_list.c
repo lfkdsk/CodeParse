@@ -52,3 +52,9 @@ void printLink(){
       sp = sp->next;
   }
 }
+
+void addFunction(char *name, double func()){
+    struct symtable* sp = addNode(name);
+    sp->funcptr = func;
+}
+
