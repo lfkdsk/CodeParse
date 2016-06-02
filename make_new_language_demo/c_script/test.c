@@ -2,6 +2,13 @@
 
 int main()
 {
-	printf("Hello World \n");
+
+	int a = 1;
+	for (; a < 10; ++a)
+	{
+		
+		printf("Hello World \n");
+
+	}
 	return 0;
 }
