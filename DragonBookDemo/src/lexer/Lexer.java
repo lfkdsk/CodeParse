@@ -143,13 +143,4 @@ public class Lexer {
         return token;
     }
 
-//    public void printAll() {
-//        Iterator iter = words.entrySet().iterator();
-//        while (iter.hasNext()) {
-//            Map.Entry entry = (Map.Entry) iter.next();
-//            Object key = entry.getKey();
-//            Object val = entry.getValue();
-//            System.out.println("key " + key.toString() + " value" + val.toString());
-//        }
-//    }
 }
