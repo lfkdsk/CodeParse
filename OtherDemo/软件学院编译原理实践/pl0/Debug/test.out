@@ -1,0 +1,125 @@
+    0  const m = 7, n = 85;
+    1  var x,y,z;
+    1  
+    1  procedure multiply;
+    1  	var a,b;
+    2  begin 
+    3  	a:=x;
+    5  	b:=y;
+    7  	z:=0;
+    9  	while b>0 do
+   13  		begin
+   13  			if odd b then z:=z+a;
+   20  			a:=2*a;
+   24  			b:=b/2;
+   28  		end
+   28  end;
+
+    2 INT	0	5
+    3 LOD	1	3
+    4 STO	0	3
+    5 LOD	1	4
+    6 STO	0	4
+    7 LIT	0	0
+    8 STO	1	5
+    9 LOD	0	4
+   10 LIT	0	0
+   11 OPR	0	11
+   12 JPC	0	29
+   13 LOD	0	4
+   14 OPR	0	6
+   15 JPC	0	20
+   16 LOD	1	5
+   17 LOD	0	3
+   18 OPR	0	2
+   19 STO	1	5
+   20 LIT	0	2
+   21 LOD	0	3
+   22 OPR	0	4
+   23 STO	0	3
+   24 LOD	0	4
+   25 LIT	0	2
+   26 OPR	0	5
+   27 STO	0	4
+   28 JMP	0	9
+   29 OPR	0	0
+
+   30  
+   30  begin
+   31  	x:=m;
+   33  	y:=n;
+   35  	call multiply;
+   36  end.ÿ
+
+   30 INT	0	6
+   31 LIT	0	7
+   32 STO	0	3
+   33 LIT	0	85
+   34 STO	0	4
+   35 CAL	0	2
+   36 OPR	0	0
+
+Begin executing PL/0 program.
+7
+85
+7
+85
+0
+7
+14
+42
+28
+21
+35
+56
+10
+112
+5
+147
+224
+2
+448
+1
+595
+896
+0
+End executing PL/0 program.
+
+    0 JMP	0	30
+    1 JMP	0	2
+    2 INT	0	5
+    3 LOD	1	3
+    4 STO	0	3
+    5 LOD	1	4
+    6 STO	0	4
+    7 LIT	0	0
+    8 STO	1	5
+    9 LOD	0	4
+   10 LIT	0	0
+   11 OPR	0	11
+   12 JPC	0	29
+   13 LOD	0	4
+   14 OPR	0	6
+   15 JPC	0	20
+   16 LOD	1	5
+   17 LOD	0	3
+   18 OPR	0	2
+   19 STO	1	5
+   20 LIT	0	2
+   21 LOD	0	3
+   22 OPR	0	4
+   23 STO	0	3
+   24 LOD	0	4
+   25 LIT	0	2
+   26 OPR	0	5
+   27 STO	0	4
+   28 JMP	0	9
+   29 OPR	0	0
+   30 INT	0	6
+   31 LIT	0	7
+   32 STO	0	3
+   33 LIT	0	85
+   34 STO	0	4
+   35 CAL	0	2
+   36 OPR	0	0
+
