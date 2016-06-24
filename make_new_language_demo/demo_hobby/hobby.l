@@ -19,7 +19,7 @@ static void increment_line_number(){
 %start COMMENT STRING_LITERAL_STATE
 
 %%
-
+	/* 使用开始条件 不同开始条件下的匹配 */
 <INITIAL>"function" return FUNCTION;
 <INITIAL>"if"		return IF;
 <INITIAL>"else"		return ELSE;
@@ -54,12 +54,13 @@ static void increment_line_number(){
 <INITIAL>"/"		return DIV;
 <INITIAL>"%"		return MOD;
 
-	/* ID定义 */
+	/* ID定义 字母开头 可以有下划线 包含字母或数字 */
 <INITIAL>[A-Za-z_][A-Za-z_0-9]* {
 	yylval.identifier = hbb_create_identifier(yytext);
 	return IDENTIFIER;
 }		
 
+	/* int 类型定义 */
 <INITIAL>([1-9][0-9]*)|"0" {
 	Expression *expression = hbb_alloc_expression(INT_EXPRESSION);
 	sscanf(yytext,"%d",&expression->u.int_value);
@@ -67,6 +68,7 @@ static void increment_line_number(){
 	return INT_LITERAL;
 }
 
+	/* double 类型定义 */
 <INITIAL>[0-9]+\.[0-9]+ {
 	Expression *expression = hbb_alloc_expression(DOUBLE_EXPRESSION);
 	sscanf(yytext,"%lf", &expression->u.double_value);
@@ -74,6 +76,7 @@ static void increment_line_number(){
 	return DOUBLE_LITERAL;
 }
 
+	/* 开始字符串 切换状态到字符串状态 */
 <INITIAL>\" {
 	hbb_open_string_literal();
 	BEGIN STRING_LITERAL_STATE;
@@ -85,6 +88,7 @@ static void increment_line_number(){
 	increment_line_number();
 }
 
+	/* 注释状态开始 */
 <INITIAL># BEGIN COMMENT;
 
 <INITIAL>. {
@@ -102,7 +106,7 @@ static void increment_line_number(){
 		MESSAGE_ARGUMENT_END);
 }
 
-
+	/* 注释换行 */
 <COMMENT>\n {
 	increment_line_number();
 	BEGIN INITIAL;
