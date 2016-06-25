@@ -46,3 +46,119 @@
 %type <identifier_list> identifier_list
 
 %%
+
+translation_unit: definitaion_or_statement
+			| translation_unit definitaion_or_statement
+			;
+
+definitaion_or_statement:
+			function_definition
+			| statement {
+					HBB_InterPreter *inter = hbb_get_current_interpreter();
+
+					inter->statement_list = hbb_chain_statement_list(inter->statement_list, $1);
+			}
+			;
+
+function_definition:
+			FUNCTION IDENTIFIER LP parameter_list RP block {
+					hbb_function_define($2 ,$4, $6);
+			}
+			| FUNCTION IDENTIFIER LP RP block {
+					hbb_function_define($2 , NULL, $5);
+			}
+			;
+
+parameter_list:
+			IDENTIFIER {
+					$$ = hbb_create_parameter($1);
+			}
+			| parameter_list COMMA IDENTIFIER {
+					$$ = hbb_chain_parameter($1, $3);
+			}
+			;
+
+argument_list:
+			expression {
+					$$ = hbb_create_argument_list($1);
+			}
+			| argument_list COMMA expression {
+					$$ = hbb_chain_argument_list($1, $3);
+			}
+			;
+
+statement_list:
+			statement {
+					$$ = hbb_create_statement_list($1);
+			}
+			| statement_list statement {
+					$$ = hbb_chain_statement_list($1, $2);
+			}
+			;
+
+expression:
+			logical_or_expression
+			| IDENTIFIER ASSIGN expression {
+					$$ = hbb_create_assign_expression($1, $3);
+			}
+			;
+
+logical_or_expression:
+			logical_and_expression
+			| logical_or_expression LOGICAL_OR logical_and_expression {
+					$$ = hbb_create_binary_expression(LOGICAL_OR_EXPRESSION, $1, $3);
+			}
+			;
+
+logical_and_expression:
+			equiality_expression
+			| logical_and_expression LOGICAL_AND equiality_expression {
+					$$ = hbb_create_binary_expression(LOGICAL_AND_EXPRESSION, $1 , $3);
+			}
+			;
+
+equiality_expression:
+			relational_expression
+			| equiality_expression GT relational_expression {
+					$$ = hbb_create_binary_expression(equiality_expression, $1, $3);
+			}
+			| equiality_expression NE relational_expression {
+					$$ = hbb_create_binary_expression(NE_EXPRESSION, $1, $3);
+			}
+			;
+
+relational_expression:
+			additive_expression
+			| relational_expression GT additive_expression {
+					$$ = hbb_create_binary_expression(GT_EXPRESSION, $1, $3);
+			}
+			| relational_expression GE additive_expression {
+					$$ = hbb_create_binary_expression(GE_EXPRESSION, $1, $3);
+			}
+			| relational_expression LT additive_expression {
+					$$ = hbb_create_binary_expression(LT_EXPRESSION, $1, $3);
+			}
+			| relational_expression LE additive_expression {
+				 	$$ = hbb_create_binary_expression(LE_EXPRESSION, $1, $3);
+			}
+			;
+
+additive_expression:
+			multiplicative_expression
+			| additive_expression ADD multiplicative_expression	{
+					$$ = hbb_create_binary_expression(ADD_EXPRESSION, $1, $3);
+			}
+			| additive_expression SUB multiplicative_expression {
+					$$ = hbb_create_binary_expression(SUB_EXPRESSION, $1, $3);
+			}
+			;
+
+multiplicative_expression:
+			unary_expression
+			| multiplicative_expression MUL	unary_expression {
+					$$ = hbb_create_binary_expression(MUL_EXPRESSION, $1 ,$3);
+			}
+			| multiplicative_expression DIV unary_expression {
+					$$ = hbb_create_binary_expression(DIV_EXPRESSION, $1, $3);
+			}
+			;
