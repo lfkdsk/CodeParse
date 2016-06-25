@@ -101,6 +101,7 @@ statement_list:
 			;
 
 			/* id = exp / log_or */
+			/* boolean */
 expression:
 			logical_or_expression
 			| IDENTIFIER ASSIGN expression {
@@ -124,10 +125,10 @@ logical_and_expression:
 			}
 			;
 
-			/* equ->rel / equ  */
+			/* equ->rel / equ  == !=  */
 equiality_expression:
 			relational_expression
-			| equiality_expression GT relational_expression {
+			| equiality_expression EQ relational_expression {
 					$$ = hbb_create_binary_expression(EQ_EXPRESSION, $1, $3);
 			}
 			| equiality_expression NE relational_expression {
@@ -135,6 +136,7 @@ equiality_expression:
 			}
 			;
 
+			/* < > <= >= */
 relational_expression:
 			additive_expression
 			| relational_expression GT additive_expression {
@@ -151,6 +153,7 @@ relational_expression:
 			}
 			;
 
+			/* add +/- mult */
 additive_expression:
 			multiplicative_expression
 			| additive_expression ADD multiplicative_expression	{
@@ -161,6 +164,7 @@ additive_expression:
 			}
 			;
 
+			/* un ; mult * un ; mult / un ; mult % un ; */
 multiplicative_expression:
 			unary_expression
 			| multiplicative_expression MUL	unary_expression {
@@ -174,6 +178,7 @@ multiplicative_expression:
 			}
 			;
 
+			/* pri ; -una */
 unary_expression:
 			primary_expression
 			| SUB unary_expression {
@@ -181,6 +186,7 @@ unary_expression:
 			}
 			;
 
+			/* id(list) / id() / (exp) / id / id = type (true) */
 primary_expression:
 			IDENTIFIER LP argument_list RP {
 					$$ = hbb_create_function_call_expresssion($1, $3);
@@ -208,6 +214,7 @@ primary_expression:
 			}
 			;
 
+			/* exp; */
 statement:
 			expression SEMICOLON {
 					$$ = hbb_create_expression_statement($1);
@@ -221,13 +228,14 @@ statement:
 			| continue_statement
 			;
 
+			/* global list; global id */
 global_statement:
 			GLOBAL_T identifier_list SEMICOLON {
 					$$ = hbb_create_global_statement($2);
 			}
 			;
 
-			/* id  */
+			/* id_list,id / id  */
 identifier_list:
 			IDENTIFIER {
 					$$ = hbb_create_global_identifier($1);
