@@ -201,3 +201,39 @@ Expression *hbb_create_binary_expression(ExpressionType type,
         return exp;
     }
 }
+
+/*
+  hbb_create_minus_expression 处理负号
+  Expression *operand 有负号的表达式
+  return *exp;
+*/
+Expression *hbb_create_minus_expression(Expression *operand){
+    if (operand->type == INT_EXPRESSION || operand->type == DOUBLE_EXPRESSION) {
+        HBB_Value value;
+        /* 转换 */
+        value = hbb_eval_minus_expression(hbb_get_current_interpreter(),
+                                          NULL, operand);
+        /* 常量折叠 */
+        *operand = convert_value_to_expression(&value);
+        return operand;
+    } else {
+        Expression *exp;
+        exp = hbb_alloc_expression(MINUS_EXPRESSION);
+        exp->u.minus_expression = operand;
+        return exp;
+    }
+}
+
+/*
+  hbb_create_identifier_expression 创建id
+  char *identifier id
+*/
+Expression *hbb_create_identifier_expression(char *identifier){
+    Expression *exp;
+    exp = hbb_alloc_expression(IDENTIFIER_EXPRESSION);
+    exp->u.identifier = identifier;
+
+    return exp;
+}
+
+Expression *hbb_
