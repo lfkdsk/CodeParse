@@ -151,3 +151,53 @@ Expression *hbb_create_assign_expression(char *variable,Expression *operand){
 
     return exp;
 }
+
+/*
+  静态方法 convert_value_to_expression 值转换为表达式
+  HBB_Value *value 传入的值
+  return expr; 返回的表达式
+*/
+static Expression convert_value_to_expression(HBB_Value *value){
+    Expression expr;
+    if (value->type == HBB_INT_VALUE) {
+        expr.type = INT_EXPRESSION;
+        expr.u.int_value = value->u.int_value;
+    }else if(value->type == HBB_DOUBLE_VALUE){
+        expr.type = DOUBLE_EXPRESSION;
+        expr.u.double_value = value->u.double_value;
+    }else {
+        /* boolean */
+        DBG_assert(value->type == HBB_BOOLEAN_VALUE,
+                  ("value->type.. %d\n", value->type));
+        expr->type = BOOLEAN_EXPRESSION;
+        expr->u.boolean_value = value->u.boolean_value;
+    }
+    return expr;
+}
+
+/*
+  hbb_create_binary_expression 常量折叠
+  ExpressionType type 表达式类型
+  Expression *left 左表达式
+  Expression *right 右表达式
+  return exp; 返回表达式
+*/
+Expression *hbb_create_binary_expression(ExpressionType type,
+                                      Expression *left,Expression *right){
+    /* 如果左／右全是数字 开始常量折叠 */
+    if ((left->type == INT_EXPRESSION || left->type == DOUBLE_EXPRESSION)
+        && (right->type == INT_EXPRESSION || right->type == DOUBLE_EXPRESSION)) {
+        HBB_Value value;
+        value = hbb_eval_binary_expression(hbb_get_current_interpreter(),
+                                          NULL, type, left, right);
+        *left = convert_value_to_expression(&value);
+
+        return left;
+    } else {
+        Expression *exp;
+        exp = hbb_alloc_expression(type);
+        exp->u.binary_expression.left = left;
+        exp->u.binary_expression.right = right;
+        return exp;
+    }
+}
