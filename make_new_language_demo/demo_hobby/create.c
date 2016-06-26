@@ -236,4 +236,111 @@ Expression *hbb_create_identifier_expression(char *identifier){
     return exp;
 }
 
-Expression *hbb_
+/*
+  hbb_create_function_call_expresssion 创建function调用
+  char *func_name 函数名
+  ArgumentList *argument 参数列表
+*/
+Expression *hbb_create_function_call_expresssion(char *func_name,
+                                              ArgumentList *argument){
+    Expression *exp;
+
+    exp = hbb_alloc_expression(FUNCTION_CALL_EXPRESSION);
+    exp->u.function_call_expression.identifier = func_name;
+    exp->u.function_call_expression.argument = argument;
+
+    return exp;
+}
+
+/*
+  hbb_create_boolean_expression 创建布尔表达式
+  HBB_Boolean value boolean类型数据
+*/
+Expression *hbb_create_boolean_expression(HBB_Boolean value){
+    Expression *exp;
+
+    exp = hbb_alloc_expression(BOOLEAN_EXPRESSION);
+    exp->u.boolean_value = value;
+
+    return exp;
+}
+
+/*
+  hbb_create_null_expression 创建null表达式
+  void
+*/
+Expression *hbb_create_null_expression(void){
+    Expression *exp;
+
+    exp = hbb_alloc_expression(NULL_EXPRESSION);
+
+    return exp;
+}
+
+/*
+  alloc_statement 声明分配空间
+  StatementType type 声明类型
+*/
+static Statement *alloc_statement(StatementType type){
+    Statement *st;
+
+    st = hbb_malloc(sizeof(Statement));
+
+    st->type = type;
+    st->line_number = hbb_get_current_interpreter()->current_line_number;
+
+    return st;
+}
+
+/*
+  hbb_create_global_statement 全局变量声明
+  IdentifierList *identifierList id列表
+*/
+Statement *hbb_create_global_statement(IdentifierList *identifierList){
+    Statement *st;
+
+    st = alloc_statement(GLOBAL_STATEMENT);
+    st->u.global_s.identifier_list = identifier_list;
+
+    return st;
+}
+
+/*
+  hbb_create_global_identifier 创建全局id列表
+  char *identifier id
+*/
+IdentifierList *hbb_create_global_identifier(char *identifier){
+    IdentifierList *id_list;
+
+    id_list = hbb_malloc(sizeof(IdentifierList));
+    id_list->name = identifier;
+    id_list->next = NULL;
+
+    return id_list;
+}
+
+/*
+  hbb_chain_identifier 根据前驱列表创建id
+  IdentifierList *list 前驱列表
+  char *identifier id
+*/
+IdentifierList *hbb_chain_identifier(IdentifierList *list, char *identifier){
+    IdentifierList *pos;
+
+    for(pos = list; pos->next; pos = pos->next);
+
+    pos->next = hbb_create_global_identifier(identifier);
+
+    return list;
+}
+
+Statement *hbb_create_if_statement(Expression *condition, Block *then_block,
+                                  ElseIf *elseif_list, Block *else_block){
+    Statement *st;
+
+    st = alloc_statement(IF_STATEMENT);
+    st->u.if_s.condition = condition;
+    st->u.if_s.then_block = then_block;
+    st->u.if_s.elseif_list = elseif_list;
+    st->u.if_s.else_block = 
+}
