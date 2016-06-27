@@ -40,6 +40,173 @@ typedef enum {
         RUNTIME_ERROR_COUNT_PLUE_1
 } RuntimeError;
 
+typedef enum {
+        INT_MESSAGE_ARGUMENT = 1,
+        DOUBLE_MESSAGE_ARGUMENT,
+        STRING_MESSAGE_ARGUMENT,
+        CHARACTER_MESSAGE_ARGUMENT,
+        POINT_MESSAGE_ARGUMENT,
+        MESSAGE_ARGUMENT_END
+} MessageArgumentType;
 
+typedef struct {
+        char *format;
+} MessageFormat;
+
+typedef struct Expression_tag Expression;
+
+typedef enum {
+        BOOLEAN_EXPRESSION = 1,
+        INT_EXPRESSION,
+        DOUBLE_EXPRESSION,
+        STRING_EXPRESSION,
+        IDENTIFIER_EXPRESSION,
+        ASSIGN_EXPRESSION,
+        ADD_EXPRESSION,
+        SUB_EXPRESSION,
+        MUL_EXPRESSION,
+        DIV_EXPRESSION,
+        MOD_EXPRESSION,
+        EQ_EXPRESSION,
+        NE_EXPRESSION,
+        GT_EXPRESSION,
+        GE_EXPRESSION,
+        LT_EXPRESSION,
+        LE_EXPRESSION,
+        LOGICAL_AND_EXPRESSION,
+        LOGICAL_OR_EXPRESSION,
+        MINUS_EXPRESSION,
+        FUNCTION_CALL_EXPRESSION,
+        NULL_EXPRESSION,
+        EXPRESSION_TYPE_COUNT_PLUS_1
+} ExpressionType;
+
+#define hbb_is_math_operator(operator) \
+        ((operator) == ADD_EXPRESSION || (operator) == SUB_EXPRESSION \
+         || (operator) == MUL_EXPRESSION || (operator) == DIV_EXPRESSION \
+         || (operator) == MOD_EXPRESSION)
+
+#define hbb_is_compare_operator(operator) \
+        ((operator) == EQ_EXPRESSION || (operator) == NE_EXPRESSION \
+         || (operator) == GT_EXPRESSION || (operator) == GE_EXPRESSION \
+         || (operator) == LT_EXPRESSION || (operator) == LE_EXPRESSION)
+
+#define hbb_is_logical_operator(operator) \
+        ((operator) == LOGICAL_AND_EXPRESSION || (operator) == LOGICAL_OR_EXPRESSION)
+
+typedef struct ArgumentList_tag {
+        Expression *expression;
+        struct ArgumentList_tag *next;
+} AssignExpression;
+
+typedef struct {
+        char *variable;
+        Expression *operand;
+} AssignExpression;
+
+typedef struct {
+        Expression *left;
+        Expression *right;
+} BinaryExpression;
+
+typedef struct {
+        char *identifier;
+        ArgumentList *argument;
+} FunctionCallExpression;
+
+struct Expression_tag {
+        ExpressionType type;
+        int line_number;
+        union {
+                HBB_Boolean boolean_value;
+                int int_value;
+                double double_value;
+                char *string_value;
+                char *identifier;
+                AssignExpression assign_expression;
+                BinaryExpression binary_expression;
+                Expression *minus_expression;
+                FunctionCallExpression function_call_expression;
+        } u;
+};
+
+typedef struct Statement_tag Statement;
+
+typedef struct StatementList_tag {
+        Statement *statement;
+        struct StatementList_tag *next;
+} StatementList;
+
+typedef struct {
+        StatementList *statement_list;
+} Block;
+
+typedef struct IdentifierList_tag {
+        char *name;
+        struct IdentifierList_tag *next;
+} IdentifierList;
+
+typedef struct {
+        IdentifierList *identifier_list;
+} GlobalStatement;
+
+typedef struct ElseIf_tag {
+        Expression *condition;
+        Block *block;
+        struct ElseIf_tag *next;
+} IfStatement;
+
+typedef struct {
+        Expression *condition;
+        Block *then_block;
+        ElseIf *elseif_list;
+        Block *else_block;
+} IfStatement;
+
+typedef struct {
+        Expression *condition;
+        Block *block;
+} WhileStatement;
+
+typedef struct {
+        Expression *initial;
+        Expression *condition;
+        Expression *post;
+        Block *block;
+} ForStatement;
+
+typedef struct {
+        Expression *return_value;
+} ReturnStatement;
+
+typedef enum {
+        EXPRESSION_STATEMENT = 1,
+        GLOBAL_STATEMENT,
+        IF_STATEMENT,
+        WHILE_STATEMENT,
+        FOR_STATEMENT,
+        RETURN_STATEMENT,
+        BREAK_STATEMENT,
+        CONTINUE_STATEMENT,
+        STATEMENT_TYPE_COUNT_PLUS_1
+} StatementType;
+
+struct Statement_tag {
+        StatementType type;
+        int line_number;
+        union {
+                Expression *expression_s;
+                GlobalStatement global_s;
+                IfStatement if_s;
+                WhileStatement while_s;
+                ForStatement for_s;
+                ReturnStatement return_s;
+        } u;
+};
+
+typedef struct ParameterList_tag {
+        char *name;
+        struct ParameterList_tag *next;
+} ParameterList;
 
 #endif
