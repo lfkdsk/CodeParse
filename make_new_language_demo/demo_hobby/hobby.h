@@ -230,6 +230,117 @@ typedef struct FunctionDefinition_tag {
         struct FunctionDefinition_tag *next;
 } FunctionDefinition;
 
+typedef struct Variable_tag {
+        char *name;
+        HBB_Value value;
+        struct Variable_tag *next;
+} Variable;
+
+typedef enum {
+        NORMAL_STATEMENT_RESULT = 1,
+        RETURN_STATEMENT_RESULT,
+        BREAK_STATEMENT_RESULT,
+        CONTINUE_STATEMENT_RESULT,
+        STATEMENT_RESULT_TYPE_COUNT_PLUS_1
+} StatementResultType;
+
+typedef struct {
+        StatementResultType type;
+        union {
+                HBB_Value return_value;
+        } u;
+} StatementResult;
+
+typedef struct GlobalVariableRef_tag {
+        Variable *variable;
+        struct GlobalVariableRef_tag *next;
+} GlobalVariableRef;
+
+typedef struct {
+        Variable *variable;
+        GlobalVariableRef *global_vriable;
+} LocalEnvironment;
+
+struct HBB_String_tag {
+        int ref_count;
+        char *string;
+        HBB_Boolean is_literal;
+};
+
+typedef struct {
+        HBB_String *strings;
+} StringPool;
+
+struct HBB_Interpreter_tag {
+        MEM_Storage interpreter_storage;
+        MEM_Storage execute_storge;
+        Variable  *variable;
+        FunctionDefinition *function_list;
+        StatementList *statement_list;
+        int current_line_number;
+};
+
+/* function form create.c */
+
+void hbb_function_define(char *identifier,
+                         ParameterList *parameter_list
+                         , Block *block);
+
+ParameterList *hbb_create_parameter(char *identifier);
+
+ParameterList *hbb_chain_parameter(ParameterList *list, char *identifier);
+
+ArgumentList *hbb_create_argument_list(Expression *expression);
+
+ArgumentList *hbb_chain_argument_list(ArgumentList *list, Expression *exp);
+
+StatementList *hbb_create_statement_list(Statement *statement);
+
+StatementList *hbb_chain_statement_list(StatementList *list, Statement *st);
+
+Expression *hbb_alloc_expression(ExpressionType type);
+
+Expression *hbb_create_assign_expression(char *variable,Expression *operand);
+
+Expression *hbb_create_binary_expression(ExpressionType type,
+                                         Expression *left,Expression *right);
+
+Expression *hbb_create_minus_expression(Expression *operand);
+
+Expression *hbb_create_identifier_expression(char *identifier); Expression *hbb_create_function_call_expresssion(char *func_name,
+                                                                                                                 ArgumentList *argument);
+Expression *hbb_create_boolean_expression(HBB_Boolean value);
+
+Expression *hbb_create_null_expression(void);
+
+Statement *hbb_create_global_statement(IdentifierList *identifierList);
+
+IdentifierList *hbb_create_global_identifier(char *identifier);
+
+IdentifierList *hbb_chain_identifier(IdentifierList *list, char *identifier);
+
+Statement *hbb_create_if_statement(Expression *condition, Block *then_block,
+                                   ElseIf *elseif_list, Block *else_block);
+
+ElseIf *hbb_chain_elseif_list(ElseIf *list, ElseIf *add);
+
+ElseIf *hbb_create_elseif(Expression *exp, Block *block);
+
+Statement *hbb_create_while_statement(Expression *condition, Block *block);
+
+Statement *hbb_create_for_statement(Expression *initial, Expression *condition,
+                                    Expression *post, Block *block);
+
+Block *hbb_create_block(StatementList *statement_list);
+
+Statement *hbb_create_expression_statement(Expression *exp);
+
+Statement *hbb_create_return_statement(Expression *exp);
+
+Statement *hbb_create_break_statement(void);
+
+Statement *hbb_create_continue_statement(void);
+
 
 
 #endif
