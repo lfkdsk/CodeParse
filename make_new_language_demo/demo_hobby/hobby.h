@@ -209,4 +209,27 @@ typedef struct ParameterList_tag {
         struct ParameterList_tag *next;
 } ParameterList;
 
+typedef enum {
+        HBB_FUNCTION_DEFINITION = 1,
+        NATIVE_FUNCTION_DEFINITION
+} FunctionDefinitionType;
+
+typedef struct FunctionDefinition_tag {
+        char *name;
+        FunctionDefinitionType type;
+        union {
+                struct {
+                        ParameterList *parameter;
+                        Block *block;
+                }hbb_f;
+
+                struct {
+                        HBB_NativeFunctionProc *proc;
+                }native_f;
+        } u;
+        struct FunctionDefinition_tag *next;
+} FunctionDefinition;
+
+
+
 #endif
