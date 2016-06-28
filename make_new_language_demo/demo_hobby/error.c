@@ -101,3 +101,82 @@ static void search_argument(MessageArgument *arg_list, char *arg_name,
         }
         assert(0);
 }
+
+static void format_message(MessageFormat *format, VString *v, va_list ap){
+        int i;
+        char buf[LINE_BUF_SIZE];
+        int arg_name_index;
+        char arg_name[LINE_BUF_SIZE];
+        MessageArgument arg[MESSAGE_ARGUMENT_MAX];
+        MessageArgument cur_arg;
+
+
+        create_message_argument(arg, ap);
+
+        for (i = 0; format->format[i] != '\0'; i++) {
+                if (format->format[i] != '$') {
+                        add_character(v, format->format[i]);
+                        continue;
+                }
+
+                assert(format->format[i + 1] == '(');
+
+                i += 2;
+
+                for (arg_name_index = 0;
+                     format->format[i] != ')';
+                     arg_name_index++, i++) {
+                        arg_name[arg_name_index] = format->format[i];
+                }
+
+                arg_name[arg_name_index] = '\0';
+                assert(format->format[i] == ')');
+
+                search_argument(arg, arg_name, &cur_arg);
+
+                switch (cur_arg.type) {
+                case INT_MESSAGE_ARGUMENT:
+                        sprintf(buf, "%d", cur_arg.u.int_val);
+                        add_string(v, buf);
+                        break;
+                case DOUBLE_MESSAGE_ARGUMENT:
+                        sprintf(buf, "%f", cur_arg.u.double_val);
+                        add_string(v, buf);
+                        break;
+                case STRING_MESSAGE_ARGUMENT:
+                        strcpy(buf, cur_arg.u.string_val);
+                        add_string(v, cur_arg.u.string_val);
+                        break;
+                case POINTER_MESSAGE_ARGUMENT:
+                        sprintf(buf, "%c", cur_arg.u.character_val);
+                        add_string(v, buf);
+                        break;
+                case MESSAGE_ARGUMENT_END:
+                        assert(0);
+                        break;
+                default:
+                        assert(0);
+                }
+        }
+}
+
+void self_check(){
+        if (strcmp(hbb_compile_error_message_format[0].format,"dummy") != 0) {
+                DBG_panic(("compile error message format error.\n"));
+        }
+
+        if (strcmp(hbb_compile_error_message_format
+                   [COMPILE_ERROR_COUNT_PLUS_1].format, "dummy") != 0) {
+                DBG_panic(("compild error message format error.
+            COMPILE_ERROR_COUNT_PLUS_1 ... %d \n"),COMPILE_ERROR_COUNT_PLUS_1);
+        }
+
+        if (strcmp(hbb_runtime_error_message_format[0].format, "dummy") != 0) {
+                DBG_panic(("runtime error message format error. \n"));
+        }
+
+        if (strcmp(hbb_runtime_error_message_format
+                   [RUNTIME_ERROR_COUNT_PLUS_1].format, "dummy") != 0) {
+                
+        }
+}
