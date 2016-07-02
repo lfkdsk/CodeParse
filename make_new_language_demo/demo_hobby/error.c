@@ -56,6 +56,11 @@ typedef struct {
         } u;
 } MessageArgument;
 
+/**
+ * 创建错误信息
+ * @param arg [description]
+ * @param ap  [description]
+ */
 static void create_message_argument(MessageArgument *arg, va_list ap){
         int index = 0;
         MessageArgumentType type;
@@ -102,6 +107,12 @@ static void search_argument(MessageArgument *arg_list, char *arg_name,
         assert(0);
 }
 
+/**
+ * 格式化错误信息
+ * @param format [description]
+ * @param v      [description]
+ * @param ap     [description]
+ */
 static void format_message(MessageFormat *format, VString *v, va_list ap){
         int i;
         char buf[LINE_BUF_SIZE];
@@ -160,6 +171,10 @@ static void format_message(MessageFormat *format, VString *v, va_list ap){
         }
 }
 
+/**
+ * 检查写入硬编码的错误信息
+ * dummy作为一个标志符
+ */
 void self_check(){
         if (strcmp(hbb_compile_error_message_format[0].format,"dummy") != 0) {
                 DBG_panic(("compile error message format error.\n"));
@@ -177,6 +192,80 @@ void self_check(){
 
         if (strcmp(hbb_runtime_error_message_format
                    [RUNTIME_ERROR_COUNT_PLUS_1].format, "dummy") != 0) {
-                
+                DBG_panic(("runtime error message format error.
+            RUNTIME_ERROR_COUNT_PLUS_1 .. %d \n", RUNTIME_ERROR_COUNT_PLUS_1));
         }
+}
+
+/**
+ * 编译错误
+ * @param id      [description]
+ * @param VARARGS [description]
+ */
+void hbb_compile_error(CompileError id, ...) {
+        va_list ap;
+        VString message;
+        int line_number;
+
+        self_check();
+        va_start(ap, id);
+
+        line_number = hbb_get_current_interpreter()->current_line_number;
+
+        clear_v_string();
+
+        format_message(&hbb_compile_error_message_format[id],
+                       &message, ap);
+
+        fprintf(stderr, "%3d : %s\n", line_number, message.string);
+
+        va_end(ap);
+
+        exit(1);
+}
+
+/**
+ * 运行错误
+ * @param line_number [description]
+ * @param id          [description]
+ * @param VARARGS     [description]
+ */
+void hbb_runtime_error(int line_number, RuntimeError id, ...){
+        va_list ap;
+        VString message;
+
+        self_check();
+        va_start(ap, id);
+
+        clear_v_string(&message);
+
+        format_message(&hbb_runtime_error_message_format[id],
+                       &message, ap);
+
+        fprintf(stderr, "%3d : %s \n", line_number, message.string);
+
+        va_end(ap);
+
+        exit(1);
+}
+
+/**
+ * 这应该是yacc运行的时候的错误处理啊。。。
+ * @param  str [description]
+ * @return     [description]
+ */
+int yyerror(char const *str) {
+        char *near_token;
+
+        if (yytext[0] == '\0') {
+                near_token = "EOF";
+        }else{
+                near_token = yytext;
+        }
+
+        hbb_compile_error(PARSE_ERR,
+                          STRING_MESSAGE_ARGUMENT, "token", token,
+                          MESSAGE_ARGUMENT_END);
+
+        return 0;
 }
