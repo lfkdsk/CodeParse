@@ -202,3 +202,170 @@ static StatementResult execute_while_statement(HBB_Interpreter *inter,
 
         return result;
 }
+
+static StatementResult execute_for_statement(HBB_Interpreter *inter, LocalEnvironment *env,
+                                             Statement *statement){
+        StatementResult result;
+        HBB_Value cond;
+
+        result.type = NORMAL_STATEMENT_RESULT;
+
+        if (statement->u.for_s.init) {
+                hbb_eval_expression(inter, env, statement->u.for_s.init);
+        }
+
+        for(;; ) {
+                if (statement->u.for_s.condition) {
+                        cond = hbb_eval_expression(inter, env, statement->u.for_s.condition);
+
+                        if (cond.type != HBB_BOOLEAN_VALUE) {
+                                hbb_runtime_error(statement->u.for_s.condition->line_number,
+                                                  NOT_BOOLAEAN_TYOE_ERROR, MESSAGE_ARGUMENT_END);
+                        }
+
+                        DBG_assert(cond.type == HBB_BOOLEAN_VALUE,
+                                   ("cond.type..%d",cond.type));
+
+                        if (!cond.u.boolean_type) {
+                                break;
+                        }
+                }
+
+                result = hbb_execute_statement_list(inter, env,
+                                                    statement->u.for_s.block->statement_list);
+
+                if (result.type == RETURN_STATEMENT_RESULT) {
+                        break;
+                }else if (result.type == BREAK_STATEMENT_RESULT) {
+                        result.type = NORMAL_STATEMENT_RESULT;
+                        break;
+                }
+
+                // post 运行
+                if (statement->u.for_s.post) {
+                        hbb_eval_expression(inter, env,statement->u.for_s.post);
+                }
+        }
+
+        return result;
+}
+
+static StatementResult execute_return_statement(HBB_Interpreter *inter, LocalEnvironment *env,
+                                                Statement *statement){
+        StatementResult result;
+
+        result.type = RETURN_STATEMENT_RESULT;
+
+        if (statement->u.return_s.return_value) {
+                result.u.return_value = hbb_eval_expression(inter, env, statement->u.return_s.value);
+                result.u.return_value = hbb_eval_expression(inter, env, statement->u.return_s.return_value);
+
+        }else{
+                result.u.return_value.type = HBB_NULL_VALUE;
+        }
+
+        return result;
+}
+
+/**
+ * break/continue 的处理其实就是修改返回值类型
+ * 返回上级函数处理跳转
+ * @param  inter     [description]
+ * @param  env       [description]
+ * @param  statement [description]
+ * @return           [description]
+ */
+static StatementResult execute_break_statement(HBB_Interpreter *inter, LocalEnvironment *env,
+                                               Statement *statement){
+        StatementResult result;
+
+        result.type = BREAK_STATEMENT_RESULT;
+
+        return result;
+}
+
+static StatementResult execute_continue_statement(HBB_Interpreter *inter, LocalEnvironment *env,
+                                                  Statement *statement){
+        StatementResult result;
+
+        result.type = CONTINUE_STATEMENT_RESULT;
+
+        return result;
+}
+
+
+/**
+ * 只是个分发
+ * @param  inter     [description]
+ * @param  env       [description]
+ * @param  statement [description]
+ * @return           [description]
+ */
+static StatementResult execute_statement(HBB_Interpreter *inter, LocalEnvironment *env,
+                                         Statement *statement){
+        StatementResult result;
+
+        result.type = NORMAL_STATEMENT_RESULT;
+
+        switch (statement->type) {
+        case EXPRESSION_STATEMENT:
+                result = execute_expression_statement(inter, env, statement);
+                break;
+        case GALOBAL_STATEMENT:
+                result = execute_global_statement(inter, env, statement);
+                break;
+        case IF_STATEMENT:
+                result = execute_if_statement(inter, env, statement);
+                break;
+
+        case WHILE_STATEMENT:
+                result = execute_while_statement(inter, env, statement);
+                break;
+
+        case FOR_STATEMENT:
+                result = execute_for_statement(inter, env, statement);
+                break;
+
+        case RETURN_STATEMENT_RESULT:
+                result = execute_return_statement(inter, env, statement);
+                break;
+        case CONTINUE_STATEMENT_RESULT:
+                result = execute_continue_statement(inter, env, statement);
+                break;
+        case BREAK_STATEMENT_RESULT:
+                result = execute_break_statement(inter, env, statement);
+                break;
+        case STATEMENT_TYPE_COUNT_PLUS_1:
+        default:
+                DBG_assert(("bad case...%d", statement->type));
+        }
+
+        return result;
+}
+
+/**
+ * 顺着链表处理
+ * @param  inter [description]
+ * @param  env   [description]
+ * @param  list  [description]
+ * @return       [description]
+ */
+StatementResult hbb_execute_statement_list(HBB_Interpreter *inter, LocalEnvironment *env,
+                                           StatementList *list){
+
+        StatementList *pos;
+
+        StatementResult result;
+
+        result.type = NORMAL_STATEMENT_RESULT;
+
+        for(pos = list; pos; pos->pos->next) {
+                result = execute_statement(inter, env, pos->statement);
+                if (result.type != NORMAL_STATEMENT_RESULT) {
+                        goto FUNC_END;
+                }
+        }
+
+FUNC_END:
+        return result;
+}
