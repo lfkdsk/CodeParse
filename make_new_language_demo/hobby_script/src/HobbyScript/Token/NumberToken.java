@@ -7,9 +7,9 @@ package HobbyScript.Token;
  *         Created by liufengkai on 16/7/11.
  */
 public class NumberToken extends HobbyToken {
-    private int value;
+    private double value;
 
-    public NumberToken(int lineNumber, int value) {
+    public NumberToken(int lineNumber, double value) {
         super(lineNumber);
         this.value = value;
     }
@@ -20,12 +20,12 @@ public class NumberToken extends HobbyToken {
     }
 
     @Override
-    public int getNumber() {
+    public double getNumber() {
         return value;
     }
 
     @Override
     public String getText() {
-        return Integer.toString(value);
+        return Double.toString(value);
     }
 }

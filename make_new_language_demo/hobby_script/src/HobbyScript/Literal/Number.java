@@ -14,7 +14,8 @@ public class Number extends AstLeaf {
         super(token);
     }
 
-    public int value() {
+    public double value() {
         return token.getNumber();
     }
+
 }

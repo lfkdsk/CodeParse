@@ -45,7 +45,7 @@ public abstract class HobbyToken {
         return false;
     }
 
-    public int getNumber() {
+    public double getNumber() {
         throw new HobbyException("not number token");
     }
 
