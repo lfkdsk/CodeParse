@@ -49,7 +49,7 @@ public abstract class HobbyToken {
         throw new HobbyException("not number token");
     }
 
-    public String getNext() {
+    public String getText() {
         return "";
     }
 }
