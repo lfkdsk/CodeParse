@@ -1,5 +1,7 @@
 package HobbyScript.Token;
 
+import HobbyScript.Exception.HobbyException;
+
 /**
  * HobbyToken
  * Hobby的脚本版本支持的Token类型很少

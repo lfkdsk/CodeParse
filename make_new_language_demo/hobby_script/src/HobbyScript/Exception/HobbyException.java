@@ -1,4 +1,4 @@
-package HobbyScript.Token;
+package HobbyScript.Exception;
 
 /**
  * 定义了Hobby的运行异常

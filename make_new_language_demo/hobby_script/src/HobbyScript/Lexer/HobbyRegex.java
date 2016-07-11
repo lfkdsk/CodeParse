@@ -14,6 +14,50 @@ public class HobbyRegex {
      * 匹配注释
      * 即注释线之后+任意数量的字符
      */
-    public static final String annotationReg = "//.*";
-    public static final String hobbyReg = "\s*()?";
+    public static final String annotationReg = "(//.*)";
+
+    /**
+     * 数字类型的正则
+     * 目前居然只能支持int类型真垃圾
+     */
+    public static final String numberReg = "[0-9]+";
+
+    /**
+     * 变量名的正则
+     */
+    public static final String variableReg = "[A-Z_a-z][A-Z_a-z0-9]*";
+
+    /**
+     * 布尔表达式的正则
+     */
+    public static final String booleanReg = "==|<=|>=|&&|\\|\\|";
+
+    /**
+     * 任意符号的正则匹配
+     */
+    public static final String symbolReg = "\\p{Punct}";
+
+    /**
+     * string 类型的正则
+     * string 中是在两个双引号中的多个匹配模式
+     * 支持 \" \n \\ 和任意一种不是"的符号匹配
+     * 遇到\\"这种试图二度转译的应当会先与\\匹配
+     * 使转译停止
+     */
+    public static final String stringReg = "(\"(\\\\\"|\\\\\\\\|\\\\n|[^\"])*\")";
+
+    /**
+     * 定义了所有Token识别的基础类型
+     */
+    public static final String tokenReg = variableReg + "|" + booleanReg + "|" + symbolReg;
+
+    public static final String hobbyUnFormat = "\\s*(%1$s|%2$s|%3$s|%4$s)?";
+
+    public static final String hobbyReg = String.format(hobbyUnFormat,
+            annotationReg, numberReg, stringReg, tokenReg);
+
+    public static void main(String[] args) {
+        // 全部的正则表达式
+        System.out.println(hobbyReg);
+    }
 }
