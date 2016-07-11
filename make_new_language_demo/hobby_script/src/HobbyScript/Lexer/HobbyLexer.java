@@ -1,5 +1,6 @@
 package HobbyScript.Lexer;
 
+import HobbyScript.ApplicationTest.CodeDialog;
 import HobbyScript.Exception.ParseException;
 import HobbyScript.Token.HobbyToken;
 import HobbyScript.Token.IdToken;
@@ -160,7 +161,12 @@ public class HobbyLexer {
         }
     }
 
-
+    /**
+     * 所谓字符串转译
+     *
+     * @param str 传入字符串
+     * @return 返回字符串
+     */
     private String toStringLiteral(String str) {
         StringBuilder builder = new StringBuilder();
 
@@ -169,9 +175,11 @@ public class HobbyLexer {
         for (int i = 1; i < length; i++) {
             char ch = str.charAt(i);
 
+            // 发现需要转译的\
             if (ch == '\\' && i + 1 < length) {
+                // 取下一个字符
                 int ch2 = str.charAt(i + 1);
-
+                // 手动跳过
                 if (ch2 == '"' || ch2 == '\\') {
                     ch = str.charAt(++i);
                 } else {
@@ -179,8 +187,17 @@ public class HobbyLexer {
                     ch = '\n';
                 }
             }
+
             builder.append(ch);
         }
         return builder.toString();
+    }
+
+    public static void main(String[] args) throws ParseException {
+        HobbyLexer lexer = new HobbyLexer(new CodeDialog());
+
+        for (HobbyToken token; (token = lexer.read()) != HobbyToken.EOF; ) {
+            System.out.println("=> " + token.getText());
+        }
     }
 }
