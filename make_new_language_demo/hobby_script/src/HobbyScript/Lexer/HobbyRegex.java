@@ -20,7 +20,7 @@ public class HobbyRegex {
      * 数字类型的正则
      * 目前居然只能支持int类型真垃圾
      */
-    public static final String numberReg = "[0-9]+";
+    public static final String numberReg = "([0-9]+)";
 
     /**
      * 变量名的正则
@@ -55,6 +55,35 @@ public class HobbyRegex {
 
     public static final String hobbyReg = String.format(hobbyUnFormat,
             annotationReg, numberReg, stringReg, tokenReg);
+
+    /**
+     * 控制枚举自增
+     */
+    private static int INDEX_COUNT = 0;
+
+    /**
+     * 各部分Token在正则中的位置
+     * matcher.group的选取是看括号的
+     * 前套来的首先匹配的是全局,
+     * 然后缩紧一次括号位置
+     */
+    public enum RegType {
+        ALL_INDEX,
+        NOT_EMPTY_INDEX,
+        ANNOTATION_INDEX,
+        NUMBER_INDEX,
+        STRING_INDEX,
+        SYMBOL_INDEX,
+        VARIABLE_INDEX,
+        BOOLEAN_INDEX,
+        OTHER_SYMBOL_INDEX;
+
+        public int indexNum;
+
+        RegType() {
+            this.indexNum = INDEX_COUNT++;
+        }
+    }
 
     public static void main(String[] args) {
         // 全部的正则表达式

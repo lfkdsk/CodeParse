@@ -51,6 +51,13 @@ public class HobbyLexer {
     }
 
 
+    /**
+     * 获取队列中的某个指定位置的Token
+     *
+     * @param index num
+     * @return 返回Token
+     * @throws ParseException
+     */
     public HobbyToken peek(int index) throws ParseException {
         if (fillQueue(index)) {
             return queue.get(index);
@@ -59,6 +66,13 @@ public class HobbyLexer {
         }
     }
 
+    /**
+     * 填充队列
+     *
+     * @param index 指定num
+     * @return 返回状态
+     * @throws ParseException
+     */
     private boolean fillQueue(int index) throws ParseException {
         while (index >= queue.size()) {
             if (hasMore) {
@@ -70,6 +84,11 @@ public class HobbyLexer {
         return true;
     }
 
+    /**
+     * 成行读取
+     *
+     * @throws ParseException
+     */
     private void readLine() throws ParseException {
         String line;
 
@@ -87,15 +106,23 @@ public class HobbyLexer {
         int lineNum = reader.getLineNumber();
 
         Matcher matcher = regPattern.matcher(line);
+
+        /**
+         * 1.透明边界:允许环视这样就能避免一些词素匹配混乱
+         * 2.匹配边界:不允许正则里面包含对边界的限定符
+         */
         matcher.useTransparentBounds(true)
-                .useAnchoringBounds(true);
+                .useAnchoringBounds(false);
 
         int start = 0, end = line.length();
 
         while (start < end) {
             matcher.region(start, end);
+            // 出现匹配
             if (matcher.lookingAt()) {
+                // add...
                 addToken(lineNum, matcher);
+
                 start = matcher.end();
             } else {
                 throw new ParseException("bad token at line " + lineNum);
@@ -105,16 +132,24 @@ public class HobbyLexer {
         }
     }
 
+    /**
+     * 通过匹配模式判断词素类型
+     *
+     * @param lineNum 行号
+     * @param matcher matcher
+     */
     private void addToken(int lineNum, Matcher matcher) {
-        String match = matcher.group(1);
+        String match = matcher.group(HobbyRegex.RegType.NOT_EMPTY_INDEX.indexNum);
 
         if (match != null) {
-            if (matcher.group(2) == null) {
+            // 不是空格
+            if (matcher.group(HobbyRegex.RegType.ANNOTATION_INDEX.indexNum) == null) {
+                // 不是注释
                 HobbyToken token;
-
-                if (matcher.group(3) != null) {
+                // 是数字
+                if (matcher.group(HobbyRegex.RegType.NUMBER_INDEX.indexNum) != null) {
                     token = new NumberToken(lineNum, Integer.parseInt(match));
-                } else if (matcher.group(4) != null) {
+                } else if (matcher.group(HobbyRegex.RegType.STRING_INDEX.indexNum) != null) {
                     token = new StringToken(lineNum, toStringLiteral(match));
                 } else {
                     token = new IdToken(lineNum, match);
@@ -124,6 +159,7 @@ public class HobbyLexer {
             }
         }
     }
+
 
     private String toStringLiteral(String str) {
         StringBuilder builder = new StringBuilder();

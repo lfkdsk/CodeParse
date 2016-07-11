@@ -29,7 +29,7 @@ public class ParseException extends Exception {
         if (token == HobbyToken.EOF) {
             return " the last of line ";
         } else {
-            return "\"" + token.getNext() + "\" at line " + token.getLineNumber();
+            return "\"" + token.getText() + "\" at line " + token.getLineNumber();
         }
     }
 
