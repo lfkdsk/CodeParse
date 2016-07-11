@@ -197,7 +197,7 @@ public class HobbyLexer {
         HobbyLexer lexer = new HobbyLexer(new CodeDialog());
 
         for (HobbyToken token; (token = lexer.read()) != HobbyToken.EOF; ) {
-            System.out.println("=> " + token.getText());
+            System.out.println(" => " + token.getText());
         }
     }
 }
