@@ -140,20 +140,28 @@ public class HobbyLexer {
      * @param matcher matcher
      */
     private void addToken(int lineNum, Matcher matcher) {
-        String match = matcher.group(HobbyRegex.RegType.NOT_EMPTY_INDEX.indexNum);
+        String first = matcher.group(HobbyRegex.RegType.NOT_EMPTY_INDEX.indexNum);
 
-        if (match != null) {
+        for (int i = 0; i < matcher.groupCount(); i++) {
+            System.out.println(matcher.group(i));
+        }
+
+        if (first != null) {
             // 不是空格
             if (matcher.group(HobbyRegex.RegType.ANNOTATION_INDEX.indexNum) == null) {
                 // 不是注释
                 HobbyToken token;
                 // 是数字
-                if (matcher.group(HobbyRegex.RegType.NUMBER_INDEX.indexNum) != null) {
-                    token = new NumberToken(lineNum, Integer.parseInt(match));
+                if (matcher.group(HobbyRegex.RegType.FLOAT_NUMBER_INDEX.indexNum) != null) {
+                    if (first.contains("e") || first.contains("E") || first.contains(".")) {
+                        token = new NumberToken<>(lineNum, HobbyToken.REAL, Double.parseDouble(first));
+                    } else {
+                        token = new NumberToken<>(lineNum, HobbyToken.NUM, Integer.parseInt(first));
+                    }
                 } else if (matcher.group(HobbyRegex.RegType.STRING_INDEX.indexNum) != null) {
-                    token = new StringToken(lineNum, toStringLiteral(match));
+                    token = new StringToken(lineNum, toStringLiteral(first));
                 } else {
-                    token = new IdToken(lineNum, match);
+                    token = new IdToken(lineNum, first);
                 }
 
                 queue.add(token);
@@ -197,7 +205,7 @@ public class HobbyLexer {
         HobbyLexer lexer = new HobbyLexer(new CodeDialog());
 
         for (HobbyToken token; (token = lexer.read()) != HobbyToken.EOF; ) {
-            System.out.println(" => " + token.getText());
+            System.out.println(" => " + token.getText() + " = " + token.getTag());
         }
     }
 

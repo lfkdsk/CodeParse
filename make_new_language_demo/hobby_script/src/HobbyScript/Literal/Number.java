@@ -10,12 +10,12 @@ import HobbyScript.Token.HobbyToken;
  *         Created by liufengkai on 16/7/11.
  */
 public class Number extends AstLeaf {
+
     public Number(HobbyToken token) {
         super(token);
     }
 
-    public double value() {
-        return token.getNumber();
+    public int getTag() {
+        return token.getTag();
     }
-
 }

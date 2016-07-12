@@ -11,7 +11,7 @@ public class StringToken extends HobbyToken {
     public String literal;
 
     public StringToken(int lineNumber, String literal) {
-        super(lineNumber);
+        super(lineNumber, HobbyToken.STRING);
         this.literal = literal;
     }
 

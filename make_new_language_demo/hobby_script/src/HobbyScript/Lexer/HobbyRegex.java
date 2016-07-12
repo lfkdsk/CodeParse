@@ -18,9 +18,14 @@ public class HobbyRegex {
 
     /**
      * 数字类型的正则
-     * 目前居然只能支持int类型真垃圾
+     * unused
      */
-    public static final String numberReg = "([0-9]+)";
+    public static final String numberIntReg = "([0-9]+)";
+
+    /**
+     * 其余的全部数字类型
+     */
+    public static final String numberFloatReg = "(([0-9]+)(\\.[0-9]+)?([eE][-+]?[0-9]+)?)";
 
     /**
      * 变量名的正则
@@ -54,12 +59,7 @@ public class HobbyRegex {
     public static final String hobbyUnFormat = "\\s*(%1$s|%2$s|%3$s|%4$s)?";
 
     public static final String hobbyReg = String.format(hobbyUnFormat,
-            annotationReg, numberReg, stringReg, tokenReg);
-
-    /**
-     * 控制枚举自增
-     */
-    private static int INDEX_COUNT = 0;
+            annotationReg, numberFloatReg, stringReg, tokenReg);
 
     /**
      * 各部分Token在正则中的位置
@@ -68,20 +68,15 @@ public class HobbyRegex {
      * 然后缩紧一次括号位置
      */
     public enum RegType {
-        ALL_INDEX,
-        NOT_EMPTY_INDEX,
-        ANNOTATION_INDEX,
-        NUMBER_INDEX,
-        STRING_INDEX,
-        SYMBOL_INDEX,
-        VARIABLE_INDEX,
-        BOOLEAN_INDEX,
-        OTHER_SYMBOL_INDEX;
+        NOT_EMPTY_INDEX(1),
+        ANNOTATION_INDEX(2),
+        FLOAT_NUMBER_INDEX(3),
+        STRING_INDEX(8);
 
         public int indexNum;
 
-        RegType() {
-            this.indexNum = INDEX_COUNT++;
+        RegType(int v) {
+            this.indexNum = v;
         }
     }
 

@@ -10,8 +10,12 @@ public class IdToken extends HobbyToken {
     private String text;
 
     public IdToken(int lineNumber, String text) {
-        super(lineNumber);
+        super(lineNumber, HobbyToken.ID);
         this.text = text;
+
+        if (text.equals(HobbyToken.EOL)) {
+            this.tag = HobbyToken.EOF_TAG;
+        }
     }
 
     @Override

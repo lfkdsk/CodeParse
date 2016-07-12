@@ -6,11 +6,12 @@ package HobbyScript.Token;
  * @author liufengkai
  *         Created by liufengkai on 16/7/11.
  */
-public class NumberToken extends HobbyToken {
-    private double value;
+public class NumberToken<T extends java.lang.Number> extends HobbyToken {
 
-    public NumberToken(int lineNumber, double value) {
-        super(lineNumber);
+    private T value;
+
+    public NumberToken(int lineNumber, int tag, T value) {
+        super(lineNumber, tag);
         this.value = value;
     }
 
@@ -19,13 +20,12 @@ public class NumberToken extends HobbyToken {
         return true;
     }
 
-    @Override
-    public double getNumber() {
+    public T getNumber() {
         return value;
     }
 
     @Override
     public String getText() {
-        return Double.toString(value);
+        return String.valueOf(value);
     }
 }
