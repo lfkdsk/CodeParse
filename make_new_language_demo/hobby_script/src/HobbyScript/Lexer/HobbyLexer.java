@@ -16,7 +16,9 @@ import java.util.regex.Pattern;
 
 /**
  * Lexer Hobby的词法分析器
- * Created by liufengkai on 16/7/11.
+ *
+ * @author liufengkai
+ *         Created by liufengkai on 16/7/11.
  */
 public class HobbyLexer {
     private Pattern regPattern = Pattern.compile(HobbyRegex.hobbyReg);
