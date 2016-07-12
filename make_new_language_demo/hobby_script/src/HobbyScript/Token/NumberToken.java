@@ -2,6 +2,7 @@ package HobbyScript.Token;
 
 /**
  * 数字的Token
+ * 使用范型非我愿,实乃时事所迫
  *
  * @author liufengkai
  *         Created by liufengkai on 16/7/11.
