@@ -75,4 +75,6 @@ public class ScriptParser {
     public AstNode parser(HobbyLexer lexer) throws ParseException {
         return program.parse(lexer);
     }
+
+
 }
