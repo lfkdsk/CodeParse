@@ -12,7 +12,7 @@ public class NumberToken<T extends java.lang.Number> extends HobbyToken {
     private T value;
 
     /**
-     * Number 目前支持 int 和 double (写作float)
+     * NumberLiteral 目前支持 int 和 double (写作float)
      * 使用了自动类型判断
      *
      * @param lineNumber 行号

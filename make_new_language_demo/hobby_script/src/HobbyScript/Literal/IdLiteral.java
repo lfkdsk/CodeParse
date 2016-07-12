@@ -4,18 +4,17 @@ import HobbyScript.Parser.AstLeaf;
 import HobbyScript.Token.HobbyToken;
 
 /**
- * Number字面量
+ * ID 变量
  *
  * @author liufengkai
  *         Created by liufengkai on 16/7/11.
  */
-public class Number extends AstLeaf {
-
-    public Number(HobbyToken token) {
+public class IdLiteral extends AstLeaf {
+    public IdLiteral(HobbyToken token) {
         super(token);
     }
 
-    public int getTag() {
-        return token.getTag();
+    public String name() {
+        return token().getText();
     }
 }

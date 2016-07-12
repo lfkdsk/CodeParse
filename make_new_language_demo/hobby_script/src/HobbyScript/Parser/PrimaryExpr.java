@@ -1,7 +1,4 @@
-package HobbyScript.Literal;
-
-import HobbyScript.Parser.AstList;
-import HobbyScript.Parser.AstNode;
+package HobbyScript.Parser;
 
 import java.util.List;
 

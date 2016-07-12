@@ -1,4 +1,4 @@
-package HobbyScript.Literal;
+package HobbyScript.Parser;
 
 import HobbyScript.Parser.AstList;
 import HobbyScript.Parser.AstNode;
