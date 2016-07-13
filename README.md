@@ -5,7 +5,7 @@
 * front 龙书的前端的demo
 * keycode 学习理论之前的瞎写的解释器
 * OtherDemo 一些相关的算法
-* CreateNewLanguageDemo 这本书写的练习demo
+* CreateNewLanguageDemo 写的练习demo
 
 
 ## License
@@ -15,9 +15,9 @@
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
     You may obtain a copy of the License at
-
+    
        http://www.apache.org/licenses/LICENSE-2.0
-
+    
     Unless required by applicable law or agreed to in writing, software
     distributed under the License is distributed on an "AS IS" BASIS,
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.

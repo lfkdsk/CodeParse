@@ -31,8 +31,10 @@ public class BnfParser {
                 throws ParseException;
 
         /**
-         * @param lexer
-         * @return
+         * 匹配
+         *
+         * @param lexer 语法分析器
+         * @return tof?
          * @throws ParseException
          */
         protected abstract boolean match(HobbyLexer lexer) throws ParseException;
@@ -183,9 +185,19 @@ public class BnfParser {
             }
         }
 
+        /**
+         * 判断是否符合该类Token
+         * 标准的抽象方法
+         *
+         * @param token token
+         * @return tof?
+         */
         protected abstract boolean tokenTest(HobbyToken token);
     }
 
+    /**
+     * ID 类型的Token
+     */
     protected static class IdToken extends AToken {
         HashSet<String> reserved;
 
@@ -225,6 +237,9 @@ public class BnfParser {
         }
     }
 
+    /**
+     * 叶节点
+     */
     protected static class Leaf extends Element {
         protected String[] tokens;
 
@@ -252,6 +267,12 @@ public class BnfParser {
             }
         }
 
+        /**
+         * 添加终结符
+         *
+         * @param list  list
+         * @param token 终结符对应token
+         */
         protected void find(List<AstNode> list, HobbyToken token) {
             list.add(new AstLeaf(token));
         }
@@ -278,6 +299,12 @@ public class BnfParser {
             super(pat);
         }
 
+        /**
+         * 所谓Skip 不添加节点
+         *
+         * @param list  list
+         * @param token token
+         */
         @Override
         protected void find(List<AstNode> list, HobbyToken token) {
 
@@ -556,16 +583,34 @@ public class BnfParser {
         return this;
     }
 
+    /**
+     * 添加非终结符
+     *
+     * @param pat
+     * @return
+     */
     public BnfParser token(String... pat) {
         elements.add(new Leaf(pat));
         return this;
     }
 
+    /**
+     * 插入符号
+     *
+     * @param pat 符号
+     * @return 这种格式的符号(跳
+     */
     public BnfParser sep(String... pat) {
         elements.add(new Skip(pat));
         return this;
     }
 
+    /**
+     * 插入一棵子树
+     *
+     * @param parser BNF
+     * @return BNF
+     */
     public BnfParser ast(BnfParser parser) {
         elements.add(new Tree(parser));
         return this;
