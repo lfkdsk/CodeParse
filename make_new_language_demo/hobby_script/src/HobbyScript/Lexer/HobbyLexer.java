@@ -193,6 +193,7 @@ public class HobbyLexer {
                 // 手动跳过
                 if (ch2 == '"' || ch2 == '\\') {
                     ch = str.charAt(++i);
+                    // 手工转译嵌入\n
                 } else if (ch2 == 'n') {
                     ++i;
                     ch = '\n';
@@ -211,6 +212,5 @@ public class HobbyLexer {
             System.out.println(" => " + token.getText() + " = " + token.getTag());
         }
     }
-
 
 }
