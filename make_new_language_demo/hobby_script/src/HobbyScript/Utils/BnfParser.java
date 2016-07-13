@@ -20,12 +20,29 @@ import java.util.*;
 public class BnfParser {
 
     protected static abstract class Element {
+        /**
+         * 语法分析
+         *
+         * @param lexer 语法分析器
+         * @param nodes 节点
+         * @throws ParseException
+         */
         protected abstract void parse(HobbyLexer lexer, List<AstNode> nodes)
                 throws ParseException;
 
+        /**
+         * @param lexer
+         * @return
+         * @throws ParseException
+         */
         protected abstract boolean match(HobbyLexer lexer) throws ParseException;
     }
 
+    /**
+     * 开一棵子树
+     * Tree中并没有对处理细节的描述
+     * 只是个构造基类
+     */
     protected static class Tree extends Element {
         protected BnfParser parser;
 
@@ -44,6 +61,10 @@ public class BnfParser {
         }
     }
 
+    /**
+     * BNF 产生式中的 或节点
+     * [] | []
+     */
     protected static class OrTree extends Element {
         protected BnfParser[] parsers;
 
@@ -75,6 +96,11 @@ public class BnfParser {
             return null;
         }
 
+        /**
+         * 插入节点 插在了0
+         *
+         * @param parser BNF
+         */
         protected void insert(BnfParser parser) {
             BnfParser[] newParsers = new BnfParser[parsers.length + 1];
             newParsers[0] = parser;
@@ -84,11 +110,20 @@ public class BnfParser {
     }
 
 
+    /**
+     * 重复出现的语句节点
+     * 比如block中会出现多次的simple
+     * 还有Option
+     */
     protected static class Repeat extends Element {
         protected BnfParser parser;
 
         protected boolean onlyOne;
 
+        /**
+         * @param parser  BNF
+         * @param onlyOne 节点出现次数
+         */
         public Repeat(BnfParser parser, boolean onlyOne) {
             this.parser = parser;
             this.onlyOne = onlyOne;
@@ -97,7 +132,9 @@ public class BnfParser {
         @Override
         protected void parse(HobbyLexer lexer, List<AstNode> nodes) throws ParseException {
             while (parser.match(lexer)) {
+
                 AstNode node = parser.parse(lexer);
+                // leaf or list
                 if (node.getClass() != AstList.class || node.childCount() > 0) {
                     nodes.add(node);
                 }
@@ -113,7 +150,11 @@ public class BnfParser {
         }
     }
 
+    /**
+     * Token 基类
+     */
     protected static abstract class AToken extends Element {
+
         protected Factory factory;
 
         public AToken(Class<? extends AstLeaf> clazz) {
@@ -126,14 +167,14 @@ public class BnfParser {
 
         @Override
         protected boolean match(HobbyLexer lexer) throws ParseException {
-            return Token_Test(lexer.peek(0));
+            return tokenTest(lexer.peek(0));
         }
 
         @Override
         protected void parse(HobbyLexer lexer, List<AstNode> nodes) throws ParseException {
             HobbyToken token = lexer.read();
 
-            if (Token_Test(token)) {
+            if (tokenTest(token)) {
                 AstNode leaf = factory.make(token);
 
                 nodes.add(leaf);
@@ -142,7 +183,7 @@ public class BnfParser {
             }
         }
 
-        protected abstract boolean Token_Test(HobbyToken token);
+        protected abstract boolean tokenTest(HobbyToken token);
     }
 
     protected static class IdToken extends AToken {
@@ -154,7 +195,7 @@ public class BnfParser {
         }
 
         @Override
-        protected boolean Token_Test(HobbyToken token) {
+        protected boolean tokenTest(HobbyToken token) {
             return token.isIdentifier() && !reserved.contains(token.getText());
         }
     }
@@ -166,7 +207,7 @@ public class BnfParser {
         }
 
         @Override
-        protected boolean Token_Test(HobbyToken token) {
+        protected boolean tokenTest(HobbyToken token) {
             return token.isNumber();
         }
 
@@ -179,7 +220,7 @@ public class BnfParser {
         }
 
         @Override
-        protected boolean Token_Test(HobbyToken token) {
+        protected boolean tokenTest(HobbyToken token) {
             return token.isString();
         }
     }
@@ -388,6 +429,7 @@ public class BnfParser {
                 return null;
             }
 
+            // 这是调用了对象的create函数
             try {
                 final Method m = clazz.getMethod(factoryName, new Class<?>[]{argType});
 
@@ -401,6 +443,7 @@ public class BnfParser {
             } catch (NoSuchMethodException e) {
             }
 
+            // 调用对象的构造
             try {
                 final Constructor<? extends AstNode> c = clazz.getConstructor(argType);
 
@@ -430,6 +473,13 @@ public class BnfParser {
         factory = parser.factory;
     }
 
+    /**
+     * 分析处理
+     *
+     * @param lexer 词法分析
+     * @return 节点
+     * @throws ParseException
+     */
     public AstNode parse(HobbyLexer lexer) throws ParseException {
         ArrayList<AstNode> results = new ArrayList<>();
         for (Element e : elements) {
@@ -521,6 +571,12 @@ public class BnfParser {
         return this;
     }
 
+    /**
+     * 多个对象传入or树
+     *
+     * @param parsers BNF
+     * @return BNF
+     */
     public BnfParser or(BnfParser... parsers) {
         elements.add(new OrTree(parsers));
         return this;
@@ -535,11 +591,23 @@ public class BnfParser {
         return this;
     }
 
+    /**
+     * onlyOne 只重复一次
+     *
+     * @param parser BNF
+     * @return BNF
+     */
     public BnfParser option(BnfParser parser) {
         elements.add(new Repeat(parser, true));
         return this;
     }
 
+    /**
+     * 重复多次的节点
+     *
+     * @param parser BNF
+     * @return BNF
+     */
     public BnfParser repeat(BnfParser parser) {
         elements.add(new Repeat(parser, false));
         return this;
