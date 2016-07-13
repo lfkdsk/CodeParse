@@ -1,8 +1,5 @@
 package HobbyScript.Parser;
 
-import HobbyScript.Parser.AstList;
-import HobbyScript.Parser.AstNode;
-
 import java.util.List;
 
 /**
@@ -11,8 +8,8 @@ import java.util.List;
  * @author liufengkai
  *         Created by liufengkai on 16/7/12.
  */
-public class WhileStmnt extends AstList {
-    public WhileStmnt(List<AstNode> children) {
+public class WhileStmt extends AstList {
+    public WhileStmt(List<AstNode> children) {
         super(children);
     }
 

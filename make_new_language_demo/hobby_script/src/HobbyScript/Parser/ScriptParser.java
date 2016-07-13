@@ -76,7 +76,7 @@ public class ScriptParser {
             .or(BnfParser.rule(IfStmnt.class).sep("if").sep("(")
                             .ast(expr).sep(")").ast(block)
                             .option(BnfParser.rule().sep("else").ast(block)),
-                    BnfParser.rule(WhileStmnt.class).sep("while").sep("(")
+                    BnfParser.rule(WhileStmt.class).sep("while").sep("(")
                             .ast(expr).sep(")").ast(block), simple);
 
     ///////////////////////////////////////////////////////////////////////////
@@ -84,7 +84,7 @@ public class ScriptParser {
     ///////////////////////////////////////////////////////////////////////////
 
     BnfParser program = BnfParser.rule().or(statement,
-            BnfParser.rule(NullStmnt.class).sep(";", HobbyToken.EOL));
+            BnfParser.rule(NullStmt.class).sep(";", HobbyToken.EOL));
 
     ///////////////////////////////////////////////////////////////////////////
     // 构造添加

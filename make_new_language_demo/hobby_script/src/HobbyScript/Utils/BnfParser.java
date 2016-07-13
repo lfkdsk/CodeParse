@@ -335,6 +335,9 @@ public class BnfParser {
         }
     }
 
+    /**
+     * 创建方法的方法名
+     */
     public static final String factoryName = "create";
 
     protected abstract static class Factory {
@@ -372,6 +375,13 @@ public class BnfParser {
             return f;
         }
 
+        /**
+         * 静态构建工厂类
+         *
+         * @param clazz   类
+         * @param argType 参数 也是一个类
+         * @return 工厂
+         */
         protected static Factory get(Class<? extends AstNode> clazz,
                                      Class<?> argType) {
             if (clazz == null) {
@@ -438,10 +448,21 @@ public class BnfParser {
         }
     }
 
+    /**
+     * 初始化 / 新定义一个一条产生式
+     *
+     * @return Parser
+     */
     public static BnfParser rule() {
         return rule(null);
     }
 
+    /**
+     * 初始化 / 新定义一个一条产生式
+     *
+     * @param clazz 类
+     * @return Parser
+     */
     public static BnfParser rule(Class<? extends AstNode> clazz) {
         return new BnfParser(clazz);
     }
