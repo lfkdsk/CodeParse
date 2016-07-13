@@ -66,7 +66,7 @@ public class ScriptParser {
             .repeat(BnfParser.rule().sep(";", HobbyToken.EOL).option(statement0))
             .sep("}");
 
-    BnfParser simple = BnfParser.rule(PrimaryExpr.class).ast(expr);
+    BnfParser simple = BnfParser.rule(PrimaryExpr.class).ast(expr).sep(";");
 
     ///////////////////////////////////////////////////////////////////////////
     // statement = if (expr) block else block | while (expr) block

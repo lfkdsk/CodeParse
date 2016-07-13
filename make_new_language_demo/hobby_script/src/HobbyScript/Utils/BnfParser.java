@@ -12,7 +12,7 @@ import java.lang.reflect.Method;
 import java.util.*;
 
 /**
- *
+ * BnfParser 巴克斯范式解析引擎
  *
  * @author liufengkai
  *         Created by liufengkai on 16/7/11.
@@ -388,7 +388,8 @@ public class BnfParser {
                     }
                 };
 
-            } catch (NoSuchMethodException e) { }
+            } catch (NoSuchMethodException e) {
+            }
 
             try {
                 final Constructor<? extends AstNode> c = clazz.getConstructor(argType);
