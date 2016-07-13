@@ -8,6 +8,7 @@ import HobbyScript.Literal.NumberLiteral;
 import HobbyScript.Literal.StringLiteral;
 import HobbyScript.Token.HobbyToken;
 import HobbyScript.Utils.BnfParser;
+import HobbyScript.Utils.logger.Logger;
 
 import java.util.HashSet;
 
@@ -114,11 +115,14 @@ public class ScriptParser {
     public static void main(String[] args) throws ParseException {
         HobbyLexer lexer = new HobbyLexer(new CodeDialog());
 
+        Logger.init();
+
         ScriptParser parser = new ScriptParser();
 
         while (lexer.peek(0) != HobbyToken.EOF) {
             AstNode node = parser.parse(lexer);
-            System.out.println(" => " + node.toString() + "  ");
+
+            Logger.i(" => " + node.toString() + "  ");
         }
     }
 }
