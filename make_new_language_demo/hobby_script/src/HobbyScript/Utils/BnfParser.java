@@ -388,9 +388,7 @@ public class BnfParser {
                     }
                 };
 
-            } catch (NoSuchMethodException e) {
-                e.printStackTrace();
-            }
+            } catch (NoSuchMethodException e) { }
 
             try {
                 final Constructor<? extends AstNode> c = clazz.getConstructor(argType);
@@ -462,8 +460,9 @@ public class BnfParser {
         return number(null);
     }
 
-    public BnfParser number(Class<? extends AstNode> clazz) {
-        return new BnfParser(clazz);
+    public BnfParser number(Class<? extends AstLeaf> clazz) {
+        elements.add(new NumToken(clazz));
+        return this;
     }
 
     public BnfParser identifier(HashSet<String> reserved) {
@@ -486,12 +485,12 @@ public class BnfParser {
     }
 
     public BnfParser token(String... pat) {
-        elements.add(new Skip(pat));
+        elements.add(new Leaf(pat));
         return this;
     }
 
     public BnfParser sep(String... pat) {
-        elements.add(new Leaf(pat));
+        elements.add(new Skip(pat));
         return this;
     }
 

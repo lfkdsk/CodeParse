@@ -15,13 +15,12 @@ public abstract class HobbyToken {
             EQ = 261, FALSE = 262, GE = 263, ID = 264, IF = 265,
             INDEX = 266, LE = 267, MINUS = 268, NE = 269, NUM = 270,
             OR = 271, REAL = 272, TEMP = 273, TRUE = 274, WHILE = 275,
-            STRING = 276, EOF_TAG = -1;
+            STRING = 276, EOF_TAG = -1, EOL_TAG = -2;
 
     /**
      * End of file
      */
-    public static final HobbyToken EOF = new HobbyToken(-1, EOF_TAG) {
-    };
+    public static final HobbyToken EOF = new HobbyToken(-1, EOF_TAG){};
 
     /**
      * End of line

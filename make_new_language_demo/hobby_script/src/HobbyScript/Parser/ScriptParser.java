@@ -1,5 +1,6 @@
 package HobbyScript.Parser;
 
+import HobbyScript.ApplicationTest.CodeDialog;
 import HobbyScript.Exception.ParseException;
 import HobbyScript.Lexer.HobbyLexer;
 import HobbyScript.Literal.IdLiteral;
@@ -39,7 +40,8 @@ public class ScriptParser {
 
     BnfParser block = BnfParser.rule(BlockStmnt.class)
             .sep("{").option(statement0)
-            .repeat(BnfParser.rule().sep(";", HobbyToken.EOL).option(statement0));
+            .repeat(BnfParser.rule().sep(";", HobbyToken.EOL).option(statement0))
+            .sep("}");
 
     BnfParser simple = BnfParser.rule(PrimaryExpr.class).ast(expr);
 
@@ -47,7 +49,7 @@ public class ScriptParser {
             .or(BnfParser.rule(IfStmnt.class).sep("if").ast(expr).ast(block)
                             .option(BnfParser.rule().sep("else").ast(block)),
                     BnfParser.rule(WhileStmnt.class).sep("while")
-                            .ast(expr).ast(block));
+                            .ast(expr).ast(block), simple);
 
     BnfParser program = BnfParser.rule().or(statement,
             BnfParser.rule(NullStmnt.class).sep(";", HobbyToken.EOL));
@@ -72,9 +74,18 @@ public class ScriptParser {
         operators.add("%", 4, BnfParser.Operators.LEFT);
     }
 
-    public AstNode parser(HobbyLexer lexer) throws ParseException {
+    public AstNode parse(HobbyLexer lexer) throws ParseException {
         return program.parse(lexer);
     }
 
+    public static void main(String[] args) throws ParseException {
+        HobbyLexer lexer = new HobbyLexer(new CodeDialog());
 
+        ScriptParser parser = new ScriptParser();
+
+        while (lexer.peek(0) != HobbyToken.EOF) {
+            AstNode node = parser.parse(lexer);
+            System.out.println(" => " + node.toString() + "  ");
+        }
+    }
 }

@@ -14,7 +14,7 @@ public class IdToken extends HobbyToken {
         this.text = text;
 
         if (text.equals(HobbyToken.EOL)) {
-            this.tag = HobbyToken.EOF_TAG;
+            this.tag = HobbyToken.EOL_TAG;
         }
     }
 

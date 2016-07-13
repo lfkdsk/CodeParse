@@ -131,8 +131,9 @@ public class HobbyLexer {
                 throw new ParseException("bad token at line " + lineNum);
             }
 
-            queue.add(new IdToken(lineNum, HobbyToken.EOL));
         }
+
+        queue.add(new IdToken(lineNum, HobbyToken.EOL));
     }
 
     /**
@@ -144,9 +145,9 @@ public class HobbyLexer {
     private void addToken(int lineNum, Matcher matcher) {
         String first = matcher.group(HobbyRegex.RegType.NOT_EMPTY_INDEX.indexNum);
 
-        for (int i = 0; i < matcher.groupCount(); i++) {
-            System.out.println(matcher.group(i));
-        }
+//        for (int i = 0; i < matcher.groupCount(); i++) {
+//            System.out.println(matcher.group(i));
+//        }
 
         if (first != null) {
             // 不是空格
@@ -192,7 +193,7 @@ public class HobbyLexer {
                 // 手动跳过
                 if (ch2 == '"' || ch2 == '\\') {
                     ch = str.charAt(++i);
-                } else {
+                } else if (ch2 == 'n') {
                     ++i;
                     ch = '\n';
                 }

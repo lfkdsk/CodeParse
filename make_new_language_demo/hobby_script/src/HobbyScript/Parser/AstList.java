@@ -32,6 +32,23 @@ public class AstList extends AstNode {
     }
 
     @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+
+        builder.append('(');
+
+        String sep = "";
+
+        for (AstNode node : children) {
+            builder.append(sep);
+            sep = " ";
+            builder.append(node.toString());
+        }
+
+        return builder.append(')').toString();
+    }
+
+    @Override
     public String location() {
         for (AstNode n : children) {
             String s = n.location();
