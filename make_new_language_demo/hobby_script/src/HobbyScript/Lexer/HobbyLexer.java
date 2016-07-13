@@ -119,6 +119,8 @@ public class HobbyLexer {
 
         int start = 0, end = line.length();
 
+        if (end == 0) return;
+
         while (start < end) {
             matcher.region(start, end);
             // 出现匹配
