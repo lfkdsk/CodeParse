@@ -18,11 +18,22 @@ import java.util.HashSet;
  *         Created by liufengkai on 16/7/12.
  */
 public class ScriptParser {
+    /**
+     * 关键字
+     */
     HashSet<String> reserved = new HashSet<>();
+
+    ///////////////////////////////////////////////////////////////////////////
+    // 书写 BNF 范式
+    ///////////////////////////////////////////////////////////////////////////
 
     BnfParser.Operators operators = new BnfParser.Operators();
 
     BnfParser expr0 = BnfParser.rule();
+
+    ///////////////////////////////////////////////////////////////////////////
+    // primary = ( expr ) | number | id | string
+    ///////////////////////////////////////////////////////////////////////////
 
     BnfParser primary = BnfParser.rule(PrimaryExpr.class)
             .or(BnfParser.rule().sep("(").ast(expr0).sep(")"),
@@ -31,12 +42,24 @@ public class ScriptParser {
                     BnfParser.rule().string(StringLiteral.class)
             );
 
+    ///////////////////////////////////////////////////////////////////////////
+    // factor = primary | - primary
+    ///////////////////////////////////////////////////////////////////////////
+
     BnfParser factor = BnfParser.rule()
             .or(BnfParser.rule(NegativeExpr.class).sep("-").ast(primary), primary);
+
+    ///////////////////////////////////////////////////////////////////////////
+    // expr = factor { OP factor }
+    ///////////////////////////////////////////////////////////////////////////
 
     BnfParser expr = expr0.expression(BinaryExpr.class, factor, operators);
 
     BnfParser statement0 = BnfParser.rule();
+
+    ///////////////////////////////////////////////////////////////////////////
+    // block = { statement; * }
+    ///////////////////////////////////////////////////////////////////////////
 
     BnfParser block = BnfParser.rule(BlockStmnt.class)
             .sep("{").option(statement0)
@@ -45,11 +68,20 @@ public class ScriptParser {
 
     BnfParser simple = BnfParser.rule(PrimaryExpr.class).ast(expr);
 
+    ///////////////////////////////////////////////////////////////////////////
+    // statement = if (expr) block else block | while (expr) block
+    ///////////////////////////////////////////////////////////////////////////
+
     BnfParser statement = statement0
-            .or(BnfParser.rule(IfStmnt.class).sep("if").ast(expr).ast(block)
+            .or(BnfParser.rule(IfStmnt.class).sep("if").sep("(")
+                            .ast(expr).sep(")").ast(block)
                             .option(BnfParser.rule().sep("else").ast(block)),
-                    BnfParser.rule(WhileStmnt.class).sep("while")
-                            .ast(expr).ast(block), simple);
+                    BnfParser.rule(WhileStmnt.class).sep("while").sep("(")
+                            .ast(expr).sep(")").ast(block), simple);
+
+    ///////////////////////////////////////////////////////////////////////////
+    // program = statement | (; , end of line)
+    ///////////////////////////////////////////////////////////////////////////
 
     BnfParser program = BnfParser.rule().or(statement,
             BnfParser.rule(NullStmnt.class).sep(";", HobbyToken.EOL));
@@ -61,6 +93,7 @@ public class ScriptParser {
     public ScriptParser() {
         reserved.add(";");
         reserved.add("}");
+        reserved.add(")");
         reserved.add(HobbyToken.EOL);
 
         operators.add("=", 1, BnfParser.Operators.RIGHT);
