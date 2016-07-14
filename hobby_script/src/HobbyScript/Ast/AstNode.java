@@ -2,7 +2,6 @@ package HobbyScript.Ast;
 
 import HobbyScript.Eval.EnvironmentCallBack;
 import HobbyScript.Eval.EvalCallBack;
-import HobbyScript.Exception.HobbyException;
 
 import java.util.Iterator;
 import java.util.Objects;
@@ -57,7 +56,7 @@ public abstract class AstNode implements Iterable<AstNode>, EvalCallBack {
 
     @Override
     public Object eval(EnvironmentCallBack env) {
-        throw new HobbyException("empty eval by abstract class AstNode");
+        return this;
     }
 
     /**

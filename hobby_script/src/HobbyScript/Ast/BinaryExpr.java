@@ -22,7 +22,7 @@ public class BinaryExpr extends AstList {
     }
 
     public AstNode right() {
-        return child(1);
+        return child(2);
     }
 
     @Override

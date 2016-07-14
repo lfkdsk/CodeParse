@@ -41,9 +41,9 @@ public class ScriptEval {
      */
     public static Object NumberEval(NumberLiteral literal) {
         HobbyToken token = literal.token();
-        if (isNum(token.getTag(), token)) {
+        if (isNum(((NumberToken) token).getNumber())) {
             return ((NumberToken) token).getNumber().intValue();
-        } else if (isFloat(token.getTag(), token)) {
+        } else if (isFloat(((NumberToken) token).getNumber())) {
             return ((NumberToken) token).getNumber().doubleValue();
         }
         throw new HobbyException("the number is no legal type: ", literal);
@@ -79,11 +79,9 @@ public class ScriptEval {
     public static Object negativeEval(EnvironmentCallBack env, NegativeExpr expr) {
         Object value = expr.operand().eval(env);
 
-        HobbyToken token = ((NumberLiteral) expr.operand()).token();
-
-        if (isNum(token.getTag(), token) && value instanceof Integer) {
+        if (isNum(value)) {
             return -(Integer) value;
-        } else if (isFloat(token.getTag(), token) && value instanceof Double) {
+        } else if (isFloat(value)) {
             return -(Double) value;
         }
 
@@ -138,17 +136,13 @@ public class ScriptEval {
 
     private static Object computeOp(Object left, Object right,
                                     String op, BinaryExpr expr) {
-        HobbyToken leftToken = ((AstLeaf) expr.left()).token();
 
-        HobbyToken rightToken = ((AstLeaf) expr.right()).token();
         // 判断都是数值
-        if (isNumber(leftToken.getTag(), leftToken)
-                && isNum(rightToken.getTag(), rightToken)) {
+        if (isNumber(left) && isNumber(right)) {
             return computeNumber(left, right, op, expr);
         }
 
-        if (op.equals(ScriptParser.ADD) && isString(leftToken.getTag())
-                && isString(rightToken.getTag())) {
+        if (op.equals(ScriptParser.ADD) && (left instanceof String)) {
             return String.valueOf(left) + String.valueOf(right);
         }
 
@@ -209,22 +203,21 @@ public class ScriptEval {
         return v instanceof Double ? (Double) v : (int) 0;
     }
 
-    private static boolean isNumber(int tag, HobbyToken token) {
-        return (tag == HobbyToken.NUM || tag == HobbyToken.REAL)
-                && token.isNumber();
+    private static boolean isNumber(Object v) {
+        return (v instanceof Integer || v instanceof Double);
     }
 
     private static boolean isString(int tag) {
         return tag == HobbyToken.STRING;
     }
 
-    private static boolean isNum(int tag, HobbyToken token) {
-        return tag == HobbyToken.NUM && token.isNumber();
+    private static boolean isNum(Object v) {
+        return v instanceof Integer;
     }
 
 
-    private static boolean isFloat(int tag, HobbyToken token) {
-        return tag == HobbyToken.REAL && token.isNumber();
+    private static boolean isFloat(Object v) {
+        return v instanceof Double;
     }
 
     ///////////////////////////////////////////////////////////////////////////
@@ -280,11 +273,11 @@ public class ScriptEval {
             Object c = whileStmt.condition().eval(env);
 
             if (c instanceof Boolean && ((Boolean) c).booleanValue() == Boolean.TRUE) {
-                return whileStmt.body().eval(env);
+                result = whileStmt.body().eval(env);
             } else if (c instanceof Integer && (Integer) c > 0) {
-                return whileStmt.body().eval(env);
+                result = whileStmt.body().eval(env);
             } else if (c instanceof Double && (Double) c > 0) {
-                return whileStmt.body().eval(env);
+                result = whileStmt.body().eval(env);
             } else {
                 return result;
             }
