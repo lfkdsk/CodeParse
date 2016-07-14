@@ -1,5 +1,8 @@
 package HobbyScript.Parser;
 
+import HobbyScript.Eval.EnvironmentCallBack;
+import HobbyScript.Exception.HobbyException;
+
 import java.util.Iterator;
 import java.util.List;
 
@@ -57,5 +60,10 @@ public class AstList extends AstNode {
             }
         }
         return null;
+    }
+
+    @Override
+    public Object eval(EnvironmentCallBack env) {
+        throw new HobbyException("can not eval : " + toString(), this);
     }
 }

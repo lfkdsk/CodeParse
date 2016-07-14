@@ -1,5 +1,7 @@
 package HobbyScript.Exception;
 
+import HobbyScript.Parser.AstNode;
+
 /**
  * 定义了Hobby的运行异常
  *
@@ -11,7 +13,7 @@ public class HobbyException extends RuntimeException {
         super(msg);
     }
 
-//    public HobbyException(String msg, ASTree tree) {
-//        super(msg + " " + tree.location());
-//    }
+    public HobbyException(String msg, AstNode tree) {
+        super(msg + " " + tree.location());
+    }
 }

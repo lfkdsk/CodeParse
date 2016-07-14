@@ -1,5 +1,7 @@
 package HobbyScript.Parser;
 
+import HobbyScript.Eval.EnvironmentCallBack;
+import HobbyScript.Exception.HobbyException;
 import HobbyScript.Token.HobbyToken;
 
 import java.util.ArrayList;
@@ -51,4 +53,8 @@ public class AstLeaf extends AstNode {
         return token.getText();
     }
 
+    @Override
+    public Object eval(EnvironmentCallBack env) {
+        throw new HobbyException("can not eval : " + toString(), this);
+    }
 }
