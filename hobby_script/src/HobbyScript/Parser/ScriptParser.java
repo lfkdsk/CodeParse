@@ -115,14 +115,14 @@ public class ScriptParser {
     public static void main(String[] args) throws ParseException {
         HobbyLexer lexer = new HobbyLexer(new CodeDialog());
 
-        Logger.init();
+        Logger.init("ScriptParser");
 
         ScriptParser parser = new ScriptParser();
 
         while (lexer.peek(0) != HobbyToken.EOF) {
             AstNode node = parser.parse(lexer);
 
-            Logger.i(" => " + node.toString() + "  ");
+            Logger.e(" => " + node.toString() + "  ");
         }
     }
 }

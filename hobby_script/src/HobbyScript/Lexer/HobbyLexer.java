@@ -6,6 +6,7 @@ import HobbyScript.Token.HobbyToken;
 import HobbyScript.Token.IdToken;
 import HobbyScript.Token.NumberToken;
 import HobbyScript.Token.StringToken;
+import HobbyScript.Utils.logger.Logger;
 
 import java.io.IOException;
 import java.io.LineNumberReader;
@@ -210,8 +211,10 @@ public class HobbyLexer {
     public static void main(String[] args) throws ParseException {
         HobbyLexer lexer = new HobbyLexer(new CodeDialog());
 
+        Logger.init("HobbyLexer");
+
         for (HobbyToken token; (token = lexer.read()) != HobbyToken.EOF; ) {
-            System.out.println(" => " + token.getText() + " = " + token.getTag());
+            Logger.i(" => " + token.getText() + " = " + token.getTag());
         }
     }
 
