@@ -1,8 +1,5 @@
 package HobbyScript.Parser;
 
-import HobbyScript.Parser.AstList;
-import HobbyScript.Parser.AstNode;
-
 import java.util.List;
 
 /**

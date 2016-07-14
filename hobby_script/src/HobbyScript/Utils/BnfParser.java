@@ -212,6 +212,9 @@ public class BnfParser {
         }
     }
 
+    /**
+     * 数字类型Token
+     */
     protected static class NumToken extends AToken {
 
         public NumToken(Class<? extends AstLeaf> clazz) {
@@ -225,6 +228,9 @@ public class BnfParser {
 
     }
 
+    /**
+     * 字符串类型Token
+     */
     protected static class StrToken extends AToken {
 
         public StrToken(Class<? extends AstLeaf> clazz) {
@@ -301,6 +307,7 @@ public class BnfParser {
 
         /**
          * 所谓Skip 不添加节点
+         * 比如一些格式控制符号是不算做节点的
          *
          * @param list  list
          * @param token token
@@ -325,15 +332,26 @@ public class BnfParser {
      * 标志符
      */
     public static class Operators extends HashMap<String, Precedence> {
+        // 结合性
         public static boolean LEFT = true;
 
         public static boolean RIGHT = false;
 
+        /**
+         * 添加保留字
+         *
+         * @param name      保留字Token
+         * @param pres      优先级
+         * @param leftAssoc 结合性
+         */
         public void add(String name, int pres, boolean leftAssoc) {
             put(name, new Precedence(pres, leftAssoc));
         }
     }
 
+    /**
+     * 表达式子树
+     */
     protected static class Expr extends Element {
         protected Factory factory;
 
@@ -342,6 +360,7 @@ public class BnfParser {
         protected BnfParser factor;
 
         public Expr(Class<? extends AstNode> clazz, BnfParser factor, Operators ops) {
+
             this.factory = Factory.getForAstList(clazz);
             this.factor = factor;
             this.ops = ops;
@@ -362,14 +381,15 @@ public class BnfParser {
 
         private AstNode doShift(HobbyLexer lexer, AstNode left, int prec) throws ParseException {
             ArrayList<AstNode> list = new ArrayList<>();
+
             list.add(left);
-
+            // 读取一个符号
             list.add(new AstLeaf(lexer.read()));
-
+            // 返回节点放在右子树
             AstNode right = factor.parse(lexer);
 
             Precedence next;
-
+            // 子树向右拓展
             while ((next = nextOperator(lexer)) != null && rightIsExpr(prec, next)) {
                 right = doShift(lexer, right, next.value);
             }
@@ -379,16 +399,31 @@ public class BnfParser {
             return factory.make(list);
         }
 
+        /**
+         * 那取下一个符号
+         *
+         * @param lexer 词法
+         * @return 符号
+         * @throws ParseException
+         */
         private Precedence nextOperator(HobbyLexer lexer) throws ParseException {
             HobbyToken token = lexer.peek(0);
 
             if (token.isIdentifier()) {
+                // 从符号表里找对应的符号
                 return ops.get(token.getText());
             } else {
                 return null;
             }
         }
 
+        /**
+         * 比较和右侧符号的结合性
+         *
+         * @param prec     优先级
+         * @param nextPrec 下一个符号的优先级
+         * @return tof?
+         */
         private static boolean rightIsExpr(int prec, Precedence nextPrec) {
             if (nextPrec.leftAssoc) {
                 return prec < nextPrec.value;
@@ -422,6 +457,12 @@ public class BnfParser {
             }
         }
 
+        /**
+         * 直接创建一个AstList
+         *
+         * @param clazz 创建类
+         * @return 工厂
+         */
         protected static Factory getForAstList(Class<? extends AstNode> clazz) {
             Factory f = get(clazz, List.class);
 
@@ -555,9 +596,14 @@ public class BnfParser {
         return this;
     }
 
+    ///////////////////////////////////////////////////////////////////////////
+    // 添加识别各种Token的方法
+    ///////////////////////////////////////////////////////////////////////////
+
     public BnfParser number() {
         return number(null);
     }
+
 
     public BnfParser number(Class<? extends AstLeaf> clazz) {
         elements.add(new NumToken(clazz));
