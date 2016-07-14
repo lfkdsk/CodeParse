@@ -50,4 +50,42 @@ public abstract class AstNode implements Iterable<AstNode> {
             action.accept(t);
         }
     }
+
+    public static int treeHeight(AstNode node) {
+        if (node == null) {
+            return 0;
+        } else {
+            int max = 0;
+            Iterator<AstNode> t = node.children();
+            while (t.hasNext()) {
+                max = Math.max(max, treeHeight(t.next()));
+            }
+            return max + 1;
+        }
+    }
+
+    public static void printAstTree(AstNode node, int height) {
+        if (node == null) return;
+        System.out.println("height => " + height);
+
+        System.out.print(node.getClass().getSimpleName());
+
+        System.out.println();
+
+        System.out.print(node.toString());
+
+        System.out.println();
+
+        Iterator<AstNode> t = node.children();
+        height--;
+        while (t.hasNext()) {
+            printAstTree(t.next(), height);
+        }
+    }
+
+    private static void printBlock(int size) {
+        for (int i = 0; i < size; i++) {
+            System.out.print("     ");
+        }
+    }
 }

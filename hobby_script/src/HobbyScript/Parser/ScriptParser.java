@@ -141,10 +141,19 @@ public class ScriptParser {
 
         ScriptParser parser = new ScriptParser();
 
+
         while (lexer.peek(0) != HobbyToken.EOF) {
             AstNode node = parser.parse(lexer);
 
-            Logger.d(" => " + node.toString() + "  ");
+//            Logger.v(" => tree height " + AstNode.treeHeight(node));
+//
+//            Logger.e(" => tree print ");
+//
+//            AstNode.printAstTree(node, AstNode.treeHeight(node));
+
+            Logger.v(" => " + node.toString() + "  ");
         }
+
+        Logger.v(" => tree height " + AstNode.treeHeight(parser.parse(lexer)));
     }
 }

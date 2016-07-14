@@ -50,4 +50,5 @@ public class AstLeaf extends AstNode {
     public String toString() {
         return token.getText();
     }
+
 }

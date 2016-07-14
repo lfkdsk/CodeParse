@@ -471,7 +471,7 @@ public class BnfParser {
                     @Override
                     protected AstNode make0(Object arg) throws Exception {
                         List<AstNode> results = (List<AstNode>) arg;
-
+                        // 节点折叠
                         if (results.size() == 1) {
                             return results.get(0);
                         } else {

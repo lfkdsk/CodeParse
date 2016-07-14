@@ -398,7 +398,7 @@ public final class Log {
      */
     public static int println_native(int bufID,
                                      int priority, String tag, String msg) {
-        System.out.println(bufID + " :" + getInfo(priority) + " :" + tag + " :" + msg);
+        System.out.println(getInfo(priority) + " :" + tag + " :" + msg);
         return 0;
     }
 
