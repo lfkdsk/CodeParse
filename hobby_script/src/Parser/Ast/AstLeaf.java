@@ -23,7 +23,6 @@ public class AstLeaf extends AstNode {
         this.token = token;
     }
 
-
     @Override
     public AstNode child(int index) {
         throw new IndexOutOfBoundsException();

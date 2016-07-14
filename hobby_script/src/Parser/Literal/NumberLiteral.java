@@ -1,6 +1,8 @@
 package Parser.Literal;
 
 import Parser.Ast.AstLeaf;
+import Parser.Eval.EnvironmentCallBack;
+import Parser.Eval.ScriptEval;
 import Parser.Token.HobbyToken;
 
 /**
@@ -17,5 +19,10 @@ public class NumberLiteral extends AstLeaf {
 
     public int getTag() {
         return token.getTag();
+    }
+
+    @Override
+    public Object eval(EnvironmentCallBack env) {
+        return ScriptEval.NumberEval(this);
     }
 }

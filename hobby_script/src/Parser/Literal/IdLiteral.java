@@ -1,6 +1,8 @@
 package Parser.Literal;
 
 import Parser.Ast.AstLeaf;
+import Parser.Eval.EnvironmentCallBack;
+import Parser.Eval.ScriptEval;
 import Parser.Token.HobbyToken;
 
 /**
@@ -16,5 +18,10 @@ public class IdLiteral extends AstLeaf {
 
     public String name() {
         return token().getText();
+    }
+
+    @Override
+    public Object eval(EnvironmentCallBack env) {
+        return ScriptEval.IdEval(env, this);
     }
 }

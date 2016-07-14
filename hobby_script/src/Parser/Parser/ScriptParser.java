@@ -154,7 +154,5 @@ public class ScriptParser {
 
             Logger.v(" => " + node.toString() + "  ");
         }
-
-        Logger.v(" => tree height " + AstNode.treeHeight(parser.parse(lexer)));
     }
 }

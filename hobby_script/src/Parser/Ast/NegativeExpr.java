@@ -1,6 +1,7 @@
 package Parser.Ast;
 
 import Parser.Eval.EnvironmentCallBack;
+import Parser.Eval.ScriptEval;
 
 import java.util.List;
 
@@ -25,6 +26,6 @@ public class NegativeExpr extends AstList {
 
     @Override
     public Object eval(EnvironmentCallBack env) {
-        return super.eval(env);
+        return ScriptEval.negativeEval(env, this);
     }
 }
