@@ -19,8 +19,30 @@ import java.util.HashSet;
  *         Created by liufengkai on 16/7/12.
  */
 public class ScriptParser {
+    public static final String IF_TOKEN = "if";
+
+    public static final String ELSE_TOKEN = "else";
+
+    public static final String WHILE_TOKEN = "while";
+
+    public static final String SEMICOLON_TOKEN = ";";
+
+    public static final String LP_TOKEN = "(", RP_TOKEN = ")";
+
+    public static final String LC_TOKEN = "{", RC_TOKEN = "}";
+
+    public static final String ASSIGN_TOKEN = "=";
+
+    public static final String EQ_TOKEN = "==";
+
+    public static final String LOGICAL_AND_TOKEN = "&&";
+
+    public static final String GT_TOKEN = "<", GE_TOKEN = ">";
+
+    public static final String ADD = "+", SUB = "-",
+            MUL = "*", DIV = "/", MOD = "%";
     /**
-     * 关键字
+     * 保留关键字
      */
     HashSet<String> reserved = new HashSet<>();
 
@@ -37,7 +59,7 @@ public class ScriptParser {
     ///////////////////////////////////////////////////////////////////////////
 
     BnfParser primary = BnfParser.rule(PrimaryExpr.class)
-            .or(BnfParser.rule().sep("(").ast(expr0).sep(")"),
+            .or(BnfParser.rule().sep(LP_TOKEN).ast(expr0).sep(RP_TOKEN),
                     BnfParser.rule().number(NumberLiteral.class),
                     BnfParser.rule().identifier(IdLiteral.class, reserved),
                     BnfParser.rule().string(StringLiteral.class)
@@ -48,7 +70,7 @@ public class ScriptParser {
     ///////////////////////////////////////////////////////////////////////////
 
     BnfParser factor = BnfParser.rule()
-            .or(BnfParser.rule(NegativeExpr.class).sep("-").ast(primary), primary);
+            .or(BnfParser.rule(NegativeExpr.class).sep(SUB).ast(primary), primary);
 
     ///////////////////////////////////////////////////////////////////////////
     // expr = factor { OP factor }
@@ -63,49 +85,49 @@ public class ScriptParser {
     ///////////////////////////////////////////////////////////////////////////
 
     BnfParser block = BnfParser.rule(BlockStmnt.class)
-            .sep("{").option(statement0)
-            .repeat(BnfParser.rule().sep(";", HobbyToken.EOL).option(statement0))
-            .sep("}");
+            .sep(LC_TOKEN).option(statement0)
+            .repeat(BnfParser.rule().sep(SEMICOLON_TOKEN, HobbyToken.EOL).option(statement0))
+            .sep(RC_TOKEN);
 
-    BnfParser simple = BnfParser.rule(PrimaryExpr.class).ast(expr).sep(";");
+    BnfParser simple = BnfParser.rule(PrimaryExpr.class).ast(expr).sep(SEMICOLON_TOKEN);
 
     ///////////////////////////////////////////////////////////////////////////
     // statement = if (expr) block else block | while (expr) block
     ///////////////////////////////////////////////////////////////////////////
 
     BnfParser statement = statement0
-            .or(BnfParser.rule(IfStmnt.class).sep("if").sep("(")
-                            .ast(expr).sep(")").ast(block)
-                            .option(BnfParser.rule().sep("else").ast(block)),
-                    BnfParser.rule(WhileStmt.class).sep("while").sep("(")
-                            .ast(expr).sep(")").ast(block), simple);
+            .or(BnfParser.rule(IfStmnt.class).sep(IF_TOKEN).sep(LP_TOKEN)
+                            .ast(expr).sep(RP_TOKEN).ast(block)
+                            .option(BnfParser.rule().sep(ELSE_TOKEN).ast(block)),
+                    BnfParser.rule(WhileStmt.class).sep(WHILE_TOKEN).sep(LP_TOKEN)
+                            .ast(expr).sep(RP_TOKEN).ast(block), simple);
 
     ///////////////////////////////////////////////////////////////////////////
     // program = statement | (; , end of line)
     ///////////////////////////////////////////////////////////////////////////
 
     BnfParser program = BnfParser.rule().or(statement,
-            BnfParser.rule(NullStmt.class).sep(";", HobbyToken.EOL));
+            BnfParser.rule(NullStmt.class).sep(SEMICOLON_TOKEN, HobbyToken.EOL));
 
     ///////////////////////////////////////////////////////////////////////////
     // 构造添加
     ///////////////////////////////////////////////////////////////////////////
 
     public ScriptParser() {
-        reserved.add(";");
-        reserved.add("}");
-        reserved.add(")");
+        reserved.add(SEMICOLON_TOKEN);
+        reserved.add(RC_TOKEN);
+        reserved.add(RP_TOKEN);
         reserved.add(HobbyToken.EOL);
 
-        operators.add("=", 1, BnfParser.Operators.RIGHT);
-        operators.add("==", 2, BnfParser.Operators.LEFT);
-        operators.add(">", 2, BnfParser.Operators.LEFT);
-        operators.add("<", 2, BnfParser.Operators.LEFT);
-        operators.add("+", 3, BnfParser.Operators.LEFT);
-        operators.add("-", 3, BnfParser.Operators.LEFT);
-        operators.add("*", 4, BnfParser.Operators.LEFT);
-        operators.add("/", 4, BnfParser.Operators.LEFT);
-        operators.add("%", 4, BnfParser.Operators.LEFT);
+        operators.add(ASSIGN_TOKEN, 1, BnfParser.Operators.RIGHT);
+        operators.add(EQ_TOKEN, 2, BnfParser.Operators.LEFT);
+        operators.add(GE_TOKEN, 2, BnfParser.Operators.LEFT);
+        operators.add(GT_TOKEN, 2, BnfParser.Operators.LEFT);
+        operators.add(ADD, 3, BnfParser.Operators.LEFT);
+        operators.add(SUB, 3, BnfParser.Operators.LEFT);
+        operators.add(MUL, 4, BnfParser.Operators.LEFT);
+        operators.add(DIV, 4, BnfParser.Operators.LEFT);
+        operators.add(MOD, 4, BnfParser.Operators.LEFT);
     }
 
     public AstNode parse(HobbyLexer lexer) throws ParseException {
@@ -122,7 +144,7 @@ public class ScriptParser {
         while (lexer.peek(0) != HobbyToken.EOF) {
             AstNode node = parser.parse(lexer);
 
-            Logger.e(" => " + node.toString() + "  ");
+            Logger.d(" => " + node.toString() + "  ");
         }
     }
 }
