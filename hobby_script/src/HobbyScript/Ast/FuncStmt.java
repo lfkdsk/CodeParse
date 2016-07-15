@@ -1,5 +1,7 @@
 package HobbyScript.Ast;
 
+import HobbyScript.Token.HobbyToken;
+
 import java.util.List;
 
 /**
@@ -7,6 +9,6 @@ import java.util.List;
  */
 public class FuncStmt extends AstList {
     public FuncStmt(List<AstNode> children) {
-        super(children);
+        super(children, HobbyToken.FUNCTION);
     }
 }

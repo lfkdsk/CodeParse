@@ -15,7 +15,8 @@ import java.util.List;
 public class AstList extends AstNode {
     protected List<AstNode> children;
 
-    public AstList(List<AstNode> children) {
+    public AstList(List<AstNode> children, int tag) {
+        super(tag);
         this.children = children;
     }
 

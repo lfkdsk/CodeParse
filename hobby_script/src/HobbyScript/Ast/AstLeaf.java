@@ -2,7 +2,6 @@ package HobbyScript.Ast;
 
 import HobbyScript.Eval.EnvironmentCallBack;
 import HobbyScript.Exception.HobbyException;
-import HobbyScript.Parser.ScriptParser;
 import HobbyScript.Token.HobbyToken;
 
 import java.util.ArrayList;
@@ -21,6 +20,7 @@ public class AstLeaf extends AstNode {
     protected HobbyToken token;
 
     public AstLeaf(HobbyToken token) {
+        super(token.getTag());
         this.token = token;
     }
 

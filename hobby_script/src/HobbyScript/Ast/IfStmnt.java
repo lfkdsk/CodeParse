@@ -2,6 +2,7 @@ package HobbyScript.Ast;
 
 import HobbyScript.Eval.EnvironmentCallBack;
 import HobbyScript.Eval.ScriptEval;
+import HobbyScript.Token.HobbyToken;
 
 import java.util.List;
 
@@ -12,7 +13,7 @@ import java.util.List;
 public class IfStmnt extends AstList {
 
     public IfStmnt(List<AstNode> children) {
-        super(children);
+        super(children, HobbyToken.IF);
     }
 
     public AstNode condition() {

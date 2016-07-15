@@ -13,6 +13,7 @@ public class Arguments extends Postfix {
         super(children);
     }
 
+
     public int size() {
         return childCount();
     }

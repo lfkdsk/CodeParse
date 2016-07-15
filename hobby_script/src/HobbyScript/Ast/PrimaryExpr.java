@@ -1,6 +1,7 @@
 package HobbyScript.Ast;
 
 import HobbyScript.Eval.EnvironmentCallBack;
+import HobbyScript.Token.HobbyToken;
 
 import java.util.List;
 
@@ -13,7 +14,7 @@ import java.util.List;
 public class PrimaryExpr extends AstList {
 
     public PrimaryExpr(List<AstNode> children) {
-        super(children);
+        super(children, HobbyToken.PRIMARY);
     }
 
     public static AstNode create(List<AstNode> c) {

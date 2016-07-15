@@ -2,6 +2,7 @@ package HobbyScript.Ast;
 
 import HobbyScript.Eval.EnvironmentCallBack;
 import HobbyScript.Eval.ScriptEval;
+import HobbyScript.Token.HobbyToken;
 
 import java.util.List;
 
@@ -13,7 +14,7 @@ import java.util.List;
  */
 public class NegativeExpr extends AstList {
     public NegativeExpr(List<AstNode> children) {
-        super(children);
+        super(children, HobbyToken.NEGATIVE);
     }
 
     public AstNode operand() {

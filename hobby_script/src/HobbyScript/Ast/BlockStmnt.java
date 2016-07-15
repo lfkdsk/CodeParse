@@ -2,6 +2,7 @@ package HobbyScript.Ast;
 
 import HobbyScript.Eval.EnvironmentCallBack;
 import HobbyScript.Eval.ScriptEval;
+import HobbyScript.Token.HobbyToken;
 
 import java.util.List;
 
@@ -14,7 +15,7 @@ import java.util.List;
 public class BlockStmnt extends AstList {
 
     public BlockStmnt(List<AstNode> children) {
-        super(children);
+        super(children, HobbyToken.BLOCK);
     }
 
     @Override

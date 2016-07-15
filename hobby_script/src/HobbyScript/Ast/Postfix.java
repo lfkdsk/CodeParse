@@ -1,5 +1,7 @@
 package HobbyScript.Ast;
 
+import HobbyScript.Token.HobbyToken;
+
 import java.util.List;
 
 /**
@@ -10,6 +12,6 @@ import java.util.List;
  */
 public class Postfix extends AstList {
     public Postfix(List<AstNode> children) {
-        super(children);
+        super(children, HobbyToken.POSTFIX);
     }
 }
