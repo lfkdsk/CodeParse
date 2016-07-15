@@ -475,7 +475,7 @@ public class BnfParser {
                         if (results.size() == 1) {
                             return results.get(0);
                         } else {
-                            return new AstList(results);
+                            return new AstList(results, HobbyToken.LIST);
                         }
                     }
                 };
