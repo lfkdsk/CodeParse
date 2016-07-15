@@ -139,7 +139,12 @@ public class ScriptEval {
 
         // 判断都是数值
         if (isNumber(left) && isNumber(right)) {
-            return computeNumber(left, right, op, expr);
+            Object temp = computeNumber(left, right, op, expr);
+            if (isNum(left) && isNum(right) && isNumber(temp)) {
+                return ((Number) temp).intValue();
+            } else {
+                return temp;
+            }
         }
 
         if (op.equals(ScriptParser.ADD) && (left instanceof String)) {
