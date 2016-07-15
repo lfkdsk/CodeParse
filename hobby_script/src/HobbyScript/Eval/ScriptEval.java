@@ -13,6 +13,7 @@ import java.util.Iterator;
 
 /**
  * ScriptEval 表达式求值
+ * 只包含基础代码段的求值
  *
  * @author liufengkai
  *         Created by liufengkai on 16/7/14.
@@ -134,12 +135,23 @@ public class ScriptEval {
         }
     }
 
+    /**
+     * 两个操作数之间的计算
+     *
+     * @param left
+     * @param right
+     * @param op
+     * @param expr
+     * @return
+     */
     private static Object computeOp(Object left, Object right,
                                     String op, BinaryExpr expr) {
 
         // 判断都是数值
         if (isNumber(left) && isNumber(right)) {
             Object temp = computeNumber(left, right, op, expr);
+
+            // 如果都是int类型就不要进行数据转换了
             if (isNum(left) && isNum(right) && isNumber(temp)) {
                 return ((Number) temp).intValue();
             } else {
@@ -162,6 +174,17 @@ public class ScriptEval {
         throw new HobbyException("bad type when eval with op", expr);
     }
 
+    /**
+     * 计算两个数值的问题
+     * 这里使用了并不优雅的方式进行两种数据类型的
+     * 的计算
+     *
+     * @param left  左值
+     * @param right 右值
+     * @param op    符号
+     * @param expr  expr
+     * @return value
+     */
     private static Object computeNumber(Object left, Object right,
                                         String op, BinaryExpr expr) {
         // 此时 left 至少肯定是数字了
@@ -228,10 +251,17 @@ public class ScriptEval {
     // Block 节点
     ///////////////////////////////////////////////////////////////////////////
 
+    /**
+     * Block 计算
+     *
+     * @param env  table
+     * @param expr expr
+     * @return value
+     */
     public static Object blockEval(EnvironmentCallBack env, BlockStmnt expr) {
         Object result = 0;
         Iterator<AstNode> iterator = expr.iterator();
-
+        // 一句一句运行
         while (iterator.hasNext()) {
             AstNode node = iterator.next();
             if (!(node instanceof NullStmt)) {
@@ -246,9 +276,17 @@ public class ScriptEval {
     // If 节点
     ///////////////////////////////////////////////////////////////////////////
 
+    /**
+     * If 求值
+     *
+     * @param env     字符表
+     * @param ifStmnt if
+     * @return value
+     */
     public static Object ifEval(EnvironmentCallBack env, IfStmnt ifStmnt) {
         Object c = ifStmnt.condition().eval(env);
 
+        // 判断几种通过的方式 true / value > 0 ( 和C类似的设定 )
         if (c instanceof Boolean && ((Boolean) c).booleanValue() == Boolean.TRUE) {
             return ifStmnt.thenBlock().eval(env);
         } else if (c instanceof Integer && (Integer) c > 0) {
@@ -269,6 +307,13 @@ public class ScriptEval {
     // While节点
     ///////////////////////////////////////////////////////////////////////////
 
+    /**
+     * While求值
+     *
+     * @param env       字符表
+     * @param whileStmt while
+     * @return value
+     */
     public static Object whileEval(EnvironmentCallBack env,
                                    WhileStmt whileStmt) {
         Object result = 0;
@@ -276,6 +321,7 @@ public class ScriptEval {
         for (; ; ) {
             Object c = whileStmt.condition().eval(env);
 
+            // 判断几种通过的方式 true / value > 0 ( 和C类似的设定 )
             if (c instanceof Boolean &&
                     ((Boolean) c).booleanValue() == Boolean.TRUE) {
                 result = whileStmt.body().eval(env);

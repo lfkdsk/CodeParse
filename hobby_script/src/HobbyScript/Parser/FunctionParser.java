@@ -4,10 +4,12 @@ import HobbyScript.Ast.Arguments;
 import HobbyScript.Ast.FuncStmt;
 import HobbyScript.Ast.ParameterList;
 import HobbyScript.Ast.PrimaryExpr;
-import HobbyScript.Utils.BnfParser;
 
 /**
- * Created by liufengkai on 16/7/15.
+ * 修改文法增加函数调用
+ *
+ * @author liufengkai
+ *         Created by liufengkai on 16/7/15.
  */
 public class FunctionParser extends ScriptParser {
     BnfParser param = BnfParser.rule().identifier(reserved);

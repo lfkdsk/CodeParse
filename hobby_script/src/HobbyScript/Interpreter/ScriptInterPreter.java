@@ -12,7 +12,10 @@ import HobbyScript.Token.HobbyToken;
 import HobbyScript.Utils.logger.Logger;
 
 /**
- * Created by liufengkai on 16/7/15.
+ * Script解释器
+ *
+ * @author liufengkai
+ *         Created by liufengkai on 16/7/15.
  */
 public class ScriptInterpreter {
     public static void run(ScriptParser parser, EnvironmentCallBack env) throws ParseException {

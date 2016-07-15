@@ -8,7 +8,6 @@ import HobbyScript.Literal.IdLiteral;
 import HobbyScript.Literal.NumberLiteral;
 import HobbyScript.Literal.StringLiteral;
 import HobbyScript.Token.HobbyToken;
-import HobbyScript.Utils.BnfParser;
 import HobbyScript.Utils.logger.Logger;
 
 import java.util.HashSet;

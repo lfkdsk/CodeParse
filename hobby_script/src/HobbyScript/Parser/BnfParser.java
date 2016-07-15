@@ -1,4 +1,4 @@
-package HobbyScript.Utils;
+package HobbyScript.Parser;
 
 import HobbyScript.Exception.ParseException;
 import HobbyScript.Lexer.HobbyLexer;
