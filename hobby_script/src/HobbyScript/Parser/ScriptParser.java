@@ -8,6 +8,7 @@ import HobbyScript.Literal.IdLiteral;
 import HobbyScript.Literal.NumberLiteral;
 import HobbyScript.Literal.StringLiteral;
 import HobbyScript.Token.HobbyToken;
+import HobbyScript.Utils.PrintUtils;
 import HobbyScript.Utils.logger.Logger;
 
 import java.util.HashSet;
@@ -153,11 +154,15 @@ public class ScriptParser {
         while (lexer.peek(0) != HobbyToken.EOF) {
             AstNode node = parser.parse(lexer);
 
-//            Logger.v(" => tree height " + AstNode.treeHeight(node));
+//            Logger.v(" => tree height " + PrintUtils.treeHeight(node));
 //
 //            Logger.e(" => tree print ");
 //
-//            AstNode.printAstTree(node, AstNode.treeHeight(node));
+//            PrintUtils.printAstTree(node, PrintUtils.treeHeight(node));
+
+            if (!(node instanceof NullStmt)){
+                PrintUtils.printAstTreeGraph(node);
+            }
 
             Logger.v(" => " + node.toString() + "  ");
         }

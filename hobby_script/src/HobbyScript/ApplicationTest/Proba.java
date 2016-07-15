@@ -3,9 +3,10 @@ package HobbyScript.ApplicationTest;
 import HobbyScript.Utils.GraphViz;
 
 import java.io.File;
+import java.io.IOException;
 
 public class Proba {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Proba p = new Proba();
         p.start();
 //		p.start2();
@@ -15,7 +16,7 @@ public class Proba {
      * Construct a DOT graph in memory, convert it
      * to image and store the image in the file system.
      */
-    private void start() {
+    private void start() throws IOException {
         GraphViz gv = new GraphViz();
         gv.addln(gv.start_graph());
         gv.addln("A -> B;");
@@ -23,7 +24,7 @@ public class Proba {
         gv.addln(gv.end_graph());
         System.out.println(gv.getDotSource());
 
-        gv.increaseDpi();   // 106 dpi
+//        gv.increaseDpi();   // 106 dpi
 
         String type = "gif";
         //      String type = "dot";
@@ -41,7 +42,12 @@ public class Proba {
         // 		String repesentationType= "twopi";
         // 		String repesentationType= "circo";
 
-        File out = new File("/tmp/out" + gv.getImageDpi() + "." + type);   // Linux
+        File out = new File("src/HobbyScript/Tmp/" + gv.getImageDpi() + "." + type);   // Linux
+//        if (!out.exists()){
+//            out.mkdirs();
+
+            System.out.println(out.getAbsoluteFile());
+//        }
         //      File out = new File("c:/eclipse.ws/graphviz-java-api/out." + type);    // Windows
         gv.writeGraphToFile(gv.getGraph(gv.getDotSource(), type, repesentationType), out);
     }
@@ -76,7 +82,7 @@ public class Proba {
         // 		String repesentationType= "twopi";
         //		String repesentationType= "circo";
 
-        File out = new File("/tmp/simple." + type);   // Linux
+        File out = new File("./tmp/simple." + type);   // Linux
         //	   File out = new File("c:/eclipse.ws/graphviz-java-api/tmp/simple." + type);   // Windows
         gv.writeGraphToFile(gv.getGraph(gv.getDotSource(), type, repesentationType), out);
     }
