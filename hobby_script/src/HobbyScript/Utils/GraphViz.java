@@ -170,7 +170,7 @@ public class GraphViz {
      * Adds a string to the graph's source (with newline).
      */
     public void addln(String line) {
-        this.graph.append(line + "\n");
+        this.graph.append(line).append("\n");
     }
 
     /**
@@ -284,11 +284,9 @@ public class GraphViz {
             img_stream = new byte[in.available()];
             in.read(img_stream);
             // Close it if we need to
-            if (in != null) {
-                in.close();
-            }
+            in.close();
 
-            if (img.delete() == false) {
+            if (!img.delete()) {
                 System.err.println("Warning: " + img.getAbsolutePath() + " could not be deleted!");
             }
         } catch (java.io.IOException ioe) {

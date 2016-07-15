@@ -60,7 +60,11 @@ public class PrintUtils {
 
     public static void printAstTreeGraph(AstNode node) {
         gv = new GraphViz();
+
+
         gv.addln(gv.start_graph());
+
+        gv.addln("label = \"ASTTree\";");
 
         printAstTree(node);
 
