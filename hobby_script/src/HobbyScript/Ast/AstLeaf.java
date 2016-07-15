@@ -2,6 +2,7 @@ package HobbyScript.Ast;
 
 import HobbyScript.Eval.EnvironmentCallBack;
 import HobbyScript.Exception.HobbyException;
+import HobbyScript.Parser.ScriptParser;
 import HobbyScript.Token.HobbyToken;
 
 import java.util.ArrayList;

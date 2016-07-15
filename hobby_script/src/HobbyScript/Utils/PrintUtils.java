@@ -87,12 +87,16 @@ public class PrintUtils {
         if (node == null) return;
         Iterator<AstNode> t = node.children();
         int parentValue = targetValue;
+        int childIndex = 0;
         while (t.hasNext()) {
             AstNode child = t.next();
-            String tem = node.getClass().getSimpleName() + parentValue + " -> " +
-                    child.getClass().getSimpleName() + (++targetValue) + ";";
+            String tem = node.getClass().getSimpleName() + parentValue + " " + " -> " +
+                    child.getClass().getSimpleName() + (++targetValue);
+
+            tem += " [ label = \" " + node.child(childIndex).toString() + "\" ] ;";
 
             gv.addln(tem);
+            childIndex++;
 
             printAstTree(child);
         }
