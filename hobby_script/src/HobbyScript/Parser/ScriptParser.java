@@ -26,6 +26,8 @@ public class ScriptParser {
 
     public static final String WHILE_TOKEN = "while";
 
+    public static final String FUNCTION_TOKEN = "fuck";
+
     public static final String SEMICOLON_TOKEN = ";";
 
     public static final String LP_TOKEN = "(", RP_TOKEN = ")";
@@ -42,6 +44,8 @@ public class ScriptParser {
 
     public static final String ADD = "+", SUB = "-",
             MUL = "*", DIV = "/", MOD = "%";
+
+    public static final String COMMA = ",";
     /**
      * 保留关键字
      */

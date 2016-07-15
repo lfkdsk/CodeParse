@@ -220,7 +220,6 @@ public class ScriptEval {
         return v instanceof Integer;
     }
 
-
     private static boolean isFloat(Object v) {
         return v instanceof Double;
     }
