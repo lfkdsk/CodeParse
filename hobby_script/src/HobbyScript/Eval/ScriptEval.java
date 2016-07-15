@@ -272,7 +272,8 @@ public class ScriptEval {
         for (; ; ) {
             Object c = whileStmt.condition().eval(env);
 
-            if (c instanceof Boolean && ((Boolean) c).booleanValue() == Boolean.TRUE) {
+            if (c instanceof Boolean &&
+                    ((Boolean) c).booleanValue() == Boolean.TRUE) {
                 result = whileStmt.body().eval(env);
             } else if (c instanceof Integer && (Integer) c > 0) {
                 result = whileStmt.body().eval(env);
