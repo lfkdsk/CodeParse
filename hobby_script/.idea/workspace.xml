@@ -2,22 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="af539864-56bd-43a4-828b-9c8a84937756" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/HobbyScript/ApplicationTest/Proba.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HobbyScript/Ast/Arguments.java" afterPath="$PROJECT_DIR$/src/HobbyScript/Ast/Arguments.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HobbyScript/Ast/AstLeaf.java" afterPath="$PROJECT_DIR$/src/HobbyScript/Ast/AstLeaf.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HobbyScript/Ast/AstList.java" afterPath="$PROJECT_DIR$/src/HobbyScript/Ast/AstList.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HobbyScript/Ast/AstNode.java" afterPath="$PROJECT_DIR$/src/HobbyScript/Ast/AstNode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HobbyScript/Ast/BinaryExpr.java" afterPath="$PROJECT_DIR$/src/HobbyScript/Ast/BinaryExpr.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HobbyScript/Ast/BlockStmnt.java" afterPath="$PROJECT_DIR$/src/HobbyScript/Ast/BlockStmnt.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HobbyScript/Ast/FuncStmt.java" afterPath="$PROJECT_DIR$/src/HobbyScript/Ast/FuncStmt.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HobbyScript/Ast/IfStmnt.java" afterPath="$PROJECT_DIR$/src/HobbyScript/Ast/IfStmnt.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HobbyScript/Ast/NegativeExpr.java" afterPath="$PROJECT_DIR$/src/HobbyScript/Ast/NegativeExpr.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HobbyScript/Ast/NullStmt.java" afterPath="$PROJECT_DIR$/src/HobbyScript/Ast/NullStmt.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HobbyScript/Ast/ParameterList.java" afterPath="$PROJECT_DIR$/src/HobbyScript/Ast/ParameterList.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HobbyScript/Ast/Postfix.java" afterPath="$PROJECT_DIR$/src/HobbyScript/Ast/Postfix.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HobbyScript/Ast/PrimaryExpr.java" afterPath="$PROJECT_DIR$/src/HobbyScript/Ast/PrimaryExpr.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HobbyScript/Ast/WhileStmt.java" afterPath="$PROJECT_DIR$/src/HobbyScript/Ast/WhileStmt.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HobbyScript/Token/HobbyToken.java" afterPath="$PROJECT_DIR$/src/HobbyScript/Token/HobbyToken.java" />
     </list>
     <list id="fdd1a53f-466c-4c39-82cf-51e94d392ef2" name="New changelist" comment="">
       <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/hobby_script/HobbyScript/Token/HobbyKeyCode.class" afterPath="" />
@@ -1199,7 +1185,7 @@
       <workItem from="1468400181562" duration="1014000" />
       <workItem from="1468405916408" duration="2376000" />
       <workItem from="1468414608376" duration="5633000" />
-      <workItem from="1468427591637" duration="37199000" />
+      <workItem from="1468427591637" duration="37293000" />
     </task>
     <task id="LOCAL-00001" summary="init hobbyscript">
       <created>1468219623765</created>
@@ -1471,11 +1457,17 @@
       <option name="project" value="LOCAL" />
       <updated>1468571053735</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="UPDATE TAG">
+      <created>1468571959030</created>
+      <option name="number" value="00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1468571959030</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="99682000" />
+    <option name="totallyTimeSpent" value="99776000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1488,7 +1480,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32859176" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1502,7 +1494,7 @@
       <window_info id="Leiningen" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14378029" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14378029" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Tail" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32716927" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1560,7 +1552,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="no  bug until now" />
     <MESSAGE value="init parser 我一定要努力的写完它" />
     <MESSAGE value="update BnfParser.java" />
     <MESSAGE value="update stmnt" />
@@ -1585,7 +1576,8 @@
     <MESSAGE value="update graph" />
     <MESSAGE value="update" />
     <MESSAGE value="update new graph" />
-    <option name="LAST_COMMIT_MESSAGE" value="update new graph" />
+    <MESSAGE value="UPDATE TAG" />
+    <option name="LAST_COMMIT_MESSAGE" value="UPDATE TAG" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1792,16 +1784,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.46666667">
           <caret line="30" column="37" selection-start-line="30" selection-start-column="37" selection-end-line="30" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/HobbyScript/ApplicationTest/Proba.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23076923">
-          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
