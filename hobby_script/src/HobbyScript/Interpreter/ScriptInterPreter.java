@@ -9,6 +9,7 @@ import HobbyScript.Exception.ParseException;
 import HobbyScript.Lexer.HobbyLexer;
 import HobbyScript.Parser.ScriptParser;
 import HobbyScript.Token.HobbyToken;
+import HobbyScript.Utils.PrintUtils;
 import HobbyScript.Utils.logger.Logger;
 
 /**
@@ -29,7 +30,7 @@ public class ScriptInterpreter {
             if (!(node instanceof NullStmt)) {
                 Object r = node.eval(env);
                 Logger.v(" => " + r);
-//                PrintUtils.printAstTreeGraph(node);
+                PrintUtils.printAstTreeGraph(node);
             }
         }
     }
