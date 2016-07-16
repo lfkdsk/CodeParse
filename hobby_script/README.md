@@ -24,4 +24,26 @@
 
   类似这样的代码。
 
+* 2016.7.16 增加了for语句，break语句，增加了函数调用。
+
+  ```java
+  fuck fib(n){
+       if (n < 2){
+           n;
+       }else{
+           fib(n - 1) + fib(n - 2);
+       }
+  }
+
+  fib(10);
+  ```
+
+  支持诸如此类的代码。
+
+
+​	昨天的时候，我写了一个小的彩蛋，使用`GraphViz`的JavaAPI去绘制运行代码的AST树，下面有一些示例，其余保存在`src/HobbyScript/Tmp/`中。
+
+​	![for](src/HobbyScript/Tmp/1468676787478.gif)
+
+![fib](src/HobbyScript/Tmp/1468654574802.gif)
 
