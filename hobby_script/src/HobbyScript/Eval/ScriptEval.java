@@ -340,4 +340,36 @@ public class ScriptEval {
             }
         }
     }
+
+    ///////////////////////////////////////////////////////////////////////////
+    // for 循环
+    ///////////////////////////////////////////////////////////////////////////
+
+    public static Object forEval(EnvironmentCallBack env,
+                                 LocalEnvironment newEnv,
+                                 ForStmt stmt) {
+        Object result = 0;
+
+        newEnv.setParent(env);
+
+        stmt.initial().eval(newEnv);
+
+        for (; ; ) {
+            Object c = stmt.condition().eval(newEnv);
+
+            // 判断几种通过的方式 true / value > 0 ( 和C类似的设定 )
+            if (c instanceof Boolean &&
+                    ((Boolean) c).booleanValue() == Boolean.TRUE) {
+                result = stmt.body().eval(newEnv);
+            } else if (c instanceof Integer && (Integer) c > 0) {
+                result = stmt.body().eval(newEnv);
+            } else if (c instanceof Double && (Double) c > 0) {
+                result = stmt.body().eval(newEnv);
+            } else {
+                return result;
+            }
+
+            stmt.step().eval(newEnv);
+        }
+    }
 }

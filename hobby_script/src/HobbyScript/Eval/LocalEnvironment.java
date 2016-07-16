@@ -60,6 +60,8 @@ public class LocalEnvironment implements LocalEnvironmentCallBack {
             return null;
         } else {
             // 向上递归查找
+            // 排除基础类型的困扰
+            if (parentEnv instanceof BasicEnvironment) return null;
             return ((LocalEnvironment) parentEnv).foundEnv(name);
         }
     }

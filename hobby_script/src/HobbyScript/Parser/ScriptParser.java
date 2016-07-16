@@ -8,7 +8,6 @@ import HobbyScript.Literal.IdLiteral;
 import HobbyScript.Literal.NumberLiteral;
 import HobbyScript.Literal.StringLiteral;
 import HobbyScript.Token.HobbyToken;
-import HobbyScript.Utils.PrintUtils;
 import HobbyScript.Utils.logger.Logger;
 
 import java.util.HashSet;
@@ -46,6 +45,9 @@ public class ScriptParser {
             MUL = "*", DIV = "/", MOD = "%";
 
     public static final String COMMA = ",";
+
+    public static final String FOR_TOKEN = "for";
+
     /**
      * 保留关键字
      */
@@ -104,12 +106,24 @@ public class ScriptParser {
     // statement = if (expr) block else block | while (expr) block
     ///////////////////////////////////////////////////////////////////////////
 
+    BnfParser ifStatement =
+            BnfParser.rule(IfStmnt.class).sep(IF_TOKEN).sep(LP_TOKEN)
+                    .ast(expr).sep(RP_TOKEN).ast(block)
+                    .option(BnfParser.rule().sep(ELSE_TOKEN).ast(block));
+
+    BnfParser whileStatement =
+            BnfParser.rule(WhileStmt.class).sep(WHILE_TOKEN).sep(LP_TOKEN)
+                    .ast(expr).sep(RP_TOKEN).ast(block);
+
+    BnfParser forStatement =
+            BnfParser.rule(ForStmt.class).sep(FOR_TOKEN)
+                    .sep(LP_TOKEN).option(expr).sep(SEMICOLON_TOKEN)
+                    .option(expr).sep(SEMICOLON_TOKEN).option(expr)
+                    .sep(RP_TOKEN).ast(block);
+
+
     BnfParser statement = statement0
-            .or(BnfParser.rule(IfStmnt.class).sep(IF_TOKEN).sep(LP_TOKEN)
-                            .ast(expr).sep(RP_TOKEN).ast(block)
-                            .option(BnfParser.rule().sep(ELSE_TOKEN).ast(block)),
-                    BnfParser.rule(WhileStmt.class).sep(WHILE_TOKEN).sep(LP_TOKEN)
-                            .ast(expr).sep(RP_TOKEN).ast(block), simple);
+            .or(ifStatement, whileStatement, forStatement, simple);
 
     ///////////////////////////////////////////////////////////////////////////
     // program = statement | (; , end of line)
@@ -160,9 +174,9 @@ public class ScriptParser {
 //
 //            PrintUtils.printAstTree(node, PrintUtils.treeHeight(node));
 
-            if (!(node instanceof NullStmt)){
-                PrintUtils.printAstTreeGraph(node);
-            }
+//            if (!(node instanceof NullStmt)) {
+//                PrintUtils.printAstTreeGraph(node);
+//            }
 
             Logger.v(" => " + node.toString() + "  ");
         }
