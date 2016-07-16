@@ -264,6 +264,12 @@ public class ScriptEval {
         // 一句一句运行
         while (iterator.hasNext()) {
             AstNode node = iterator.next();
+
+            if (node instanceof BreakStmt) {
+                result = ((BreakStmt) node).setResult(result);
+                break;
+            }
+
             if (!(node instanceof NullStmt)) {
                 result = node.eval(env);
             }
@@ -291,12 +297,12 @@ public class ScriptEval {
         Object c = ifStmnt.condition().eval(env);
 
         // 判断几种通过的方式 true / value > 0 ( 和C类似的设定 )
-        if (c instanceof Boolean && ((Boolean) c).booleanValue() == Boolean.TRUE) {
+        if ((c instanceof Boolean && ((Boolean) c).booleanValue() == Boolean.TRUE)
+                || (c instanceof Integer && (Integer) c > 0)
+                || (c instanceof Double && (Double) c > 0)) {
+
             return ifStmnt.thenBlock().eval(newEnv);
-        } else if (c instanceof Integer && (Integer) c > 0) {
-            return ifStmnt.thenBlock().eval(newEnv);
-        } else if (c instanceof Double && (Double) c > 0) {
-            return ifStmnt.thenBlock().eval(newEnv);
+
         } else {
             AstNode node = ifStmnt.elseBlock();
             if (node == null) {
@@ -322,19 +328,22 @@ public class ScriptEval {
                                    LocalEnvironment newEnv,
                                    WhileStmt whileStmt) {
         Object result = 0;
-
         newEnv.setParent(env);
 
         for (; ; ) {
             Object c = whileStmt.condition().eval(newEnv);
             // 判断几种通过的方式 true / value > 0 ( 和C类似的设定 )
-            if (c instanceof Boolean &&
-                    ((Boolean) c).booleanValue() == Boolean.TRUE) {
-                result = whileStmt.body().eval(newEnv);
-            } else if (c instanceof Integer && (Integer) c > 0) {
-                result = whileStmt.body().eval(newEnv);
-            } else if (c instanceof Double && (Double) c > 0) {
-                result = whileStmt.body().eval(newEnv);
+
+            if ((c instanceof Boolean &&
+                    ((Boolean) c).booleanValue() == Boolean.TRUE)
+                    || (c instanceof Integer && (Integer) c > 0)
+                    || (c instanceof Double && (Double) c > 0)) {
+                Object temp = whileStmt.body().eval(newEnv);
+
+                if (temp instanceof BreakStmt) {
+                    result = ((BreakStmt) temp).getResult();
+                    return result;
+                }
             } else {
                 return result;
             }
@@ -347,29 +356,37 @@ public class ScriptEval {
 
     public static Object forEval(EnvironmentCallBack env,
                                  LocalEnvironment newEnv,
-                                 ForStmt stmt) {
+                                 ForStmt forStmt) {
         Object result = 0;
 
         newEnv.setParent(env);
 
-        stmt.initial().eval(newEnv);
+        forStmt.initial().eval(newEnv);
 
         for (; ; ) {
-            Object c = stmt.condition().eval(newEnv);
+            Object c = forStmt.condition().eval(newEnv);
+            // cache for循环的条件缺省
+            if (c != null) {
+                // 判断几种通过的方式 true / value > 0 ( 和C类似的设定 )
+                if ((c instanceof Boolean &&
+                        ((Boolean) c).booleanValue() == Boolean.TRUE)
+                        || (c instanceof Integer && (Integer) c > 0)
+                        || (c instanceof Double && (Double) c > 0)) {
+                    Object temp = forStmt.body().eval(newEnv);
 
-            // 判断几种通过的方式 true / value > 0 ( 和C类似的设定 )
-            if (c instanceof Boolean &&
-                    ((Boolean) c).booleanValue() == Boolean.TRUE) {
-                result = stmt.body().eval(newEnv);
-            } else if (c instanceof Integer && (Integer) c > 0) {
-                result = stmt.body().eval(newEnv);
-            } else if (c instanceof Double && (Double) c > 0) {
-                result = stmt.body().eval(newEnv);
+                    if (temp instanceof BreakStmt) {
+                        result = ((BreakStmt) temp).getResult();
+                        return result;
+                    }
+
+                } else {
+                    return result;
+                }
             } else {
-                return result;
+                result = forStmt.body().eval(newEnv);
             }
 
-            stmt.step().eval(newEnv);
+            forStmt.step().eval(newEnv);
         }
     }
 }

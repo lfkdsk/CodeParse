@@ -16,6 +16,6 @@ public class NullStmt extends AstList {
 
     @Override
     public Object eval(EnvironmentCallBack env) {
-        return super.eval(env);
+        return null;
     }
 }

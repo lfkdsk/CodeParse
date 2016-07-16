@@ -48,6 +48,8 @@ public class ScriptParser {
 
     public static final String FOR_TOKEN = "for";
 
+    public static final String BREAK_TOKEN = "break";
+
     /**
      * 保留关键字
      */
@@ -88,19 +90,21 @@ public class ScriptParser {
     BnfParser statement0 = BnfParser.rule();
 
     ///////////////////////////////////////////////////////////////////////////
+    // simple = expr ;
+    ///////////////////////////////////////////////////////////////////////////
+
+    BnfParser simple = BnfParser.rule().ast(expr).sep(SEMICOLON_TOKEN);
+
+    ///////////////////////////////////////////////////////////////////////////
     // block = { statement; * }
     ///////////////////////////////////////////////////////////////////////////
 
     BnfParser block = BnfParser.rule(BlockStmnt.class)
             .sep(LC_TOKEN).option(statement0)
-            .repeat(BnfParser.rule().sep(SEMICOLON_TOKEN, HobbyToken.EOL).option(statement0))
+            .repeat(BnfParser.rule().sep(SEMICOLON_TOKEN, HobbyToken.EOL)
+                    .option(statement0))
             .sep(RC_TOKEN);
 
-    ///////////////////////////////////////////////////////////////////////////
-    // simple = expr ;
-    ///////////////////////////////////////////////////////////////////////////
-
-    BnfParser simple = BnfParser.rule(PrimaryExpr.class).ast(expr).sep(SEMICOLON_TOKEN);
 
     ///////////////////////////////////////////////////////////////////////////
     // statement = if (expr) block else block | while (expr) block
@@ -117,13 +121,17 @@ public class ScriptParser {
 
     BnfParser forStatement =
             BnfParser.rule(ForStmt.class).sep(FOR_TOKEN)
-                    .sep(LP_TOKEN).option(expr).sep(SEMICOLON_TOKEN)
-                    .option(expr).sep(SEMICOLON_TOKEN).option(expr)
+                    .sep(LP_TOKEN)
+                    .or(expr, BnfParser.rule(NullStmt.class)).sep(SEMICOLON_TOKEN)
+                    .or(expr, BnfParser.rule(NullStmt.class)).sep(SEMICOLON_TOKEN)
+                    .or(expr, BnfParser.rule(NullStmt.class))
                     .sep(RP_TOKEN).ast(block);
 
+    BnfParser breakStatement = BnfParser.rule(BreakStmt.class)
+            .sep(BREAK_TOKEN);
 
     BnfParser statement = statement0
-            .or(ifStatement, whileStatement, forStatement, simple);
+            .or(ifStatement, whileStatement, forStatement, breakStatement, simple);
 
     ///////////////////////////////////////////////////////////////////////////
     // program = statement | (; , end of line)
@@ -140,6 +148,7 @@ public class ScriptParser {
         reserved.add(SEMICOLON_TOKEN);
         reserved.add(RC_TOKEN);
         reserved.add(RP_TOKEN);
+        reserved.add(BREAK_TOKEN);
         reserved.add(HobbyToken.EOL);
 
         operators.add(ASSIGN_TOKEN, 1, BnfParser.Operators.RIGHT);
