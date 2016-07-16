@@ -1,9 +1,11 @@
 package HobbyScript.Parser;
 
-import HobbyScript.Ast.Arguments;
-import HobbyScript.Ast.FuncStmt;
-import HobbyScript.Ast.ParameterList;
-import HobbyScript.Ast.PrimaryExpr;
+import HobbyScript.ApplicationTest.CodeDialog;
+import HobbyScript.Ast.*;
+import HobbyScript.Exception.ParseException;
+import HobbyScript.Lexer.HobbyLexer;
+import HobbyScript.Token.HobbyToken;
+import HobbyScript.Utils.logger.Logger;
 
 /**
  * 修改文法增加函数调用
@@ -32,12 +34,31 @@ public class FunctionParser extends ScriptParser {
 
 
     public FunctionParser() {
-        primary.repeat(postfix);
 
         // 更换 simple 语句
-        simple = BnfParser.rule(PrimaryExpr.class).ast(expr).option(args);
+        simple = BnfParser.rule(PrimaryExpr.class).ast(expr)
+                .option(args).sep(SEMICOLON_TOKEN);
+
+        primary.repeat(postfix);
 
         program.insertChoice(def);
     }
 
+
+    public static void main(String[] args) throws ParseException {
+        HobbyLexer lexer = new HobbyLexer(new CodeDialog());
+
+        Logger.init("FunctionParser");
+
+        FunctionParser parser = new FunctionParser();
+
+
+        while (lexer.peek(0) != HobbyToken.EOF) {
+            AstNode node = parser.parse(lexer);
+//            if (!(node instanceof NullStmt)){
+//                PrintUtils.printAstTreeGraph(node);
+//            }
+            Logger.v(" => " + node.toString() + "  ");
+        }
+    }
 }

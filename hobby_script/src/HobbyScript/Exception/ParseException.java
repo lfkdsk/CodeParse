@@ -17,7 +17,7 @@ public class ParseException extends Exception {
     }
 
     public ParseException(String msg, HobbyToken token) {
-        super("syntax error around" + location(token) + " . " + msg);
+        super("syntax error around " + location(token) + " . " + msg);
     }
 
     /**

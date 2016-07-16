@@ -1,11 +1,13 @@
 package HobbyScript.Ast;
 
+import HobbyScript.Eval.EnvironmentCallBack;
+import HobbyScript.Eval.FunctionEval;
 import HobbyScript.Token.HobbyToken;
 
 import java.util.List;
 
 /**
- * 函数
+ * 函数定义
  *
  * @author liufengkai
  *         Created by liufengkai on 16/7/15.
@@ -30,5 +32,10 @@ public class FuncStmt extends AstList {
     public String toString() {
         return "(func " + name() + " " + parameters() + " "
                 + body() + " )";
+    }
+
+    @Override
+    public Object eval(EnvironmentCallBack env) {
+        return FunctionEval.functionEval(env, this);
     }
 }

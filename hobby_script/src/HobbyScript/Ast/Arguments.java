@@ -1,5 +1,8 @@
 package HobbyScript.Ast;
 
+import HobbyScript.Eval.EnvironmentCallBack;
+import HobbyScript.Eval.FunctionEval;
+
 import java.util.List;
 
 /**
@@ -11,6 +14,11 @@ import java.util.List;
 public class Arguments extends Postfix {
     public Arguments(List<AstNode> children) {
         super(children);
+    }
+
+    @Override
+    public Object eval(EnvironmentCallBack env, Object value) {
+        return FunctionEval.argumentsEval(env, this, value);
     }
 
 

@@ -1,6 +1,7 @@
 package HobbyScript.Ast;
 
 import HobbyScript.Eval.EnvironmentCallBack;
+import HobbyScript.Eval.FunctionEval;
 import HobbyScript.Token.HobbyToken;
 
 import java.util.List;
@@ -23,6 +24,6 @@ public class PrimaryExpr extends AstList {
 
     @Override
     public Object eval(EnvironmentCallBack env) {
-        return super.eval(env);
+        return FunctionEval.evalSubExpr(env, this, 0);
     }
 }
