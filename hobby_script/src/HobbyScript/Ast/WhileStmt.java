@@ -1,6 +1,7 @@
 package HobbyScript.Ast;
 
 import HobbyScript.Eval.EnvironmentCallBack;
+import HobbyScript.Eval.LocalEnvironment;
 import HobbyScript.Eval.ScriptEval;
 import HobbyScript.Token.HobbyToken;
 
@@ -31,6 +32,6 @@ public class WhileStmt extends AstList {
 
     @Override
     public Object eval(EnvironmentCallBack env) {
-        return ScriptEval.whileEval(env, this);
+        return ScriptEval.whileEval(env, new LocalEnvironment(), this);
     }
 }

@@ -283,22 +283,26 @@ public class ScriptEval {
      * @param ifStmnt if
      * @return value
      */
-    public static Object ifEval(EnvironmentCallBack env, IfStmnt ifStmnt) {
+    public static Object ifEval(EnvironmentCallBack env,
+                                LocalEnvironment newEnv,
+                                IfStmnt ifStmnt) {
+        newEnv.setParent(env);
+
         Object c = ifStmnt.condition().eval(env);
 
         // 判断几种通过的方式 true / value > 0 ( 和C类似的设定 )
         if (c instanceof Boolean && ((Boolean) c).booleanValue() == Boolean.TRUE) {
-            return ifStmnt.thenBlock().eval(env);
+            return ifStmnt.thenBlock().eval(newEnv);
         } else if (c instanceof Integer && (Integer) c > 0) {
-            return ifStmnt.thenBlock().eval(env);
+            return ifStmnt.thenBlock().eval(newEnv);
         } else if (c instanceof Double && (Double) c > 0) {
-            return ifStmnt.thenBlock().eval(env);
+            return ifStmnt.thenBlock().eval(newEnv);
         } else {
             AstNode node = ifStmnt.elseBlock();
             if (node == null) {
                 return 0;
             } else {
-                return node.eval(env);
+                return node.eval(newEnv);
             }
         }
     }
@@ -315,20 +319,22 @@ public class ScriptEval {
      * @return value
      */
     public static Object whileEval(EnvironmentCallBack env,
+                                   LocalEnvironment newEnv,
                                    WhileStmt whileStmt) {
         Object result = 0;
 
-        for (; ; ) {
-            Object c = whileStmt.condition().eval(env);
+        newEnv.setParent(env);
 
+        for (; ; ) {
+            Object c = whileStmt.condition().eval(newEnv);
             // 判断几种通过的方式 true / value > 0 ( 和C类似的设定 )
             if (c instanceof Boolean &&
                     ((Boolean) c).booleanValue() == Boolean.TRUE) {
-                result = whileStmt.body().eval(env);
+                result = whileStmt.body().eval(newEnv);
             } else if (c instanceof Integer && (Integer) c > 0) {
-                result = whileStmt.body().eval(env);
+                result = whileStmt.body().eval(newEnv);
             } else if (c instanceof Double && (Double) c > 0) {
-                result = whileStmt.body().eval(env);
+                result = whileStmt.body().eval(newEnv);
             } else {
                 return result;
             }

@@ -7,7 +7,10 @@ import HobbyScript.Token.HobbyToken;
 import java.util.List;
 
 /**
- * Created by liufengkai on 16/7/12.
+ * 处理语句
+ *
+ * @author liufengkai
+ *         Created by liufengkai on 16/7/12.
  */
 public class BinaryExpr extends AstList {
 
