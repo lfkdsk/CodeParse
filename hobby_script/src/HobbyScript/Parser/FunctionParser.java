@@ -55,9 +55,11 @@ public class FunctionParser extends ScriptParser {
 
         while (lexer.peek(0) != HobbyToken.EOF) {
             AstNode node = parser.parse(lexer);
+
 //            if (!(node instanceof NullStmt)){
 //                PrintUtils.printAstTreeGraph(node);
 //            }
+
             Logger.v(" => " + node.toString() + "  ");
         }
     }

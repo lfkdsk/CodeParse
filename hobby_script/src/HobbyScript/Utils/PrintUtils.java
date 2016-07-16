@@ -64,7 +64,7 @@ public class PrintUtils {
 
         gv.addln(gv.start_graph());
 
-        gv.addln("label = \"ASTTree\";");
+        gv.addln("label = \" HobbyHorseScript's ASTTree by lfkdsk \";");
 
         printAstTree(node);
 
