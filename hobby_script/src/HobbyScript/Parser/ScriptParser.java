@@ -105,19 +105,25 @@ public class ScriptParser {
                     .option(statement0))
             .sep(RC_TOKEN);
 
-
     ///////////////////////////////////////////////////////////////////////////
-    // statement = if (expr) block else block | while (expr) block
+    // if ( condition ) {} else {}
     ///////////////////////////////////////////////////////////////////////////
-
     BnfParser ifStatement =
             BnfParser.rule(IfStmnt.class).sep(IF_TOKEN).sep(LP_TOKEN)
                     .ast(expr).sep(RP_TOKEN).ast(block)
                     .option(BnfParser.rule().sep(ELSE_TOKEN).ast(block));
 
+    ///////////////////////////////////////////////////////////////////////////
+    // while ( condition ) {  }
+    ///////////////////////////////////////////////////////////////////////////
+
     BnfParser whileStatement =
             BnfParser.rule(WhileStmt.class).sep(WHILE_TOKEN).sep(LP_TOKEN)
                     .ast(expr).sep(RP_TOKEN).ast(block);
+
+    ///////////////////////////////////////////////////////////////////////////
+    // for (initial ; condition ; step)
+    ///////////////////////////////////////////////////////////////////////////
 
     BnfParser forStatement =
             BnfParser.rule(ForStmt.class).sep(FOR_TOKEN)
@@ -127,8 +133,16 @@ public class ScriptParser {
                     .or(expr, BnfParser.rule(NullStmt.class))
                     .sep(RP_TOKEN).ast(block);
 
+    ///////////////////////////////////////////////////////////////////////////
+    // break;
+    ///////////////////////////////////////////////////////////////////////////
+
     BnfParser breakStatement = BnfParser.rule(BreakStmt.class)
             .sep(BREAK_TOKEN);
+
+    ///////////////////////////////////////////////////////////////////////////
+    // statement = if (expr) block else block | while (expr) block
+    ///////////////////////////////////////////////////////////////////////////
 
     BnfParser statement = statement0
             .or(ifStatement, whileStatement, forStatement, breakStatement, simple);
