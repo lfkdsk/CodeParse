@@ -3,11 +3,17 @@ package HobbyScript.Eval;
 import java.util.HashMap;
 
 /**
- * Created by liufengkai on 16/7/16.
+ * 嵌套字符表
+ *
+ * @author liufengkai
+ *         Created by liufengkai on 16/7/16.
  */
-public class LocalEnvironment implements EnvironmentCallBack {
-    protected HashMap<String, Object> values;
+public class LocalEnvironment implements LocalEnvironmentCallBack {
 
+    protected HashMap<String, Object> values;
+    /**
+     * 外层符号表
+     */
     protected EnvironmentCallBack parentEnv;
 
     public LocalEnvironment() {
@@ -19,14 +25,15 @@ public class LocalEnvironment implements EnvironmentCallBack {
         this.values = new HashMap<>();
     }
 
-    public void setParentEnv(EnvironmentCallBack parentEnv) {
-        this.parentEnv = parentEnv;
-    }
-
-
     @Override
     public void put(String name, Object value) {
-        this.values.put(name, value);
+        EnvironmentCallBack env = foundEnv(name);
+
+        if (env == null) {
+            env = this;
+        }
+
+        ((LocalEnvironment) env).putLocal(name, value);
     }
 
     @Override
@@ -38,5 +45,27 @@ public class LocalEnvironment implements EnvironmentCallBack {
         } else {
             return value;
         }
+    }
+
+    @Override
+    public void setParent(EnvironmentCallBack env) {
+        this.parentEnv = env;
+    }
+
+    @Override
+    public EnvironmentCallBack foundEnv(String name) {
+        if (values.get(name) != null) {
+            return this;
+        } else if (parentEnv == null) {
+            return null;
+        } else {
+            // 向上递归查找
+            return ((LocalEnvironment) parentEnv).foundEnv(name);
+        }
+    }
+
+    @Override
+    public void putLocal(String key, Object value) {
+        this.values.put(key, value);
     }
 }

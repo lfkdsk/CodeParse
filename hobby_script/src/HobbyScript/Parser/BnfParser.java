@@ -1,15 +1,18 @@
 package HobbyScript.Parser;
 
-import HobbyScript.Exception.ParseException;
-import HobbyScript.Lexer.HobbyLexer;
 import HobbyScript.Ast.AstLeaf;
 import HobbyScript.Ast.AstList;
 import HobbyScript.Ast.AstNode;
+import HobbyScript.Exception.ParseException;
+import HobbyScript.Lexer.HobbyLexer;
 import HobbyScript.Token.HobbyToken;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
 
 /**
  * BnfParser 巴克斯范式解析引擎
@@ -463,6 +466,7 @@ public class BnfParser {
          * @param clazz 创建类
          * @return 工厂
          */
+
         protected static Factory getForAstList(Class<? extends AstNode> clazz) {
             Factory f = get(clazz, List.class);
 
