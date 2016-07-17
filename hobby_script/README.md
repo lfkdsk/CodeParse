@@ -27,7 +27,7 @@
 * 2016.7.16 增加了for语句，break语句，增加了函数调用。
 
   ```java
-  fuck fib(n){
+  function fib(n){
        if (n < 2){
            n;
        }else{
@@ -47,3 +47,8 @@
 
 ![fib](src/HobbyScript/Tmp/1468654574802.gif)
 
+* 2016.7.17 试着增加了一下闭包函数 现在有点混乱
+
+  修改了一下，目前是能用了。
+
+  ![closure](src/HobbyScript/Tmp/1468726947469.gif)
