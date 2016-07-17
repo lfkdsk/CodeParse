@@ -58,6 +58,11 @@ public class PrintUtils {
 
     private static int targetValue = 0;
 
+    /**
+     * 打印AST树
+     *
+     * @param node 任意root节点
+     */
     public static void printAstTreeGraph(AstNode node) {
         gv = new GraphViz();
 
@@ -83,6 +88,11 @@ public class PrintUtils {
         gv.writeGraphToFile(gv.getGraph(gv.getDotSource(), type, representationType), out);
     }
 
+    /**
+     * 添加输出信息
+     *
+     * @param node 任意root节点
+     */
     public static void printAstTree(AstNode node) {
         if (node == null) return;
         Iterator<AstNode> t = node.children();
@@ -90,9 +100,12 @@ public class PrintUtils {
         int childIndex = 0;
         while (t.hasNext()) {
             AstNode child = t.next();
+
+            // 添加连线
             String tem = node.getClass().getSimpleName() + parentValue + " " + " -> " +
                     child.getClass().getSimpleName() + (++targetValue);
 
+            // 添加过程信息
             tem += " [ label = \" " + node.child(childIndex).toString() + "\" ] ;";
 
             gv.addln(tem);

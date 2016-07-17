@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="af539864-56bd-43a4-828b-9c8a84937756" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HobbyScript/Utils/PrintUtils.java" afterPath="$PROJECT_DIR$/src/HobbyScript/Utils/PrintUtils.java" />
     </list>
     <list id="fdd1a53f-466c-4c39-82cf-51e94d392ef2" name="New changelist" comment="">
       <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/hobby_script/HobbyScript/Token/HobbyKeyCode.class" afterPath="" />
@@ -35,7 +36,20 @@
     <favorites_list name="hobby_script" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="PrintUtils.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/HobbyScript/Utils/PrintUtils.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.6755555">
+              <caret line="102" column="12" selection-start-line="102" selection-start-column="12" selection-end-line="102" selection-end-column="12" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -92,7 +106,6 @@
         <option value="$PROJECT_DIR$/src/HobbyScript/Eval/FunctionEval.java" />
         <option value="$PROJECT_DIR$/src/HobbyScript/Interpreter/FunctionInterpreter.java" />
         <option value="$PROJECT_DIR$/src/HobbyScript/Test/FTTestFib1" />
-        <option value="$PROJECT_DIR$/src/HobbyScript/Utils/PrintUtils.java" />
         <option value="$PROJECT_DIR$/src/HobbyScript/Parser/FunctionParser.java" />
         <option value="$PROJECT_DIR$/src/HobbyScript/Test/TypeChangeTest" />
         <option value="$PROJECT_DIR$/src/HobbyScript/Ast/BinaryExpr.java" />
@@ -113,6 +126,7 @@
         <option value="$PROJECT_DIR$/src/HobbyScript/Parser/ScriptParser.java" />
         <option value="$PROJECT_DIR$/src/HobbyScript/Interpreter/ScriptInterpreter.java" />
         <option value="$PROJECT_DIR$/src/HobbyScript/Test/BreakTest" />
+        <option value="$PROJECT_DIR$/src/HobbyScript/Utils/PrintUtils.java" />
       </list>
     </option>
   </component>
@@ -1069,13 +1083,7 @@
       <workItem from="1468400181562" duration="1014000" />
       <workItem from="1468405916408" duration="2376000" />
       <workItem from="1468414608376" duration="5633000" />
-      <workItem from="1468427591637" duration="59590000" />
-    </task>
-    <task id="LOCAL-00012" summary="no  bug until now">
-      <created>1468290636786</created>
-      <option name="number" value="00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1468290636786</updated>
+      <workItem from="1468427591637" duration="60413000" />
     </task>
     <task id="LOCAL-00013" summary="no  bug until now">
       <created>1468290799695</created>
@@ -1365,11 +1373,17 @@
       <option name="project" value="LOCAL" />
       <updated>1468682568138</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="update readme.md">
+      <created>1468683643046</created>
+      <option name="number" value="00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1468683643046</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="122073000" />
+    <option name="totallyTimeSpent" value="122896000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1382,7 +1396,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32859176" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1396,7 +1410,7 @@
       <window_info id="Leiningen" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23424879" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23424879" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Tail" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32716927" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1598,16 +1612,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/HobbyScript/Utils/PrintUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="68" column="27" selection-start-line="68" selection-start-column="27" selection-end-line="68" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/HobbyScript/Tmp/1468654574902.gif">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -1651,16 +1655,6 @@
             <element signature="e#439#440#0" expanded="true" />
           </folding>
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/HobbyScript/Tmp/1468670828965.gif">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/HobbyScript/Tmp/1468671165691.gif">
-      <provider selected="true" editor-type-id="images">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/HobbyScript/Ast/BinaryExpr.java">
@@ -1845,16 +1839,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/HobbyScript/Tmp/1468676787478.gif">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/HobbyScript/Tmp/1468676787411.gif">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/HobbyScript/Tmp/1468639129290.gif">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -1941,6 +1925,36 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.23555556">
           <caret line="273" column="0" selection-start-line="273" selection-start-column="0" selection-end-line="273" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HobbyScript/Tmp/1468670828965.gif">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HobbyScript/Tmp/1468671165691.gif">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HobbyScript/Tmp/1468676787411.gif">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HobbyScript/Tmp/1468676787478.gif">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HobbyScript/Utils/PrintUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6755555">
+          <caret line="102" column="12" selection-start-line="102" selection-start-column="12" selection-end-line="102" selection-end-column="12" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
