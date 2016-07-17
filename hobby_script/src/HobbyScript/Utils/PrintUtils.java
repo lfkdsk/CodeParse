@@ -6,7 +6,10 @@ import java.io.File;
 import java.util.Iterator;
 
 /**
- * Created by liufengkai on 16/7/15.
+ * 打印工具类
+ *
+ * @author liufengkai
+ *         Created by liufengkai on 16/7/15.
  */
 public class PrintUtils {
 

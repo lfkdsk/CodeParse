@@ -50,6 +50,8 @@ public class ScriptParser {
 
     public static final String BREAK_TOKEN = "break";
 
+    public static final String CLOSURE_TOKEN = "closure";
+
     /**
      * 保留关键字
      */

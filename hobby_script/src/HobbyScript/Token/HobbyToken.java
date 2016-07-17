@@ -17,7 +17,7 @@ public abstract class HobbyToken {
             OR = 271, REAL = 272, TEMP = 273, TRUE = 274, WHILE = 275,
             STRING = 276, LIST = 277, BLOCK = 278, BINARY = 279,
             FUNCTION = 280, NEGATIVE = 281, NULL = 282, PARALIST = 283,
-            POSTFIX = 284, PRIMARY = 285, FOR = 286,
+            POSTFIX = 284, PRIMARY = 285, FOR = 286, CLOSURE = 287,
             EOF_TAG = -1, EOL_TAG = -2;
 
     /**

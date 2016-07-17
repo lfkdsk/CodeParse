@@ -90,4 +90,17 @@ public class FunctionEval {
 
         return function.body().eval(newEnv);
     }
+
+    ///////////////////////////////////////////////////////////////////////////
+    // 闭包函数
+    ///////////////////////////////////////////////////////////////////////////
+
+    public static Object closureEval(Closure closure,
+                                     EnvironmentCallBack env,
+                                     LocalEnvironment newEnv) {
+        newEnv.setParent(env);
+
+        return new Function(closure.parameters(),
+                closure.body(), newEnv);
+    }
 }
