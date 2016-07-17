@@ -25,7 +25,7 @@ public class ScriptParser {
 
     public static final String WHILE_TOKEN = "while";
 
-    public static final String FUNCTION_TOKEN = "fuck";
+    public static final String FUNCTION_TOKEN = "function";
 
     public static final String SEMICOLON_TOKEN = ";";
 
@@ -54,7 +54,7 @@ public class ScriptParser {
     /**
      * 保留关键字
      */
-    HashSet<String> reserved = new HashSet<>();
+    protected HashSet<String> reserved = new HashSet<>();
 
     ///////////////////////////////////////////////////////////////////////////
     // 书写 BNF 范式
