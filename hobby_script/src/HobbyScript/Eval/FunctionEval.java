@@ -80,13 +80,18 @@ public class FunctionEval {
         }
 
         LocalEnvironment newEnv = (LocalEnvironment) function.makeNewEnv();
-//        ((LocalEnvironment) function.getEnv()).setParent(parentEnv);
-        newEnv.setParent(function.getEnv());
+        if (parentEnv != function.getEnv()) {
+            newEnv.setParent(parentEnv);
+        } else {
+            newEnv.setParent(function.getEnv());
+            parentEnv = function.getEnv();
+        }
+
 
         int num = 0;
 
         for (AstNode node : args) {
-            parameters.eval(newEnv, num++, node.eval(function.getEnv()));
+            parameters.eval(newEnv, num++, node.eval(parentEnv));
         }
 
         return function.body().eval(newEnv);

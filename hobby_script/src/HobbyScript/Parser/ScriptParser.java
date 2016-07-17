@@ -51,7 +51,6 @@ public class ScriptParser {
     public static final String BREAK_TOKEN = "break";
 
     public static final String CLOSURE_TOKEN = "closure";
-
     /**
      * 保留关键字
      */
@@ -108,7 +107,7 @@ public class ScriptParser {
             .sep(RC_TOKEN);
 
     ///////////////////////////////////////////////////////////////////////////
-    // if ( condition ) {} else {}
+    // if ()
     ///////////////////////////////////////////////////////////////////////////
     BnfParser ifStatement =
             BnfParser.rule(IfStmnt.class).sep(IF_TOKEN).sep(LP_TOKEN)
