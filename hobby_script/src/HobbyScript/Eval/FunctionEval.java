@@ -80,12 +80,13 @@ public class FunctionEval {
         }
 
         LocalEnvironment newEnv = (LocalEnvironment) function.makeNewEnv();
-        newEnv.setParent(parentEnv);
+//        ((LocalEnvironment) function.getEnv()).setParent(parentEnv);
+        newEnv.setParent(function.getEnv());
 
         int num = 0;
 
         for (AstNode node : args) {
-            parameters.eval(newEnv, num++, node.eval(parentEnv));
+            parameters.eval(newEnv, num++, node.eval(function.getEnv()));
         }
 
         return function.body().eval(newEnv);
@@ -96,11 +97,9 @@ public class FunctionEval {
     ///////////////////////////////////////////////////////////////////////////
 
     public static Object closureEval(Closure closure,
-                                     EnvironmentCallBack env,
-                                     LocalEnvironment newEnv) {
-        newEnv.setParent(env);
+                                     EnvironmentCallBack env) {
 
         return new Function(closure.parameters(),
-                closure.body(), newEnv);
+                closure.body(), env);
     }
 }

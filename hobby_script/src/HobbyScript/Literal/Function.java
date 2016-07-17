@@ -30,6 +30,11 @@ public class Function {
         return body;
     }
 
+
+    public EnvironmentCallBack getEnv() {
+        return env;
+    }
+
     public EnvironmentCallBack makeNewEnv() {
         return new LocalEnvironment();
     }

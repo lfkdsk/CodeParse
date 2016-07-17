@@ -2,7 +2,6 @@ package HobbyScript.Ast;
 
 import HobbyScript.Eval.EnvironmentCallBack;
 import HobbyScript.Eval.FunctionEval;
-import HobbyScript.Eval.LocalEnvironment;
 import HobbyScript.Token.HobbyToken;
 
 import java.util.List;
@@ -34,6 +33,6 @@ public class Closure extends AstList {
 
     @Override
     public Object eval(EnvironmentCallBack env) {
-        return FunctionEval.closureEval(this, env, new LocalEnvironment());
+        return FunctionEval.closureEval(this, env);
     }
 }
