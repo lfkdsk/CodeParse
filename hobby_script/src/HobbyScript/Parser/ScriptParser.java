@@ -19,6 +19,7 @@ import java.util.HashSet;
  *         Created by liufengkai on 16/7/12.
  */
 public class ScriptParser {
+
     public static final String IF_TOKEN = "if";
 
     public static final String ELSE_TOKEN = "else";
@@ -191,12 +192,6 @@ public class ScriptParser {
 
         while (lexer.peek(0) != HobbyToken.EOF) {
             AstNode node = parser.parse(lexer);
-
-//            Logger.v(" => tree height " + PrintUtils.treeHeight(node));
-//
-//            Logger.e(" => tree print ");
-//
-//            PrintUtils.printAstTree(node, PrintUtils.treeHeight(node));
 
 //            if (!(node instanceof NullStmt)) {
 //                PrintUtils.printAstTreeGraph(node);
