@@ -20,6 +20,7 @@ public class PrintUtils {
      * @return 高度
      */
     public static int treeHeight(AstNode node) {
+
         if (node == null) {
             return 0;
         } else {
@@ -68,7 +69,6 @@ public class PrintUtils {
      */
     public static void printAstTreeGraph(AstNode node) {
         gv = new GraphViz();
-
 
         gv.addln(gv.start_graph());
 

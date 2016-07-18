@@ -8,7 +8,9 @@ import HobbyScript.Ast.AstNode;
  * @author liufengkai
  *         Created by liufengkai on 16/7/11.
  */
+
 public class HobbyException extends RuntimeException {
+
     public HobbyException(String msg) {
         super(msg);
     }
@@ -16,4 +18,5 @@ public class HobbyException extends RuntimeException {
     public HobbyException(String msg, AstNode tree) {
         super(msg + " " + tree.location());
     }
+
 }
