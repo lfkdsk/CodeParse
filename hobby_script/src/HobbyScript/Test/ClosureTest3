@@ -1,12 +1,13 @@
 i = 10;
 
+logMsg = "";
+
 lfkdsk = closure(){
 i = i + 100;
+println(i + logMsg);
 };
 
 lfkdsk();
-
-logMsg = " ";
 
 logInfo(i + logMsg);
 

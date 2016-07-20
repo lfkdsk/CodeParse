@@ -111,9 +111,9 @@ public class HobbyLexer {
 
         Matcher matcher = regPattern.matcher(line);
 
-        /**
-         * 1.透明边界:允许环视这样就能避免一些词素匹配混乱
-         * 2.匹配边界:不允许正则里面包含对边界的限定符
+        /*
+          1.透明边界:允许环视这样就能避免一些词素匹配混乱
+          2.匹配边界:不允许正则里面包含对边界的限定符
          */
         matcher.useTransparentBounds(true)
                 .useAnchoringBounds(false);
@@ -164,12 +164,12 @@ public class HobbyLexer {
                     } else {
                         token = new NumberToken<>(lineNum, HobbyToken.NUM, Integer.parseInt(first));
                     }
-                } else if (matcher.group(HobbyRegex.RegType.STRING_INDEX.indexNum) != null) {
+                    // handler "" 空字串
+                } else if (first.equals("\"\"") || matcher.group(HobbyRegex.RegType.STRING_INDEX.indexNum) != null) {
                     token = new StringToken(lineNum, toStringLiteral(first));
                 } else {
                     token = new IdToken(lineNum, first);
                 }
-
                 queue.add(token);
             }
         }
