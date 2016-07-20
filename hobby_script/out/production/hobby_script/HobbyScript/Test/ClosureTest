@@ -1,0 +1,7 @@
+fuck lfkdsk(c){
+    closure() { c = c + 1;};
+}
+
+c1 = lfkdsk(0);
+
+c1();

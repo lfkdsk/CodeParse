@@ -18,3 +18,5 @@ DragonBookDemo/.idea/modules.xml
 DragonBookDemo/.idea/misc.xml
 
 DragonBookDemo/.idea/encodings.xml
+
+*.class
