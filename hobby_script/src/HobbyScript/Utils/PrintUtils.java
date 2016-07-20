@@ -68,6 +68,8 @@ public class PrintUtils {
      * @param node 任意root节点
      */
     public static void printAstTreeGraph(AstNode node) {
+        targetValue = 0;
+
         gv = new GraphViz();
 
         gv.addln(gv.start_graph());

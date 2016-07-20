@@ -3,13 +3,16 @@ package HobbyScript.Interpreter;
 import HobbyScript.ApplicationTest.CodeDialog;
 import HobbyScript.Ast.AstNode;
 import HobbyScript.Ast.NullStmt;
-import HobbyScript.Eval.BasicEnvironment;
-import HobbyScript.Eval.EnvironmentCallBack;
+import HobbyScript.Eval.Env.BasicEnvironment;
+import HobbyScript.Eval.Env.EnvironmentCallBack;
 import HobbyScript.Exception.ParseException;
 import HobbyScript.Lexer.HobbyLexer;
 import HobbyScript.Parser.ScriptParser;
 import HobbyScript.Token.HobbyToken;
 import HobbyScript.Utils.logger.Logger;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 
 /**
  * Script解释器
@@ -18,8 +21,14 @@ import HobbyScript.Utils.logger.Logger;
  *         Created by liufengkai on 16/7/15.
  */
 public class ScriptInterpreter {
-    public static void run(ScriptParser parser, EnvironmentCallBack env) throws ParseException {
-        HobbyLexer lexer = new HobbyLexer(new CodeDialog());
+    static void run(String fileName, ScriptParser parser, EnvironmentCallBack env) throws ParseException, FileNotFoundException {
+
+        HobbyLexer lexer;
+        if (fileName.equals("")) {
+            lexer = new HobbyLexer(new CodeDialog());
+        } else {
+            lexer = new HobbyLexer(new FileReader(fileName));
+        }
 
         Logger.init("ScriptInterpreter");
 
@@ -34,7 +43,8 @@ public class ScriptInterpreter {
         }
     }
 
-    public static void main(String[] args) throws ParseException {
-        run(new ScriptParser(), new BasicEnvironment());
+
+    public static void main(String[] args) throws ParseException, FileNotFoundException {
+        run("", new ScriptParser(), new BasicEnvironment());
     }
 }
