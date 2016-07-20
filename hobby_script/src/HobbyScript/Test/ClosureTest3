@@ -9,3 +9,5 @@ lfkdsk();
 logMsg = " ";
 
 logInfo(i + logMsg);
+
+println(i + logMsg);

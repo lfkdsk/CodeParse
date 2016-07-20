@@ -37,13 +37,16 @@ public class NativeList {
     }
 
     public static void logInfo(String msg) {
-        Logger.init();
         Logger.i(msg);
+    }
+
+    public static void println(String msg) {
+        System.out.println(msg);
     }
 
     public EnvironmentCallBack env(EnvironmentCallBack env) {
         addNativeFunction(env, "logInfo", NativeList.class, String.class);
-
+        addNativeFunction(env, "println", NativeList.class, String.class);
         return env;
     }
 
