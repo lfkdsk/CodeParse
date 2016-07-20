@@ -5,6 +5,7 @@ import HobbyScript.Eval.Env.EnvironmentCallBack;
 import HobbyScript.Eval.Env.LocalEnvironment;
 import HobbyScript.Exception.HobbyException;
 import HobbyScript.Literal.Function;
+import HobbyScript.Literal.NaiveFunction;
 
 /**
  * 添加函数方法之后
@@ -108,5 +109,46 @@ public class FunctionEval {
 
         return new Function(closure.parameters(),
                 closure.body(), env);
+    }
+
+    ///////////////////////////////////////////////////////////////////////////
+    // 原生函数
+    ///////////////////////////////////////////////////////////////////////////
+
+    /**
+     * 调用原生函数/本地函数
+     *
+     * @param parentEnv 上一层环境
+     * @param args      参数表达式列表
+     * @param value     调用函数
+     * @param node      所在子树
+     * @return 调用结果
+     */
+    public static Object nativeEval(EnvironmentCallBack parentEnv,
+                                    Arguments args,
+                                    Object value,
+                                    AstNode node) {
+        if (!(value instanceof NaiveFunction)) {
+            return argumentsEval(parentEnv, args, value);
+        }
+
+        NaiveFunction function = (NaiveFunction) value;
+
+        int paramsCount = function.paramsCount();
+        int count = args.childCount();
+        // 同上
+        if (count < paramsCount) {
+            throw new HobbyException("args less than define", args);
+        } else if (count > paramsCount) {
+            throw new HobbyException("args more than define", args);
+        }
+
+        Object[] newArgs = new Object[count];
+        for (int i = 0; i < count; i++) {
+            // 对参数表达式进行计算
+            newArgs[i] = args.child(i).eval(parentEnv);
+        }
+
+        return function.invoke(newArgs, node);
     }
 }

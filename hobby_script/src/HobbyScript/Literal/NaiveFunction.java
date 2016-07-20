@@ -23,7 +23,7 @@ public class NaiveFunction {
      */
     private int paramsNum;
 
-    public NaiveFunction(Method nativeMethod, String methodName) {
+    public NaiveFunction(String methodName, Method nativeMethod) {
         this.nativeMethod = nativeMethod;
         this.methodName = methodName;
         this.paramsNum = nativeMethod.getParameterCount();
@@ -43,5 +43,9 @@ public class NaiveFunction {
         } catch (IllegalAccessException | InvocationTargetException e) {
             throw new HobbyException(" call native function fail ", tree);
         }
+    }
+
+    public int paramsCount() {
+        return paramsNum;
     }
 }

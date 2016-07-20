@@ -18,9 +18,8 @@ public class Arguments extends Postfix {
 
     @Override
     public Object eval(EnvironmentCallBack env, Object value) {
-        return FunctionEval.argumentsEval(env, this, value);
+        return FunctionEval.nativeEval(env, this, value, this);
     }
-
 
     public int size() {
         return childCount();

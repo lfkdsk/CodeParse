@@ -161,7 +161,8 @@ public class ScriptEval {
             }
         }
 
-        if (op.equals(ScriptParser.ADD) && (left instanceof String)) {
+        if (op.equals(ScriptParser.ADD) && ((left instanceof String)
+                || (right instanceof String))) {
             return String.valueOf(left) + String.valueOf(right);
         }
 

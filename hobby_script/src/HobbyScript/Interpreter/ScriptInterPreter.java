@@ -27,10 +27,10 @@ public class ScriptInterpreter {
         if (fileName.equals("")) {
             lexer = new HobbyLexer(new CodeDialog());
         } else {
-            lexer = new HobbyLexer(new FileReader(fileName));
+            lexer = new HobbyLexer(new FileReader("src/HobbyScript/Test/" + fileName));
         }
 
-        Logger.init("ScriptInterpreter");
+        Logger.init("Interpreter");
 
         while (lexer.peek(0) != HobbyToken.EOF) {
             AstNode node = parser.parse(lexer);

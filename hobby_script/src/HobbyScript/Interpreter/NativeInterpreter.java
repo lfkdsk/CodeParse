@@ -2,16 +2,16 @@ package HobbyScript.Interpreter;
 
 import HobbyScript.Eval.Env.LocalEnvironment;
 import HobbyScript.Exception.ParseException;
+import HobbyScript.Native.NativeList;
 import HobbyScript.Parser.ClosureParser;
 
 import java.io.FileNotFoundException;
 
 /**
- * 闭包测试
- * Created by liufengkai on 16/7/17.
+ * Created by liufengkai on 16/7/20.
  */
-public class ClosureInterpreter extends FunctionInterpreter {
+public class NativeInterpreter extends ClosureInterpreter{
     public static void main(String[] args) throws ParseException, FileNotFoundException {
-        run("ClosureTest2", new ClosureParser(), new LocalEnvironment());
+        run("ClosureTest3", new ClosureParser(), new NativeList().env(new LocalEnvironment()));
     }
 }
