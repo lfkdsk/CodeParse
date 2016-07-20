@@ -1,4 +1,4 @@
-package HobbyScript.Eval;
+package HobbyScript.Eval.Env;
 
 import java.util.HashMap;
 

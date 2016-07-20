@@ -2,8 +2,8 @@ package HobbyScript.Literal;
 
 import HobbyScript.Ast.BlockStmnt;
 import HobbyScript.Ast.ParameterList;
-import HobbyScript.Eval.EnvironmentCallBack;
-import HobbyScript.Eval.LocalEnvironment;
+import HobbyScript.Eval.Env.EnvironmentCallBack;
+import HobbyScript.Eval.Env.LocalEnvironment;
 
 /**
  * 函数定义

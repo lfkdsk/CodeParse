@@ -1,7 +1,7 @@
 package HobbyScript.Ast;
 
-import HobbyScript.Eval.EnvironmentCallBack;
-import HobbyScript.Eval.LocalEnvironment;
+import HobbyScript.Eval.Env.EnvironmentCallBack;
+import HobbyScript.Eval.Env.LocalEnvironment;
 import HobbyScript.Eval.ScriptEval;
 import HobbyScript.Token.HobbyToken;
 

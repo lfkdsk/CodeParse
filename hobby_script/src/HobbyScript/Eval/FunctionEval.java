@@ -1,6 +1,8 @@
 package HobbyScript.Eval;
 
 import HobbyScript.Ast.*;
+import HobbyScript.Eval.Env.EnvironmentCallBack;
+import HobbyScript.Eval.Env.LocalEnvironment;
 import HobbyScript.Exception.HobbyException;
 import HobbyScript.Literal.Function;
 

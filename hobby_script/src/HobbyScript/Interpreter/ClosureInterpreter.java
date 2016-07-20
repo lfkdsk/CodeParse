@@ -1,6 +1,6 @@
 package HobbyScript.Interpreter;
 
-import HobbyScript.Eval.LocalEnvironment;
+import HobbyScript.Eval.Env.LocalEnvironment;
 import HobbyScript.Exception.ParseException;
 import HobbyScript.Parser.ClosureParser;
 

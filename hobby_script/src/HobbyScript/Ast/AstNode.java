@@ -1,7 +1,7 @@
 package HobbyScript.Ast;
 
-import HobbyScript.Eval.EnvironmentCallBack;
-import HobbyScript.Eval.EvalCallBack;
+import HobbyScript.Eval.Env.EnvironmentCallBack;
+import HobbyScript.Eval.Env.EvalCallBack;
 
 import java.util.Iterator;
 import java.util.Objects;

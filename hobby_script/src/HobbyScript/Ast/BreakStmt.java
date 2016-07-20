@@ -1,6 +1,6 @@
 package HobbyScript.Ast;
 
-import HobbyScript.Eval.EnvironmentCallBack;
+import HobbyScript.Eval.Env.EnvironmentCallBack;
 import HobbyScript.Token.HobbyToken;
 
 import java.util.List;

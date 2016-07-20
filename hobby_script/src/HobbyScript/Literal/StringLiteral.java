@@ -1,7 +1,7 @@
 package HobbyScript.Literal;
 
 import HobbyScript.Ast.AstLeaf;
-import HobbyScript.Eval.EnvironmentCallBack;
+import HobbyScript.Eval.Env.EnvironmentCallBack;
 import HobbyScript.Eval.ScriptEval;
 import HobbyScript.Token.HobbyToken;
 
