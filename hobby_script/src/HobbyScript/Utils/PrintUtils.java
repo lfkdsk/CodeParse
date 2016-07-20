@@ -96,7 +96,7 @@ public class PrintUtils {
      *
      * @param node 任意root节点
      */
-    public static void printAstTree(AstNode node) {
+    private static void printAstTree(AstNode node) {
         if (node == null) return;
         Iterator<AstNode> t = node.children();
         int parentValue = targetValue;
