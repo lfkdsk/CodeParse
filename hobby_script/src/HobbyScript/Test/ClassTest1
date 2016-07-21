@@ -9,5 +9,5 @@ lfk = "";
 lfi = lfkdsk.Initial;
 
 lfi.Ssdut();
-
+// lfi.ll;
 logInfo(lfi.Ss + lfk);
