@@ -7,7 +7,8 @@ import HobbyScript.Exception.HobbyException;
 import HobbyScript.Literal.ClassInfo;
 import HobbyScript.Literal.HobbyObject;
 
-import static HobbyScript.Parser.ScriptParser.*;
+import static HobbyScript.Parser.ScriptParser.INITIAL;
+import static HobbyScript.Parser.ScriptParser.THIS_POINT;
 
 /**
  * Created by liufengkai on 16/7/21.
@@ -29,6 +30,11 @@ public class ClassEval {
     ///////////////////////////////////////////////////////////////////////////
     public static Object classBodyEval(EnvironmentCallBack env,
                                        ClassBody body) {
+
+//        LocalEnvironment newEnv = new LocalEnvironment(env);
+//
+//        body.setEnv(newEnv);
+
         for (AstNode n : body) {
             n.eval(env);
         }
@@ -46,6 +52,7 @@ public class ClassEval {
             // xxx.Initial
             if (member.equals(INITIAL)) {
                 ClassInfo info = (ClassInfo) value;
+                // 注意是从body拿出来的env,classInfo的env用来获取外层的环境
                 LocalEnvironment thisEnv = new LocalEnvironment(info.env());
                 // 创建this指针指向该对象
                 HobbyObject object = new HobbyObject(thisEnv);

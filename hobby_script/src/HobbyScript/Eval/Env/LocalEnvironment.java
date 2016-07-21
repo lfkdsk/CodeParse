@@ -38,6 +38,11 @@ public class LocalEnvironment implements LocalEnvironmentCallBack {
     }
 
     @Override
+    public boolean contains(String name) {
+        return get(name) != null;
+    }
+
+    @Override
     public Object get(String name) {
         Object value = values.get(name);
 

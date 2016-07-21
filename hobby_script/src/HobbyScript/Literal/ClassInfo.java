@@ -31,12 +31,12 @@ public class ClassInfo {
 
         Object superClass = env.get(stmt.superClass());
 
-        if (superClass == null) {
-            superClass = null;
-        } else if (superClass instanceof ClassInfo) {
-            this.superClass = (ClassInfo) superClass;
-        } else {
-            throw new HobbyException("unknown super class", stmt);
+        if (superClass != null) {
+            if (superClass instanceof ClassInfo) {
+                this.superClass = (ClassInfo) superClass;
+            } else {
+                throw new HobbyException("unknown super class", stmt);
+            }
         }
     }
 
@@ -57,7 +57,7 @@ public class ClassInfo {
     }
 
     public EnvironmentCallBack env() {
-        return env;
+        return body().getEnv();
     }
 
     @Override

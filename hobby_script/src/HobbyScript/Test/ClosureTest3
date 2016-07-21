@@ -7,6 +7,7 @@ i = i + 100;
 println(i + logMsg);
 };
 
+
 lfkdsk();
 
 logInfo(i + logMsg);

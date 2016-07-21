@@ -6,7 +6,10 @@ import HobbyScript.Ast.Dot;
 import HobbyScript.Token.HobbyToken;
 
 /**
- * Created by liufengkai on 16/7/21.
+ * CLASS PARSER
+ *
+ * @author liufengkai
+ *         Created by liufengkai on 16/7/21.
  */
 public class ClassParser extends ClosureParser {
 //    BnfParser classLocal = BnfParser.rule().sep("local")

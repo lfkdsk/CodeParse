@@ -28,6 +28,11 @@ public class BasicEnvironment implements EnvironmentCallBack {
     }
 
     @Override
+    public boolean contains(String name) {
+        return get(name) != null;
+    }
+
+    @Override
     public Object get(String name) {
         return env.get(name);
     }

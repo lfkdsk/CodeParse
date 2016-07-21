@@ -4,8 +4,10 @@ import HobbyScript.Ast.*;
 import HobbyScript.Eval.Env.EnvironmentCallBack;
 import HobbyScript.Eval.Env.LocalEnvironment;
 import HobbyScript.Exception.HobbyException;
+import HobbyScript.Literal.ClassFunction;
 import HobbyScript.Literal.Function;
 import HobbyScript.Literal.NaiveFunction;
+import HobbyScript.Parser.ScriptParser;
 
 /**
  * 添加函数方法之后
@@ -25,11 +27,14 @@ public class FunctionEval {
      * @return 函数名
      */
     public static String functionEval(EnvironmentCallBack env, FuncStmt stmt) {
+        Function function;
+        if (env.contains(ScriptParser.THIS_POINT)) {
+            function = new ClassFunction(stmt.parameters(), stmt.body(), env);
+        } else {
+            function = new Function(stmt.parameters(), stmt.body(), env);
+        }
 
-        ((LocalEnvironment) env).putLocal(stmt.name(), new Function(
-                stmt.parameters(), stmt.body(), env
-        ));
-
+        ((LocalEnvironment) env).putLocal(stmt.name(), function);
         return stmt.name();
     }
 
@@ -83,9 +88,12 @@ public class FunctionEval {
         }
 
         LocalEnvironment newEnv = (LocalEnvironment) function.makeNewEnv();
-        if (parentEnv != function.getEnv()) {
+        // 正常的函数
+        if (parentEnv != function.getEnv()
+                && !(function instanceof ClassFunction)) {
             newEnv.setParent(parentEnv);
         } else {
+            // 闭包函数的环境函数本身/类函数
             newEnv.setParent(function.getEnv());
             parentEnv = function.getEnv();
         }
