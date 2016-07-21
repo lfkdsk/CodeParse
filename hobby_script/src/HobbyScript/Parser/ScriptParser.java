@@ -57,7 +57,8 @@ public class ScriptParser {
 
     public static final String EXTEND_TOKEN = "extend";
 
-    public static final String DOT_TOKEN = ".";
+    public static final String DOT_TOKEN = ".",
+            INITIAL = "Initial", THIS_POINT = "this";
 
     /**
      * 保留关键字

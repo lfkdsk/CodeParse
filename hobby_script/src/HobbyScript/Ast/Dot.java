@@ -1,5 +1,6 @@
 package HobbyScript.Ast;
 
+import HobbyScript.Eval.ClassEval;
 import HobbyScript.Eval.Env.EnvironmentCallBack;
 
 import java.util.List;
@@ -27,6 +28,6 @@ public class Dot extends Postfix {
 
     @Override
     public Object eval(EnvironmentCallBack env, Object value) {
-        return null;
+        return ClassEval.dotEval(env, this, value);
     }
 }

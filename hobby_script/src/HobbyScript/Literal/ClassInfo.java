@@ -3,6 +3,7 @@ package HobbyScript.Literal;
 import HobbyScript.Ast.ClassBody;
 import HobbyScript.Ast.ClassStmt;
 import HobbyScript.Eval.Env.EnvironmentCallBack;
+import HobbyScript.Exception.HobbyException;
 
 /**
  * 类运行对象
@@ -27,6 +28,16 @@ public class ClassInfo {
     public ClassInfo(ClassStmt stmt, EnvironmentCallBack env) {
         this.definition = stmt;
         this.env = env;
+
+        Object superClass = env.get(stmt.superClass());
+
+        if (superClass == null) {
+            superClass = null;
+        } else if (superClass instanceof ClassInfo) {
+            this.superClass = (ClassInfo) superClass;
+        } else {
+            throw new HobbyException("unknown super class", stmt);
+        }
     }
 
     public ClassInfo getSuperClass() {

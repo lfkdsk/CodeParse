@@ -107,6 +107,9 @@ public class ScriptEval {
 
         if (ScriptParser.ASSIGN_TOKEN.equals(op)) {
             Object right = expr.right().eval(env);
+            if (expr.left() instanceof PrimaryExpr) {
+                return ClassEval.computeAssignForClass(env, expr.left(), right);
+            }
             return computeAssign(env, expr, right);
         } else {
             Object left = expr.left().eval(env);

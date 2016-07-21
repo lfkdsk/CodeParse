@@ -2,7 +2,6 @@ package HobbyScript.Literal;
 
 import HobbyScript.Eval.Env.EnvironmentCallBack;
 import HobbyScript.Eval.Env.LocalEnvironment;
-import HobbyScript.Exception.HobbyException;
 
 /**
  * Class类的子对象
@@ -25,28 +24,28 @@ public class HobbyObject {
         return "<object: " + hashCode() + " > ";
     }
 
-    public Object read(String name) {
+    public Object read(String name) throws AssessException {
         return getEnvironment(name).get(name);
     }
 
-    public void write(String name, Object value) {
+    public void write(String name, Object value) throws AssessException {
         ((LocalEnvironment) getEnvironment(name)).putLocal(name, value);
     }
 
-    private EnvironmentCallBack getEnvironment(String member) {
+    private EnvironmentCallBack getEnvironment(String member) throws AssessException {
         EnvironmentCallBack environment = ((LocalEnvironment) env).foundEnv(member);
 
         if (environment == null || environment == env) {
             return env;
-        } else {
-            throw new HobbyException("can not assess member: " + member);
         }
+
+        throw new AssessException("can not assess member: " + member);
     }
 
     /**
      * 无法访问异常
      */
-    public static class AssessException extends HobbyException {
+    public static class AssessException extends Exception {
         public AssessException(String msg) {
             super(msg);
         }
