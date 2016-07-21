@@ -56,6 +56,7 @@ public class FunctionParser extends ScriptParser {
 
 
     public FunctionParser() {
+        reserved.add(FUNCTION_TOKEN);
 
         // 更换 simple 语句
         // simple = expr ; | expr args ;

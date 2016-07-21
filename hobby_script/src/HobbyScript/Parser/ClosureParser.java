@@ -17,6 +17,8 @@ import HobbyScript.Utils.logger.Logger;
 public class ClosureParser extends FunctionParser {
 
     public ClosureParser() {
+        reserved.add(CLOSURE_TOKEN);
+
         primary.insertChoice(BnfParser.rule(Closure.class)
                 .sep(CLOSURE_TOKEN).ast(paramList).ast(block));
     }

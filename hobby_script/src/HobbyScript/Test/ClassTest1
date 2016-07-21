@@ -1,0 +1,7 @@
+class lfkdsk {
+    x = y = 0;
+}
+lfk = "";
+
+
+logInfo(lfkdsk.x + lfk);

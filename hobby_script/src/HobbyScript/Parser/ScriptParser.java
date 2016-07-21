@@ -53,6 +53,12 @@ public class ScriptParser {
 
     public static final String CLOSURE_TOKEN = "closure";
 
+    public static final String CLASS_TOKEN = "class";
+
+    public static final String EXTEND_TOKEN = "extend";
+
+    public static final String DOT_TOKEN = ".";
+
     /**
      * 保留关键字
      */
@@ -164,8 +170,12 @@ public class ScriptParser {
     public ScriptParser() {
         reserved.add(SEMICOLON_TOKEN);
         reserved.add(RC_TOKEN);
+        reserved.add(IF_TOKEN);
+        reserved.add(WHILE_TOKEN);
+        reserved.add(FOR_TOKEN);
         reserved.add(RP_TOKEN);
         reserved.add(BREAK_TOKEN);
+        reserved.add(ELSE_TOKEN);
         reserved.add(HobbyToken.EOL);
 
         operators.add(ASSIGN_TOKEN, 1, BnfParser.Operators.RIGHT);
