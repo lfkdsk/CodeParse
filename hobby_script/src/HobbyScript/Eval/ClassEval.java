@@ -56,10 +56,11 @@ public class ClassEval {
                 return object;
             }
         } else if (value instanceof HobbyObject) {
+
             try {
                 return ((HobbyObject) value).read(member);
             } catch (HobbyObject.AssessException e) {
-                throw new HobbyException("can not access to :" + member, dot);
+                e.printStackTrace();
             }
         }
 

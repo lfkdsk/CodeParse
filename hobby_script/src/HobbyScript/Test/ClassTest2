@@ -1,0 +1,14 @@
+class lfkdsk {
+    ss = 100;
+    local ll = 100;
+    ssdut = closure(){
+        ss = 1000;
+    };
+}
+
+lfk = "";
+lfi = lfkdsk.Initial;
+
+lfi.ssdut();
+
+logInfo(lfi.ss + lfk);

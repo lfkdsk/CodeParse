@@ -9,12 +9,12 @@ import HobbyScript.Token.HobbyToken;
  * Created by liufengkai on 16/7/21.
  */
 public class ClassParser extends ClosureParser {
-    BnfParser classLocal = BnfParser.rule().sep("local")
-            .or(simple, def);
+//    BnfParser classLocal = BnfParser.rule().sep("local")
+//            .or(simple, def);
+//
+//    BnfParser classOpen = BnfParser.rule().or();
 
-    BnfParser classOpen = BnfParser.rule().or(simple, def);
-
-    BnfParser member = BnfParser.rule().or(classLocal, classOpen);
+    BnfParser member = BnfParser.rule().or(simple, def);
 
     BnfParser classBody = BnfParser.rule(ClassBody.class)
             .sep(LC_TOKEN).option(member)

@@ -1,6 +1,6 @@
 class lfkdsk {
-    ss = ll = 100;
-    ssdut = closure(){
+    Ss = ll = 100;
+    Ssdut = closure(){
         x = 1000;
     };
 }
@@ -8,6 +8,6 @@ class lfkdsk {
 lfk = "";
 lfi = lfkdsk.Initial;
 
-lfi.ssdut();
+lfi.Ssdut();
 
-logInfo(lfi.ss + lfk);
+logInfo(lfi.Ss + lfk);

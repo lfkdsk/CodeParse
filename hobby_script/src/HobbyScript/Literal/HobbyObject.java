@@ -25,7 +25,11 @@ public class HobbyObject {
     }
 
     public Object read(String name) throws AssessException {
-        return getEnvironment(name).get(name);
+        if (name.substring(0, 1).toCharArray()[0] >= 'A'
+                && name.substring(0, 1).toCharArray()[0] <= 'Z') {
+            return getEnvironment(name).get(name);
+        }
+        throw new AssessException("lower case can not access from a ClassObject :" + name);
     }
 
     public void write(String name, Object value) throws AssessException {
