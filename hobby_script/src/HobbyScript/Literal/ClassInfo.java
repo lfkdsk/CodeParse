@@ -17,6 +17,7 @@ public class ClassInfo {
 
     /**
      * 运行环境
+     * 这个运行环境只是从外部类拿出来而已
      */
     private EnvironmentCallBack env;
 
