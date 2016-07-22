@@ -37,7 +37,7 @@ public class ScriptInterpreter {
 
             if (!(node instanceof NullStmt)) {
                 Object r = node.eval(env);
-                Logger.v(" => " + r);
+//                Logger.v(" => " + r);
 //                PrintUtils.printAstTreeGraph(node);
             }
         }

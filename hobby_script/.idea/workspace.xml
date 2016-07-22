@@ -2,18 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="af539864-56bd-43a4-828b-9c8a84937756" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/HobbyScript/Literal/ClassFunction.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/HobbyScript/Literal/CreateClassFunction.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HobbyScript/Ast/ClassBody.java" afterPath="$PROJECT_DIR$/src/HobbyScript/Ast/ClassBody.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HobbyScript/Eval/ClassEval.java" afterPath="$PROJECT_DIR$/src/HobbyScript/Eval/ClassEval.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HobbyScript/Eval/Env/BasicEnvironment.java" afterPath="$PROJECT_DIR$/src/HobbyScript/Eval/Env/BasicEnvironment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HobbyScript/Eval/Env/EnvironmentCallBack.java" afterPath="$PROJECT_DIR$/src/HobbyScript/Eval/Env/EnvironmentCallBack.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HobbyScript/Eval/Env/LocalEnvironment.java" afterPath="$PROJECT_DIR$/src/HobbyScript/Eval/Env/LocalEnvironment.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HobbyScript/Eval/FunctionEval.java" afterPath="$PROJECT_DIR$/src/HobbyScript/Eval/FunctionEval.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HobbyScript/Literal/ClassInfo.java" afterPath="$PROJECT_DIR$/src/HobbyScript/Literal/ClassInfo.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HobbyScript/Interpreter/ClassInterpreter.java" afterPath="$PROJECT_DIR$/src/HobbyScript/Interpreter/ClassInterpreter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HobbyScript/Interpreter/ScriptInterPreter.java" afterPath="$PROJECT_DIR$/src/HobbyScript/Interpreter/ScriptInterPreter.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HobbyScript/Parser/ClassParser.java" afterPath="$PROJECT_DIR$/src/HobbyScript/Parser/ClassParser.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HobbyScript/Test/ClassTest1" afterPath="$PROJECT_DIR$/src/HobbyScript/Test/ClassTest1" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HobbyScript/Test/ClosureTest3" afterPath="$PROJECT_DIR$/src/HobbyScript/Test/ClosureTest3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HobbyScript/Test/ClassTest2" afterPath="$PROJECT_DIR$/src/HobbyScript/Test/ClassTest2" />
     </list>
     <list id="fdd1a53f-466c-4c39-82cf-51e94d392ef2" name="New changelist" comment="" />
     <ignored path="hobby_script.iws" />
@@ -44,89 +41,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ClassEval.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/HobbyScript/Eval/ClassEval.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="792">
-              <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Function.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/HobbyScript/Literal/Function.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="48">
-              <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-              <folding>
-                <element signature="e#774#775#0" expanded="true" />
-                <element signature="e#821#822#0" expanded="true" />
-                <element signature="e#866#867#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LocalEnvironment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/HobbyScript/Eval/Env/LocalEnvironment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="96">
-              <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-              <folding>
-                <element signature="e#366#367#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ClassTest1" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/HobbyScript/Test/ClassTest1">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="18" column="22" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NaiveFunction.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/HobbyScript/Literal/NaiveFunction.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="103">
-              <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ClassInterpreter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/HobbyScript/Interpreter/ClassInterpreter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="14" column="9" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ScriptInterpreter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/HobbyScript/Interpreter/ScriptInterpreter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
-              <caret line="40" column="26" selection-start-line="40" selection-start-column="26" selection-end-line="40" selection-end-column="26" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FunctionEval.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="FunctionEval.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/HobbyScript/Eval/FunctionEval.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="90" column="16" selection-start-line="90" selection-start-column="16" selection-end-line="90" selection-end-column="16" />
+            <state relative-caret-position="96">
+              <caret line="90" column="0" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -159,7 +78,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/HobbyScript/Ast/IfStmnt.java" />
         <option value="$PROJECT_DIR$/src/HobbyScript/Test/IfLocalEnvTest" />
         <option value="$PROJECT_DIR$/src/HobbyScript/Ast/ForStatement.java" />
         <option value="$PROJECT_DIR$/src/HobbyScript/Test/ForTest1" />
@@ -195,21 +113,22 @@
         <option value="$PROJECT_DIR$/src/HobbyScript/Parser/ScriptParser.java" />
         <option value="$PROJECT_DIR$/src/HobbyScript/Ast/Dot.java" />
         <option value="$PROJECT_DIR$/src/HobbyScript/Eval/ScriptEval.java" />
-        <option value="$PROJECT_DIR$/src/HobbyScript/Test/ClassTest2" />
         <option value="$PROJECT_DIR$/src/HobbyScript/Literal/HobbyObject.java" />
         <option value="$PROJECT_DIR$/src/HobbyScript/Ast/ClassBody.java" />
         <option value="$PROJECT_DIR$/src/HobbyScript/Literal/ClassInfo.java" />
-        <option value="$PROJECT_DIR$/src/HobbyScript/Eval/ClassEval.java" />
-        <option value="$PROJECT_DIR$/src/HobbyScript/Interpreter/ClassInterpreter.java" />
         <option value="$PROJECT_DIR$/src/HobbyScript/Test/ClosureTest3" />
-        <option value="$PROJECT_DIR$/src/HobbyScript/Parser/ClassParser.java" />
         <option value="$PROJECT_DIR$/src/HobbyScript/Literal/ClassFunction.java" />
         <option value="$PROJECT_DIR$/src/HobbyScript/Eval/Env/EnvironmentCallBack.java" />
         <option value="$PROJECT_DIR$/src/HobbyScript/Eval/Env/LocalEnvironment.java" />
         <option value="$PROJECT_DIR$/src/HobbyScript/Eval/Env/BasicEnvironment.java" />
-        <option value="$PROJECT_DIR$/src/HobbyScript/Eval/FunctionEval.java" />
         <option value="$PROJECT_DIR$/src/HobbyScript/Interpreter/ScriptInterpreter.java" />
+        <option value="$PROJECT_DIR$/src/HobbyScript/Parser/ClassParser.java" />
+        <option value="$PROJECT_DIR$/src/HobbyScript/Eval/FunctionEval.java" />
+        <option value="$PROJECT_DIR$/src/HobbyScript/Eval/ClassEval.java" />
+        <option value="$PROJECT_DIR$/src/HobbyScript/Interpreter/ClassInterpreter.java" />
         <option value="$PROJECT_DIR$/src/HobbyScript/Test/ClassTest1" />
+        <option value="$PROJECT_DIR$/src/HobbyScript/Test/ClassTest2" />
+        <option value="$PROJECT_DIR$/src/HobbyScript/Literal/CreateClassFunction.java" />
       </list>
     </option>
   </component>
@@ -255,7 +174,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -289,6 +207,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="HobbyScript" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hobby_script" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hobby_script" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HobbyScript" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Tmp" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -404,8 +344,9 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -554,10 +495,7 @@
       </Profilers>
       <option name="DEEP_LINK" value="" />
       <option name="ACTIVITY_CLASS" value="" />
-      <method>
-        <option name="Make" enabled="true" />
-        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-      </method>
+      <method />
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
       <module name="" />
@@ -580,10 +518,7 @@
       <Profilers>
         <option name="GAPID_DISABLE_PCS" value="false" />
       </Profilers>
-      <method>
-        <option name="Make" enabled="true" />
-        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-      </method>
+      <method />
     </configuration>
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
@@ -1001,14 +936,8 @@
       <workItem from="1468830509479" duration="115000" />
       <workItem from="1468830666108" duration="7996000" />
       <workItem from="1469017684186" duration="12019000" />
-      <workItem from="1469116417960" duration="3453000" />
-    </task>
-    <task id="LOCAL-00033" summary="update env">
-      <created>1468501905930</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1468501905930</updated>
+      <workItem from="1469116417960" duration="3837000" />
+      <workItem from="1469190336660" duration="2260000" />
     </task>
     <task id="LOCAL-00034" summary="change path">
       <created>1468502213181</created>
@@ -1346,11 +1275,18 @@
       <option name="project" value="LOCAL" />
       <updated>1469109092936</updated>
     </task>
-    <option name="localTasksCounter" value="82" />
+    <task id="LOCAL-00082" summary="修复了一个bug,就是之前类函数会被当作正常函数处理,变成独立的作用域,父作用域变成全局&#10;所以搜索不到类的变量,现在已经修好了,独立出来了一个ClassFunction来区分类函数和独立函数。">
+      <created>1469119998683</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1469119998684</updated>
+    </task>
+    <option name="localTasksCounter" value="83" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="156599000" />
+    <option name="totallyTimeSpent" value="159243000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1372,7 +1308,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32859176" sideWeight="0.503231" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5206259" sideWeight="0.49353796" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.44381222" sideWeight="0.49353796" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40113798" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1383,7 +1319,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24959612" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.48364154" sideWeight="0.48707592" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.48364154" sideWeight="0.48707592" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1457,7 +1393,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add function" />
     <MESSAGE value="update test/function" />
     <MESSAGE value="增加了块级作用域&#10;" />
     <MESSAGE value="增加for循环" />
@@ -1482,7 +1417,8 @@
     <MESSAGE value="update graph" />
     <MESSAGE value="增加了一个愚蠢的特性 在一个类里 只有大写的子对象和函数能在外部调用&#10;我终于知道go语言他们为啥要这么设定了,真是懒死我了。" />
     <MESSAGE value="update test1" />
-    <option name="LAST_COMMIT_MESSAGE" value="update test1" />
+    <MESSAGE value="修复了一个bug,就是之前类函数会被当作正常函数处理,变成独立的作用域,父作用域变成全局&#10;所以搜索不到类的变量,现在已经修好了,独立出来了一个ClassFunction来区分类函数和独立函数。" />
+    <option name="LAST_COMMIT_MESSAGE" value="修复了一个bug,就是之前类函数会被当作正常函数处理,变成独立的作用域,父作用域变成全局&#10;所以搜索不到类的变量,现在已经修好了,独立出来了一个ClassFunction来区分类函数和独立函数。" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1493,14 +1429,8 @@
           <properties />
           <option name="timeStamp" value="85" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/HobbyScript/Eval/FunctionEval.java</url>
-          <line>89</line>
-          <properties />
-          <option name="timeStamp" value="102" />
-        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="103" />
+      <option name="time" value="111" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1509,26 +1439,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/HobbyScript/Literal/IdLiteral.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="24" column="28" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
-          <folding>
-            <element signature="e#408#409#0" expanded="false" />
-            <element signature="e#448#449#0" expanded="false" />
-            <element signature="e#513#514#0" expanded="false" />
-            <element signature="e#564#565#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-44204">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_51.jdk/Contents/Home/src.zip!/java/io/Reader.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-600">
@@ -1566,10 +1476,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="312">
           <caret line="13" column="11" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
-          <folding>
-            <element signature="e#255#256#0" expanded="false" />
-            <element signature="e#281#282#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1594,14 +1500,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/HobbyScript/Parser/BnfParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="215" column="5" selection-start-line="215" selection-start-column="5" selection-end-line="215" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/HobbyScript/Tmp/1469107929731.gif">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -1615,19 +1513,6 @@
     <entry file="file://$PROJECT_DIR$/src/HobbyScript/Tmp/1469107930164.gif">
       <provider selected="true" editor-type-id="images">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/HobbyScript/Tmp/1469107930263.gif">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/HobbyScript/Test/ClassTest2">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="9" column="20" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/HobbyScript/Ast/AstNode.java">
@@ -1644,9 +1529,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="111">
           <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-          <folding>
-            <element signature="e#675#676#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1656,27 +1538,6 @@
           <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
           <folding>
             <element signature="e#572#573#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/HobbyScript/Literal/HobbyObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-404">
-          <caret line="11" column="16" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/HobbyScript/Ast/ParameterList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-          <folding>
-            <element signature="e#441#442#0" expanded="true" />
-            <element signature="e#476#477#0" expanded="true" />
-            <element signature="e#591#592#0" expanded="true" />
-            <element signature="e#659#660#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1711,34 +1572,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/HobbyScript/Ast/Dot.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-          <folding>
-            <element signature="e#635#636#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/HobbyScript/Ast/BinaryExpr.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-          <folding>
-            <element signature="e#732#733#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/HobbyScript/Eval/ScriptEval.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="112" column="0" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/HobbyScript/Lexer/HobbyLexer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="96">
@@ -1751,7 +1584,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1759,35 +1591,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
           <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/HobbyScript/Ast/Arguments.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/HobbyScript/Native/NativeList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-          <folding>
-            <element signature="e#1115#1116#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/HobbyScript/Ast/PrimaryExpr.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="412">
-          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-          <folding>
-            <element signature="e#653#654#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1796,34 +1599,6 @@
         <state relative-caret-position="129">
           <caret line="16" column="40" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/HobbyScript/Parser/FunctionParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="40" column="36" selection-start-line="40" selection-start-column="36" selection-end-line="40" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/HobbyScript/Parser/ClassParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-236">
-          <caret line="13" column="37" selection-start-line="13" selection-start-column="37" selection-end-line="13" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/HobbyScript/Ast/AstLeaf.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
-          <folding>
-            <element signature="e#979#980#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1842,8 +1617,8 @@
         <state relative-caret-position="267">
           <caret line="31" column="32" selection-start-line="31" selection-start-column="32" selection-end-line="31" selection-end-column="32" />
           <folding>
-            <element signature="e#612#613#0" expanded="true" />
-            <element signature="e#652#653#0" expanded="true" />
+            <element signature="e#612#613#0" expanded="false" />
+            <element signature="e#652#653#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1853,16 +1628,6 @@
         <state relative-caret-position="192">
           <caret line="8" column="34" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/HobbyScript/Ast/AstList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="107">
-          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding>
-            <element signature="e#551#552#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1876,45 +1641,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/HobbyScript/Ast/FuncStmt.java">
+    <entry file="file://$PROJECT_DIR$/src/HobbyScript/Literal/NaiveFunction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-          <folding>
-            <element signature="e#425#426#0" expanded="true" />
-            <element signature="e#486#487#0" expanded="true" />
-            <element signature="e#527#528#0" expanded="true" />
-            <element signature="e#574#575#0" expanded="true" />
-            <element signature="e#606#607#0" expanded="true" />
-            <element signature="e#650#651#0" expanded="true" />
-            <element signature="e#905#906#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/HobbyScript/Ast/ClassBody.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-          <folding>
-            <element signature="e#765#766#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/HobbyScript/Eval/ClassEval.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="792">
-          <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="888">
+          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/HobbyScript/Eval/Env/LocalEnvironment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
+        <state relative-caret-position="384">
           <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
           <folding>
             <element signature="e#366#367#0" expanded="true" />
@@ -1922,38 +1659,158 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/HobbyScript/Literal/Function.java">
+    <entry file="file://$PROJECT_DIR$/src/HobbyScript/Ast/AstLeaf.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+        <state relative-caret-position="251">
+          <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
           <folding>
-            <element signature="e#774#775#0" expanded="true" />
-            <element signature="e#821#822#0" expanded="true" />
-            <element signature="e#866#867#0" expanded="true" />
+            <element signature="e#979#980#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/HobbyScript/Eval/FunctionEval.java">
+    <entry file="file://$PROJECT_DIR$/src/HobbyScript/Tmp/1469107930263.gif">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HobbyScript/Tmp/1469107930210.gif">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HobbyScript/Ast/ClassBody.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="90" column="16" selection-start-line="90" selection-start-column="16" selection-end-line="90" selection-end-column="16" />
+        <state relative-caret-position="172">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/HobbyScript/Literal/NaiveFunction.java">
+    <entry file="file://$PROJECT_DIR$/src/HobbyScript/Parser/BnfParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="103">
-          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+        <state relative-caret-position="116">
+          <caret line="557" column="0" selection-start-line="557" selection-start-column="0" selection-end-line="557" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HobbyScript/Ast/FuncStmt.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HobbyScript/Parser/FunctionParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="41" column="12" selection-start-line="41" selection-start-column="12" selection-end-line="42" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HobbyScript/Parser/ClassParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="22" column="26" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HobbyScript/Literal/HobbyObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-576">
+          <caret line="26" column="18" selection-start-line="26" selection-start-column="18" selection-end-line="26" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HobbyScript/Ast/Dot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding>
+            <element signature="e#635#636#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HobbyScript/Literal/Function.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="107">
+          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding>
+            <element signature="e#645#646#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HobbyScript/Ast/AstList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding>
+            <element signature="e#509#510#0" expanded="true" />
+            <element signature="e#551#552#0" expanded="true" />
+            <element signature="e#733#734#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HobbyScript/Ast/ParameterList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="107">
+          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding>
+            <element signature="e#476#477#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HobbyScript/Test/ClassTest2">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HobbyScript/Eval/ClassEval.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2513">
+          <caret line="105" column="25" selection-start-line="105" selection-start-column="25" selection-end-line="105" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HobbyScript/Native/NativeList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="816">
+          <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+          <folding>
+            <element signature="e#1115#1116#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HobbyScript/Literal/CreateClassFunction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="9" column="54" selection-start-line="9" selection-start-column="54" selection-end-line="9" selection-end-column="54" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/HobbyScript/Interpreter/ScriptInterpreter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="40" column="26" selection-start-line="40" selection-start-column="26" selection-end-line="40" selection-end-column="26" />
+        <state relative-caret-position="484">
+          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1961,15 +1818,62 @@
     <entry file="file://$PROJECT_DIR$/src/HobbyScript/Interpreter/ClassInterpreter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
-          <caret line="14" column="9" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
+          <caret line="14" column="23" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HobbyScript/Eval/ScriptEval.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="110" column="39" selection-start-line="110" selection-start-column="39" selection-end-line="110" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HobbyScript/Ast/PrimaryExpr.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="412">
+          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding>
+            <element signature="e#653#654#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/HobbyScript/Test/ClassTest1">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="18" column="22" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
+        <state relative-caret-position="315">
+          <caret line="17" column="21" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HobbyScript/Ast/BinaryExpr.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="107">
+          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding>
+            <element signature="e#732#733#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HobbyScript/Ast/Arguments.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding>
+            <element signature="e#516#517#0" expanded="true" />
+            <element signature="e#551#552#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HobbyScript/Eval/FunctionEval.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="90" column="0" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
           <folding />
         </state>
       </provider>

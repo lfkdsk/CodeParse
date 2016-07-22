@@ -20,7 +20,8 @@ public class ClassParser extends ClosureParser {
     BnfParser member = BnfParser.rule().or(simple, def);
 
     BnfParser classBody = BnfParser.rule(ClassBody.class)
-            .sep(LC_TOKEN).option(member)
+            .sep(LC_TOKEN)
+            .option(member)
             .repeat(BnfParser.rule().sep(SEMICOLON_TOKEN, HobbyToken.EOL).option(member))
             .sep(RC_TOKEN);
 

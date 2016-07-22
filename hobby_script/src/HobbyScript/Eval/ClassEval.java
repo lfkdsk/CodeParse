@@ -5,6 +5,8 @@ import HobbyScript.Eval.Env.EnvironmentCallBack;
 import HobbyScript.Eval.Env.LocalEnvironment;
 import HobbyScript.Exception.HobbyException;
 import HobbyScript.Literal.ClassInfo;
+import HobbyScript.Literal.CreateClassFunction;
+import HobbyScript.Literal.Function;
 import HobbyScript.Literal.HobbyObject;
 
 import static HobbyScript.Parser.ScriptParser.INITIAL;
@@ -60,7 +62,17 @@ public class ClassEval {
                 thisEnv.put(THIS_POINT, object);
                 // 实例化
                 initialObject(info, thisEnv);
-                return object;
+
+                Function initialFunction;
+                try {
+                    initialFunction = (Function) object.read(INITIAL);
+                } catch (HobbyObject.AssessException e) {
+                    throw new HobbyException("can not read initial function ", dot);
+                }
+
+                if (initialFunction == null) return object;
+
+                return new CreateClassFunction(initialFunction, object);
             }
         } else if (value instanceof HobbyObject) {
 

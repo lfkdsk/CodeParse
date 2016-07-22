@@ -5,6 +5,7 @@ import HobbyScript.Eval.Env.EnvironmentCallBack;
 import HobbyScript.Eval.Env.LocalEnvironment;
 import HobbyScript.Exception.HobbyException;
 import HobbyScript.Literal.ClassFunction;
+import HobbyScript.Literal.CreateClassFunction;
 import HobbyScript.Literal.Function;
 import HobbyScript.Literal.NaiveFunction;
 import HobbyScript.Parser.ScriptParser;
@@ -103,6 +104,13 @@ public class FunctionEval {
 
         for (AstNode node : args) {
             parameters.eval(newEnv, num++, node.eval(parentEnv));
+        }
+
+        // handler 住这个问题 这里加入这句
+        // 解决了构造函数的问题
+        if (function instanceof CreateClassFunction) {
+            function.body().eval(newEnv);
+            return ((CreateClassFunction) function).getClassObject();
         }
 
         return function.body().eval(newEnv);
