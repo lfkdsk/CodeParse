@@ -10,6 +10,6 @@ println(i + logMsg);
 
 lfkdsk();
 
-logInfo(i + logMsg);
+// logInfo(i + logMsg);
 
 println(i + logMsg);

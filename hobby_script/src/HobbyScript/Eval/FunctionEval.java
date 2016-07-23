@@ -96,7 +96,7 @@ public class FunctionEval {
         } else {
             // 闭包函数的环境函数本身/类函数
             newEnv.setParent(function.getEnv());
-//            parentEnv = function.getEnv();
+            parentEnv = function.getEnv();
         }
 
 

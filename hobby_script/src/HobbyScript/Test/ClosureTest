@@ -1,4 +1,4 @@
-fuck lfkdsk(c){
+function lfkdsk(c){
     closure() { c = c + 1;};
 }
 
