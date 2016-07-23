@@ -117,12 +117,14 @@ public class ClassEval {
         if (FunctionEval.hasPostfix(expr, 0) &&
                 FunctionEval.postfix(expr, 0) instanceof Dot) {
             Object t = FunctionEval.evalSubExpr(env, expr, 1);
-            if (t instanceof HobbyObject) {
-                return setField((HobbyObject) t,
-                        (Dot) FunctionEval.postfix(expr, 0),
-                        value);
+            if (!(t instanceof HobbyObject)) {
+                t = new HobbyObject(env);
             }
+            return setField((HobbyObject) t,
+                    (Dot) FunctionEval.postfix(expr, 0),
+                    value);
         }
+
         throw new HobbyException("is not a assign for class item", left);
     }
 

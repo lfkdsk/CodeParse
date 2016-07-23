@@ -15,6 +15,6 @@ import java.io.FileNotFoundException;
  */
 public class ClassInterpreter extends NativeInterpreter {
     public static void main(String[] args) throws FileNotFoundException, ParseException {
-        run("LinkedList", new ClassParser(), new NativeList().env(new LocalEnvironment()));
+        run("LinkedTest", new ClassParser(), new NativeList().env(new LocalEnvironment()));
     }
 }
