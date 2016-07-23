@@ -98,7 +98,7 @@ public class PrintUtils {
      *
      * @param node 任意root节点
      */
-    private static void printAstTree(AstNode node) {
+    public static void printAstTree(AstNode node) {
         if (node == null) return;
         Iterator<AstNode> t = node.children();
         int parentValue = targetValue;
@@ -118,5 +118,31 @@ public class PrintUtils {
 
             printAstTree(child);
         }
+    }
+
+    public static void startPrint() {
+        targetValue = 0;
+
+        gv = new GraphViz();
+
+        gv.addln(gv.start_graph());
+
+        gv.addln("label = \" HobbyHorseScript's ASTTree by lfkdsk \";");
+    }
+
+    public static void endPrint() {
+        gv.addln(gv.end_graph());
+
+        System.out.println(gv.getDotSource());
+
+        gv.increaseDpi();
+
+        String representationType = "dot";
+
+        String type = "gif";
+
+        File out = new File("src/HobbyScript/Tmp/" + System.currentTimeMillis() + "." + type);   // Linux
+
+        gv.writeGraphToFile(gv.getGraph(gv.getDotSource(), type, representationType), out);
     }
 }

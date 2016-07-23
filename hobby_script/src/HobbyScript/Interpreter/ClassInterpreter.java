@@ -8,10 +8,13 @@ import HobbyScript.Parser.ClassParser;
 import java.io.FileNotFoundException;
 
 /**
- * Created by liufengkai on 16/7/21.
+ * Class类运行
+ *
+ * @author liufengkai
+ *         Created by liufengkai on 16/7/21.
  */
 public class ClassInterpreter extends NativeInterpreter {
     public static void main(String[] args) throws FileNotFoundException, ParseException {
-        run("ClassTestExtend", new ClassParser(), new NativeList().env(new LocalEnvironment()));
+        run("ClassThisPoint", new ClassParser(), new NativeList().env(new LocalEnvironment()));
     }
 }

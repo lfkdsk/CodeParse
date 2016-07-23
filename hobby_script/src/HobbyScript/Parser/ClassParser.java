@@ -17,14 +17,23 @@ public class ClassParser extends ClosureParser {
 //
 //    BnfParser classOpen = BnfParser.rule().or();
 
+    ///////////////////////////////////////////////////////////////////////////
+    // member = simple | function
+    ///////////////////////////////////////////////////////////////////////////
     BnfParser member = BnfParser.rule().or(simple, def);
 
+    ///////////////////////////////////////////////////////////////////////////
+    // classBody = { [member] | [member] ; }
+    ///////////////////////////////////////////////////////////////////////////
     BnfParser classBody = BnfParser.rule(ClassBody.class)
             .sep(LC_TOKEN)
             .option(member)
             .repeat(BnfParser.rule().sep(SEMICOLON_TOKEN, HobbyToken.EOL).option(member))
             .sep(RC_TOKEN);
 
+    ///////////////////////////////////////////////////////////////////////////
+    // classDefine = class xxx [extend xxx] classBody
+    ///////////////////////////////////////////////////////////////////////////
     BnfParser classDefine = BnfParser.rule(ClassStmt.class)
             .sep(CLASS_TOKEN).identifier(reserved)
             .option(BnfParser.rule().sep(EXTEND_TOKEN).identifier(reserved))

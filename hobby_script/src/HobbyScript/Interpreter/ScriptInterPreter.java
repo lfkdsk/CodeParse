@@ -32,15 +32,20 @@ public class ScriptInterpreter {
 
         Logger.init("Interpreter");
 
+//        PrintUtils.startPrint();
+
         while (lexer.peek(0) != HobbyToken.EOF) {
             AstNode node = parser.parse(lexer);
 
             if (!(node instanceof NullStmt)) {
                 Object r = node.eval(env);
+//                PrintUtils.printAstTree(node);
 //                Logger.v(" => " + r);
 //                PrintUtils.printAstTreeGraph(node);
             }
         }
+
+//        PrintUtils.endPrint();
     }
 
 
