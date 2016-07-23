@@ -1,8 +1,10 @@
+i = 301;
+
 class lfkdsk {
-    Ss = 100;
+    Ss = i;
 
     function Initial(x){
-        Ss = x;
+        Ss = i;
     }
 
     Ssdut = closure(){

@@ -97,6 +97,7 @@ public class ClassEval {
         if (info.getSuperClass() != null) {
             initialObject(info.getSuperClass(), env);
         }
+//        ((LocalEnvironment) env).setParent(info.env());
         info.body().eval(env);
     }
 

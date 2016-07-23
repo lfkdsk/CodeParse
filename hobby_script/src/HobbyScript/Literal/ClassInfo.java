@@ -58,7 +58,7 @@ public class ClassInfo {
     }
 
     public EnvironmentCallBack env() {
-        return body().getEnv();
+        return env;
     }
 
     @Override
