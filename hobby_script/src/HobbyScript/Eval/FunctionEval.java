@@ -4,10 +4,7 @@ import HobbyScript.Ast.*;
 import HobbyScript.Eval.Env.EnvironmentCallBack;
 import HobbyScript.Eval.Env.LocalEnvironment;
 import HobbyScript.Exception.HobbyException;
-import HobbyScript.Literal.ClassFunction;
-import HobbyScript.Literal.CreateClassFunction;
-import HobbyScript.Literal.Function;
-import HobbyScript.Literal.NaiveFunction;
+import HobbyScript.Literal.*;
 import HobbyScript.Parser.ScriptParser;
 
 /**
@@ -90,15 +87,23 @@ public class FunctionEval {
 
         LocalEnvironment newEnv = (LocalEnvironment) function.makeNewEnv();
         // 正常的函数
-        if (parentEnv != function.getEnv()
-                && !(function instanceof ClassFunction)) {
-            newEnv.setParent(parentEnv);
-        } else {
+//        if (parentEnv != function.getEnv()
+//                && !(function instanceof ClassFunction)) {
+//            newEnv.setParent(parentEnv);
+//        } else {
+//            // 闭包函数的环境函数本身/类函数
+//            newEnv.setParent(function.getEnv());
+//            parentEnv = function.getEnv();
+//        }
+
+        if (function instanceof ClassFunction
+                || function instanceof ClosureFunction) {
             // 闭包函数的环境函数本身/类函数
             newEnv.setParent(function.getEnv());
-            parentEnv = function.getEnv();
+//            parentEnv = function.getEnv();
+        } else {
+            newEnv.setParent(parentEnv);
         }
-
 
         int num = 0;
 
@@ -123,7 +128,7 @@ public class FunctionEval {
     public static Object closureEval(Closure closure,
                                      EnvironmentCallBack env) {
 
-        return new Function(closure.parameters(),
+        return new ClosureFunction(closure.parameters(),
                 closure.body(), env);
     }
 
