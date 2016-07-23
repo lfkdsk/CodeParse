@@ -63,6 +63,8 @@ public class ScriptParser {
 
     public static final String LM_TOKEN = "[", RM_TOKEN = "]";
 
+    public static final String LS_TOKEN = "<", RS_TOKEN = ">";
+
     /**
      * 保留关键字
      */
@@ -76,15 +78,22 @@ public class ScriptParser {
 
     BnfParser expr0 = BnfParser.rule();
 
+
+    BnfParser number = BnfParser.rule().number(NumberLiteral.class);
+
+    BnfParser id = BnfParser.rule().identifier(IdLiteral.class, reserved);
+
+    BnfParser string = BnfParser.rule().string(StringLiteral.class);
+
     ///////////////////////////////////////////////////////////////////////////
     // primary = ( expr ) | number | id | string
     ///////////////////////////////////////////////////////////////////////////
 
     BnfParser primary = BnfParser.rule(PrimaryExpr.class)
             .or(BnfParser.rule().sep(LP_TOKEN).ast(expr0).sep(RP_TOKEN),
-                    BnfParser.rule().number(NumberLiteral.class),
-                    BnfParser.rule().identifier(IdLiteral.class, reserved),
-                    BnfParser.rule().string(StringLiteral.class)
+                    number,
+                    id,
+                    string
             );
 
     ///////////////////////////////////////////////////////////////////////////

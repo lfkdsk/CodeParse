@@ -56,9 +56,12 @@ public class ArrayEval {
             ArrayIndex array = (ArrayIndex) FunctionEval.postfix(expr, 0);
             Object index = array.index().eval(env);
             if (index instanceof Integer) {
-                ((Object[]) in)[(int) index] = value;
+                return ((Object[]) in)[(int) index] = value;
             }
         }
         throw new HobbyException(" can not access to array", expr);
     }
+//
+//    public static Object createArray(EnvironmentCallBack env,
+//                                     )
 }

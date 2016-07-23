@@ -63,7 +63,7 @@ public class ScriptEval {
         Object value = env.get(literal.name());
 
         if (value == null) {
-            throw new HobbyException("undefined name: ", literal);
+            throw new HobbyException("undefined name: " + literal.name(), literal);
         } else {
             return value;
         }

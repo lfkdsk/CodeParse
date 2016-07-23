@@ -41,6 +41,10 @@ public class NativeList {
         Logger.i(msg);
     }
 
+    public static int length(Object[] objects) {
+        return objects.length;
+    }
+
     public static void println(String msg) {
         System.out.println(msg);
     }
@@ -48,6 +52,7 @@ public class NativeList {
     public EnvironmentCallBack env(EnvironmentCallBack env) {
         addNativeFunction(env, "logInfo", NativeList.class, String.class);
         addNativeFunction(env, "println", NativeList.class, String.class);
+        addNativeFunction(env, "length", NativeList.class, Object[].class);
         return env;
     }
 
