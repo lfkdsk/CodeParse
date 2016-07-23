@@ -13,11 +13,11 @@ class lfkdsk {
 }
 
 class lfk extend lfkdsk {
-
+    function Lfkddd(){
+        super.Ssdut();
+    }
 }
 
 lfi = lfk.Initial(200);
 
-lffff ="";
-
-logInfo(lffff + lfi.Ss);
+logInfo(lfi.Lfkddd() + " " + lfi.Ss);

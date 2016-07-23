@@ -8,6 +8,7 @@ import HobbyScript.Literal.ClassInfo;
 import HobbyScript.Literal.CreateClassFunction;
 import HobbyScript.Literal.Function;
 import HobbyScript.Literal.HobbyObject;
+import HobbyScript.Parser.ScriptParser;
 
 import static HobbyScript.Parser.ScriptParser.INITIAL;
 import static HobbyScript.Parser.ScriptParser.THIS_POINT;
@@ -32,11 +33,6 @@ public class ClassEval {
     ///////////////////////////////////////////////////////////////////////////
     public static Object classBodyEval(EnvironmentCallBack env,
                                        ClassBody body) {
-
-//        LocalEnvironment newEnv = new LocalEnvironment(env);
-//
-//        body.setEnv(newEnv);
-
         for (AstNode n : body) {
             n.eval(env);
         }
@@ -95,9 +91,12 @@ public class ClassEval {
     private static void initialObject(ClassInfo info,
                                       EnvironmentCallBack env) {
         if (info.getSuperClass() != null) {
+
+            HobbyObject superObject = new HobbyObject(env);
+            env.put(ScriptParser.SUPER_TOKEN, superObject);
+
             initialObject(info.getSuperClass(), env);
         }
-//        ((LocalEnvironment) env).setParent(info.env());
         info.body().eval(env);
     }
 
