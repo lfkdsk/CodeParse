@@ -61,3 +61,77 @@
   ```
 
   ![closure](src/HobbyScript/Tmp/1468726947469.gif)
+
+
+* 2016.7.22 现在完成了 OOP的初次封装，支持了两种构造函数。
+
+  ``` java
+  i = 301;
+
+  class lfkdsk {
+      Ss = i;
+
+      function Initial(x){
+          Ss = i;
+      }
+
+      Ssdut = closure(){
+          Ss = 1000;
+      };
+  }
+
+  class lfk extend lfkdsk {
+      function Lfkddd(){
+          super.Ssdut();
+      }
+  }
+
+  lfi = lfk.Initial(200);
+
+  logInfo(lfi.Lfkddd() + "  " + lfi.Ss);
+  ```
+
+  ​
+
+  ![oop](src/HobbyScript/Tmp/1469200832304.gif)
+
+
+* 2016.7.23 修改了几个环境的bug，类能够很简单地表示链表等数据结构，这就有了很多的可能性。
+
+``` java
+class Node {
+
+    value = 0;
+
+    next = 0;
+
+    function Initial(v){
+        value = v;
+    };
+
+    function GetV(){
+        value;
+    };
+
+    function SetV(v){
+        value = v;
+    };
+
+    function SetN(n){
+        next = n;
+    }
+
+    function GetN(){
+        next;
+    }
+}
+
+firstNode = Node.Initial(0);
+
+secondNode = Node.Initial(" fuck you");
+
+firstNode.SetN(secondNode);
+
+logInfo(firstNode.GetN().GetV() + " ");
+```
+

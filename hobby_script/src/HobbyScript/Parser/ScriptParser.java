@@ -61,6 +61,8 @@ public class ScriptParser {
             INITIAL = "Initial", THIS_POINT = "this",
             SUPER_TOKEN = "super";
 
+    public static final String LM_TOKEN = "[", RM_TOKEN = "]";
+
     /**
      * 保留关键字
      */
