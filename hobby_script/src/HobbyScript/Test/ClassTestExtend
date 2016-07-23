@@ -20,4 +20,4 @@ class lfk extend lfkdsk {
 
 lfi = lfk.Initial(200);
 
-logInfo(lfi.Lfkddd() + " " + lfi.Ss);
+logInfo(lfi.Lfkddd() + "  " + lfi.Ss);

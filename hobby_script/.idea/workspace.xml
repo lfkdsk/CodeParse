@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="af539864-56bd-43a4-828b-9c8a84937756" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HobbyScript/Eval/ClassEval.java" afterPath="$PROJECT_DIR$/src/HobbyScript/Eval/ClassEval.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HobbyScript/Parser/ScriptParser.java" afterPath="$PROJECT_DIR$/src/HobbyScript/Parser/ScriptParser.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HobbyScript/Test/ClassTestExtend" afterPath="$PROJECT_DIR$/src/HobbyScript/Test/ClassTestExtend" />
     </list>
     <list id="fdd1a53f-466c-4c39-82cf-51e94d392ef2" name="New changelist" comment="" />
@@ -40,7 +38,7 @@
         <entry file="file://$PROJECT_DIR$/src/HobbyScript/Test/ClassTestExtend">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="528">
-              <caret line="22" column="25" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
+              <caret line="22" column="26" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -1020,14 +1018,7 @@
       <workItem from="1469017684186" duration="12019000" />
       <workItem from="1469116417960" duration="3837000" />
       <workItem from="1469190336660" duration="4063000" />
-      <workItem from="1469238313591" duration="1722000" />
-    </task>
-    <task id="LOCAL-00038" summary="update">
-      <created>1468541511178</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1468541511178</updated>
+      <workItem from="1469238313591" duration="1988000" />
     </task>
     <task id="LOCAL-00039" summary="fix bug">
       <created>1468542033739</created>
@@ -1365,11 +1356,18 @@
       <option name="project" value="LOCAL" />
       <updated>1469239574198</updated>
     </task>
-    <option name="localTasksCounter" value="87" />
+    <task id="LOCAL-00087" summary="fix bug in logInfo()">
+      <created>1469240304187</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1469240304187</updated>
+    </task>
+    <option name="localTasksCounter" value="88" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="162768000" />
+    <option name="totallyTimeSpent" value="163034000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1391,7 +1389,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32859176" sideWeight="0.503231" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.44381222" sideWeight="0.49353796" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.44381222" sideWeight="0.49353796" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40113798" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1476,7 +1474,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="update comment" />
     <MESSAGE value="update readme.md" />
     <MESSAGE value="update msg" />
     <MESSAGE value="add comment" />
@@ -1501,7 +1498,8 @@
     <MESSAGE value="添加类继承测试" />
     <MESSAGE value="update 无法使用this指针" />
     <MESSAGE value="fix bug in class body" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix bug in class body" />
+    <MESSAGE value="fix bug in logInfo()" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix bug in logInfo()" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1759,11 +1757,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/HobbyScript/Tmp/1469200832304.gif">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/HobbyScript/Test/ClassTest2">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1951,10 +1944,15 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/HobbyScript/Tmp/1469200832304.gif">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/HobbyScript/Test/ClassTestExtend">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="528">
-          <caret line="22" column="25" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
+          <caret line="22" column="26" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
           <folding />
         </state>
       </provider>
