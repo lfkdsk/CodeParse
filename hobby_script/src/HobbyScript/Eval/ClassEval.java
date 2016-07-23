@@ -107,6 +107,12 @@ public class ClassEval {
                                                AstNode left,
                                                Object value) {
         PrimaryExpr expr = (PrimaryExpr) left;
+
+        if (FunctionEval.hasPostfix(expr, 0) &&
+                FunctionEval.postfix(expr, 0) instanceof ArrayIndex) {
+            return ArrayEval.arrayAccessEval(env, expr, value);
+        }
+
         // 后缀判断、类型为类索引
         if (FunctionEval.hasPostfix(expr, 0) &&
                 FunctionEval.postfix(expr, 0) instanceof Dot) {

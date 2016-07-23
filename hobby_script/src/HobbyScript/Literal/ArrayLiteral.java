@@ -2,6 +2,7 @@ package HobbyScript.Literal;
 
 import HobbyScript.Ast.AstList;
 import HobbyScript.Ast.AstNode;
+import HobbyScript.Eval.ArrayEval;
 import HobbyScript.Eval.Env.EnvironmentCallBack;
 import HobbyScript.Token.HobbyToken;
 
@@ -24,6 +25,6 @@ public class ArrayLiteral extends AstList {
 
     @Override
     public Object eval(EnvironmentCallBack env) {
-        return super.eval(env);
+        return ArrayEval.arrayLiteralEval(env, this);
     }
 }
