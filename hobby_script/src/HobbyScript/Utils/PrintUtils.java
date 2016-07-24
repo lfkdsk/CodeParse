@@ -141,7 +141,7 @@ public class PrintUtils {
 
         String type = "gif";
 
-        File out = new File("src/HobbyScript/Tmp/" + System.currentTimeMillis() + "." + type);   // Linux
+        File out = new File("../hobby_script/Tmp/" + System.currentTimeMillis() + "." + type);   // Linux
 
         gv.writeGraphToFile(gv.getGraph(gv.getDotSource(), type, representationType), out);
     }
