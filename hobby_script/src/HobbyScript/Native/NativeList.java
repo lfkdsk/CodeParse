@@ -37,22 +37,53 @@ public class NativeList {
         env.put(nativeName, new NaiveFunction(nativeName, method));
     }
 
+    /**
+     * Logger打印
+     *
+     * @param msg 打印message
+     */
     public static void logInfo(String msg) {
         Logger.i(msg);
     }
 
+    /**
+     * 求数组长度
+     *
+     * @param objects 数组
+     * @return 返回长度
+     */
     public static int length(Object[] objects) {
         return objects.length;
     }
 
+    /**
+     * 普通日志打印
+     *
+     * @param msg message
+     */
     public static void println(String msg) {
         System.out.println(msg);
+    }
+
+    /**
+     * 创建Array数组
+     *
+     * @param integer 大小
+     * @return 数组大小
+     */
+    public static Object[] createArray(Integer integer) {
+        Object[] array = new Object[integer];
+        for (int i = 0; i < integer; i++) {
+            array[i] = 0;
+        }
+        return array;
     }
 
     public EnvironmentCallBack env(EnvironmentCallBack env) {
         addNativeFunction(env, "logInfo", NativeList.class, String.class);
         addNativeFunction(env, "println", NativeList.class, String.class);
         addNativeFunction(env, "length", NativeList.class, Object[].class);
+        addNativeFunction(env, "createArray", NativeList.class, Integer.class);
         return env;
     }
 

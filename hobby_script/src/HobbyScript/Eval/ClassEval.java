@@ -60,6 +60,7 @@ public class ClassEval {
                 initialObject(info, thisEnv);
 
                 Function initialFunction;
+
                 try {
                     initialFunction = (Function) object.read(INITIAL);
                 } catch (HobbyObject.AssessException e) {
@@ -88,8 +89,8 @@ public class ClassEval {
      * @param info 类信息
      * @param env  环境
      */
-    private static void initialObject(ClassInfo info,
-                                      EnvironmentCallBack env) {
+    public static void initialObject(ClassInfo info,
+                                     EnvironmentCallBack env) {
         if (info.getSuperClass() != null) {
 
             HobbyObject superObject = new HobbyObject(env);
