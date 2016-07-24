@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="af539864-56bd-43a4-828b-9c8a84937756" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/HobbyScript/Tmp/1469333254733.gif" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/HobbyScript/Tmp/1469265246592.gif" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
     </list>
@@ -1171,14 +1169,7 @@
       <workItem from="1469190336660" duration="4063000" />
       <workItem from="1469238313591" duration="19323000" />
       <workItem from="1469328544403" duration="214000" />
-      <workItem from="1469329947488" duration="448000" />
-    </task>
-    <task id="LOCAL-00046" summary="UPDATE TAG">
-      <created>1468571959030</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1468571959030</updated>
+      <workItem from="1469329947488" duration="555000" />
     </task>
     <task id="LOCAL-00047" summary="delete test">
       <created>1468572071370</created>
@@ -1516,11 +1507,18 @@
       <option name="project" value="LOCAL" />
       <updated>1469290855880</updated>
     </task>
-    <option name="localTasksCounter" value="95" />
+    <task id="LOCAL-00095" summary="update graph">
+      <created>1469333386401</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1469333386402</updated>
+    </task>
+    <option name="localTasksCounter" value="96" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="181031000" />
+    <option name="totallyTimeSpent" value="181138000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">

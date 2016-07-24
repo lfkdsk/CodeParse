@@ -370,3 +370,5 @@ logInfo(firstNode.GetN().GetV() + " ");
   ```
 
   还有使用数组实现的ArrayList，和Java原生的都很像，用起来也几乎一样。
+
+​	现在的AST树直接生成的图片分辨率已经大得惊人了，MD里面都快渲染不出来了，所以直接放链接好了[LinkedList AST](src/HobbyScript/Tmp/1469333254733.gif) 。
