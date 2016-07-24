@@ -43,9 +43,9 @@
 
 ​	昨天的时候，我写了一个小的彩蛋，使用`GraphViz`的JavaAPI去绘制运行代码的AST树，下面有一些示例，其余保存在`src/HobbyScript/Tmp/`中。
 
-​	![for](src/HobbyScript/Tmp/1468676787478.gif)
+​	![for](Tmp/1468676787478.gif)
 
-![fib](src/HobbyScript/Tmp/1468654574802.gif)
+![fib](Tmp/1468654574802.gif)
 
 * 2016.7.17 试着增加了一下闭包函数 现在有点混乱
 
@@ -60,7 +60,7 @@
   lfkdsk();
   ```
 
-  ![closure](src/HobbyScript/Tmp/1468726947469.gif)
+  ![closure](Tmp/1468726947469.gif)
 
 
 * 2016.7.22 现在完成了 OOP的初次封装，支持了两种构造函数。
@@ -93,7 +93,7 @@
 
   ​
 
-  ![oop](src/HobbyScript/Tmp/1469200832304.gif)
+  ![oop](Tmp/1469200832304.gif)
 
 
 * 2016.7.23 修改了几个环境的bug，类能够很简单地表示链表等数据结构，这就有了很多的可能性。
@@ -389,4 +389,4 @@ list.PrintList();
 
   还有使用数组实现的ArrayList，和Java原生的都很像，用起来也几乎一样。
 
-​  现在的AST树直接生成的图片分辨率已经大得惊人了，MD里面都快渲染不出来了，所以直接放链接好了[LinkedList AST](src/HobbyScript/Tmp/1469333254733.gif) 。
+​  现在的AST树直接生成的图片分辨率已经大得惊人了，MD里面都快渲染不出来了，所以直接放链接好了[LinkedList AST](Tmp/1469333254733.gif) 。

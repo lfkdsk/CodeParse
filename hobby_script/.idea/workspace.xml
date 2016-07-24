@@ -2,56 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="af539864-56bd-43a4-828b-9c8a84937756" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/HobbyScript/Test/ArrayList" afterPath="$PROJECT_DIR$/Test/ArrayList" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/HobbyScript/Test/ArrayTest1" afterPath="$PROJECT_DIR$/Test/ArrayTest1" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/HobbyScript/Test/BreakTest" afterPath="$PROJECT_DIR$/Test/BreakTest" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/HobbyScript/Test/ClassTest1" afterPath="$PROJECT_DIR$/Test/ClassTest1" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/HobbyScript/Test/ClassTest2" afterPath="$PROJECT_DIR$/Test/ClassTest2" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/HobbyScript/Test/ClassTestExtend" afterPath="$PROJECT_DIR$/Test/ClassTestExtend" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/HobbyScript/Test/ClassThisPoint" afterPath="$PROJECT_DIR$/Test/ClassThisPoint" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/HobbyScript/Test/ClosureTest" afterPath="$PROJECT_DIR$/Test/ClosureTest" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/HobbyScript/Test/ClosureTest2" afterPath="$PROJECT_DIR$/Test/ClosureTest2" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/HobbyScript/Test/ClosureTest3" afterPath="$PROJECT_DIR$/Test/ClosureTest3" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/HobbyScript/Test/FTTest2" afterPath="$PROJECT_DIR$/Test/FTTest2" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/HobbyScript/Test/FTTestFib1" afterPath="$PROJECT_DIR$/Test/FTTestFib1" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/HobbyScript/Test/ForTest1" afterPath="$PROJECT_DIR$/Test/ForTest1" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/HobbyScript/Test/FuckTest1" afterPath="$PROJECT_DIR$/Test/FuckTest1" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/HobbyScript/Test/IfLocalEnvTest" afterPath="$PROJECT_DIR$/Test/IfLocalEnvTest" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/HobbyScript/Test/LinkedList" afterPath="$PROJECT_DIR$/Test/LinkedList" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/HobbyScript/Test/LinkedTest" afterPath="$PROJECT_DIR$/Test/LinkedTest" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/HobbyScript/Test/LocalEnvTest" afterPath="$PROJECT_DIR$/Test/LocalEnvTest" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/HobbyScript/Test/MoreWhileTest1" afterPath="$PROJECT_DIR$/Test/MoreWhileTest1" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/HobbyScript/Test/STInfinitelyTest" afterPath="$PROJECT_DIR$/Test/STInfinitelyTest" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/HobbyScript/Test/STTest1" afterPath="$PROJECT_DIR$/Test/STTest1" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/HobbyScript/Test/STTest2" afterPath="$PROJECT_DIR$/Test/STTest2" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/HobbyScript/Test/ScriptTest" afterPath="$PROJECT_DIR$/Test/ScriptTest" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/HobbyScript/Test/TypeChangeTest" afterPath="$PROJECT_DIR$/Test/TypeChangeTest" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/HobbyScript/Tmp/1468568520353.gif" afterPath="$PROJECT_DIR$/Tmp/1468568520353.gif" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/HobbyScript/Tmp/1468569367651.gif" afterPath="$PROJECT_DIR$/Tmp/1468569367651.gif" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/HobbyScript/Tmp/1468569711286.gif" afterPath="$PROJECT_DIR$/Tmp/1468569711286.gif" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/HobbyScript/Tmp/1468570992546.gif" afterPath="$PROJECT_DIR$/Tmp/1468570992546.gif" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/HobbyScript/Tmp/1468639129196.gif" afterPath="$PROJECT_DIR$/Tmp/1468639129196.gif" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/HobbyScript/Tmp/1468639129259.gif" afterPath="$PROJECT_DIR$/Tmp/1468639129259.gif" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/HobbyScript/Tmp/1468639129290.gif" afterPath="$PROJECT_DIR$/Tmp/1468639129290.gif" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/HobbyScript/Tmp/1468654574802.gif" afterPath="$PROJECT_DIR$/Tmp/1468654574802.gif" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/HobbyScript/Tmp/1468654574902.gif" afterPath="$PROJECT_DIR$/Tmp/1468654574902.gif" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/HobbyScript/Tmp/1468670828965.gif" afterPath="$PROJECT_DIR$/Tmp/1468670828965.gif" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/HobbyScript/Tmp/1468671165691.gif" afterPath="$PROJECT_DIR$/Tmp/1468671165691.gif" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/HobbyScript/Tmp/1468676787411.gif" afterPath="$PROJECT_DIR$/Tmp/1468676787411.gif" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/HobbyScript/Tmp/1468676787478.gif" afterPath="$PROJECT_DIR$/Tmp/1468676787478.gif" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/HobbyScript/Tmp/1468726947469.gif" afterPath="$PROJECT_DIR$/Tmp/1468726947469.gif" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/HobbyScript/Tmp/1468726947551.gif" afterPath="$PROJECT_DIR$/Tmp/1468726947551.gif" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/HobbyScript/Tmp/1468726947589.gif" afterPath="$PROJECT_DIR$/Tmp/1468726947589.gif" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/HobbyScript/Tmp/1469107929731.gif" afterPath="$PROJECT_DIR$/Tmp/1469107929731.gif" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/HobbyScript/Tmp/1469107930123.gif" afterPath="$PROJECT_DIR$/Tmp/1469107930123.gif" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/HobbyScript/Tmp/1469107930164.gif" afterPath="$PROJECT_DIR$/Tmp/1469107930164.gif" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/HobbyScript/Tmp/1469107930210.gif" afterPath="$PROJECT_DIR$/Tmp/1469107930210.gif" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/HobbyScript/Tmp/1469107930263.gif" afterPath="$PROJECT_DIR$/Tmp/1469107930263.gif" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/HobbyScript/Tmp/1469200832304.gif" afterPath="$PROJECT_DIR$/Tmp/1469200832304.gif" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/HobbyScript/Tmp/1469259076290.gif" afterPath="$PROJECT_DIR$/Tmp/1469259076290.gif" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/HobbyScript/Tmp/1469333254733.gif" afterPath="$PROJECT_DIR$/Tmp/1469333254733.gif" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HobbyScript/Utils/PrintUtils.java" afterPath="$PROJECT_DIR$/src/HobbyScript/Utils/PrintUtils.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HobbyScript/Interpreter/ScriptInterPreter.java" afterPath="$PROJECT_DIR$/src/HobbyScript/Interpreter/ScriptInterPreter.java" />
     </list>
     <list id="fdd1a53f-466c-4c39-82cf-51e94d392ef2" name="New changelist" comment="" />
     <ignored path="hobby_script.iws" />
@@ -981,14 +934,7 @@
       <workItem from="1469190336660" duration="4063000" />
       <workItem from="1469238313591" duration="19323000" />
       <workItem from="1469328544403" duration="214000" />
-      <workItem from="1469329947488" duration="1584000" />
-    </task>
-    <task id="LOCAL-00052" summary="add function">
-      <created>1468653679869</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1468653679869</updated>
+      <workItem from="1469329947488" duration="1782000" />
     </task>
     <task id="LOCAL-00053" summary="update test/function">
       <created>1468654618037</created>
@@ -1326,11 +1272,18 @@
       <option name="project" value="LOCAL" />
       <updated>1469345798300</updated>
     </task>
-    <option name="localTasksCounter" value="101" />
+    <task id="LOCAL-00101" summary="update">
+      <created>1469346008906</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1469346008907</updated>
+    </task>
+    <option name="localTasksCounter" value="102" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="182167000" />
+    <option name="totallyTimeSpent" value="182365000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
