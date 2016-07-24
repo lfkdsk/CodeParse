@@ -41,7 +41,7 @@
   支持诸如此类的代码。
 
 
-​	昨天的时候，我写了一个小的彩蛋，使用`GraphViz`的JavaAPI去绘制运行代码的AST树，下面有一些示例，其余保存在`src/HobbyScript/Tmp/`中。
+​	昨天的时候，我写了一个小的彩蛋，使用`GraphViz`的JavaAPI去绘制运行代码的AST树，下面有一些示例，其余保存在`Tmp/`中。
 
 ​	![for](Tmp/1468676787478.gif)
 
