@@ -152,6 +152,7 @@ logInfo(firstNode.GetN().GetV() + " ");
           Next = next;
       }
   }
+  ```
 
 
   class LinkedList {
@@ -167,77 +168,77 @@ logInfo(firstNode.GetN().GetV() + " ");
       function Initial(){
           Clear();
       };
-
+    
       function Clear(){
           start = Node.Initial(0, 0, 0);
           end = Node.Initial(0, start, 0);
-
+    
           theSize = 0;
           modCount = modCount + 1;
       };
-
+    
       function Size(){
           theSize;
       };
-
+    
       function IsEmpty(){
           theSize == 0;
       }
-
+    
       function Add(value){
           add(Size(), value);
       }
-
+    
       function add(index, value){
           AddBefore(getNode(index),value);
       }
-
+    
       function Get(index){
           getNode(index).Data;
       }
-
+    
       function Set(index, newVal) {
           p = getNode(index);
-
+    
           oldVal = p.Data;
-
+    
           // logInfo(p.Data + " - " +  index);
-
+    
           p.Data = newVal;
-
+    
           oldVal;
       }
-
+    
       function Remove(index) {
           remove(getNode(index));
       }
-
+    
       function remove(p) {
           p.Next.Prev = p.Prev;
           p.Prev.Next = p.Next;
-
+    
           theSize = theSize - 1;
           modCount = modCount + 1;
-
+    
           p.Data;
       }
-
+    
       function AddBefore(index, value){
           newNode = Node.Initial(value,index.Prev,index);
-
+    
           newNode.Prev.Next = newNode;
-
+    
           index.Prev = newNode;
-
+    
           theSize = theSize + 1;
-
+    
           modCount = modCount + 1;
       }
 
 
       function getNode(index){
           p = 0;
-
+    
           if(index > -1){
               if(index < Size() + 1){
                   if(index < Size() / 2){
@@ -248,20 +249,20 @@ logInfo(firstNode.GetN().GetV() + " ");
                           p = p.Next;
                       }
                   } else {
-
+    
                       p = end;
-
+    
                       for (i = Size(); i > index; i = i - 1) {
                           p = p.Prev;
                       }
                   }
-
+    
                   p;
               }
           }
-
+    
       }
-
+    
       function PrintList(){
           size = Size();
           for(p = start.Next;size > 0; p = p.Next){
@@ -371,4 +372,4 @@ logInfo(firstNode.GetN().GetV() + " ");
 
   还有使用数组实现的ArrayList，和Java原生的都很像，用起来也几乎一样。
 
-​	现在的AST树直接生成的图片分辨率已经大得惊人了，MD里面都快渲染不出来了，所以直接放链接好了[LinkedList AST](src/HobbyScript/Tmp/1469333254733.gif) 。
+​  现在的AST树直接生成的图片分辨率已经大得惊人了，MD里面都快渲染不出来了，所以直接放链接好了[LinkedList AST](src/HobbyScript/Tmp/1469333254733.gif) 。
