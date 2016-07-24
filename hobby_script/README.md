@@ -245,38 +245,37 @@ logInfo(firstNode.GetN().GetV() + " ");
                       p = start.Next;
 
 
-                      for (i = 0; i < index; i = i + 1) {
-                          p = p.Next;
-                      }
-                  } else {
-    
-                      p = end;
-    
-                      for (i = Size(); i > index; i = i - 1) {
-                          p = p.Prev;
-                      }
+```java
+                  for (i = 0; i < index; i = i + 1) {
+                      p = p.Next;
                   }
-    
-                  p;
+              } else {
+
+                  p = end;
+
+                  for (i = Size(); i > index; i = i - 1) {
+                      p = p.Prev;
+                  }
               }
+
+              p;
           }
-    
       }
-    
-      function PrintList(){
-          size = Size();
-          for(p = start.Next;size > 0; p = p.Next){
-              logInfo(p.Data + " ");
-              size = size - 1;
-          }
+
+  }
+
+  function PrintList(){
+      size = Size();
+      for(p = start.Next;size > 0; p = p.Next){
+          logInfo(p.Data + " ");
+          size = size - 1;
       }
   }
-  ```
-
+}
+```
   使用链表实现的LinkedList。
-
-  ``` java
-  class ArrayList {
+```java
+ class ArrayList {
 
       DEFAULT_SIZE = 1;
 
@@ -368,7 +367,7 @@ logInfo(firstNode.GetN().GetV() + " ");
           }
       }
   }
-  ```
+```
 
   还有使用数组实现的ArrayList，和Java原生的都很像，用起来也几乎一样。
 
