@@ -124,9 +124,8 @@ class LinkedList {
 
     function PrintList(){
         size = Size();
-        for(p = start.Next;size > 0; p = p.Next){
+        for(p = start.Next;size > 0; p = p.Next ,size = size - 1){
             logInfo(p.Data + " ");
-            size = size - 1;
         }
     }
 }

@@ -147,12 +147,15 @@ public class ScriptParser {
     // for (initial ; condition ; step)
     ///////////////////////////////////////////////////////////////////////////
 
+    BnfParser option = BnfParser.rule(OptionStmt.class).option(expr)
+            .repeat(BnfParser.rule().sep(COMMA).option(expr));
+
     BnfParser forStatement =
             BnfParser.rule(ForStmt.class).sep(FOR_TOKEN)
                     .sep(LP_TOKEN)
+                    .or(option, BnfParser.rule(NullStmt.class)).sep(SEMICOLON_TOKEN)
                     .or(expr, BnfParser.rule(NullStmt.class)).sep(SEMICOLON_TOKEN)
-                    .or(expr, BnfParser.rule(NullStmt.class)).sep(SEMICOLON_TOKEN)
-                    .or(expr, BnfParser.rule(NullStmt.class))
+                    .or(option, BnfParser.rule(NullStmt.class))
                     .sep(RP_TOKEN).ast(block);
 
     ///////////////////////////////////////////////////////////////////////////

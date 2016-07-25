@@ -395,4 +395,19 @@ public class ScriptEval {
             forStmt.step().eval(newEnv);
         }
     }
+
+    ///////////////////////////////////////////////////////////////////////////
+    // Option 指 expr,expr
+    ///////////////////////////////////////////////////////////////////////////
+
+    public static Object optionEval(EnvironmentCallBack env,
+                                    OptionStmt option) {
+        Object result = 0;
+
+        for (int i = 0; i < option.childCount(); i++) {
+            result = option.child(i).eval(env);
+        }
+
+        return result;
+    }
 }
