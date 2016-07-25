@@ -15,6 +15,6 @@ import java.io.FileNotFoundException;
  */
 public class ArrayInterpreter extends ClassInterpreter {
     public static void main(String[] args) throws FileNotFoundException, ParseException {
-        run("CreateArrayTest", new ArrayParser(), new NativeList().env(new LocalEnvironment()));
+        run("Shell", new ArrayParser(), new NativeList().env(new LocalEnvironment()));
     }
 }

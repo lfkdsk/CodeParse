@@ -5,6 +5,7 @@ import HobbyScript.Exception.HobbyException;
 import HobbyScript.Literal.NaiveFunction;
 import HobbyScript.Utils.logger.Logger;
 
+import java.io.BufferedReader;
 import java.lang.reflect.Method;
 
 
@@ -65,6 +66,10 @@ public class NativeList {
         System.out.println(msg);
     }
 
+    public static void print(String msg) {
+        System.out.print(msg);
+    }
+
     /**
      * 创建Array数组
      *
@@ -83,7 +88,17 @@ public class NativeList {
         addNativeFunction(env, "logInfo", NativeList.class, String.class);
         addNativeFunction(env, "println", NativeList.class, String.class);
         addNativeFunction(env, "length", NativeList.class, Object[].class);
+        addNativeFunction(env, "print", NativeList.class, String.class);
         addNativeFunction(env, "createArray", NativeList.class, Integer.class);
+//        addNativeFunction(env, "createScanner", InputMethod.class, null);
+//        addNativeFunction(env, "getNextLine", InputMethod.class, Scanner.class);
+//        addNativeFunction(env, "endScanner", InputMethod.class, Scanner.class);
+//        addNativeFunction(env, "hasNext", InputMethod.class, Scanner.class);
+
+        addNativeFunction(env, "openReader", InputMethod.class, null);
+        addNativeFunction(env, "readNextLine", InputMethod.class, BufferedReader.class);
+        addNativeFunction(env, "closeReader", InputMethod.class, BufferedReader.class);
+        addNativeFunction(env, "parser", InputMethod.class, BufferedReader.class);
         return env;
     }
 
