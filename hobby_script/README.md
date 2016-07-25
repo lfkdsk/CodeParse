@@ -393,4 +393,121 @@ list.PrintList();
 
 * 2016.7.25 目前支持的语法设定
 
-  ​
+  * 目前的类型使用了隐式的类型推断：其中两种数字类型也是自动选择的。
+
+    ``` java
+    simple = 1;			 // int
+    simple = " lfkdsk "; // string 
+    simple = 2e-34; 	 // double
+    ```
+
+  * 数组：
+
+    此种申请方式不支持表达式，仅支持整数和带表一个整数的ID。
+
+    ``` java
+    simple = <10>;
+    number = 10;
+    simple = <number>;
+    ```
+
+    使用内置函数申请：此种方法支持表达式
+
+    ``` java
+    sim = 100;
+    sss = 10;
+    simple = createArray( sim / sss );
+    ```
+
+  * 分支结构：
+
+    ``` java
+    if (simple > 0) {
+      	
+    } else {
+      	
+    }
+    ```
+
+    * 循环结构
+
+      * while 循环：条件判断支持布尔类型和正数。
+
+        ``` java
+        while (simple > 0) {
+          	
+        }
+        ```
+
+
+      * for 循环：initial step 均支持多个逗号分隔的表达式，condition仅支持一个表达式
+
+        ``` java
+        for (initial; condition; step){
+          
+        }
+        ```
+
+
+      * break 语句： 
+
+        ``` java
+        break; // 可以写在任何有block的地方
+        ```
+
+  * 定义函数:
+
+    ``` java
+    function create(initial){
+      	
+    };
+    ```
+
+    使用如上方式即可定义一个函数，函数的最后一句即为返回值。
+
+  * 闭包函数：
+
+    ``` java
+    lfkdsk = closure(){
+      
+    };
+
+    lfkdsk();
+    ```
+
+    使用如上方法就可以定义一个闭包函数，闭包函数有自己的独立作用域。
+
+  * 定义类：
+
+    ``` java
+    class Reader {
+      	function Initial(book){
+      
+    	}
+    }
+    ```
+
+    如上就是类定义，其中的Initial()是类的构造函数，其实也可以不写，有构造函数可以对类进行一些初始化。
+
+    ``` java
+    // 有构造函数写法
+    lfkdsk = Reader.Initital(book);
+    // 无构造函数写法
+    lfkdsk = Writer.Initital; 
+    ```
+
+    类的成员作用域区分很简洁，首字母大写是暴露在外，首字母小写，就是私有变量。
+
+  * 使用本地方法：
+
+    ``` java
+    logInfo(message); // 使用Logger工具打印
+    println(message); // System.out.println();
+    print(message);   // System.out.print();
+    ...
+    ```
+
+    详情可以看NativeList源码，添加原生函数支持，也可以通过这个位置添加。
+
+    ​
+
