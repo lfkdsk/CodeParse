@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="af539864-56bd-43a4-828b-9c8a84937756" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/HobbyScript/Ast/OptionStmt.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Test/LinkedList" afterPath="$PROJECT_DIR$/Test/LinkedList" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HobbyScript/Eval/ScriptEval.java" afterPath="$PROJECT_DIR$/src/HobbyScript/Eval/ScriptEval.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HobbyScript/Interpreter/ArrayInterpreter.java" afterPath="$PROJECT_DIR$/src/HobbyScript/Interpreter/ArrayInterpreter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HobbyScript/Parser/ScriptParser.java" afterPath="$PROJECT_DIR$/src/HobbyScript/Parser/ScriptParser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HobbyScript/Token/HobbyToken.java" afterPath="$PROJECT_DIR$/src/HobbyScript/Token/HobbyToken.java" />
     </list>
     <list id="fdd1a53f-466c-4c39-82cf-51e94d392ef2" name="New changelist" comment="" />
     <ignored path="hobby_script.iws" />
@@ -75,8 +68,8 @@
       <file leaf-file-name="ScriptParser.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/HobbyScript/Parser/ScriptParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="156" column="28" selection-start-line="156" selection-start-column="28" selection-end-line="156" selection-end-column="28" />
+            <state relative-caret-position="90">
+              <caret line="147" column="26" selection-start-line="147" selection-start-column="26" selection-end-line="147" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -1028,14 +1021,7 @@
       <workItem from="1469328544403" duration="214000" />
       <workItem from="1469329947488" duration="2319000" />
       <workItem from="1469370417100" duration="5048000" />
-      <workItem from="1469459823396" duration="1226000" />
-    </task>
-    <task id="LOCAL-00058" summary="update comment">
-      <created>1468676505076</created>
-      <option name="number" value="00058" />
-      <option name="presentableId" value="LOCAL-00058" />
-      <option name="project" value="LOCAL" />
-      <updated>1468676505076</updated>
+      <workItem from="1469459823396" duration="1354000" />
     </task>
     <task id="LOCAL-00059" summary="update graph">
       <created>1468676964857</created>
@@ -1373,11 +1359,18 @@
       <option name="project" value="LOCAL" />
       <updated>1469444213625</updated>
     </task>
-    <option name="localTasksCounter" value="107" />
+    <task id="LOCAL-00107" summary="for循环支持多条件,多step">
+      <created>1469461088717</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
+      <option name="project" value="LOCAL" />
+      <updated>1469461088718</updated>
+    </task>
+    <option name="localTasksCounter" value="108" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="189176000" />
+    <option name="totallyTimeSpent" value="189304000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1400,7 +1393,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40113798" sideWeight="0.50807756" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="REPL" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32956383" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.55618775" sideWeight="0.49353796" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.55618775" sideWeight="0.49353796" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40113798" sideWeight="0.49192247" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Leiningen" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1484,7 +1477,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="update construction" />
     <MESSAGE value="update test / native function" />
     <MESSAGE value="add link to native method" />
     <MESSAGE value="fix bug with &quot;&quot;" />
@@ -1509,7 +1501,8 @@
     <MESSAGE value="update md" />
     <MESSAGE value="update" />
     <MESSAGE value="update shell" />
-    <option name="LAST_COMMIT_MESSAGE" value="update shell" />
+    <MESSAGE value="for循环支持多条件,多step" />
+    <option name="LAST_COMMIT_MESSAGE" value="for循环支持多条件,多step" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1722,6 +1715,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="161">
           <caret line="95" column="17" selection-start-line="95" selection-start-column="17" selection-end-line="95" selection-end-column="17" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1932,8 +1926,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/HobbyScript/Parser/ScriptParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="156" column="28" selection-start-line="156" selection-start-column="28" selection-end-line="156" selection-end-column="28" />
+        <state relative-caret-position="90">
+          <caret line="147" column="26" selection-start-line="147" selection-start-column="26" selection-end-line="147" selection-end-column="26" />
           <folding />
         </state>
       </provider>
