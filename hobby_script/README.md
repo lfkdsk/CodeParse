@@ -511,7 +511,46 @@ list.PrintList();
 
       ​
 
-*   使用Native方法封装了解释器的函数入口：
+*   2016.7.26 使用Native方法封装了解释器的函数入口：
 
     只需要简单的语句就可以搞定一个交互Shell了。
 
+    ``` java
+    class Reader {
+        reader = openReader();
+
+        function Initial(){
+
+        }
+
+        function ReadLine(){
+            readNextLine(reader);
+        }
+
+        function Close(){
+            closeReader(reader);
+        }
+
+        function Parser(){
+            parser(reader);
+        }
+    }
+
+    read = Reader.Initial();
+
+    read.Parser();
+    ```
+
+*   2016.7.26 更新`import` 语句，可以使用来导入库函数。
+
+    ``` java
+    import "../hobby_script/Test/LinkedList";
+
+    lfkdsk = LinkedList.Initial();
+
+    lfkdsk.Add("lfkdsk ...");
+
+    lfkdsk.PrintList();
+    ```
+
+    ​
