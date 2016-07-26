@@ -65,16 +65,21 @@ public class InputMethod {
 
         while (lexer.peek(0) != HobbyToken.EOF) {
 
-            AstNode node = parser.parse(lexer);
+            try {
+                AstNode node = parser.parse(lexer);
 
-            if (!(node instanceof NullStmt)) {
+                if (!(node instanceof NullStmt)) {
 
-                Object r = node.eval(env);
+                    Object r = node.eval(env);
 //                PrintUtils.printAstTree(node);
 //                Logger.v(" => " + r);
 //                PrintUtils.printAstTreeGraph(node);
 
-                NativeList.print(">>> ");
+                    NativeList.print(">>> ");
+                }
+            } catch (Exception e) {
+                System.out.println(">>> " + e.getMessage());
+                System.out.print(">>> ");
             }
         }
 
