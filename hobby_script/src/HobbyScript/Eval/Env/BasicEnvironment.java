@@ -36,4 +36,14 @@ public class BasicEnvironment implements EnvironmentCallBack {
     public Object get(String name) {
         return env.get(name);
     }
+
+    @Override
+    public void putAll(EnvironmentCallBack env) {
+        this.env.putAll(env.getMap());
+    }
+
+    @Override
+    public HashMap<? extends String, ?> getMap() {
+        return env;
+    }
 }

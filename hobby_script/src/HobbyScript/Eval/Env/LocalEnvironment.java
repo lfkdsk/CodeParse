@@ -54,6 +54,16 @@ public class LocalEnvironment implements LocalEnvironmentCallBack {
     }
 
     @Override
+    public void putAll(EnvironmentCallBack env) {
+        values.putAll(env.getMap());
+    }
+
+    @Override
+    public HashMap<? extends String, ?> getMap() {
+        return values;
+    }
+
+    @Override
     public void setParent(EnvironmentCallBack env) {
         this.parentEnv = env;
     }
