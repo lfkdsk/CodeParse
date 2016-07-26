@@ -54,6 +54,9 @@ public class InputMethod {
         reader.close();
     }
 
+    ///////////////////////////////////////////////////////////////////////////
+    // Shell Parser
+    ///////////////////////////////////////////////////////////////////////////
     public static void parser(BufferedReader reader) throws ParseException {
         HobbyLexer lexer = new HobbyLexer(reader);
 
@@ -82,6 +85,5 @@ public class InputMethod {
                 System.out.print(">>> ");
             }
         }
-
     }
 }

@@ -130,18 +130,18 @@ class LinkedList {
     }
 }
 
-list = LinkedList.Initial();
+//list = LinkedList.Initial();
 
-list.Add(" fuck ");
+//list.Add(" fuck ");
 
-list.Add(111);
+//list.Add(111);
 
-list.Add(11e1);
+//list.Add(11e1);
 
 //list.Remove(2);
 
-println(list.Get(1) + "");
+//println(list.Get(1) + "");
 
-list.Set(1, 222);
+//list.Set(1, 222);
 
-list.PrintList();
+//list.PrintList();

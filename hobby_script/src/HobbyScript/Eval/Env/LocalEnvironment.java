@@ -86,4 +86,9 @@ public class LocalEnvironment implements LocalEnvironmentCallBack {
     public void putLocal(String key, Object value) {
         this.values.put(key, value);
     }
+
+    @Override
+    public EnvironmentCallBack getParent() {
+        return parentEnv;
+    }
 }

@@ -34,6 +34,8 @@ public class ScriptParser {
 
     public static final String LC_TOKEN = "{", RC_TOKEN = "}";
 
+    public static final String LK_TOKEN = "\'";
+
     public static final String ASSIGN_TOKEN = "=";
 
     public static final String EQ_TOKEN = "==";
@@ -64,6 +66,8 @@ public class ScriptParser {
     public static final String LM_TOKEN = "[", RM_TOKEN = "]";
 
     public static final String LS_TOKEN = "<", RS_TOKEN = ">";
+
+    public static final String IMPORT_TOKEN = "import";
 
     /**
      * 保留关键字
@@ -114,8 +118,11 @@ public class ScriptParser {
     ///////////////////////////////////////////////////////////////////////////
     // simple = expr ;
     ///////////////////////////////////////////////////////////////////////////
+    BnfParser importLib = BnfParser.rule(Import.class)
+            .sep(IMPORT_TOKEN)
+            .ast(string);
 
-    BnfParser simple = BnfParser.rule().ast(expr).sep(SEMICOLON_TOKEN);
+    BnfParser simple = BnfParser.rule().or(expr, importLib).sep(SEMICOLON_TOKEN);
 
     ///////////////////////////////////////////////////////////////////////////
     // block = { statement; * }
@@ -144,12 +151,14 @@ public class ScriptParser {
                     .ast(expr).sep(RP_TOKEN).ast(block);
 
     ///////////////////////////////////////////////////////////////////////////
-    // for (initial ; condition ; step)
+    // option = expr, expr, expr
     ///////////////////////////////////////////////////////////////////////////
-
     BnfParser option = BnfParser.rule(OptionStmt.class).option(expr)
             .repeat(BnfParser.rule().sep(COMMA).option(expr));
 
+    ///////////////////////////////////////////////////////////////////////////
+    // for (initial ; condition ; step)
+    ///////////////////////////////////////////////////////////////////////////
     BnfParser forStatement =
             BnfParser.rule(ForStmt.class).sep(FOR_TOKEN)
                     .sep(LP_TOKEN)
@@ -192,6 +201,7 @@ public class ScriptParser {
         reserved.add(RP_TOKEN);
         reserved.add(BREAK_TOKEN);
         reserved.add(ELSE_TOKEN);
+        reserved.add(IMPORT_TOKEN);
         reserved.add(HobbyToken.EOL);
 
         operators.add(ASSIGN_TOKEN, 1, BnfParser.Operators.RIGHT);

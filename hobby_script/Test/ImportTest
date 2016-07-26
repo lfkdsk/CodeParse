@@ -1,0 +1,7 @@
+import "../hobby_script/Test/LinkedList";
+
+lfkdsk = LinkedList.Initial();
+
+lfkdsk.Add("fuck ...");
+
+lfkdsk.PrintList();
