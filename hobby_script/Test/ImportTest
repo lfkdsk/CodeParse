@@ -1,4 +1,5 @@
-import "../hobby_script/Test/LinkedList";
+import "LinkedList";
+import "ArrayList";
 
 lfkdsk = LinkedList.Initial();
 
