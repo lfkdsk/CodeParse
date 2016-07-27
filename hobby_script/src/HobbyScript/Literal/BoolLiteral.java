@@ -1,6 +1,7 @@
 package HobbyScript.Literal;
 
 import HobbyScript.Ast.AstLeaf;
+import HobbyScript.Eval.Env.EnvironmentCallBack;
 import HobbyScript.Token.BoolToken;
 import HobbyScript.Token.HobbyToken;
 
@@ -24,4 +25,9 @@ public class BoolLiteral extends AstLeaf {
         return ((BoolToken) token).getType() == BoolToken.BoolType.TRUE;
     }
 
+    @Override
+    public Object eval(EnvironmentCallBack env) {
+        if (value()) return Boolean.TRUE;
+        return Boolean.FALSE;
+    }
 }

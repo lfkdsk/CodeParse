@@ -177,10 +177,21 @@ public class ScriptEval {
                 } else {
                     return left.equals(right);
                 }
+            case ScriptParser.UQ_TOKEN:
+                if (left == null) {
+                    return right != null;
+                } else {
+                    return !left.equals(right);
+                }
+            case ScriptParser.LOGICAL_AND_TOKEN:
+                return left == Boolean.TRUE &&
+                        right == Boolean.TRUE;
+            case ScriptParser.LOGICAL_OR_TOKEN:
+                return left == Boolean.TRUE ||
+                        right == Boolean.TRUE;
             default:
                 break;
         }
-
         throw new HobbyException("bad type when eval with op", expr);
     }
 
@@ -195,6 +206,7 @@ public class ScriptEval {
      * @param expr  expr
      * @return value
      */
+
     private static Object computeNumber(Object left, Object right,
                                         String op, BinaryExpr expr) {
         // 此时 left 至少肯定是数字了
@@ -224,6 +236,18 @@ public class ScriptEval {
                         ? Boolean.TRUE : Boolean.FALSE;
             case ScriptParser.GT_TOKEN:
                 return (computeIntValue(left) + computeFloatValue(left)) <
+                        (computeIntValue(right) + computeFloatValue(right))
+                        ? Boolean.TRUE : Boolean.FALSE;
+            case ScriptParser.UQ_TOKEN:
+                return (computeIntValue(left) + computeFloatValue(left)) !=
+                        (computeIntValue(right) + computeFloatValue(right))
+                        ? Boolean.TRUE : Boolean.FALSE;
+            case ScriptParser.GEQ_TOKEN:
+                return (computeIntValue(left) + computeFloatValue(left)) >=
+                        (computeIntValue(right) + computeFloatValue(right))
+                        ? Boolean.TRUE : Boolean.FALSE;
+            case ScriptParser.LE_TOKEN:
+                return (computeIntValue(left) + computeFloatValue(left)) <=
                         (computeIntValue(right) + computeFloatValue(right))
                         ? Boolean.TRUE : Boolean.FALSE;
             default:

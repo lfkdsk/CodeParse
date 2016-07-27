@@ -4,6 +4,7 @@ import HobbyScript.ApplicationTest.CodeDialog;
 import HobbyScript.Ast.*;
 import HobbyScript.Exception.ParseException;
 import HobbyScript.Lexer.HobbyLexer;
+import HobbyScript.Literal.BoolLiteral;
 import HobbyScript.Literal.IdLiteral;
 import HobbyScript.Literal.NumberLiteral;
 import HobbyScript.Literal.StringLiteral;
@@ -28,6 +29,9 @@ public class ScriptParser {
 
     public static final String FUNCTION_TOKEN = "function";
 
+    public static final String TRUE_TOKEN = "true",
+            FALSE_TOKEN = "false";
+
     public static final String SEMICOLON_TOKEN = ";";
 
     public static final String LP_TOKEN = "(", RP_TOKEN = ")";
@@ -38,9 +42,11 @@ public class ScriptParser {
 
     public static final String ASSIGN_TOKEN = "=";
 
-    public static final String EQ_TOKEN = "==";
+    public static final String EQ_TOKEN = "==",
+            UQ_TOKEN = "!=", GEQ_TOKEN = ">=", LE_TOKEN = "<=";
 
-    public static final String LOGICAL_AND_TOKEN = "&&";
+    public static final String LOGICAL_AND_TOKEN = "&&",
+            LOGICAL_OR_TOKEN = "||", LOGICAL_F_TOKEN = "!";
 
     public static final String GT_TOKEN = "<", GE_TOKEN = ">";
 
@@ -89,15 +95,18 @@ public class ScriptParser {
 
     BnfParser string = BnfParser.rule().string(StringLiteral.class);
 
+    BnfParser bool = BnfParser.rule().bool(BoolLiteral.class);
+
     ///////////////////////////////////////////////////////////////////////////
-    // primary = ( expr ) | number | id | string
+    // primary = ( expr ) | number | id | string |bool
     ///////////////////////////////////////////////////////////////////////////
 
     BnfParser primary = BnfParser.rule(PrimaryExpr.class)
             .or(BnfParser.rule().sep(LP_TOKEN).ast(expr0).sep(RP_TOKEN),
                     number,
                     id,
-                    string
+                    string,
+                    bool
             );
 
     ///////////////////////////////////////////////////////////////////////////
@@ -205,12 +214,23 @@ public class ScriptParser {
         reserved.add(BREAK_TOKEN);
         reserved.add(ELSE_TOKEN);
         reserved.add(IMPORT_TOKEN);
+        reserved.add(LOGICAL_AND_TOKEN);
+        reserved.add(TRUE_TOKEN);
+        reserved.add(FALSE_TOKEN);
+//        reserved.add(LOGICAL_F_TOKEN);
         reserved.add(HobbyToken.EOL);
 
         operators.add(ASSIGN_TOKEN, 1, BnfParser.Operators.RIGHT);
+//        operators.add(LOGICAL_F_TOKEN, 1, BnfParser.Operators.RIGHT);
+
         operators.add(EQ_TOKEN, 2, BnfParser.Operators.LEFT);
         operators.add(GE_TOKEN, 2, BnfParser.Operators.LEFT);
+        operators.add(LOGICAL_AND_TOKEN, 2, BnfParser.Operators.LEFT);
+        operators.add(LOGICAL_OR_TOKEN, 2, BnfParser.Operators.LEFT);
+        operators.add(LE_TOKEN, 2, BnfParser.Operators.LEFT);
+        operators.add(GEQ_TOKEN, 2, BnfParser.Operators.LEFT);
         operators.add(GT_TOKEN, 2, BnfParser.Operators.LEFT);
+        operators.add(UQ_TOKEN, 2, BnfParser.Operators.LEFT);
         operators.add(ADD, 3, BnfParser.Operators.LEFT);
         operators.add(SUB, 3, BnfParser.Operators.LEFT);
         operators.add(MUL, 4, BnfParser.Operators.LEFT);
