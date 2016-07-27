@@ -42,6 +42,8 @@ public class HobbyRegex {
      */
     public static final String symbolReg = "\\p{Punct}";
 
+    public static final String bool = "true|false";
+
     /**
      * string 类型的正则
      * string 中是在两个双引号中的多个匹配模式
@@ -54,7 +56,7 @@ public class HobbyRegex {
     /**
      * 定义了所有Token识别的基础类型
      */
-    public static final String tokenReg = variableReg + "|" + booleanReg + "|" + symbolReg;
+    public static final String tokenReg = variableReg + "|" + booleanReg + "|" + bool + "|" + symbolReg;
 
     public static final String hobbyUnFormat = "\\s*(%1$s|%2$s|%3$s|%4$s)?";
 

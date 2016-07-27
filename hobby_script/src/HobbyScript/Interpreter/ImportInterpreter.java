@@ -8,9 +8,12 @@ import HobbyScript.Parser.ImportParser;
 import java.io.FileNotFoundException;
 
 /**
- * Created by liufengkai on 16/7/26.
+ * Import 语句
+ *
+ * @author liufengkai
+ *         Created by liufengkai on 16/7/26.
  */
-public class ImportInterpreter extends ArrayInterpreter{
+public class ImportInterpreter extends ArrayInterpreter {
     public static void main(String[] args) throws FileNotFoundException, ParseException {
         run("ImportTest", new ImportParser(), new NativeList().env(new LocalEnvironment()));
     }

@@ -2,10 +2,7 @@ package HobbyScript.Lexer;
 
 import HobbyScript.ApplicationTest.CodeDialog;
 import HobbyScript.Exception.ParseException;
-import HobbyScript.Token.HobbyToken;
-import HobbyScript.Token.IdToken;
-import HobbyScript.Token.NumberToken;
-import HobbyScript.Token.StringToken;
+import HobbyScript.Token.*;
 import HobbyScript.Utils.logger.Logger;
 
 import java.io.IOException;
@@ -168,7 +165,17 @@ public class HobbyLexer {
                 } else if (first.equals("\"\"") || matcher.group(HobbyRegex.RegType.STRING_INDEX.indexNum) != null) {
                     token = new StringToken(lineNum, toStringLiteral(first));
                 } else {
-                    token = new IdToken(lineNum, first);
+                    switch (first) {
+                        case "true":
+                            token = new BoolToken(lineNum, BoolToken.BoolType.TRUE);
+                            break;
+                        case "false":
+                            token = new BoolToken(lineNum, BoolToken.BoolType.FALSE);
+                            break;
+                        default:
+                            token = new IdToken(lineNum, first);
+                            break;
+                    }
                 }
                 queue.add(token);
             }

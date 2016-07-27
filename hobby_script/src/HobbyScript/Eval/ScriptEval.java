@@ -164,17 +164,21 @@ public class ScriptEval {
             }
         }
 
+        // string + string
         if (op.equals(ScriptParser.ADD) && ((left instanceof String)
                 || (right instanceof String))) {
             return String.valueOf(left) + String.valueOf(right);
         }
 
-        if (op.equals(ScriptParser.EQ_TOKEN)) {
-            if (left == null) {
-                return right == null;
-            } else {
-                return left.equals(right);
-            }
+        switch (op) {
+            case ScriptParser.EQ_TOKEN:
+                if (left == null) {
+                    return right == null;
+                } else {
+                    return left.equals(right);
+                }
+            default:
+                break;
         }
 
         throw new HobbyException("bad type when eval with op", expr);
