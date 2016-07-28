@@ -223,6 +223,7 @@ public class ScriptParser {
         operators.add(ASSIGN_TOKEN, 1, BnfParser.Operators.RIGHT);
 //        operators.add(LOGICAL_F_TOKEN, 1, BnfParser.Operators.RIGHT);
 
+
         operators.add(EQ_TOKEN, 2, BnfParser.Operators.LEFT);
         operators.add(GE_TOKEN, 2, BnfParser.Operators.LEFT);
         operators.add(LOGICAL_AND_TOKEN, 2, BnfParser.Operators.LEFT);
