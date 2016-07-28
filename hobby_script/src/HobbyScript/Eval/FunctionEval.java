@@ -61,6 +61,22 @@ public class FunctionEval {
         } else {
             return ((AstNode) operand(expr)).eval(env);
         }
+
+//        int NewNest = nest;
+//        while (hasPostfix(expr, NewNest)) {
+//            NewNest++;
+//        }
+//
+//        NewNest -= 1;
+//
+//        Object target = ((AstNode) operand(expr)).eval(env);
+//        Object next = null;
+//        for (int i = NewNest; i >= nest; i--) {
+//
+//            next = postfix(expr, nest).eval(env, target);
+//        }
+//
+//        return next;
     }
 
     ///////////////////////////////////////////////////////////////////////////
