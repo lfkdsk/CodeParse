@@ -77,6 +77,7 @@ public class ClassEval {
                 return ((HobbyObject) value).read(member);
             } catch (HobbyObject.AssessException e) {
                 e.printStackTrace();
+                // TODO : 如果想要变成JavaScript那种能给对象添加属性,就在这里write->read
             }
         }
 

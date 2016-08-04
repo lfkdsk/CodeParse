@@ -6,7 +6,7 @@ class lfkdsk {
     }
 
     Ssdut = closure(){
-        Ss = 1000;
+        this.Ss = 1000;
     };
 }
 
@@ -14,5 +14,7 @@ lfk = "";
 lfi = lfkdsk.Initial(200);
 
 lfi.Ssdut();
+
+
 
 logInfo(lfi.Ss + lfk);
