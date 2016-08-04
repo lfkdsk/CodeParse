@@ -307,6 +307,10 @@ public class ScriptEval {
 
             if (!(node instanceof NullStmt)) {
                 result = node.eval(env);
+
+                if (result instanceof BreakStmt) {
+                    break;
+                }
             }
         }
 
@@ -413,7 +417,6 @@ public class ScriptEval {
                         result = ((BreakStmt) temp).getResult();
                         return result;
                     }
-
                 } else {
                     return result;
                 }
@@ -438,5 +441,16 @@ public class ScriptEval {
         }
 
         return result;
+    }
+
+    public static Object handlerBreak(AstNode node, EnvironmentCallBack newEnv) {
+        Object temp = node.eval(newEnv);
+
+        if (temp instanceof BreakStmt) {
+
+            return ((BreakStmt) temp).getResult();
+        }
+
+        return temp;
     }
 }

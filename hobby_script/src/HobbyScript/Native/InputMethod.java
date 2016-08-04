@@ -9,9 +9,7 @@ import HobbyScript.Lexer.HobbyLexer;
 import HobbyScript.Parser.ArrayParser;
 import HobbyScript.Token.HobbyToken;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.Scanner;
 
 /**
@@ -42,8 +40,8 @@ public class InputMethod {
     // BufferReader
     ///////////////////////////////////////////////////////////////////////////
 
-    public static Object openReader() {
-        return new BufferedReader(new InputStreamReader(System.in));
+    public static Object openReader() throws FileNotFoundException {
+        return new BufferedReader(new FileReader("../hobby_script/Test/LexerTest"));
     }
 
     public static String readNextLine(BufferedReader reader) throws IOException {
