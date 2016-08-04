@@ -4,6 +4,7 @@ package HobbyScript.Token;
  * Created by liufengkai on 16/7/27.
  */
 public class BoolToken extends HobbyToken {
+
     public enum BoolType {
         TRUE("true"), FALSE("false");
 

@@ -60,6 +60,10 @@ public abstract class HobbyToken {
         return false;
     }
 
+    public boolean isNull(){
+        return false;
+    }
+
     public String getText() {
         return "";
     }

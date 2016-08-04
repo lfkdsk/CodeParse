@@ -172,6 +172,9 @@ public class HobbyLexer {
                         case "false":
                             token = new BoolToken(lineNum, BoolToken.BoolType.FALSE);
                             break;
+                        case "null":
+                            token = new NullToken(lineNum);
+                            break;
                         default:
                             token = new IdToken(lineNum, first);
                             break;

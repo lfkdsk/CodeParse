@@ -94,6 +94,17 @@ class LinkedList {
         modCount = modCount + 1;
     }
 
+    function Pop(){
+        Remove(Size());
+    }
+
+    function PopFront(){
+        Remove(0);
+    }
+
+    function PushFront(value){
+        AddBefore(getNode(0), value);
+    }
 
     function getNode(index){
         p = 0;

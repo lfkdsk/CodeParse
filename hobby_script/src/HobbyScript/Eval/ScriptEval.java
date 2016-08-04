@@ -5,6 +5,7 @@ import HobbyScript.Eval.Env.EnvironmentCallBack;
 import HobbyScript.Eval.Env.LocalEnvironment;
 import HobbyScript.Exception.HobbyException;
 import HobbyScript.Literal.IdLiteral;
+import HobbyScript.Literal.NullLiteral;
 import HobbyScript.Literal.NumberLiteral;
 import HobbyScript.Literal.StringLiteral;
 import HobbyScript.Parser.ScriptParser;
@@ -173,7 +174,7 @@ public class ScriptEval {
         switch (op) {
             case ScriptParser.EQ_TOKEN:
                 if (left == null) {
-                    return right == null;
+                    return right == null || right instanceof NullLiteral;
                 } else {
                     return left.equals(right);
                 }

@@ -50,8 +50,16 @@ public class InputMethod {
         return reader.readLine();
     }
 
+    public static String read(BufferedReader reader) throws IOException {
+        return String.valueOf((char) reader.read());
+    }
+
     public static void closeReader(BufferedReader reader) throws IOException {
         reader.close();
+    }
+
+    public static String charAtPoint(String line, Integer index) {
+        return String.valueOf(line.charAt(index));
     }
 
     ///////////////////////////////////////////////////////////////////////////

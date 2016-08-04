@@ -73,7 +73,7 @@ public class ScriptParser {
 
     public static final String LS_TOKEN = "<", RS_TOKEN = ">";
 
-    public static final String IMPORT_TOKEN = "import";
+    public static final String IMPORT_TOKEN = "import", NULL_TOKEN = "null";
 
     /**
      * 保留关键字
@@ -97,8 +97,10 @@ public class ScriptParser {
 
     BnfParser bool = BnfParser.rule().bool(BoolLiteral.class);
 
+    BnfParser Null = BnfParser.rule().Null(NumberLiteral.class);
+
     ///////////////////////////////////////////////////////////////////////////
-    // primary = ( expr ) | number | id | string |bool
+    // primary = ( expr ) | number | id | string |bool | null
     ///////////////////////////////////////////////////////////////////////////
 
     BnfParser primary = BnfParser.rule(PrimaryExpr.class)
@@ -106,7 +108,8 @@ public class ScriptParser {
                     number,
                     id,
                     string,
-                    bool
+                    bool,
+                    Null
             );
 
     ///////////////////////////////////////////////////////////////////////////
@@ -225,13 +228,13 @@ public class ScriptParser {
 
 
         operators.add(EQ_TOKEN, 2, BnfParser.Operators.LEFT);
+        operators.add(UQ_TOKEN, 2, BnfParser.Operators.LEFT);
         operators.add(GE_TOKEN, 2, BnfParser.Operators.LEFT);
         operators.add(LOGICAL_AND_TOKEN, 2, BnfParser.Operators.LEFT);
         operators.add(LOGICAL_OR_TOKEN, 2, BnfParser.Operators.LEFT);
         operators.add(LE_TOKEN, 2, BnfParser.Operators.LEFT);
         operators.add(GEQ_TOKEN, 2, BnfParser.Operators.LEFT);
         operators.add(GT_TOKEN, 2, BnfParser.Operators.LEFT);
-        operators.add(UQ_TOKEN, 2, BnfParser.Operators.LEFT);
         operators.add(ADD, 3, BnfParser.Operators.LEFT);
         operators.add(SUB, 3, BnfParser.Operators.LEFT);
         operators.add(MUL, 4, BnfParser.Operators.LEFT);

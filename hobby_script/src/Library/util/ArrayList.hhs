@@ -90,21 +90,3 @@ class ArrayList {
         }
     }
 }
-
-list = ArrayList.Initial();
-
-list.Add("fuck");
-list.Add(100);
-list.Add("you");
-
-ii = list.Get(2);
-
-//logInfo(ii + "");
-
-list.Set(2,2222);
-
-//logInfo(list.Get(2) + "");
-
-list.Remove(2);
-
-list.PrintList();

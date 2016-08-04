@@ -35,14 +35,14 @@ public class HobbyRegex {
     /**
      * 布尔表达式的正则
      */
-    public static final String booleanReg = "==|<=|>=|&&|\\|\\|";
+    public static final String booleanReg = "==|<=|>=|!=|&&|\\|\\|";
 
     /**
      * 任意符号的正则匹配
      */
     public static final String symbolReg = "\\p{Punct}";
 
-    public static final String bool = "true|false";
+    public static final String bool = "true|false|null";
 
     /**
      * string 类型的正则
