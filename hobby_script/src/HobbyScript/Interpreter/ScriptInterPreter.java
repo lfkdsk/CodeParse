@@ -27,7 +27,7 @@ public class ScriptInterpreter {
         if (fileName.equals("")) {
             lexer = new HobbyLexer(new CodeDialog());
         } else {
-            lexer = new HobbyLexer(new FileReader("../hobby_script/src/Library/" + fileName));
+            lexer = new HobbyLexer(new FileReader("../hobby_script/Test/" + fileName));
         }
 
         Logger.init("Interpreter");
@@ -40,7 +40,7 @@ public class ScriptInterpreter {
             if (!(node instanceof NullStmt)) {
                 Object r = node.eval(env);
 //                PrintUtils.printAstTree(node);
-//                Logger.v(" => " + r);
+                Logger.v(" => " + r);
 //                PrintUtils.printAstTreeGraph(node);
             }
         }
