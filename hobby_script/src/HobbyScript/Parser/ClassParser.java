@@ -44,7 +44,7 @@ public class ClassParser extends ClosureParser {
         reserved.add(EXTEND_TOKEN);
         reserved.add(DOT_TOKEN);
 //        reserved.add(INITIAL);
-        reserved.add(THIS_POINT);
+//        reserved.add(THIS_POINT);
 
         postfix.insertChoice(BnfParser.rule(Dot.class).sep(DOT_TOKEN).identifier(reserved));
 

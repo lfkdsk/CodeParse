@@ -1,5 +1,5 @@
-import "LinkedList";
-import "ArrayList";
+import "util/LinkedList.hhs";
+import "util/ArrayList.hhs";
 
 lfkdsk = LinkedList.Initial();
 

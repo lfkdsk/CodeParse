@@ -2,7 +2,7 @@ class lfkdsk {
     Ss = 100;
 
     function Initial(x){
-        Ss = x;
+        this.Ss = x;
     }
 
     Ssdut = closure(){
