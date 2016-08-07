@@ -47,17 +47,32 @@ public class BinaryExpr extends AstList {
         } else {
             Temp tempCode = new Temp();
 
+
+            if (exp(leftCom) && exp(rightCom)) {
+                String temp1 = leftCom.split("=")[0].replace(" ", "");
+                String temp2 = rightCom.split("=")[0].replace(" ", "");
+
+                line.addCode(leftCom);
+                line.addCode(rightCom);
+
+                line.addCode(tempCode + "=" + temp1 + op + temp2);
+                return tempCode.toString();
+            }
+
             if (exp(leftCom)) {
                 String temp = leftCom.split("=")[0].replace(" ", "");
                 line.addCode(leftCom);
                 line.addCode(tempCode + "=" + temp + op + rightCom);
                 return tempCode.toString();
-            } else if (exp(rightCom)) {
+            }
+
+            if (exp(rightCom)) {
                 String temp = rightCom.split("=")[0].replace(" ", "");
                 line.addCode(rightCom);
                 line.addCode(tempCode + "=" + leftCom + op + temp);
                 return tempCode.toString();
             }
+
 
             return tempCode.toString() + "=" + leftCom
                     + operator() + rightCom;

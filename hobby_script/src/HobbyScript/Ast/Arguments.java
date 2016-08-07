@@ -1,5 +1,6 @@
 package HobbyScript.Ast;
 
+import HobbyScript.Compile.CodeLine;
 import HobbyScript.Eval.Env.EnvironmentCallBack;
 import HobbyScript.Eval.FunctionEval;
 
@@ -19,6 +20,17 @@ public class Arguments extends Postfix {
     @Override
     public Object eval(EnvironmentCallBack env, Object value) {
         return FunctionEval.nativeEval(env, this, value, this);
+    }
+
+    @Override
+    public String compile(CodeLine line, int th, int nx) {
+        StringBuilder builder = new StringBuilder();
+
+        for (int i = 0; i < childCount(); i++) {
+            builder.append(child(i).toString()).append(" ");
+        }
+
+        return builder.toString();
     }
 
     public int size() {

@@ -1,7 +1,7 @@
 package HobbyScript.Compile;
 
-import HobbyScript.ApplicationTest.CodeDialog;
 import HobbyScript.Ast.AstNode;
+import HobbyScript.Ast.FuncStmt;
 import HobbyScript.Ast.NullStmt;
 import HobbyScript.Exception.ParseException;
 import HobbyScript.Lexer.HobbyLexer;
@@ -9,6 +9,9 @@ import HobbyScript.Parser.ArrayParser;
 import HobbyScript.Parser.ScriptParser;
 import HobbyScript.Token.HobbyToken;
 import HobbyScript.Utils.logger.Logger;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 
 /**
  * Created by liufengkai on 16/8/7.
@@ -30,44 +33,43 @@ public class ScriptCompile {
     }
 
 
-    private static void compile() throws ParseException {
-        HobbyLexer lexer = new HobbyLexer(new CodeDialog());
+    private static void compile(String fileName) throws ParseException, FileNotFoundException {
+        HobbyLexer lexer = new HobbyLexer(new FileReader("../hobby_script/midTest/" + fileName));
 
         Logger.init("ScriptParser");
 
         ScriptParser parser = new ArrayParser();
 
+        CodeLine line = new CodeLine();
 
+        int begin = line.newLine();
+        int end = line.newLine();
+
+        line.addSpecCode("start", begin);
+
+        int saveEnd = end;
         while (lexer.peek(0) != HobbyToken.EOF) {
-            CodeLine line = new CodeLine();
-
-            int begin = line.newLine();
-            int end = line.newLine();
-
-            line.addPrevCode(begin);
 
             AstNode node = parser.parse(lexer);
 
             if (!(node instanceof NullStmt)) {
+
+
                 node.compile(line, begin, end);
 
-                line.addSpecCode("", end);
-
-                line.printList();
-
-//                try {
-//                    line.writeToFile();
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
+                if (!(node instanceof FuncStmt)){
+                    begin = line.newLine();
+                    end = line.newLine();
+                }
             }
 //            Logger.v(" => " + node.toString() + "  ");
         }
 
-
+        line.addSpecCode("end", saveEnd);
+        line.printList();
     }
 
-    public static void main(String[] args) throws ParseException {
-        compile();
+    public static void main(String[] args) throws ParseException, FileNotFoundException {
+        compile("midTest");
     }
 }

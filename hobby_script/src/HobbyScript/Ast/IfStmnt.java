@@ -43,8 +43,11 @@ public class IfStmnt extends AstList {
         if (elseBlock() == null || thenBlock().childCount() <= 0) {
             // stmt 标号
             int label = line.newLine();
+
+            String condition = condition().compile(line, 0, nx);
+
             // jump
-            ScriptCompile.emitjumps(line, condition().toString(), 0, nx, -1);
+            ScriptCompile.emitjumps(line, condition, 0, nx, -1);
 
             line.addPrevCode(label);
             // 为真时控制穿越流,为假时转向nx
@@ -53,7 +56,9 @@ public class IfStmnt extends AstList {
             int label_1 = line.newLine(); // stmt1
             int label_2 = line.newLine(); // stmt2
 
-            ScriptCompile.emitjumps(line, condition().toString(), 0, label_2, label_1); // 为真时1
+            String condition = condition().compile(line, 0, label_2);
+
+            ScriptCompile.emitjumps(line, condition, 0, label_2, label_1); // 为真时1
 
             thenBlock().compile(line, label_1, nx);
 

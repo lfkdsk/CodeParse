@@ -20,7 +20,7 @@ public class CodeLine {
 
     private Code prevCode = null;
 
-    private class Code implements Comparable<Code> {
+    public class Code implements Comparable<Code> {
         public String line;
         public int lineNum;
 
@@ -45,10 +45,39 @@ public class CodeLine {
         }
     }
 
+    public class FunctionCode {
+        public String funcName;
+        public int paramsNum;
+        private ArrayList<Code> codes = new ArrayList<>();
+
+        public FunctionCode(String funcName, int paramsNum) {
+            this.funcName = funcName;
+            this.paramsNum = paramsNum;
+        }
+
+        public ArrayList<Code> getCodes() {
+            return codes;
+        }
+
+        @Override
+        public String toString() {
+            return "<" + funcName + ">:";
+        }
+    }
+
     /**
      * 脚本的转换代码
      */
     private ArrayList<Code> codes = new ArrayList<>();
+
+    /**
+     * 临时保存
+     */
+    private ArrayList<Code> saveList = null;
+    private int saveCount = -1;
+    private Code savePrev = null;
+
+    private ArrayList<FunctionCode> functions = new ArrayList<>();
 
     public CodeLine() {
 
@@ -89,6 +118,15 @@ public class CodeLine {
     }
 
     public void printList() {
+        for (int i = 0; i < functions.size(); i++) {
+            System.out.println(functions.get(i).toString());
+            ArrayList<Code> code = functions.get(i).getCodes();
+            for (int j = 0; j < code.size(); j++) {
+                System.out.println(code.get(j).toString());
+            }
+        }
+
+
         for (int i = 0; i < codes.size(); i++) {
             System.out.println(codes.get(i).toString());
         }
@@ -104,7 +142,7 @@ public class CodeLine {
 
     public void writeToFile() throws IOException {
         File file = new File("../hobby_script/MiddleCode/" + System.currentTimeMillis());
-        if (file.createNewFile()){
+        if (file.createNewFile()) {
             BufferedWriter writer = new BufferedWriter(new FileWriter(file));
 
             for (int i = 0; i < codes.size(); i++) {
@@ -114,5 +152,27 @@ public class CodeLine {
 
             writer.close();
         }
+    }
+
+    public FunctionCode addFunction(String name, int params) {
+        FunctionCode code = new FunctionCode(name, params);
+        functions.add(code);
+        return code;
+    }
+
+    public void startCompileFunction(FunctionCode code) {
+        saveList = codes;
+        saveCount = codeLine;
+        savePrev = prevCode;
+
+        codes = code.getCodes();
+        codeLine = 0;
+        prevCode = null;
+    }
+
+    public void stopCompileFunction() {
+        codeLine = saveCount;
+        codes = saveList;
+        prevCode = savePrev;
     }
 }

@@ -1,5 +1,6 @@
 package HobbyScript.Ast;
 
+import HobbyScript.Compile.CodeLine;
 import HobbyScript.Eval.Env.EnvironmentCallBack;
 import HobbyScript.Eval.FunctionEval;
 import HobbyScript.Token.HobbyToken;
@@ -32,6 +33,24 @@ public class FuncStmt extends AstList {
     public String toString() {
         return "(func " + name() + " " + parameters() + " "
                 + body() + " )";
+    }
+
+    @Override
+    public String compile(CodeLine line, int th, int nx) {
+
+        CodeLine.FunctionCode code = line.addFunction(name(), parameters().childCount());
+
+        line.startCompileFunction(code);
+        int begin = line.newLine();
+        int end = line.newLine();
+        line.addSpecCode("",begin);
+
+        body().compile(line, begin, end);
+
+        line.addSpecCode("", end);
+        line.stopCompileFunction();
+
+        return null;
     }
 
     @Override
