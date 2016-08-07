@@ -37,4 +37,6 @@ public class NumberToken<T extends java.lang.Number> extends HobbyToken {
     public String getText() {
         return String.valueOf(value);
     }
+
+
 }

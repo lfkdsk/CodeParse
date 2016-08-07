@@ -1,5 +1,7 @@
 package HobbyScript.Ast;
 
+import HobbyScript.Compile.CodeLine;
+import HobbyScript.Compile.ScriptCompile;
 import HobbyScript.Eval.Env.EnvironmentCallBack;
 import HobbyScript.Eval.Env.LocalEnvironment;
 import HobbyScript.Eval.ScriptEval;
@@ -33,6 +35,36 @@ public class IfStmnt extends AstList {
         return "(if " + condition() + " " +
                 thenBlock() + " else " +
                 elseBlock() + " )";
+    }
+
+    @Override
+    public String compile(CodeLine line, int start, int end) {
+
+        if (elseBlock() == null || thenBlock().childCount() <= 0) {
+            // stmt 标号
+            int label = line.newLine();
+            // jump
+            ScriptCompile.emitjumps(line, condition().toString(), 0, end, -1);
+
+            line.addPrevCode(label);
+            // 为真时控制穿越流,为假时转向nx
+            thenBlock().compile(line, label, end);
+        } else {
+            int label_1 = line.newLine(); // stmt1
+            int label_2 = line.newLine(); // stmt2
+
+            ScriptCompile.emitjumps(line, condition().toString(), 0, label_2, label_1); // 为真时1
+
+            thenBlock().compile(line, label_1, end);
+
+            line.addCode("goto L" + end);
+
+            line.addPrevCode(label_2);
+
+            elseBlock().compile(line, label_2, end);
+        }
+
+        return null;
     }
 
     @Override

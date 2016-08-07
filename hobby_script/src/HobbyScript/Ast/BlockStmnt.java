@@ -1,5 +1,6 @@
 package HobbyScript.Ast;
 
+import HobbyScript.Compile.CodeLine;
 import HobbyScript.Eval.Env.EnvironmentCallBack;
 import HobbyScript.Eval.ScriptEval;
 import HobbyScript.Token.HobbyToken;
@@ -16,6 +17,11 @@ public class BlockStmnt extends AstList {
 
     public BlockStmnt(List<AstNode> children) {
         super(children, HobbyToken.BLOCK);
+    }
+
+    @Override
+    public String compile(CodeLine line, int start, int end) {
+        return super.compile(line, start, end);
     }
 
     @Override

@@ -1,7 +1,10 @@
 package HobbyScript.Ast;
 
+import HobbyScript.Compile.CodeLine;
 import HobbyScript.Eval.Env.EnvironmentCallBack;
 import HobbyScript.Eval.ScriptEval;
+import HobbyScript.Literal.IdLiteral;
+import HobbyScript.Parser.ScriptParser;
 import HobbyScript.Token.HobbyToken;
 
 import java.util.List;
@@ -28,6 +31,20 @@ public class BinaryExpr extends AstList {
 
     public AstNode right() {
         return child(2);
+    }
+
+    @Override
+    public String compile(CodeLine line, int start, int end) {
+        String op = operator();
+        if (ScriptParser.ASSIGN_TOKEN.equals(op)) {
+            AstNode left = left();
+
+            if (left instanceof IdLiteral) {
+                line.addCode(left.compile(line, start, end) +
+                        "=" + right().compile(line, start, end));
+            }
+        }
+        return null;
     }
 
     @Override

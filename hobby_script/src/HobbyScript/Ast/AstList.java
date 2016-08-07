@@ -1,5 +1,6 @@
 package HobbyScript.Ast;
 
+import HobbyScript.Compile.CodeLine;
 import HobbyScript.Eval.Env.EnvironmentCallBack;
 import HobbyScript.Exception.HobbyException;
 
@@ -13,6 +14,15 @@ import java.util.List;
  *         Created by liufengkai on 16/7/11.
  */
 public class AstList extends AstNode {
+    // break 存储位置
+    public int afterPoint = 0;
+
+    public static AstList NullList = new AstList(null, -1);
+
+    public static AstList EnClosingList = NullList;
+
+    public static AstList saveList = null;
+
     protected List<AstNode> children;
 
     public AstList(List<AstNode> children, int tag) {
@@ -66,5 +76,13 @@ public class AstList extends AstNode {
     @Override
     public Object eval(EnvironmentCallBack env) {
         throw new HobbyException("can not eval : " + toString(), this);
+    }
+
+    @Override
+    public String compile(CodeLine line, int start, int end) {
+        for (AstNode n : children) {
+            n.compile(line, start, end);
+        }
+        return null;
     }
 }

@@ -1,5 +1,6 @@
 package HobbyScript.Ast;
 
+import HobbyScript.Compile.CodeLine;
 import HobbyScript.Eval.Env.EnvironmentCallBack;
 import HobbyScript.Token.HobbyToken;
 
@@ -20,6 +21,8 @@ public class BreakStmt extends AstList {
     // 携带的返回值
     protected Object result;
 
+    protected AstList outList;
+
     public Object getResult() {
         return result;
     }
@@ -27,6 +30,18 @@ public class BreakStmt extends AstList {
     public Object setResult(Object result) {
         this.result = result;
         return this;
+    }
+
+    @Override
+    public String compile(CodeLine line, int start, int end) {
+
+        if (EnClosingList == NullList)
+            throw new Error("unenclosed break");
+
+        outList = EnClosingList;
+
+        line.addCode("goto L" + outList.afterPoint);
+        return null;
     }
 
     @Override

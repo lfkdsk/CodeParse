@@ -106,6 +106,7 @@ public class ScriptEval {
     public static Object binaryEval(EnvironmentCallBack env, BinaryExpr expr) {
         String op = expr.operator();
 
+        // 赋值
         if (ScriptParser.ASSIGN_TOKEN.equals(op)) {
             Object right = expr.right().eval(env);
             if (expr.left() instanceof PrimaryExpr) {
@@ -113,6 +114,7 @@ public class ScriptEval {
             }
             return computeAssign(env, expr, right);
         } else {
+            // 多元运算
             Object left = expr.left().eval(env);
             Object right = expr.right().eval(env);
             return computeOp(left, right, op, expr);

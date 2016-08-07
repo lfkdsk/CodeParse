@@ -1,5 +1,7 @@
 package HobbyScript.Ast;
 
+import HobbyScript.Compile.CodeLine;
+import HobbyScript.Compile.CompileCallBack;
 import HobbyScript.Eval.Env.EnvironmentCallBack;
 import HobbyScript.Eval.Env.EvalCallBack;
 
@@ -11,7 +13,8 @@ import java.util.function.Consumer;
  * AST TREE NODE 抽象语法树的通用接口
  * Created by liufengkai on 16/7/11.
  */
-public abstract class AstNode implements Iterable<AstNode>, EvalCallBack {
+public abstract class AstNode implements Iterable<AstNode>,
+        EvalCallBack, CompileCallBack {
     protected final int tag;
 
     protected AstNode(int tag) {
@@ -63,5 +66,10 @@ public abstract class AstNode implements Iterable<AstNode>, EvalCallBack {
     @Override
     public Object eval(EnvironmentCallBack env) {
         return this;
+    }
+
+    @Override
+    public String compile(CodeLine line, int start, int end) {
+        return null;
     }
 }

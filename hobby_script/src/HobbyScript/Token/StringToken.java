@@ -24,4 +24,6 @@ public class StringToken extends HobbyToken {
     public String getText() {
         return literal;
     }
+
+
 }

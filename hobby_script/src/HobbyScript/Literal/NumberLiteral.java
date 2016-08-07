@@ -1,9 +1,11 @@
 package HobbyScript.Literal;
 
 import HobbyScript.Ast.AstLeaf;
+import HobbyScript.Compile.CodeLine;
 import HobbyScript.Eval.Env.EnvironmentCallBack;
 import HobbyScript.Eval.ScriptEval;
 import HobbyScript.Token.HobbyToken;
+import HobbyScript.Token.NumberToken;
 
 /**
  * Number字面量
@@ -24,5 +26,10 @@ public class NumberLiteral extends AstLeaf {
     @Override
     public Object eval(EnvironmentCallBack env) {
         return ScriptEval.NumberEval(this);
+    }
+
+    @Override
+    public String compile(CodeLine line, int start, int end) {
+        return String.valueOf(((NumberToken) token).getNumber());
     }
 }

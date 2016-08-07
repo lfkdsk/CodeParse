@@ -1,6 +1,7 @@
 package HobbyScript.Literal;
 
 import HobbyScript.Ast.AstLeaf;
+import HobbyScript.Compile.CodeLine;
 import HobbyScript.Eval.Env.EnvironmentCallBack;
 import HobbyScript.Eval.ScriptEval;
 import HobbyScript.Token.HobbyToken;
@@ -15,6 +16,11 @@ public class StringLiteral extends AstLeaf {
     }
 
     public String value() {
+        return token.getText();
+    }
+
+    @Override
+    public String compile(CodeLine line, int start, int end) {
         return token.getText();
     }
 
