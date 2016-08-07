@@ -52,7 +52,8 @@ public class ForStmt extends AstList {
 
         line.addPrevCode(initial);
 
-        ScriptCompile.emitjumps(line, condition().toString(), 0, nx, -1);
+        String condition = condition().compile(line, 0, nx);
+        ScriptCompile.emitjumps(line, condition, 0, nx, -1);
 
         int label = line.newLine();
         line.addPrevCode(label);

@@ -70,6 +70,6 @@ public class ScriptCompile {
     }
 
     public static void main(String[] args) throws ParseException, FileNotFoundException {
-        compile("midTest");
+        compile("midTest2");
     }
 }

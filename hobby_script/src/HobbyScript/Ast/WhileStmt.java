@@ -41,16 +41,17 @@ public class WhileStmt extends AstList {
         // 保存退出点
         afterPoint = nx;                 // 保存用于跳出的地址
 
-        int condition = line.newLine();
-        line.addPrevCode(condition);
+        int conditionLabel = line.newLine();
+        line.addPrevCode(conditionLabel);
 
-        ScriptCompile.emitjumps(line, condition().toString(), 0, nx, -1);
+        String condition = condition().compile(line, 0, nx);
+        ScriptCompile.emitjumps(line, condition, 0, nx, -1);
 
         int label = line.newLine();
         line.addPrevCode(label);
 
         body().compile(line, label, th);
-        line.addCode("goto L" + condition);        // 打印跳转
+        line.addCode("goto L" + conditionLabel);        // 打印跳转
 
         // 恢复状态
         EnClosingList = saveList;
