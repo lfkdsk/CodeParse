@@ -1,6 +1,7 @@
 package HobbyScript.Ast;
 
 import HobbyScript.Compile.CodeLine;
+import HobbyScript.Compile.Temp;
 import HobbyScript.Eval.Env.EnvironmentCallBack;
 import HobbyScript.Eval.ScriptEval;
 import HobbyScript.Literal.IdLiteral;
@@ -36,16 +37,50 @@ public class BinaryExpr extends AstList {
     @Override
     public String compile(CodeLine line, int th, int nx) {
         String op = operator();
-        if (ScriptParser.ASSIGN_TOKEN.equals(op)) {
-            AstNode left = left();
+        String leftCom = left().compile(line, th, nx);
+        String rightCom = right().compile(line, th, nx);
 
-            if (left instanceof IdLiteral) {
-                line.addCode(left.compile(line, th, nx) +
-                        "=" + right().compile(line, th, nx));
+        if (ScriptParser.ASSIGN_TOKEN.equals(op)) {
+            if (left() instanceof IdLiteral) {
+                methodForTemp(line, leftCom, rightCom);
             }
+        } else {
+            Temp tempCode = new Temp();
+
+            if (exp(leftCom)) {
+                String temp = leftCom.split("=")[0].replace(" ", "");
+                line.addCode(leftCom);
+                line.addCode(tempCode + "=" + temp + op + rightCom);
+                return tempCode.toString();
+            } else if (exp(rightCom)) {
+                String temp = rightCom.split("=")[0].replace(" ", "");
+                line.addCode(rightCom);
+                line.addCode(tempCode + "=" + leftCom + op + temp);
+                return tempCode.toString();
+            }
+
+            return tempCode.toString() + "=" + leftCom
+                    + operator() + rightCom;
         }
+
         return null;
     }
+
+    private void methodForTemp(CodeLine line, String leftCom, String rightCom) {
+        if (exp(rightCom)) {
+            String temp = rightCom.split("=")[0].replace(" ", "");
+
+            line.addCode(rightCom);
+            line.addCode(leftCom + "=" + temp);
+        } else {
+            line.addCode(leftCom + "=" + rightCom);
+        }
+    }
+
+    private boolean exp(String exp) {
+        return exp.contains("=");
+    }
+
 
     @Override
     public Object eval(EnvironmentCallBack env) {

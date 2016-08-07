@@ -1,5 +1,6 @@
 package HobbyScript.Ast;
 
+import HobbyScript.Compile.CodeLine;
 import HobbyScript.Eval.Env.EnvironmentCallBack;
 import HobbyScript.Eval.ScriptEval;
 import HobbyScript.Token.HobbyToken;
@@ -23,6 +24,11 @@ public class NegativeExpr extends AstList {
 
     public String toString() {
         return "-" + operand();
+    }
+
+    @Override
+    public String compile(CodeLine line, int th, int nx) {
+        return toString();
     }
 
     @Override

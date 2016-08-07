@@ -453,9 +453,9 @@ public class BnfParser {
          */
         private static boolean rightIsExpr(int prec, Precedence nextPrec) {
             if (nextPrec.leftAssoc) {
-                return prec < nextPrec.value;
+                return prec > nextPrec.value;
             } else {
-                return prec <= nextPrec.value;
+                return prec >= nextPrec.value;
             }
         }
 

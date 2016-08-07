@@ -223,23 +223,27 @@ public class ScriptParser {
 //        reserved.add(LOGICAL_F_TOKEN);
         reserved.add(HobbyToken.EOL);
 
-        operators.add(ASSIGN_TOKEN, 1, BnfParser.Operators.RIGHT);
+        operators.add(ASSIGN_TOKEN, 14, BnfParser.Operators.RIGHT);
 //        operators.add(LOGICAL_F_TOKEN, 1, BnfParser.Operators.RIGHT);
 
 
-        operators.add(EQ_TOKEN, 2, BnfParser.Operators.LEFT);
-        operators.add(UQ_TOKEN, 2, BnfParser.Operators.LEFT);
-        operators.add(GE_TOKEN, 2, BnfParser.Operators.LEFT);
-        operators.add(LOGICAL_AND_TOKEN, 2, BnfParser.Operators.LEFT);
-        operators.add(LOGICAL_OR_TOKEN, 2, BnfParser.Operators.LEFT);
-        operators.add(LE_TOKEN, 2, BnfParser.Operators.LEFT);
-        operators.add(GEQ_TOKEN, 2, BnfParser.Operators.LEFT);
-        operators.add(GT_TOKEN, 2, BnfParser.Operators.LEFT);
-        operators.add(ADD, 3, BnfParser.Operators.LEFT);
-        operators.add(SUB, 3, BnfParser.Operators.LEFT);
-        operators.add(MUL, 4, BnfParser.Operators.LEFT);
-        operators.add(DIV, 4, BnfParser.Operators.LEFT);
-        operators.add(MOD, 4, BnfParser.Operators.LEFT);
+        operators.add(EQ_TOKEN, 7, BnfParser.Operators.LEFT);
+        operators.add(UQ_TOKEN, 7, BnfParser.Operators.LEFT);
+
+        operators.add(LOGICAL_AND_TOKEN, 11, BnfParser.Operators.LEFT);
+        operators.add(LOGICAL_OR_TOKEN, 12, BnfParser.Operators.LEFT);
+
+        operators.add(GE_TOKEN, 6, BnfParser.Operators.LEFT);
+        operators.add(LE_TOKEN, 6, BnfParser.Operators.LEFT);
+        operators.add(GEQ_TOKEN, 6, BnfParser.Operators.LEFT);
+        operators.add(GT_TOKEN, 6, BnfParser.Operators.LEFT);
+
+        operators.add(ADD, 4, BnfParser.Operators.LEFT);
+        operators.add(SUB, 4, BnfParser.Operators.LEFT);
+
+        operators.add(MUL, 3, BnfParser.Operators.LEFT);
+        operators.add(DIV, 3, BnfParser.Operators.LEFT);
+        operators.add(MOD, 3, BnfParser.Operators.LEFT);
     }
 
     public AstNode parse(HobbyLexer lexer) throws ParseException {
