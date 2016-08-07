@@ -22,7 +22,7 @@ public class IdLiteral extends AstLeaf {
     }
 
     @Override
-    public String compile(CodeLine line, int start, int end) {
+    public String compile(CodeLine line, int th, int nx) {
         return token.getText();
     }
 

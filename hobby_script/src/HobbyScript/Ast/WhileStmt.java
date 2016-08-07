@@ -33,20 +33,24 @@ public class WhileStmt extends AstList {
     }
 
     @Override
-    public String compile(CodeLine line, int start, int end) {
+    public String compile(CodeLine line, int th, int nx) {
         // 保存状态
         saveList = EnClosingList;
         EnClosingList = this;
 
         // 保存退出点
-        afterPoint = end;                 // 保存用于跳出的地址
-        ScriptCompile.emitjumps(line, condition().toString(), 0, end, -1);
+        afterPoint = nx;                 // 保存用于跳出的地址
+
+        int condition = line.newLine();
+        line.addPrevCode(condition);
+
+        ScriptCompile.emitjumps(line, condition().toString(), 0, nx, -1);
 
         int label = line.newLine();
         line.addPrevCode(label);
 
-        body().compile(line, label, start);
-        line.addCode("goto L" + start);        // 打印跳转
+        body().compile(line, label, th);
+        line.addCode("goto L" + condition);        // 打印跳转
 
         // 恢复状态
         EnClosingList = saveList;

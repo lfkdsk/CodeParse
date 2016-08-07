@@ -10,8 +10,6 @@ import HobbyScript.Parser.ScriptParser;
 import HobbyScript.Token.HobbyToken;
 import HobbyScript.Utils.logger.Logger;
 
-import java.io.IOException;
-
 /**
  * Created by liufengkai on 16/8/7.
  */
@@ -57,11 +55,11 @@ public class ScriptCompile {
 
                 line.printList();
 
-                try {
-                    line.writeToFile();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+//                try {
+//                    line.writeToFile();
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
             }
 //            Logger.v(" => " + node.toString() + "  ");
         }

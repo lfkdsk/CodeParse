@@ -20,8 +20,8 @@ public class BlockStmnt extends AstList {
     }
 
     @Override
-    public String compile(CodeLine line, int start, int end) {
-        return super.compile(line, start, end);
+    public String compile(CodeLine line, int th, int nx) {
+        return super.compile(line, th, nx);
     }
 
     @Override

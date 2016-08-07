@@ -69,7 +69,7 @@ public abstract class AstNode implements Iterable<AstNode>,
     }
 
     @Override
-    public String compile(CodeLine line, int start, int end) {
+    public String compile(CodeLine line, int th, int nx) {
         return null;
     }
 }

@@ -1,5 +1,7 @@
 package HobbyScript.Ast;
 
+import HobbyScript.Compile.CodeLine;
+import HobbyScript.Compile.ScriptCompile;
 import HobbyScript.Eval.Env.EnvironmentCallBack;
 import HobbyScript.Eval.Env.LocalEnvironment;
 import HobbyScript.Eval.ScriptEval;
@@ -33,6 +35,37 @@ public class ForStmt extends AstList {
 
     public AstNode body() {
         return child(3);
+    }
+
+    @Override
+    public String compile(CodeLine line, int th, int nx) {
+        // 保存状态
+        saveList = EnClosingList;
+        EnClosingList = this;
+
+        // 保存退出点
+        afterPoint = nx;                 // 保存用于跳出的地址
+
+        initial().compile(line, th, nx);
+
+        int initial = line.newLine();
+
+        line.addPrevCode(initial);
+
+        ScriptCompile.emitjumps(line, condition().toString(), 0, nx, -1);
+
+        int label = line.newLine();
+        line.addPrevCode(label);
+
+        body().compile(line, label, initial);
+
+        step().compile(line, label, initial);
+
+        line.addCode("goto L" + initial);        // 打印跳转
+
+        // 恢复状态
+        EnClosingList = saveList;
+        return null;
     }
 
     @Override

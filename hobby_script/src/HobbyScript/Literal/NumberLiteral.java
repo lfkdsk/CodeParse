@@ -29,7 +29,7 @@ public class NumberLiteral extends AstLeaf {
     }
 
     @Override
-    public String compile(CodeLine line, int start, int end) {
+    public String compile(CodeLine line, int th, int nx) {
         return String.valueOf(((NumberToken) token).getNumber());
     }
 }

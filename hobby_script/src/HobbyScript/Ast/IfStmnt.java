@@ -38,30 +38,30 @@ public class IfStmnt extends AstList {
     }
 
     @Override
-    public String compile(CodeLine line, int start, int end) {
+    public String compile(CodeLine line, int th, int nx) {
 
         if (elseBlock() == null || thenBlock().childCount() <= 0) {
             // stmt 标号
             int label = line.newLine();
             // jump
-            ScriptCompile.emitjumps(line, condition().toString(), 0, end, -1);
+            ScriptCompile.emitjumps(line, condition().toString(), 0, nx, -1);
 
             line.addPrevCode(label);
             // 为真时控制穿越流,为假时转向nx
-            thenBlock().compile(line, label, end);
+            thenBlock().compile(line, label, nx);
         } else {
             int label_1 = line.newLine(); // stmt1
             int label_2 = line.newLine(); // stmt2
 
             ScriptCompile.emitjumps(line, condition().toString(), 0, label_2, label_1); // 为真时1
 
-            thenBlock().compile(line, label_1, end);
+            thenBlock().compile(line, label_1, nx);
 
-            line.addCode("goto L" + end);
+            line.addCode("goto L" + nx);
 
             line.addPrevCode(label_2);
 
-            elseBlock().compile(line, label_2, end);
+            elseBlock().compile(line, label_2, nx);
         }
 
         return null;

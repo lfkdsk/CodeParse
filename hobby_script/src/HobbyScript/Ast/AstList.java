@@ -79,9 +79,9 @@ public class AstList extends AstNode {
     }
 
     @Override
-    public String compile(CodeLine line, int start, int end) {
+    public String compile(CodeLine line, int th, int nx) {
         for (AstNode n : children) {
-            n.compile(line, start, end);
+            n.compile(line, th, nx);
         }
         return null;
     }

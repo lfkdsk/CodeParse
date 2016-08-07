@@ -34,14 +34,14 @@ public class BinaryExpr extends AstList {
     }
 
     @Override
-    public String compile(CodeLine line, int start, int end) {
+    public String compile(CodeLine line, int th, int nx) {
         String op = operator();
         if (ScriptParser.ASSIGN_TOKEN.equals(op)) {
             AstNode left = left();
 
             if (left instanceof IdLiteral) {
-                line.addCode(left.compile(line, start, end) +
-                        "=" + right().compile(line, start, end));
+                line.addCode(left.compile(line, th, nx) +
+                        "=" + right().compile(line, th, nx));
             }
         }
         return null;
