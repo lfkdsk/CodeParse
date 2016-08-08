@@ -1082,14 +1082,7 @@
       <workItem from="1469714668973" duration="1464000" />
       <workItem from="1470287718032" duration="10693000" />
       <workItem from="1470497113418" duration="25428000" />
-      <workItem from="1470592029732" duration="6356000" />
-    </task>
-    <task id="LOCAL-00084" summary="添加类继承测试">
-      <created>1469193152571</created>
-      <option name="number" value="00084" />
-      <option name="presentableId" value="LOCAL-00084" />
-      <option name="project" value="LOCAL" />
-      <updated>1469193152571</updated>
+      <workItem from="1470592029732" duration="6424000" />
     </task>
     <task id="LOCAL-00085" summary="update 无法使用this指针">
       <created>1469238721680</created>
@@ -1427,11 +1420,18 @@
       <option name="project" value="LOCAL" />
       <updated>1470663336779</updated>
     </task>
-    <option name="localTasksCounter" value="133" />
+    <task id="LOCAL-00133" summary="识别静态类型和函数">
+      <created>1470663343651</created>
+      <option name="number" value="00133" />
+      <option name="presentableId" value="LOCAL-00133" />
+      <option name="project" value="LOCAL" />
+      <updated>1470663343651</updated>
+    </task>
+    <option name="localTasksCounter" value="134" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="243263000" />
+    <option name="totallyTimeSpent" value="243331000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
