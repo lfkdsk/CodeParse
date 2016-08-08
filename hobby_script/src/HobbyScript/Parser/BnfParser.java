@@ -270,6 +270,19 @@ public class BnfParser {
         }
     }
 
+
+    protected static class TypeToken extends AToken {
+
+        public TypeToken(Class<? extends AstLeaf> clazz) {
+            super(clazz);
+        }
+
+        @Override
+        protected boolean tokenTest(HobbyToken token) {
+            return token.isType();
+        }
+    }
+
     /**
      * 叶节点
      */
@@ -672,6 +685,15 @@ public class BnfParser {
 
     public BnfParser Null(Class<? extends AstLeaf> clazz) {
         elements.add(new NullToken(clazz));
+        return this;
+    }
+
+    public BnfParser type() {
+        return type(null);
+    }
+
+    public BnfParser type(Class<? extends AstLeaf> clazz) {
+        elements.add(new TypeToken(clazz));
         return this;
     }
 

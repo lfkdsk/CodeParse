@@ -5,6 +5,9 @@ package HobbyScript.Token;
  */
 public class BoolToken extends HobbyToken {
 
+    public final static String TRUE = "true",
+            FALSE = "false";
+
     public enum BoolType {
         TRUE("true"), FALSE("false");
 
@@ -27,9 +30,9 @@ public class BoolToken extends HobbyToken {
         this.type = type;
 
         if (type == BoolType.TRUE) {
-            this.tag = TRUE;
+            this.tag = HobbyToken.TRUE;
         } else {
-            this.tag = FALSE;
+            this.tag = HobbyToken.FALSE;
         }
     }
 

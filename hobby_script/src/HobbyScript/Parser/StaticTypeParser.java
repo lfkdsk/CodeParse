@@ -4,7 +4,7 @@ import HobbyScript.ApplicationTest.CodeDialog;
 import HobbyScript.Ast.AstNode;
 import HobbyScript.Exception.ParseException;
 import HobbyScript.Lexer.HobbyLexer;
-import HobbyScript.StaticType.Ast.TypeTag;
+import HobbyScript.StaticType.Ast.TypeLiteral;
 import HobbyScript.StaticType.Ast.VarStmt;
 import HobbyScript.Token.HobbyToken;
 import HobbyScript.Utils.logger.Logger;
@@ -17,11 +17,7 @@ import HobbyScript.Utils.logger.Logger;
  *         Created by liufengkai on 16/7/16.
  */
 public class StaticTypeParser extends FunctionParser {
-    BnfParser type = BnfParser.rule(TypeTag.class).or(
-            BnfParser.rule().sep(TypeTag.INT),
-            BnfParser.rule().sep(TypeTag.FLOAT),
-            BnfParser.rule().sep(TypeTag.STRING)
-    );
+    BnfParser type = BnfParser.rule().type(TypeLiteral.class);
 
     BnfParser variable = BnfParser.rule(VarStmt.class)
             .ast(type).identifier(reserved).sep("=").ast(expr);

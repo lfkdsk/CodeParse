@@ -4,6 +4,7 @@ import HobbyScript.Ast.AstLeaf;
 import HobbyScript.Ast.AstList;
 import HobbyScript.Ast.AstNode;
 import HobbyScript.Token.HobbyToken;
+import HobbyScript.Token.TypeToken;
 
 import java.util.List;
 
@@ -13,14 +14,14 @@ import java.util.List;
 public class VarStmt extends AstList {
 
 
-    public TypeTag.VarTypeTag convert(String tag) {
+    public String convert(int tag) {
         switch (tag) {
-            case TypeTag.FLOAT:
-                return TypeTag.VarTypeTag.FLOAT;
-            case TypeTag.INT:
-                return TypeTag.VarTypeTag.INT;
-            case TypeTag.STRING:
-                return TypeTag.VarTypeTag.STRING;
+            case HobbyToken.FLOAT:
+                return TypeToken.FLOAT;
+            case HobbyToken.INT:
+                return TypeToken.INT;
+            case HobbyToken.STRING:
+                return TypeToken.STRING;
             default:
                 return null;
         }
@@ -34,8 +35,8 @@ public class VarStmt extends AstList {
         return ((AstLeaf) child(1)).token().getText();
     }
 
-    public TypeTag.VarTypeTag type() {
-        return convert(child(0).toString());
+    public String type() {
+        return convert(((AstLeaf) child(0)).token().getTag());
     }
 
     public AstNode initializer() {
@@ -44,6 +45,6 @@ public class VarStmt extends AstList {
 
     @Override
     public String toString() {
-        return "(var " + type().tag + " " + name() + " " + initializer().toString() + ")";
+        return "(var " + type() + " " + name() + " " + initializer().toString() + ")";
     }
 }

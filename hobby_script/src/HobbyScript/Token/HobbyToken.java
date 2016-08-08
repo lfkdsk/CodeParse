@@ -73,6 +73,10 @@ public abstract class HobbyToken {
         return tag;
     }
 
+    public boolean isType() {
+        return false;
+    }
+
     public boolean isBool() {
         return false;
     }
