@@ -23,10 +23,15 @@ public class FuncStmt extends AstList {
     }
 
     public ParameterList parameters() {
+        // 这里在不同情况下的处理是有分歧的
+        // 如果无类型的话 记得 child(1)
+        // 有类型语言记得 child(2)
         return (ParameterList) child(1);
     }
 
     public BlockStmnt body() {
+        // no-type -> 2
+        // type    -> 3
         return (BlockStmnt) child(2);
     }
 
