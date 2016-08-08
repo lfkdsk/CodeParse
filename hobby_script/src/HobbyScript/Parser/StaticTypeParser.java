@@ -25,6 +25,7 @@ public class StaticTypeParser extends FunctionParser {
     public StaticTypeParser() {
         param.reset().ast(type).identifier(reserved);
 
+        // 使用这个记得去修改相应
         def.reset().sep(FUNCTION_TOKEN).ast(type).identifier(reserved)
                 .ast(paramList).ast(block);
 
