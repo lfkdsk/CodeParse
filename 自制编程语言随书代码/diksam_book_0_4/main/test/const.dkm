@@ -1,0 +1,8 @@
+require constant_req;
+
+const HOGE = 10;
+const PIYO = HOGE + 10;
+
+println("HOGE.." + HOGE);
+println("PIYO.." + PIYO);
+println("HOGE_H.." + HOGE_H);

@@ -1,0 +1,9 @@
+function func(count) {
+    if (count < 3) {
+	func(count + 1);
+    }
+    zero = 0;
+    a = 3 / zero;
+}
+
+func(0);

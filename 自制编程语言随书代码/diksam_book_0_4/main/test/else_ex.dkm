@@ -1,0 +1,27 @@
+require diksam.lang;
+
+int a = 0;
+
+try {
+    println("5 / 0.." + (5 / a));
+} catch (DivisionByZeroException e1) {
+    e1.print_stack_trace();
+}
+
+abstract class Shape {
+}
+
+class Line : Shape {
+}
+
+class Circle : Shape {
+}
+
+Shape line = new Line();
+
+try {
+    Circle circle = line::Circle:>;
+} catch (ClassCastException e2) {
+    e2.print_stack_trace();
+}
+

@@ -1,0 +1,25 @@
+require diksam.lang;
+
+class Hoge {
+    void print() {
+	println("Hogehoge");
+    }
+}
+
+Hoge hoge = null;
+
+void sub(int count) {
+    if (count == 0) {
+	hoge.print();
+    }
+    sub(count - 1);
+}
+
+try {
+    sub(5);
+} catch (NullPointerException e) {
+    e.print_stack_trace();
+}
+
+hoge.print();
+

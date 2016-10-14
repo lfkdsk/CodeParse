@@ -1,0 +1,29 @@
+require diksam.lang;
+
+public class Point {
+    private double x;
+    private double y;
+
+    double get_x() {
+	return this.x;
+    }
+    void set_x(double x) {
+	this.x = x;
+    }
+    // 紙面の都合でget_y(), set_y()は省略
+
+    void print() {
+	println("x.." + this.x + ", y.." + this.y);
+    }
+    // デフォルトのコンストラクタの名前は「initialize」
+    constructor initialize(double x, double y) {
+	this.x = x;
+	this.y = y;
+    }
+}
+
+// Pointのインスタンスを生成して、
+Point p = new Point(10, 20);
+
+// その内容を表示する。
+p.print();

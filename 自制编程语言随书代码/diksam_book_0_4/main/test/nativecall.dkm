@@ -1,0 +1,11 @@
+int hoge(int value) {
+    int[] array = null;
+    println("hoge value.." + value);
+
+    array.size();
+
+    return 5;
+}
+
+test_native(hoge);
+

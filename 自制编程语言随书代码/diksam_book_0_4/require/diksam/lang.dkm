@@ -1,0 +1,27 @@
+require diksam.lang;
+
+native_pointer __fopen(string file_name, string mode);
+string __fgets(native_pointer fp);
+void __fputs(string str, native_pointer fp);
+void __fclose(native_pointer fp);
+
+File fopen(string file_name, string mode) {
+    native_pointer fp = __fopen(file_name, mode);
+    if (fp == null) {
+	return null;
+    } else {
+	return new File(fp);
+    }
+}
+
+string fgets(File file) {
+    return __fgets(file.fp);
+}
+
+void fputs(string str, File file) {
+    __fputs(str, file.fp);
+}
+
+void fclose(File file) {
+    __fclose(file.fp);
+}

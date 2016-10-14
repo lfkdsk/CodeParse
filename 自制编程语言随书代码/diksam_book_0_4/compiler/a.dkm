@@ -1,0 +1,25 @@
+require diksam.lang;
+
+int[] a = new int[10];
+
+class Point {
+    int x;
+    int y;
+
+    void init(int x, int y) {
+	this.x = x;
+	this.y = y;
+    }
+}
+
+Point[] p_array = new Point[10];
+
+int i;
+
+for (i = 0; i < 10; i++) {
+    p_array[i] = new Point.init(i, i * 10);
+}
+for (i = 0; i < 10; i++) {
+    print("p_array[" + i + "]..("
+	  + p_array[i].x + ", " + p_array[i].y + ")\n");
+}

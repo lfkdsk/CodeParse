@@ -1,0 +1,5 @@
+enum Hoge {
+    HOGE,
+    PIYO
+}
+

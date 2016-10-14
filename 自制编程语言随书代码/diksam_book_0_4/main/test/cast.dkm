@@ -1,0 +1,9 @@
+require diksam.lang;
+
+class Hoge {
+}
+
+class Piyo {
+}
+
+Piyo p = new Hoge();

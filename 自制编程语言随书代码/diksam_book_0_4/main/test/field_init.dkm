@@ -1,0 +1,13 @@
+class Hoge {
+    int x = 10;
+    string str = "str";
+
+    void print() {
+	println("x.." + this.x);
+	println("str.." + this.str);
+    }
+}
+
+Hoge hoge = new Hoge();
+
+hoge.print();

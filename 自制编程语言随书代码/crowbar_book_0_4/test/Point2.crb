@@ -1,0 +1,17 @@
+function create_point(x, y) {
+    this = new_object();
+    this.x = x;
+    this.y = y;
+
+    this.print = closure() {
+	print("(" + this.x + ", " + this.y + ")\n");
+    };
+
+    this.move = closure(x_vec, y_vec) {
+	this.x = this.x + x_vec;
+	this.y = this.y + y_vec;
+    };
+    return this;
+}
+
+p = create_point(10, 20);

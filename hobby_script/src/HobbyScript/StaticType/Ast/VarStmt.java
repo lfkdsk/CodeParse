@@ -14,7 +14,7 @@ import java.util.List;
 public class VarStmt extends AstList {
 
 
-    public String convert(int tag) {
+    public static String convert(int tag) {
         switch (tag) {
             case HobbyToken.FLOAT:
                 return TypeToken.FLOAT;

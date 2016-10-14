@@ -1,0 +1,55 @@
+require diksam.lang;
+
+abstract class Hoge {
+    private int x;
+    private int y;
+    int getX() {
+	return this.x;
+    }
+
+    private virtual int getY() {
+	return this.y;
+    }
+
+    constructor init(int x, int y) {
+	this.x = x;
+	this.y = y;
+    }
+
+    void p() {
+	println("Hoge");
+    }
+}
+
+interface HogeI {
+    abstract void q();
+}
+
+public class Hoge2 : Hoge, HogeI {
+    void p() {
+	println("Hoge2");
+    }
+    void q() {
+	println("HogeI");
+    }
+    constructor init() {
+	println("init");
+    }
+}
+
+//Hoge hoge = new Hoge.init(10, 20);
+//println("hoge.x.." + hoge.getX());
+
+//hoge.p();
+
+Hoge2 hoge2 = new Hoge2.init();
+println("hoge2.x.." + hoge2.getX());
+
+hoge2.p();
+hoge2.q();
+
+HogeI hogei = hoge2;
+
+
+hogei.q();
+

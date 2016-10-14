@@ -1,0 +1,36 @@
+require diksam.lang;
+
+// abstractがついたクラスでなければ継承できない
+abstract class Point1 {
+    double x;
+    double y;
+
+    // virtualがついたメソッドでなければオーバーライドできない
+    virtual void print() {
+	println("x.." + this.x + ", y.." + this.y);
+    }
+    virtual constructor initialize(double x, double y) {
+	this.x = x;
+	this.y = y;
+    }
+}
+
+// 継承は、Java流のextendsではなく、C++/C#流の「:」
+class Point2 : Point1 {
+    // オーバーライドする側でoverride指定が必要
+    override void print() {
+	println("overrided: x.." + this.x + ", y.." + this.y);
+    }
+    // コンストラクタもオーバーライドできる
+    override constructor initialize(double x, double y) {
+	this.x = x + 10;
+	this.y = y + 10;
+    }
+}
+
+// Point1の変数pに代入しているが……
+Point1 p = new Point2(5, 10);
+
+// メソッドオーバーライドにより、呼び出されるのは
+// Point2のprint()メソッド
+p.print();

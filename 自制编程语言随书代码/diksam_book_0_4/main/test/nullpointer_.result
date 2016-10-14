@@ -1,0 +1,9 @@
+Exception occured. nullを参照しています。
+	at sub(nullpointer.dkm:13)
+	at sub(nullpointer.dkm:15)
+	at sub(nullpointer.dkm:15)
+	at sub(nullpointer.dkm:15)
+	at sub(nullpointer.dkm:15)
+	at sub(nullpointer.dkm:15)
+Exception occured. nullを参照しています。
+	at top level(nullpointer.dkm:24)

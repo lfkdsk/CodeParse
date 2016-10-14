@@ -1,0 +1,67 @@
+require diksam.lang;
+
+interface Printable {
+    void print();
+}
+
+abstract class Shape : Printable {
+    int	color;
+
+    abstract virtual void draw();
+}
+
+class Line : Shape {
+    double	start_x;
+    double	start_y;
+    double	end_x;
+    double	end_y;
+
+    override void draw() {
+	println("draw Line!");
+    }
+    override void print() {
+	println("(" + this.start_x + ", " + this.end_x + ")-("
+		+ this.end_x + ", " + this.end_y + ")");
+    }
+    override constructor initialize(double start_x, double start_y,
+				    double end_x, double end_y) {
+	this.start_x = start_x;
+	this.start_y = start_y;
+	this.end_x = end_x;
+	this.end_y = end_y;
+    }
+}
+
+class Circle : Shape {
+    double	center_x;
+    double	center_y;
+    double	radius;
+
+    override void draw() {
+	println("draw Circle!");
+    }
+    override void print() {
+	println("(" + this.center_x + ", " + this.center_y
+		+ "), r.." + this.radius);
+    }
+
+    override constructor initialize(double center_x, double center_y,
+				    double radius) {
+	this.center_x = center_x;
+	this.center_y = center_y;
+	this.radius = radius;
+    }
+}
+
+Shape s = new Line(10, 10, 20, 20);
+Line l = new Line(10, 10, 20, 20);
+
+s.draw();
+s.print();
+
+if (s instanceof Line) {
+    println("s is Line.");
+}
+if (s instanceof Circle) {
+    println("s is Circle.");
+}

@@ -1,0 +1,7 @@
+require diksam.lang;
+
+class ClassSubImpl : ClassSub {
+    void print() {
+	println("hello, world.");
+    }
+}

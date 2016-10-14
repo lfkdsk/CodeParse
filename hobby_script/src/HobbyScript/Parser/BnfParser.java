@@ -569,8 +569,14 @@ public class BnfParser {
         }
     }
 
+    /**
+     * 存储全部的BNF表达式
+     */
     protected List<Element> elements;
 
+    /**
+     * 构建工厂类
+     */
     protected Factory factory;
 
     public BnfParser(Class<? extends AstNode> clazz) {

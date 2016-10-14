@@ -17,18 +17,31 @@ import HobbyScript.Utils.logger.Logger;
  *         Created by liufengkai on 16/7/16.
  */
 public class StaticTypeParser extends FunctionParser {
+
+    ///////////////////////////////////////////////////////////////////////////
+    // type = Int / Float / String
+    ///////////////////////////////////////////////////////////////////////////
     BnfParser type = BnfParser.rule().type(TypeLiteral.class);
 
+
+    ///////////////////////////////////////////////////////////////////////////
+    // var = type id = expr;
+    ///////////////////////////////////////////////////////////////////////////
     BnfParser variable = BnfParser.rule(VarStmt.class)
             .ast(type).identifier(reserved).sep("=").ast(expr);
 
     public StaticTypeParser() {
+        // param = type id
         param.reset().ast(type).identifier(reserved);
 
         // 使用这个记得去修改相应
+        // funStmt里面对于参数列表和语句块的识别
+
+        // def = function type id ( paramsList ) block
         def.reset().sep(FUNCTION_TOKEN).ast(type).identifier(reserved)
                 .ast(paramList).ast(block);
 
+        // add to statement
         statement.insertChoice(variable);
     }
 

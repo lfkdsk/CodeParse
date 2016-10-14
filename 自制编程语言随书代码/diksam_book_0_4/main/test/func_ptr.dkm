@@ -1,0 +1,3 @@
+void(string str) print_p;
+
+print_p = print;

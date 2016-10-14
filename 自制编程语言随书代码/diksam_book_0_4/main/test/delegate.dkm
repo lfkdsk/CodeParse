@@ -1,0 +1,62 @@
+delegate int IntFunc(double d);
+
+int
+int_func(double d) {
+    println("hello");
+    return 5;
+}
+
+IntFunc func_p;
+
+func_p = int_func;
+
+println("return value.." + func_p(0.3));
+
+abstract class SuperClass {
+    public int value;
+}
+
+class SubClass:SuperClass {
+    SuperClass method(SubClass arg) {
+	println("SubClass:method called. value.." + arg.value);
+    }
+}
+
+delegate SuperClass DelegateFunc(SubClass arg);
+
+SubClass dele_func(SuperClass arg);
+
+DelegateFunc dele_func_p;
+
+dele_func_p = dele_func;
+
+int[] array = {1, 2, 3};
+
+println("array.size.." + array.size());
+
+delegate int ArraySize();
+ArraySize array_size = array.size;
+println("array.size.." + array.size());
+
+SubClass subObj = new SubClass();
+
+dele_func_p = subObj.method;
+
+subObj.value = 10;
+dele_func_p(subObj);
+
+int
+int_func2()
+{
+    return 12;
+}
+
+ArraySize[] int_func_array = new ArraySize[0];
+
+int_func_array.add(array.size);
+int_func_array.add(int_func2);
+
+int i;
+for (i = 0; i < int_func_array.size(); i++) {
+    println("ret.." + int_func_array[i]());
+}

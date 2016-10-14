@@ -1,0 +1,106 @@
+require diksam.lang;
+
+class ExceptionSub : Exception {
+}
+
+void sub(int count) throws ExceptionSub {
+    println("sub" + count);
+    if (count > 5) {
+	ExceptionSub e = new ExceptionSub();
+	e.message = "hogehoge";
+	throw e;
+    } else {
+	sub(count + 1);
+    }
+}
+
+void sub2(int count) throws Exception {
+    println("sub2/" + count);
+    try {
+	if (count > 5) {
+	    Exception e = new ExceptionSub();
+	    e.message = "piyopiyo";
+	    throw e;
+	} else {
+	    sub2(count + 1);
+	}
+    } catch (Exception e) {
+	println("catched. count.." + count + " messae.." + e.message);
+	e.print_stack_trace();
+	if (count > 0) {
+	    throw;
+	}
+    }
+}
+
+void sub3(int count) throws Exception {
+    println("sub3/" + count);
+
+    try {
+	if (count > 5) {
+	    Exception e = new ExceptionSub();
+	    e.message = "fugafuga";
+	    throw e;
+	} else {
+	    sub3(count + 1);
+	}
+    } catch (Exception e) {
+	println("catched. count.." + count + " messae.." + e.message);
+	e.print_stack_trace();
+	if (count > 0) {
+	    throw e;
+	}
+    }
+}
+
+void func() {
+    try {
+	sub(0);
+    } catch (Exception e) {
+	println("exception was caught." + e.message);
+	e.print_stack_trace();
+    }
+}
+
+void func2() {
+    try {
+	println("func2:try");
+	return;
+    } catch (Exception e) {
+	println("func2:catch");
+    } finally {
+	println("func2:finally");
+    }
+}
+
+void func3() {
+    for (;;) {
+	try {
+	    println("func3:try");
+	    break;
+	} finally {
+	    println("func3:finally");
+	}
+    }
+}
+
+void func4() {
+    int i;
+    for (i = 0; i < 3; i++) {
+	try {
+	    println("func4:try");
+	    continue;
+	} finally {
+	    println("func4:finally");
+	}
+    }
+}
+
+func();
+func2();
+func3();
+func4();
+sub2(0);
+sub3(0);
+
+sub(0);

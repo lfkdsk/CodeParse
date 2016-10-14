@@ -1,0 +1,60 @@
+require diksam.lang;
+
+interface Printable {
+    void print();
+}
+
+interface GetLength {
+    double get_length();
+}
+
+abstract class Shape {
+}
+
+abstract class Line : Shape {
+}
+
+class Arrow : Line, Printable, GetLength {
+    override double get_length() {
+	println("get_length called!");
+	return 0.0;
+    }
+}
+
+class Circle : Shape {
+}
+
+Shape arrow = new Arrow();
+
+if (arrow instanceof Arrow) {
+    println("arrow is Arrow.");
+}
+
+if (arrow instanceof Line) {
+    println("arrow is also Line.");
+}
+
+if (arrow instanceof Circle) {
+    println("BUG! BUG! BUG!");
+}
+
+if (arrow instanceof Printable) {
+    println("arrow is also Printable.");
+}
+
+Shape circle = new Circle();
+
+if (circle instanceof Line) {
+    println("BUG! BUG! BUG!");
+}
+
+if (circle instanceof Printable) {
+    println("BUG! BUG! BUG!");
+}
+
+Printable printable = new Arrow();
+
+if (printable instanceof GetLength) {
+    println("printable is GetLength");
+    printable::GetLength:>.get_length();
+}

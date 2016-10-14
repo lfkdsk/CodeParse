@@ -1,0 +1,93 @@
+void print(string str);
+void println(string str) {
+    print(str + "\n");
+}
+
+public class File {
+    native_pointer fp;
+    constructor initialize(native_pointer fp) {
+	this.fp = fp;
+    }
+}
+
+File fopen(string file_name, string mode);
+string fgets(File file);
+void fputs(string str, File file);
+void fclose(File file);
+
+double to_double(int int_value) {
+    return int_value;
+}
+
+int to_int(double double_value) {
+    return double_value;
+}
+
+int parse_int(string str) throws NumberFormatException;
+double parse_double(string str) throws NumberFormatException;
+
+void exit(int status);
+void randomize();
+int random(int range);
+
+class StackTrace {
+    int	line_number;
+    string file_name;
+    string function_name;
+}
+
+abstract public class Exception {
+    public string message;
+    public StackTrace[] stack_trace;
+    public void print_stack_trace() {
+	int i;
+	println("Exception occured. " + this.message);
+	for (i = 0; i < this.stack_trace.size(); i++) {
+	    println("\tat " 
+		    + this.stack_trace[i].function_name
+		    + "(" + this.stack_trace[i].file_name
+		    + ":" + this.stack_trace[i].line_number + ")");
+	}
+    }
+    public virtual constructor initialize() {
+	this.stack_trace = new StackTrace[0];
+    }
+}
+
+abstract public class BugException : Exception {
+}
+
+abstract public class RuntimeException : Exception {
+}
+
+public class NullPointerException : BugException {
+}
+
+public class ArrayIndexOutOfBoundsException : BugException {
+}
+
+public class StringIndexOutOfBoundsException : BugException {
+}
+
+public class DivisionByZeroException : RuntimeException {
+}
+
+public class MultibyteCharacterConvertionException : RuntimeException {
+}
+
+public class ClassCastException : BugException {
+}
+
+public abstract class ApplicationException : Exception {
+}
+
+public class NumberFormatException : ApplicationException {
+}
+
+delegate int HogeDelegate(int value);
+
+// BUGBUG for test routine
+void test_native(HogeDelegate dele);
+
+void foo_file(File file) {
+}

@@ -1,0 +1,30 @@
+int i;
+
+for (i = 0; i < 8; i++) {
+    print("i.." + i + ":");
+    switch (i)
+    case 1 {
+	println("case 1");
+    } case 2, 3 {
+	println("case 2, 3");
+    } case 5 {
+	println("case 5");
+    } default {
+	println("default");
+    }
+}
+
+for (i = 0; i < 8; i++) {
+    print("i.." + i + ":");
+    switch ("" + i)
+    case "1" {
+	println("case 1");
+    } case "2", "3" {
+	println("case 2, 3");
+    } case "5" {
+	println("case 5");
+    } default {
+	println("default");
+    }
+}
+

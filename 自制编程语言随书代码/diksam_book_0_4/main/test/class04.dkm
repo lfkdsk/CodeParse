@@ -1,0 +1,15 @@
+public class Point {
+    private double x;
+    private double y;
+    void print() {
+	println("x.." + this.x + ", y.." + this.y);
+    }
+    constructor initialize(double x, double y) {
+	this.x = x;
+	this.y = y;
+    }
+}
+
+// Pointˆƒƒ‚áƒƒ\ŠƒƒPPoint p = new Point(10, 20);
+// ‡·GäCá
+p.print();

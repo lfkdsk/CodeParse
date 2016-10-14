@@ -1,0 +1,768 @@
+############################################################
+# Check lexical analyzer
+############################################################
+# comment
+print("hoge\tpiyo\n\\n");
+print("abc\n"); # comment
+
+############################################################
+# Check operators
+############################################################
+print("3 + 5.." + (3 + 5) + "\n");
+print("3 - 5.." + (3 - 5) + "\n");
+print("3 + -5.." + (3 + -5) + "\n");
+print("3 * 5.." + (3 * 5) + "\n");
+print("3 / 5.." + (3 / 5) + "\n");
+print("10 % 3.." + (10 % 3) + "\n");
+print("3.0 + 5.0.." + (3.0 + 5.0) + "\n");
+print("3.0 - 5.0.." + (3.0 - 5.0) + "\n");
+print("3.0 + -5.0.." + (3.0 + -5.0) + "\n");
+print("3.0 * 5.0.." + (3.0 * 5.0) + "\n");
+print("3.0 / 5.0.." + (3.0 / 5.0) + "\n");
+print("10.0 % 3.0.." + (10.0 % 3.0) + "\n");
+print("3 + 5.0.." + (3 + 5.0) + "\n");
+print("3 - 5.0.." + (3 - 5.0) + "\n");
+print("3 + -5.0.." + (3 + -5.0) + "\n");
+print("3 * 5.0.." + (3 * 5.0) + "\n");
+print("3 / 5.0.." + (3 / 5.0) + "\n");
+print("10 % 3.0.." + (10 % 3.0) + "\n");
+print("3.0 + 5.." + (3.0 + 5) + "\n");
+print("3.0 - 5.." + (3.0 - 5) + "\n");
+print("3.0 + -5.." + (3.0 + -5) + "\n");
+print("3.0 * 5.." + (3.0 * 5) + "\n");
+print("3.0 / 5.." + (3.0 / 5) + "\n");
+print("10.0 % 3.." + (10.0 % 3) + "\n");
+
+a = 3;
+print("3 + 5.." + (a + 5) + "\n");
+print("3 - 5.." + (a - 5) + "\n");
+print("3 + -5.." + (a + -5) + "\n");
+print("3 * 5.." + (a * 5) + "\n");
+print("3 / 5.." + (a / 5) + "\n");
+a = 10;
+print("10 % 3.." + (a % 3) + "\n");
+a = 3.0;
+print("3.0 + 5.0.." + (a + 5.0) + "\n");
+print("3.0 - 5.0.." + (a - 5.0) + "\n");
+print("3.0 + -5.0.." + (a + -5.0) + "\n");
+print("3.0 * 5.0.." + (a * 5.0) + "\n");
+print("3.0 / 5.0.." + (a / 5.0) + "\n");
+a = 10;
+print("10.0 % 3.0.." + (a % 3.0) + "\n");
+a = 3;
+print("3 + 5.0.." + (a + 5.0) + "\n");
+print("3 - 5.0.." + (a - 5.0) + "\n");
+print("3 + -5.0.." + (a + -5.0) + "\n");
+print("3 * 5.0.." + (a * 5.0) + "\n");
+print("3 / 5.0.." + (a / 5.0) + "\n");
+a = 10;
+print("10 % 3.0.." + (a % 3.0) + "\n");
+a = 3.0;
+print("3.0 + 5.." + (a + 5) + "\n");
+print("3.0 - 5.." + (a - 5) + "\n");
+print("3.0 + -5.." + (a + -5) + "\n");
+print("3.0 * 5.." + (a * 5) + "\n");
+print("3.0 / 5.." + (a / 5) + "\n");
+a = 10.0;
+print("10.0 % 3.." + (a % 3) + "\n");
+print("1 < 3.." + (1 < 3) + "\n");
+print("1 <= 3.." + (1 <= 3) + "\n");
+print("1 == 3.." + (1 == 3) + "\n");
+print("1 != 3.." + (1 != 3) + "\n");
+print("1 >= 3.." + (1 >= 3) + "\n");
+print("1 > 3.." + (1 > 3) + "\n");
+
+i = 0;
+i += 5;
+print("i.." + i + "\n");
+i -= 2;
+print("i.." + i + "\n");
+i *= 3;
+print("i.." + i + "\n");
+i /= 3;
+print("i.." + i + "\n");
+i %= 2;
+print("i.." + i + "\n");
+i = 0.0;
+i += 5;
+print("i.." + i + "\n");
+i -= 2;
+print("i.." + i + "\n");
+i *= 3;
+print("i.." + i + "\n");
+i /= 3;
+print("i.." + i + "\n");
+i %= 2;
+print("i.." + i + "\n");
+a = "str";
+a += "hoge";
+print("a.." + a + "\n");
+
+a = (print("comma1 "),
+     print("comma2 "),
+     print("comma3\n"), "hoge");
+print("a.." + a + "\n");
+
+############################################################
+# Check flow control
+############################################################
+if (true) {
+    print("true\n");
+}
+if (false) {
+    print("false\n");
+}
+if (false) {
+    print("bad\n");
+} else {
+    print("good\n");
+}
+
+i = 0;
+for (;;) {
+    print(" i.." + i);
+    if (i > 5) {
+	break;
+    }
+    i = i + 1;
+}
+print("\n");
+
+label: for (i = 0; i < 10; i++) {
+    for (j = 0; j < 10; j++) {
+	print(" i.." + i + ", j.." + j + "\n");
+	if (j == 5) {
+	    break label;
+	}
+    }
+}
+
+for (i = 0; i < 5; i++) {
+    print("*** i.." + i + "***\n");
+    if (i == 0) {
+	print("i == 0\n");
+    } elsif (i == 1) {
+	print("i == 1\n");
+    } elsif (i == 2) {
+	print("i == 2\n");
+    } else {
+	print("i == else\n");
+    }
+    if (i != 3) {
+	print("i != 3\n");
+    }
+    if (i == 2 || i == 3) {
+	print("i == 2 || i == 3\n");
+    }
+    for (j = 0; j < 5; j = j + 1) {
+	if (i == 2 && j == 3) {
+	    print("i == 2 && j == " + j + "\n");
+	}
+    }
+}
+
+for (i = 0; i <= 5; i++) {
+    print(" i.." + i);
+}
+print("\n");
+
+for (i = 5; i >= 0; i--) {
+    print(" i.." + i);
+}
+print("\n");
+
+i = 5;
+while (i > 0) {
+    print(" i.." + i);
+    i = i - 1;
+}
+print("\n");
+
+while (i < 10) {
+    print(" i.." + i);
+    if (i == 5) {
+	break;
+    }
+    i = i + 1;
+}
+print("\n");
+
+i = 0;
+label: while (i < 10) {
+    j = 0;
+    while (j < 10) {
+	print(" i.." + i + ", j.." + j + "\n");
+	if (j == 5) {
+	    break label;
+	}
+	j++;
+    }
+    i++;
+}
+
+i = 0;
+while (i < 10) {
+    i = i + 1;
+    if (i < 5) {
+	continue;
+    }
+    print(" i.." + i);
+}
+print("\n");
+
+for (i = 0; i < 10; i = i + 1) {
+    print(" i.." + i);
+    if (i == 5) {
+        break;
+    }
+}
+print("\n");
+
+for (i = 0; i < 10; i = i + 1) {
+    if (i < 5) {
+        continue;
+    }
+    print(" i.." + i);
+}
+print("\n");
+
+a = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+print("foreach\n");
+foreach (v : a) {
+    print("(" + v + ")");
+    if (v < 3) {
+	continue;
+    }
+    print("[" + v + "]");
+    if (v == 8) {
+	break;
+    }
+}
+print("\nforeach checked.\n");
+
+############################################################
+# Check boolean operations
+############################################################
+a = true;
+print("a.." + a + "\n");
+if (a) {
+    print("true\n");
+} else {
+    print("false\n");
+}
+if (a || false) {
+    print("a || false\n");
+}
+if (a && false) {
+    print("a && false\n");
+}
+
+if (true == true) {
+    print("true == true good\n");
+}
+if (true == false) {
+    print("true == false bad\n");
+}
+if (true != true) {
+    print("true != true bad\n");
+}
+if (true != false) {
+    print("true != false good\n");
+}
+if (!true) {
+    print("! operator bad.\n");
+}
+if (!false) {
+    print("! operator good.\n");
+}
+############################################################
+# Check string conversion
+############################################################
+print(3);
+print("\n");
+z = print(3.0);
+print("\n");
+print("z.." + z + "\n");
+a = 5;
+print("a.." + a + "\n");
+a = 5.0;
+print("a.." + a + "\n");
+a = "piyopiyo";
+print("a.." + a + "\n");
+
+############################################################
+# Check string comparing
+############################################################
+str = "abc";
+
+if (str == "abc") {
+    print("== good.\n");
+}
+
+if (str != "abc") {
+    print("!= bad.\n");
+}
+
+if (str < "abd") {
+    print("< good.\n");
+}
+
+if (str < "abb") {
+    print("< bad.\n");
+}
+
+if (str <= "abc") {
+    print("<= good.\n");
+}
+
+if (str <= "abd") {
+    print("<= good.\n");
+}
+
+if (str <= "abb") {
+    print("<= bad.\n");
+}
+
+if (str >= ">= abc") {
+    print(">= good.\n");
+}
+
+if (str >= ">= abb") {
+    print(">= good.\n");
+}
+
+if (str >= "abd") {
+    print(">= bad.\n");
+}
+
+############################################################
+# Check function call
+############################################################
+hoge(1, 3);
+b = hoge(2, 5);
+print("b.." + b + "\n");
+
+print("int_func().." + int_func() + "\n");
+print("real_func().." + real_func() + "\n");
+print("string_func().." + string_func() + "\n");
+print("void_func().." + void_func() + "\n");
+
+function hoge(a, b) {
+    c = a + b;
+    print("a+b.." + (a + b) + "\n");
+
+    return c;
+}
+
+function int_func() {
+    print("int func in\n");
+    for (i = 0; i < 10; i = i + 1) {
+	print("i.." + i + "\n");
+	return 1;
+    }
+    print("int func out\n");
+}
+
+function real_func() {
+    print("real func in\n");
+    for (i = 0; i < 10; i = i + 1) {
+	print("i.." + i + "\n");
+	return 0.1;
+    }
+    print("real func out\n");
+}
+
+function string_func() {
+    zzz = "zzz";
+    for (i = 0; i < 10; i = i + 1) {
+	print("i.." + i + "\n");
+	return "abc";
+    }
+}
+
+function void_func() {
+    qq = ww = ee = "abc";
+    print("qq.." + qq + "\n");
+    return;
+}
+
+"zzz";
+
+function func(a) {
+    return a;
+}
+
+a = func("abc");
+
+print("a.." + a + "\n");
+
+############################################################
+# Check global statement
+############################################################
+gtest = 10;
+
+function gtestfunc() {
+    global gtest;
+    gtest = 20;
+}
+
+function gtestfunc2() {
+    gtest = 30;
+    print("gtest.." + gtest + "\n");
+}
+
+function gtestfunc3() {
+    try {
+        print("gtest.." + gtest + "\n");
+    } catch (e) {
+        print(e.message + "\n");
+    }
+}
+
+gtestfunc();
+gtestfunc2();
+print("gtest.." + gtest + "\n");
+gtestfunc3();
+
+############################################################
+# array
+############################################################
+a = {1, 2, 3, 4, 5, 6, 7, 8};
+for (i = 0; i < a.size(); i = i + 1) {
+    print("(" + a[i] + ")");
+}
+print(a);
+print("\n");
+print("len.." + "abc".length() + "\n");
+
+for (i = 0; i < 10; i = i + 1) {
+    print("a.size().." + a.size() + "\n");
+    a.add(i);
+}
+
+for (i = 0; i < a.size(); i = i + 1) {
+    print("(" + a[i] + ")");
+}
+print("\n");
+a99 = new_array(9);
+for (i = 0; i < 9; i = i + 1) {
+    a99[i] = new_array(9);
+    for (j = 0; j < 9; j = j + 1) {
+	a99[i][j] = (i+1) * (j+1);
+    }
+}
+dump_a99(a99);
+
+a99 = new_array(9, 9);
+for (i = 0; i < 9; i = i + 1) {
+    for (j = 0; j < 9; j = j + 1) {
+	a99[i][j] = (i+1) * (j+1);
+    }
+}
+dump_a99(a99);
+
+print(a99);
+
+function dump_a99(arg99) {
+    for (i = 0; i < arg99.size(); i = i + 1) {
+	for (j = 0; j < arg99[i].size(); j = j + 1) {
+	    print("[" + arg99[i][j] + "] ");
+	}
+	print("\n");
+    }
+}
+
+a2 = {};
+
+# for (i = 0; i < 10000; i = i + 1) {
+#     a2.add(new_array(i % 5));
+#     a2.add(a2);
+# }
+
+print("\n");
+
+a3 = {1, 2, 3, 4, 5};
+a3.insert(0, 3);
+print("a3.." + a3 + "\n");
+
+a3 = {1, 2, 3, 4, 5};
+a3.remove(3);
+print("a3.." + a3 + "\n");
+
+a3.resize(20);
+print("a3.." + a3 + "\n");
+
+a3.resize(10);
+print("a3.." + a3 + "\n");
+
+str = "0123456789";
+print("substr.." + str.substr(3, 2) + "\n");
+
+a = {1, 2, 3, "a", {1, 2, {"3", closure () {return null;}}}};
+
+print("a.." + a + "\n");
+
+function dump_array(v) {
+    try {
+	size = v.size();
+	print("(");
+	for (i = 0; i < v.size(); i++) {
+	    if (i > 0) {
+		print(", ");
+	    }
+	    dump_array(v[i]);
+	}
+	print(")");
+    } catch (ex) {
+	print(v);
+    }
+}
+
+dump_array(a);
+
+print("\n");
+
+############################################################
+# wide character
+############################################################
+print("ソ\n");
+str = "abcあいうえお憂鬱ソ表";
+print("len.." + str.length() + "\n");
+print("substr(0, 2).." + str.substr(0, 2) + "\n");
+print("substr(2, 5).." + str.substr(2, 5) + "\n");
+
+############################################################
+# exception
+############################################################
+function hoge2() {
+    try {
+	throw new_exception("ほげほげー");
+    } catch (e) {
+	e.print_stack_trace();
+    }
+}
+
+hoge2();
+
+a = new_array(10);
+
+function func2(count) {
+    global a;
+    if (count == 5) {
+	a[100] = 10;
+	return;
+    }
+    func2(count+1);
+}
+
+c = closure () {
+    global a;
+    a[100] = 10;
+};
+
+try {
+    func2(0);
+} catch (e) {
+    print("catch exception of func2()\n");
+    e.print_stack_trace();
+} finally {
+    print("finally_block\n");
+}
+
+try {
+    a[100] = 10;
+} catch (e) {
+    e.print_stack_trace();
+}
+
+try {
+    try {
+	a[100] = 10;
+    } finally {
+	print("finally_block\n");
+    }
+} catch (e) {
+    e.print_stack_trace();
+}
+
+for (i = 0; i < 10; i++) {
+    print("try[" + i + "]\n");
+    try {
+	print("try\n");
+	if (i == 5) {
+	    throw new_exception();
+	}
+    } catch (e) {
+	print("catch\n");
+	break;
+    } finally {
+	print("finally\n");
+	break;
+    }
+}
+
+for (;;) {
+    try {
+	print("try\n");
+	a[100] = 10;
+    } catch (e) {
+	print("catch\n");
+	break;
+    } finally {
+	print("finally\n");
+	break;
+    }
+}
+
+function return_func() {
+    try {
+	return 1;
+    } finally {
+	return 2;
+    }
+}
+
+print("return_func.." + return_func() + "\n");
+
+try {
+    try {
+	a[100] = 10;
+    } catch (e1) {
+        print("catch1\n");
+        a[100] = 10;
+    }
+} catch (e2) {
+    print("catch2\n");
+}
+
+############################################################
+# closure
+############################################################
+function create_point(x, y) {
+    this = new_object();
+    this.x = x;
+    this.y = y;
+
+    this.print = closure() {
+	print("(" + this.x + ", " + this.y + ")\n");
+    };
+
+    this.move = closure(x_vec, y_vec) {
+	this.x = this.x + x_vec;
+	this.y = this.y + y_vec;
+    };
+    return this;
+}
+
+p = create_point(10, 20);
+
+p.move(5, 3);
+
+p.print();
+
+function create_extended_point(x, y) {
+    this = create_point(x, y);
+
+    this.print = closure() {
+	print("**override** (" + this.x + ", " + this.y + ")\n");
+    };
+
+    return this;
+}
+
+p = create_extended_point(15, 25);
+p.move(5, 3);
+p.print();
+
+function f() {
+    a = 10;
+    c1 = closure() {
+        b = 20;
+        c2 = closure() {
+            print("a.." + a + "\n");
+            print("b.." + b + "\n");
+        };
+        c2();
+    };
+    return c1;
+}
+
+c = f();
+c();
+
+d = print;
+d("hello, world.\n");
+
+c = closure(a) {
+    print("a.." + a + "\n");
+};
+c(5);
+
+c = closure decrement(a) {
+    print("**" + a + "**\n");
+    if (a > 0) {
+	decrement(a - 1);
+    }
+};
+
+c(10);
+
+############################################################
+# regexp
+############################################################
+re1 = %%r"とほほabc[^abc]+";
+re2 = %%r/とほほabc[^abc]+/;
+
+if (reg_match(%%r"hoge(.)a\1", "hogebab")) {
+    print("マッチしたよ!\n");
+} else {
+    print("マッチ失敗!\n");
+}
+
+if (reg_match(%%r"zz", "abczzdd")) {
+    print("マッチしたよ!\n");
+} else {
+    print("マッチ失敗!\n");
+}
+
+region = new_object();
+if (reg_match(%%r"a(.*)b|[e-f]+", "zzzzaffffffffb", region)) {
+    print("マッチしたよ!\n");
+    for (i = 0; i <  region.begin.size(); i++) {
+	print("begin[" + i + "].." + region.begin[i] + "\n");
+	print("end[" + i + "].." + region.end[i] + "\n");
+	print("string[" + i + "].." + region.string[i] + "\n");
+    }
+} else {
+    print("マッチ失敗!\n");
+}
+
+if (reg_match(%%r"hoge", "piyo", region)) {
+    print("マッチしたよ!\n");
+    for (i = 0; i <  region.begin.size(); i++) {
+	print("begin[" + i + "].." + region.begin[i] + "\n");
+	print("end[" + i + "].." + region.end[i] + "\n");
+	print("string[" + i + "].." + region.string[i] + "\n");
+    }
+} else {
+    print("マッチ失敗!\n");
+    for (i = 0; i <  region.begin.size(); i++) {
+	print("begin[" + i + "].." + region.begin[i] + "\n");
+	print("end[" + i + "].." + region.end[i] + "\n");
+	print("string[" + i + "].." + region.string[i] + "\n");
+    }
+}
+
+print(reg_replace(%%r"zz", "hoge", "abczzdd") + "\n");
+
+print(reg_replace(%%r"憂(.*)鬱", "ho\1ge", "あいう憂geyo鬱dd") + "\n");
+
+splitted = reg_split(%%r", *", "ほげ, ぴよ, とほほ, あれ?");
+for (i = 0; i < splitted.size(); i++) {
+    print("[" + i + "]..(" + splitted[i] + ")\n");
+}
+
+############################################################
+# exception happen and exit
+############################################################
+a[100] = 10;

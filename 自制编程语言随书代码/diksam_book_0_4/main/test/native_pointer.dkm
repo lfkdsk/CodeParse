@@ -1,0 +1,14 @@
+File in_fp;
+File out_fp;
+
+in_fp = fopen("test.dkm", "r");
+out_fp = fopen("test.copy", "w");
+
+string str;
+
+while ((str = fgets(in_fp)) != null) {
+    fputs(str, out_fp);
+}
+
+fclose(in_fp);
+fclose(out_fp);

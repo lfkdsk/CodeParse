@@ -1,0 +1,79 @@
+require enumsub;
+
+enum Color {
+    BLACK,
+    BLUE,
+    RED,
+    GREEN,
+    WHITE
+}
+
+enum Fruits {
+    APPLE,
+    ORANGE,
+    BANANA,
+}
+
+Color black = Color.BLACK;
+Color black2 = black;
+Color blue = Color.BLUE;
+
+if (black == black2) {
+    println("OK!");
+}
+
+if (black != black2) {
+    println("NG!");
+}
+
+if (black == blue) {
+    println("NG!");
+}
+
+if (black != blue) {
+    println("OK!");
+}
+
+if (black < blue) {
+    println("OK!");
+}
+
+if (black <= blue) {
+    println("OK!");
+}
+
+if (black > blue) {
+    println("NG!");
+}
+
+if (black >= blue) {
+    println("NG!");
+}
+
+println("color.." + Color.WHITE);
+
+Fruits apple = Fruits.APPLE;
+
+/*
+if (apple == black) {
+    println("NG!");
+}
+*/
+
+Fruits[] fruits_array = {
+    Fruits.APPLE,
+    Fruits.ORANGE,
+    Fruits.ORANGE,
+    Fruits.BANANA,
+    Fruits.APPLE,
+    Fruits.BANANA,
+    Fruits.APPLE,
+};
+
+int i;
+
+for (i = 0; i < fruits_array.size(); i++) {
+    println("Fruits.." + fruits_array[i]);
+}
+
+println("Hoge.HOGE.." + Hoge.HOGE);

@@ -1,0 +1,8 @@
+fp = fopen("ftest.crb", "r");
+print("\n");
+fp2 = fopen("ftest.result", "w");
+while ((str = fgets(fp)) != null) {
+    fputs(str, fp2);
+}
+fclose(fp);
+fclose(fp2);

@@ -1,0 +1,10 @@
+require global2;
+
+int global_variable = 1;
+
+println("global1.." + global_variable);
+
+print_global2();
+
+println("global1.." + global_variable);
+

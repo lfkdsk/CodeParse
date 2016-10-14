@@ -1,0 +1,25 @@
+int int_val = parse_int("15");
+
+println("int_val.." + int_val);
+
+double double_val = parse_double("12.5");
+println("double_val.." + double_val);
+
+void func() throws NumberFormatException {
+    int int_val2 = parse_int("15");
+    func2();
+}
+
+void func2() throws NullPointerException {
+    return;
+}
+
+void func3() {
+    func4();
+}
+
+void func4() throws NumberFormatException {
+}
+
+//int_val = parse_int("abc");
+//double_val = parse_double("abc");

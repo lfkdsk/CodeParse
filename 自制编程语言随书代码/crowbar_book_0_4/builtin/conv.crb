@@ -1,0 +1,60 @@
+out_fp = fopen("../builtin.c", "w");
+
+dump("head.txt", out_fp);
+
+prefixes = {};
+for (i = 0; i < ARGS.size(); i++) {
+    suffix = ARGS[i].substr(ARGS[i].length()-4, 4);
+    if (suffix != ".crb") {
+	fputs("bad suffix." + suffix + "\n", STDERR);
+	exit(1);
+    }
+    prefix = ARGS[i].substr(0, ARGS[i].length()-4);
+    prefixes.add(prefix);
+
+    fp = fopen(ARGS[i], "r");
+    fputs("static char *st_" + prefix + "_src[] = {\n", out_fp);
+    do_conv(fp, out_fp);
+    fputs("NULL};\n\n", out_fp);
+
+    fclose(fp);
+}
+
+for (i = 0; i < prefixes.size(); i++) {
+    fputs("static char **st_src_array[] = {\n", out_fp);
+    fputs("    st_" + prefixes[i] + "_src,\n", out_fp);
+    fputs("};\n\n", out_fp);
+}
+
+dump("tail.txt", out_fp);
+
+function dump(filename, out_fp) {
+    fp = fopen(filename, "r");
+
+    while ((str = fgets(fp)) != null) {
+	fputs(str, out_fp);
+    }
+    fclose(fp);
+}
+
+function do_conv(in_fp, out_fp) {
+
+    while ((str = fgets(in_fp)) != null) {
+	fputs("    \"", out_fp);
+	for (i = 0; i < str.length(); i++) {
+	    ch = str.substr(i, 1);
+	    if (ch == "\"") {
+		fputs("\\\"", out_fp);
+	    } elsif (ch == "\\") {
+		fputs("\\\\", out_fp);
+	    } elsif (ch == "\t") {
+		fputs("\\t", out_fp);
+	    } elsif (ch == "\n") {
+		fputs("\\n", out_fp);
+	    } else {
+		fputs(ch, out_fp);
+	    }
+	}
+	fputs("\",\n", out_fp);
+    }
+}

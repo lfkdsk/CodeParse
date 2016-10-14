@@ -1,0 +1,5 @@
+interface ClassSub {
+    void print();
+}
+
+ClassSub create_class_sub();

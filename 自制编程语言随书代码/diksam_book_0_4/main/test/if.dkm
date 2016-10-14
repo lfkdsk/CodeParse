@@ -1,0 +1,12 @@
+require diksam.lang;
+
+int a = 10;
+if (a > 5) {
+    int b = 20;
+    println("<1>b.." + b);
+} else {
+    int b = 30;
+    println("<2>b.." + b);
+}
+
+println("<3>b.." + b);

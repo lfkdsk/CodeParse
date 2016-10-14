@@ -1,0 +1,69 @@
+require diksam.lang;
+
+int[] int_null = null;
+double[] double_null = null;
+int[][] obj_null = null;
+
+try {
+    int_null[3] = 0;
+} catch (NullPointerException e1) {
+    e1.print_stack_trace();
+}
+
+try {
+    double_null[3] = 0;
+} catch (NullPointerException e2) {
+    e2.print_stack_trace();
+}
+
+try {
+    obj_null[3] = null;
+} catch (NullPointerException e3) {
+    e3.print_stack_trace();
+}
+
+int[] int_array = new int[3];
+double[] double_array = new double[3];
+int[][] obj_array = new int[3][];
+
+try {
+    int_array[5] = 0;
+} catch (ArrayIndexOutOfBoundsException ae1) {
+    ae1.print_stack_trace();
+}
+
+try {
+    double_array[5] = 0;
+} catch (ArrayIndexOutOfBoundsException ae2) {
+    ae2.print_stack_trace();
+}
+
+try {
+    obj_array[5] = null;
+} catch (ArrayIndexOutOfBoundsException ae3) {
+    ae3.print_stack_trace();
+}
+
+try {
+    int_array.insert(5, 3);
+} catch (ArrayIndexOutOfBoundsException ae4) {
+    ae4.print_stack_trace();
+}
+
+try {
+    int_array.remove(5);
+} catch (ArrayIndexOutOfBoundsException ae5) {
+    ae5.print_stack_trace();
+}
+
+try {
+    print("abc".substr(5, 1));
+} catch (StringIndexOutOfBoundsException se1) {
+    se1.print_stack_trace();
+}
+
+try {
+    print("abc".substr(1, 5));
+} catch (StringIndexOutOfBoundsException se2) {
+    se2.print_stack_trace();
+}

@@ -1,0 +1,17 @@
+require diksam.lang;
+require classsub;
+
+// .dkmファイルにて、インターフェイスを実装したクラスと、
+class ClassSubImpl : ClassSub {
+    public override void print() {
+	println("hello, world.");
+    }
+    constructor initialize() {
+    }
+}
+
+// それを生成する関数の実装を提供する。
+ClassSub create_class_sub() {
+    return new ClassSubImpl();
+}
+

@@ -1,0 +1,5 @@
+require classsub;
+
+ClassSub sub = create_class_sub();
+
+sub.print();

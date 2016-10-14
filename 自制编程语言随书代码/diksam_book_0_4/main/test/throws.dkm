@@ -1,0 +1,39 @@
+require diksam.lang;
+
+class ExceptionSub : Exception {
+}
+
+
+int sub() throws ExceptionSub {
+}
+
+int func1() {
+//    sub();
+}
+
+int func2() {
+    try {
+	sub();
+    } catch (Exception e) {
+
+    }
+}
+
+int sub2() throws Exception {
+}
+
+int func3() {
+    try {
+//	sub2();
+    } catch (ExceptionSub e) {
+
+    }
+}
+
+int func4() {
+    try {
+	sub();
+    } catch (Exception e) {
+	throw;
+    }
+}

@@ -1,0 +1,113 @@
+function create_exception_class(parent) {
+    this = new_object();
+    this.parent = parent;
+    this.create = closure(message) {
+	e = new_exception(message);
+	e.stack_trace.remove(0);
+	e.child_of = this.child_of;
+	return e;
+    };
+    this.child_of = closure(o) {
+	for (p = this; p != null; p = p.parent) {
+	    if (p == o) {
+	        return true;
+	    }
+	}
+	return false;
+    };
+    return this;
+}
+
+RootException = create_exception_class(null);
+BugException = create_exception_class(RootException);
+RuntimeException = create_exception_class(RootException);
+ArithmeticException = create_exception_class(RuntimeException);
+VariableNotFoundException = create_exception_class(BugException);
+ArgumentTooManyException = create_exception_class(BugException);
+ArgumentTooFewException = create_exception_class(BugException);
+NotBooleanException = create_exception_class(BugException);
+MinusOperandTypeException = create_exception_class(BugException);
+BadOperandTypeException = create_exception_class(BugException);
+LogicalOperatorDoubleOperandException = create_exception_class(BugException);
+LogicalOperatorIntegerOperandException = create_exception_class(BugException);
+NotBooleanOperatorException = create_exception_class(BugException);
+NotNullOperatorException = create_exception_class(BugException);
+NotLValueException = create_exception_class(BugException);
+IndexOperandNotArrayException = create_exception_class(BugException);
+IndexOperandNotIntException = create_exception_class(BugException);
+ArrayIndexOutOfBoundsException = create_exception_class(BugException);
+NoSuchMethodException = create_exception_class(BugException);
+IncDecOperandTypeException = create_exception_class(BugException);
+IncDecOperandNotExistException = create_exception_class(BugException);
+NotFunctionException = create_exception_class(BugException);
+NotObjectMemberUpdateException = create_exception_class(BugException);
+NotObjectMemberAssignException = create_exception_class(BugException);
+NoSuchMemberException = create_exception_class(BugException);
+NoMemberTypeException = create_exception_class(BugException);
+BadOperatorForStringException = create_exception_class(BugException);
+DivisionByZeroException = create_exception_class(ArithmeticException);
+GlobalVariableNotFoundException  = create_exception_class(BugException);
+GlobalStatementInToplevelException = create_exception_class(BugException);
+FunctionExistsException = create_exception_class(BugException);
+ArrayResizeArgumentException = create_exception_class(BugException);
+ArrayInsertArgumentException = create_exception_class(BugException);
+ArrayRemoveArgumentException = create_exception_class(BugException);
+StringPositionOutOfBoundsException = create_exception_class(BugException);
+StringSubstrLengthException = create_exception_class(BugException);
+StringSubstrArgumentException = create_exception_class(BugException);
+ExceptionHasNoMessageException = create_exception_class(BugException);
+ExceptionMessageIsNotStringException = create_exception_class(BugException);
+ExceptionHasNoStackTraceException = create_exception_class(BugException);
+StackTraceIsNotArrayException = create_exception_class(BugException);
+StackTraceLineIsNotAssocException = create_exception_class(BugException);
+StackTraceLineHasNoLineNumberException = create_exception_class(BugException);
+StackTraceLineHasNoFuncNameException = create_exception_class(BugException);
+ExceptionIsNotAssocException = create_exception_class(BugException);
+
+ExceptionHasNoPrintStackTraceMethodException
+    = create_exception_class(BugException);
+PrintStackTraceIsNotClosureException = create_exception_class(BugException);
+BadMultibyteCharacterException = create_exception_class(RuntimeException);
+ExceptionClassIsNotAssocException = create_exception_class(BugException);
+ExceptionClassHasNoCreateMethodException
+  = create_exception_class(BugException);
+ArgumentTypeMismatchException = create_exception_class(BugException);
+UnexpectedWideStringException = create_exception_class(RuntimeException);
+OnigSearchFailException = create_exception_class(RuntimeException);
+GroupIndexOverflowException = create_exception_class(BugException);
+BreakOrContinueReachedTopLevelException = create_exception_class(BugException);
+AssignToFinalVariableException = create_exception_class(BugException);
+FunctionNotFoundException = create_exception_class(BugException);
+
+# native.c
+FOpenArgumentTypeException = create_exception_class(BugException);
+FCloseArgumentTypeException = create_exception_class(BugException);
+FGetsArgumentTypeException = create_exception_class(BugException);
+FileAlreadyClosedException = create_exception_class(BugException);
+FPutsArgumentTypeException = create_exception_class(BugException);
+NewArrayArgumentTypeException = create_exception_class(BugException);
+NewArrayArgumentTooFewException = create_exception_class(BugException);
+ExitArgumentTypeException = create_exception_class(BugException);
+NewExceptionArgumentException = create_exception_class(BugException);
+FGetsBadMultibyteCharacterException
+  = create_exception_class(BadMultibyteCharacterException);
+
+
+# iterator
+function __create_array_iterator(array) {
+    this = new_object();
+    index = 0;
+    this.first = closure() {
+	index = 0;
+    };
+    this.next = closure() {
+	index++;
+    };
+    this.is_done = closure() {
+	return index >= array.size();
+    };
+    this.current_item = closure() {
+	return array[index];
+    };
+    return this;
+}

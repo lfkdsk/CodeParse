@@ -1,0 +1,7 @@
+// .dkhファイルにて、インターフェイスと、
+public interface ClassSub {
+    public void print();
+}
+
+// それを実装したオブジェクトを生成する関数を提供する。
+ClassSub create_class_sub();

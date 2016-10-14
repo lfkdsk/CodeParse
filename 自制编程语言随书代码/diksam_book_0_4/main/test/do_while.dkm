@@ -1,0 +1,13 @@
+int i = 0;
+
+do {
+    println("i.." + i);
+    i++;
+} while (i < 10);
+
+i = 10;
+
+do {
+    println("i.." + i);
+    i++;
+} while (i < 10);

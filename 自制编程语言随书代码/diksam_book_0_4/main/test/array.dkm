@@ -1,0 +1,53 @@
+require diksam.lang;
+
+class Hoge {
+}
+
+int[] int_array = {1, 2, 3};
+double[] double_array = {1.0, 2, 3};
+Hoge[] obj_array = {new Hoge(), new Hoge(), null};
+
+println("size.." + int_array.size());
+
+void dump_int_array(int[] array) {
+    int i;
+    print("{");
+    for (i = 0; i < array.size(); i++) {
+	if (i > 0) {
+	    print(", ");
+	}
+	print("" + array[i]);
+    }
+    print("}\n");
+}
+
+void dump_double_array(double[] array) {
+    int i;
+    print("{");
+    for (i = 0; i < array.size(); i++) {
+	if (i > 0) {
+	    print(", ");
+	}
+	print("" + array[i]);
+    }
+    print("}\n");
+}
+
+int_array.resize(10);
+dump_int_array(int_array);
+int_array.resize(2);
+dump_int_array(int_array);
+
+int_array.insert(0, 3);
+dump_int_array(int_array);
+int_array.insert(3, -5);
+dump_int_array(int_array);
+
+println("len.." + "hoge‚Ù‚°".length());
+println("substr.." + "hoge‚Ù‚°‚Ù‚°".substr(3, 4));
+
+int_array.add(42);
+dump_int_array(int_array);
+
+println("double_size.." + double_array.size());
+dump_double_array(double_array);

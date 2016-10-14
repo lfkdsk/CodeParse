@@ -1,0 +1,9 @@
+rename diksam.lang.print myprint;
+
+void print(string str) {
+    myprint("****" + str + "****\n");
+}
+
+print("hello, world.");
+
+myprint("hello, world.\n");

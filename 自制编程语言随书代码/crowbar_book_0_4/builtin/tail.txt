@@ -1,0 +1,9 @@
+void
+crb_compile_built_in_script(CRB_Interpreter *inter)
+{
+    int i;
+
+    for (i = 0; i < sizeof(st_src_array) / sizeof(st_src_array[0]); i++) {
+	    CRB_compile_string(inter, st_src_array[i]);
+    }
+}

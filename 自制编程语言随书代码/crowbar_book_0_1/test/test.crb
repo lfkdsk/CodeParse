@@ -1,0 +1,344 @@
+############################################################
+# Check lexical analyzer
+############################################################
+# comment
+print("hoge\tpiyo\n\\n");
+print("abc\n"); # comment
+
+############################################################
+# Check operators
+############################################################
+print("3 + 5.." + (3 + 5) + "\n");
+print("3 - 5.." + (3 - 5) + "\n");
+print("3 + -5.." + (3 + -5) + "\n");
+print("3 * 5.." + (3 * 5) + "\n");
+print("3 / 5.." + (3 / 5) + "\n");
+print("10 % 3.." + (10 % 3) + "\n");
+print("3.0 + 5.0.." + (3.0 + 5.0) + "\n");
+print("3.0 - 5.0.." + (3.0 - 5.0) + "\n");
+print("3.0 + -5.0.." + (3.0 + -5.0) + "\n");
+print("3.0 * 5.0.." + (3.0 * 5.0) + "\n");
+print("3.0 / 5.0.." + (3.0 / 5.0) + "\n");
+print("10.0 % 3.0.." + (10.0 % 3.0) + "\n");
+print("3 + 5.0.." + (3 + 5.0) + "\n");
+print("3 - 5.0.." + (3 - 5.0) + "\n");
+print("3 + -5.0.." + (3 + -5.0) + "\n");
+print("3 * 5.0.." + (3 * 5.0) + "\n");
+print("3 / 5.0.." + (3 / 5.0) + "\n");
+print("10 % 3.0.." + (10 % 3.0) + "\n");
+print("3.0 + 5.." + (3.0 + 5) + "\n");
+print("3.0 - 5.." + (3.0 - 5) + "\n");
+print("3.0 + -5.." + (3.0 + -5) + "\n");
+print("3.0 * 5.." + (3.0 * 5) + "\n");
+print("3.0 / 5.." + (3.0 / 5) + "\n");
+print("10.0 % 3.." + (10.0 % 3) + "\n");
+
+a = 3;
+print("3 + 5.." + (a + 5) + "\n");
+print("3 - 5.." + (a - 5) + "\n");
+print("3 + -5.." + (a + -5) + "\n");
+print("3 * 5.." + (a * 5) + "\n");
+print("3 / 5.." + (a / 5) + "\n");
+a = 10;
+print("10 % 3.." + (a % 3) + "\n");
+a = 3.0;
+print("3.0 + 5.0.." + (a + 5.0) + "\n");
+print("3.0 - 5.0.." + (a - 5.0) + "\n");
+print("3.0 + -5.0.." + (a + -5.0) + "\n");
+print("3.0 * 5.0.." + (a * 5.0) + "\n");
+print("3.0 / 5.0.." + (a / 5.0) + "\n");
+a = 10;
+print("10.0 % 3.0.." + (a % 3.0) + "\n");
+a = 3;
+print("3 + 5.0.." + (a + 5.0) + "\n");
+print("3 - 5.0.." + (a - 5.0) + "\n");
+print("3 + -5.0.." + (a + -5.0) + "\n");
+print("3 * 5.0.." + (a * 5.0) + "\n");
+print("3 / 5.0.." + (a / 5.0) + "\n");
+a = 10;
+print("10 % 3.0.." + (a % 3.0) + "\n");
+a = 3.0;
+print("3.0 + 5.." + (a + 5) + "\n");
+print("3.0 - 5.." + (a - 5) + "\n");
+print("3.0 + -5.." + (a + -5) + "\n");
+print("3.0 * 5.." + (a * 5) + "\n");
+print("3.0 / 5.." + (a / 5) + "\n");
+a = 10.0;
+print("10.0 % 3.." + (a % 3) + "\n");
+print("1 < 3.." + (1 < 3) + "\n");
+print("1 <= 3.." + (1 <= 3) + "\n");
+print("1 == 3.." + (1 == 3) + "\n");
+print("1 != 3.." + (1 != 3) + "\n");
+print("1 >= 3.." + (1 >= 3) + "\n");
+print("1 > 3.." + (1 > 3) + "\n");
+
+############################################################
+# Check flow control
+############################################################
+if (true) {
+    print("true\n");
+}
+if (false) {
+    print("false\n");
+}
+if (false) {
+    print("bad\n");
+} else {
+    print("good\n");
+}
+
+i = 0;
+for (;;) {
+    print(" i.." + i);
+    if (i > 5) {
+	break;
+    }
+    i = i + 1;
+}
+print("\n");
+
+for (i = 0; i < 5; i = i + 1) {
+    print("*** i.." + i + "***\n");
+    if (i == 0) {
+	print("i == 0\n");
+    } elsif (i == 1) {
+	print("i == 1\n");
+    } elsif (i == 2) {
+	print("i == 2\n");
+    } else {
+	print("i == else\n");
+    }
+    if (i != 3) {
+	print("i != 3\n");
+    }
+    if (i == 2 || i == 3) {
+	print("i == 2 || i == 3\n");
+    }
+    for (j = 0; j < 5; j = j + 1) {
+	if (i == 2 && j == 3) {
+	    print("i == 2 && j == " + j + "\n");
+	}
+    }
+}
+
+for (i = 0; i <= 5; i = i + 1) {
+    print(" i.." + i);
+}
+print("\n");
+
+for (i = 5; i >= 0; i = i - 1) {
+    print(" i.." + i);
+}
+print("\n");
+
+i = 5;
+while (i > 0) {
+    print(" i.." + i);
+    i = i - 1;
+}
+print("\n");
+
+while (i < 10) {
+    print(" i.." + i);
+    if (i == 5) {
+	break;
+    }
+    i = i + 1;
+}
+print("\n");
+
+i = 0;
+while (i < 10) {
+    i = i + 1;
+    if (i < 5) {
+	continue;
+    }
+    print(" i.." + i);
+}
+print("\n");
+
+for (i = 0; i < 10; i = i + 1) {
+    print(" i.." + i);
+    if (i == 5) {
+        break;
+    }
+}
+print("\n");
+
+for (i = 0; i < 10; i = i + 1) {
+    if (i < 5) {
+        continue;
+    }
+    print(" i.." + i);
+}
+print("\n");
+
+############################################################
+# Check boolean operations
+############################################################
+a = true;
+print("a.." + a + "\n");
+if (a) {
+    print("true\n");
+} else {
+    print("false\n");
+}
+if (a || false) {
+    print("a || false\n");
+}
+if (a && false) {
+    print("a && false\n");
+}
+
+if (true == true) {
+    print("true == true good\n");
+}
+if (true == false) {
+    print("true == false bad\n");
+}
+if (true != true) {
+    print("true != true bad\n");
+}
+if (true != false) {
+    print("true != false good\n");
+}
+
+############################################################
+# Check string conversion
+############################################################
+print(3);
+print("\n");
+z = print(3.0);
+print("\n");
+print("z.." + z + "\n");
+a = 5;
+print("a.." + a + "\n");
+a = 5.0;
+print("a.." + a + "\n");
+a = "piyopiyo";
+print("a.." + a + "\n");
+
+############################################################
+# Check string comparing
+############################################################
+str = "abc";
+
+if (str == "abc") {
+    print("== good.\n");
+}
+
+if (str != "abc") {
+    print("!= bad.\n");
+}
+
+if (str < "abd") {
+    print("< good.\n");
+}
+
+if (str < "abb") {
+    print("< bad.\n");
+}
+
+if (str <= "abc") {
+    print("<= good.\n");
+}
+
+if (str <= "abd") {
+    print("<= good.\n");
+}
+
+if (str <= "abb") {
+    print("<= bad.\n");
+}
+
+if (str >= ">= abc") {
+    print(">= good.\n");
+}
+
+if (str >= ">= abb") {
+    print(">= good.\n");
+}
+
+if (str >= "abd") {
+    print(">= bad.\n");
+}
+
+############################################################
+# Check function call
+############################################################
+hoge(1, 3);
+b = hoge(2, 5);
+print("b.." + b + "\n");
+
+print("int_func().." + int_func() + "\n");
+print("real_func().." + real_func() + "\n");
+print("string_func().." + string_func() + "\n");
+print("void_func().." + void_func() + "\n");
+
+function hoge(a, b) {
+    c = a + b;
+    print("a+b.." + (a + b) + "\n");
+
+    return c;
+}
+
+function int_func() {
+    print("int func in\n");
+    for (i = 0; i < 10; i = i + 1) {
+	print("i.." + i + "\n");
+	return 1;
+    }
+    print("int func out\n");
+}
+
+function real_func() {
+    print("real func in\n");
+    for (i = 0; i < 10; i = i + 1) {
+	print("i.." + i + "\n");
+	return 0.1;
+    }
+    print("real func out\n");
+}
+
+function string_func() {
+    zzz = "zzz";
+    for (i = 0; i < 10; i = i + 1) {
+	print("i.." + i + "\n");
+	return "abc";
+    }
+}
+
+function void_func() {
+    qq = ww = ee = "abc";
+    print("qq.." + qq + "\n");
+    return;
+}
+
+"zzz";
+
+function func(a) {
+    return a;
+}
+
+a = func("abc");
+
+print("a.." + a + "\n");
+
+############################################################
+# Check global statement
+############################################################
+gtest = 10;
+
+function gtestfunc() {
+    global gtest;
+    gtest = 20;
+}
+
+function gtestfunc2() {
+    gtest = 30;
+    print("gtest.." + gtest + "\n");
+}
+
+gtestfunc();
+gtestfunc2();
+print("gtest.." + gtest + "\n");

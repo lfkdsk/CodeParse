@@ -1,0 +1,4 @@
+void print(string str);
+void println(string str) {
+    print(str + "\n");
+}

@@ -1,0 +1,25 @@
+require diksam.lang;
+
+public class Point {
+    private double x;
+    private double y;
+
+    double get_x() {
+	return this.x;
+    }
+    void set_x(double x) {
+	this.x = x;
+    }
+
+    void print() {
+	println("x.." + this.x + ", y.." + this.y);
+    }
+    constructor initialize(double x, double y) {
+	this.x = x;
+	this.y = y;
+    }
+}
+
+Point p = new Point(10, 20);
+
+p.print();

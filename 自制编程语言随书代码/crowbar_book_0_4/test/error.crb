@@ -1,0 +1,427 @@
+function desc_exception(ex) {
+    print(ex.message + "\n");
+}
+
+# VariableNotFoundException
+try {
+    print(hoge);
+} catch (ex) {
+    desc_exception(ex);
+}
+
+# ArgumentTooManyException
+try {
+    print(1, 2);
+} catch (ex) {
+    desc_exception(ex);
+}
+
+# NotBooleanException
+try {
+    if (3) {
+    }
+} catch (ex) {
+    desc_exception(ex);
+}
+try {
+    if (false) {
+    } elsif (3) {
+    }
+} catch (ex) {
+    desc_exception(ex);
+}
+try {
+    while (3) {
+    }
+} catch (ex) {
+    desc_exception(ex);
+}
+try {
+    for (;3;) {
+    }
+} catch (ex) {
+    desc_exception(ex);
+}
+
+try {
+    a = 1;
+    a || 2;
+} catch (ex) {
+    desc_exception(ex);
+}
+
+# MinusOperandTypeException
+try {
+    -"a";
+} catch (ex) {
+    desc_exception(ex);
+}
+
+# BadOperandTypeException
+try {
+    print(1 + true);
+} catch (ex) {
+    desc_exception(ex);
+}
+
+# LogicalOperatorDoubleOperandException
+
+# LogicalOperatorIntegerOperandException
+
+# NotBooleanOperatorException
+try {
+    true > false;
+} catch (ex) {
+    desc_exception(ex);
+}
+
+# NotNullOperatorException
+try {
+    10 + null;
+} catch (ex) {
+    desc_exception(ex);
+}
+
+# NotLValueException
+try {
+    5 = 5;
+} catch (ex) {
+    desc_exception(ex);
+}
+
+# IndexOperandNotArrayException
+try {
+    5[3];
+} catch (ex) {
+    desc_exception(ex);
+}
+
+# IndexOperandNotIntException
+try {
+    a = {};
+    a["a"];
+} catch (ex) {
+    desc_exception(ex);
+}
+
+# ArrayIndexOutOfBoundsException
+try {
+    a = {};
+    a[3] = 5;
+} catch (ex) {
+    desc_exception(ex);
+}
+
+# NoSuchMethodException
+try {
+    a = {};
+    a.hoge();
+} catch (ex) {
+    desc_exception(ex);
+}
+
+# IncDecOperandTypeException
+try {
+    a = "a";
+    a++;
+} catch (ex) {
+    desc_exception(ex);
+}
+
+# IncDecOperandNotExistException
+try {
+    hoge++;
+} catch (ex) {
+    desc_exception(ex);
+}
+
+# NotFunctionException
+try {
+    a = 10;
+    a();
+} catch (ex) {
+    desc_exception(ex);
+}
+
+# NotObjectMemberUpdateException
+try {
+    a = 10;
+    a.hoge++;
+} catch (ex) {
+    desc_exception(ex);
+}
+
+# NotObjectMemberAssignException
+try {
+    a = {};
+    a.size = 5;
+} catch (ex) {
+    desc_exception(ex);
+}
+
+# NoSuchMemberException
+try {
+    a = new_object();
+    a.hoge;
+} catch (ex) {
+    desc_exception(ex);
+}
+
+# NoMemberTypeException
+try {
+    a = 10;
+    a.hoge;
+} catch (ex) {
+    desc_exception(ex);
+}
+
+# BadOperatorForStringException
+try {
+    print("a" - "b");
+} catch (ex) {
+    desc_exception(ex);
+}
+
+# DivisionByZeroException
+try {
+    a = 10;
+    a / 0;
+} catch (ex) {
+    desc_exception(ex);
+}
+
+# GlobalVariableNotFoundException
+function global_variable_not_found() {
+    try {
+	global hoge;
+    } catch (ex) {
+	desc_exception(ex);
+    }
+}
+global_variable_not_found();
+
+# GlobalStatementInToplevelException
+try {
+    global hoge;
+} catch (ex) {
+    desc_exception(ex);
+}
+
+# FunctionExistsException
+try {
+    print = 5;
+} catch (ex) {
+    desc_exception(ex);
+}
+
+# ArrayResizeArgumentException
+try {
+    a = {};
+    a.resize("a");
+} catch (ex) {
+    desc_exception(ex);
+}
+
+# ArrayInsertArgumentException
+try {
+    a = {};
+    a.insert("a", "a");
+} catch (ex) {
+    desc_exception(ex);
+}
+
+# ArrayRemoveArgumentException
+try {
+    a = {};
+    a.remove("a");
+} catch (ex) {
+    desc_exception(ex);
+}
+
+# StringPositionOutOfBoundsException
+try {
+    "a".substr(100, 1);
+} catch (ex) {
+    desc_exception(ex);
+}
+
+# StringSubstrLengthException
+try {
+    "a".substr(0, 100);
+} catch (ex) {
+    desc_exception(ex);
+}
+
+# StringSubstrArgumentException
+try {
+    "a".substr("a", 10);
+} catch (ex) {
+    desc_exception(ex);
+}
+
+# ExceptionHasNoMessageException
+# ExceptionMessageIsNotStringException
+# ExceptionHasNoStackTraceException
+
+# StackTraceIsNotArrayException
+# try {
+#     try {
+# 	{}[10];
+#     } catch (ex) {
+# 	ex.stack_trace = null;
+# 	ex.print_stack_trace();
+#     }
+# } catch (ex2) {
+#     desc_exception(ex2);
+# }
+
+# StackTraceLineIsNotAssocException
+try {
+    try {
+	{}[10];
+    } catch (ex) {
+	ex.stack_trace[0] = null;
+	ex.print_stack_trace();
+    }
+} catch (ex2) {
+    desc_exception(ex2);
+}
+
+# StackTraceLineHasNoLineNumberException
+try {
+    try {
+	{}[10];
+    } catch (ex) {
+	ex.stack_trace[0] = new_object();
+	ex.print_stack_trace();
+    }
+} catch (ex2) {
+    desc_exception(ex2);
+}
+# StackTraceLineHasNoFuncNameException
+try {
+    try {
+	{}[10];
+    } catch (ex) {
+	ex.stack_trace[0] = new_object();
+	ex.stack_trace[0].line_number = 10;
+	ex.print_stack_trace();
+    }
+} catch (ex2) {
+    desc_exception(ex2);
+}
+
+# ExceptionIsNotAssocException
+# ExceptionHasNoPrintStackTraceMethodException
+# PrintStackTraceIsNotClosureException
+# BadMultibyteCharacterException
+
+
+# ExceptionClassIsNotAssocException
+# ExceptionClassHasNoCreateMethodException
+# ArgumentTypeMismatchException
+try {
+    reg_match(10, 5);
+} catch (ex) {
+    desc_exception(ex);
+}
+
+# UnexpectedWideStringException
+# OnigSearchFailException
+# GroupIndexOverflowException
+try {
+    reg_replace(%%r"a(b)c", "z\3", "abc");
+} catch (ex) {
+    desc_exception(ex);
+}
+############################################################
+# FOpenArgumentTypeException
+try {
+    fopen(3, 5);
+} catch (ex) {
+    desc_exception(ex);
+}
+
+# FCloseArgumentTypeException
+try {
+    fclose(5);
+} catch (ex) {
+    desc_exception(ex);
+}
+
+# FGetsArgumentTypeException
+try {
+    fgets(3);
+} catch (ex) {
+    desc_exception(ex);
+}
+
+# FileAlreadyClosedException
+try {
+    fp = fopen("error.crb", "r");
+    fclose(fp);
+    fputs("hoge", fp);
+} catch (ex) {
+    desc_exception(ex);
+}
+
+# FPutsArgumentTypeException
+try {
+    fputs(1, 2);
+} catch (ex) {
+    desc_exception(ex);    
+}
+
+# NewArrayArgumentTypeException
+try {
+    new_array("a");
+} catch (ex) {
+    desc_exception(ex);
+}
+# NewArrayArgumentTooFewException
+try {
+    new_array();
+} catch (ex) {
+    desc_exception(ex);
+}
+
+# ExitArgumentTypeException
+try {
+    exit("a");
+} catch (ex) {
+    desc_exception(ex);
+}
+
+# NewExceptionArgumentException
+try {
+    new_exception(5);
+} catch (ex) {
+    desc_exception(ex);
+}
+
+# AssignToFinalVariableException
+try {
+    final final_a = 10;
+    final_a = 20;
+} catch (ex) {
+    desc_exception(ex);
+}
+
+function final_test_func() {
+    final final_local = 10;
+    final_local = 20;
+}
+
+try {
+    final_test_func();
+} catch (ex) {
+    desc_exception(ex);
+}
+
+try {
+    a = new_object();
+    final a.hoge = 10;
+    a.hoge = 20;
+} catch (ex) {
+    desc_exception(ex);
+}

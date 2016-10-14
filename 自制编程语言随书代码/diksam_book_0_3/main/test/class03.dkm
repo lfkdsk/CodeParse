@@ -1,0 +1,22 @@
+require diksam.lang;
+
+interface Printable {
+    void print();
+}
+
+class Point : Printable {
+    double x;
+    double y;
+
+    override void print() {
+	println("x.." + this.x + ", y.." + this.y);
+    }
+    constructor initialize(double x, double y) {
+	this.x = x;
+	this.y = y;
+    }
+}
+
+Printable printable = new Point(10, 20);
+
+printable.print();

@@ -1,0 +1,8 @@
+int global_variable;
+
+void
+print_global2()
+{
+    global_variable = 10;
+    println("global2.." + global_variable);
+}

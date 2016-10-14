@@ -1,0 +1,4 @@
+delegate int ArraySize();
+array = {1, 2, 3};
+ArraySize array_size = array.size;
+print("array.size.." + array.size());

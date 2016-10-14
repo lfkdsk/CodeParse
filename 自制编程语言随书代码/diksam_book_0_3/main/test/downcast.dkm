@@ -1,0 +1,53 @@
+require diksam.lang;
+
+abstract class Shape {
+    abstract virtual void draw();
+}
+
+abstract class AbstractLine : Shape {
+}
+
+class Line : AbstractLine {
+    override void draw() {}
+    void draw_line() {
+	println("Line!");
+    }
+}
+
+interface Printable {
+    void print();
+}
+
+interface GetLength {
+    double get_length();
+}
+
+class Arrow : AbstractLine, Printable, GetLength {
+    override void draw() {}
+    override void print() {
+	println("Arrow!");
+    }
+    override double get_length() {
+	return 10.0;
+    }
+}
+
+class Circle : Shape {
+    override void draw() {}
+}
+
+Shape s = new Line();
+
+Line line = s::Line:>;
+line.draw_line();
+
+Shape arrow_shape = new Arrow();
+
+arrow_shape::Arrow:>.print();
+
+Arrow arrow = arrow_shape::Arrow:>;
+
+println("arrow length.." + arrow.get_length());
+
+Printable p = new Arrow();
+println("p length.." + p::GetLength:>.get_length());

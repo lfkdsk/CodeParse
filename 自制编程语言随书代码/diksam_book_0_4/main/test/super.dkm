@@ -1,0 +1,22 @@
+require diksam.lang;
+
+abstract class SuperClass {
+    virtual void method() {
+	println("SuperClass method");
+    }
+}
+
+class SubClass :SuperClass {
+    override void method() {
+	println("SubClass method");
+    }
+
+    void hoge() {
+	super.method();
+    }
+}
+
+SubClass sub = new SubClass();
+
+sub.hoge();
+
